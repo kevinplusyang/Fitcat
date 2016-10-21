@@ -18,14 +18,26 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         var f_name: String = ""
     }
     
+ 
     var loginButton = FBSDKLoginButton()
     var floginobj = FBCred()
+    
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        let ref = FIRDatabase.database().reference();
+        
+        ref.child("newchild").setValue("bababa")
+        
+        ref.observe(.childAdded, with: { (snapshot) in
+            print("This is what is in the database \(snapshot)")
+            
+        })
         // Do any additional setup after loading the view, typically from a nib.
         
                 // Optional: Place the button in the center of your view.
+        
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
         loginButton.delegate = self
         loginButton.center = self.view.center
@@ -53,6 +65,12 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 //        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
 //            // ...
 //        }
+//        var credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        
+        let accessToken = FBSDKAccessToken.current().tokenString
+        
+      
+      
         
     }
 

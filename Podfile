@@ -7,5 +7,7 @@ target 'FitCat' do
 
   # Pods for FitCat
   pod 'Firebase/Core'
+  pod ‘Firebase/Database’
+pod ‘Firebase’
  pod 'Firebase/Auth'
 end
