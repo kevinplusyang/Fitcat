@@ -7,20 +7,34 @@
 //
 
 import UIKit
+import FBSDKCoreKit
 import FBSDKLoginKit
+import Firebase
 
 class ViewController: UIViewController, FBSDKLoginButtonDelegate {
+    
+    class FBCred {
+        var f_id : String = ""
+        var f_name: String = ""
+    }
+    
     var loginButton = FBSDKLoginButton()
+    var floginobj = FBCred()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
                 // Optional: Place the button in the center of your view.
-        self.loginButton.center = self.view.center
-        self.loginButton.readPermissions = ["public_profile", "email", "user_friends"]
-        self.loginButton.delegate = self
+        loginButton.readPermissions = ["public_profile", "email", "user_friends"]
+        loginButton.delegate = self
+        loginButton.center = self.view.center
         self.view.addSubview(loginButton)
+        print("Here")
+        
+        if (FBSDKAccessToken.current() != nil) {
+            print("Loggined in")
+        }
 
     }
 
@@ -31,6 +45,15 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         print("User logged in")
+//        floginobj.f_id = authData.uid.substringFromIndex(authData.uid.startIndex.advancedBy(9))
+//        floginobj.f_name = authData.providerData["displayName"] as! String
+//        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        
+        
+//        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+//            // ...
+//        }
+        
     }
 
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
@@ -38,4 +61,6 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
 
 }
+
+
 
