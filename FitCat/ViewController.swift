@@ -51,7 +51,17 @@ class ViewController: UIViewController {
                 print("Data: \(utf8Text)")
             }
         }
-//        Alamofire.request("http://mingplusyang.com/fitcatDB/jsontest.php")
+
+        let xx = 14
+        Alamofire.request("http://mingplusyang.com/fitcatDB/insert.php?id=\(xx)").response { response in
+            print("Request: \(response.request)")
+            print("Response: \(response.response)")
+            print("Error: \(response.error)")
+            
+            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                print("Data: \(utf8Text)")
+            }
+        }
         
    
         
