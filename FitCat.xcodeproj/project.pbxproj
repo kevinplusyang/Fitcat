@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5487C07F1DB888A300CA2D4D /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5487C07E1DB888A300CA2D4D /* FBSDKCoreKit.framework */; };
 		5487C0811DB8892000CA2D4D /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5487C0801DB8892000CA2D4D /* Bolts.framework */; };
 		5487C0831DB8893100CA2D4D /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5487C0821DB8893100CA2D4D /* FBSDKLoginKit.framework */; };
 		5487C0851DB8893F00CA2D4D /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5487C0841DB8893F00CA2D4D /* FBSDKShareKit.framework */; };
@@ -18,12 +17,87 @@
 		54A5BCCE1DB87716006F3433 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54A5BCCD1DB87716006F3433 /* Assets.xcassets */; };
 		54A5BCD11DB87716006F3433 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54A5BCCF1DB87716006F3433 /* LaunchScreen.storyboard */; };
 		54A5BCD91DB87D40006F3433 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54A5BCD81DB87D40006F3433 /* GoogleService-Info.plist */; };
+		54F605F01DBABCC600A4C158 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F605E31DBABC5C00A4C158 /* Alamofire.framework */; };
+		54F605F11DBABCC600A4C158 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 54F605E31DBABC5C00A4C158 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		54F605F71DBAF45F00A4C158 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F605F61DBAF45F00A4C158 /* Alamofire.framework */; };
 		F02A45E6F09625A76877455E /* Pods_FitCat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94CA7355E5ACCD0285253A5A /* Pods_FitCat.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		54F605E21DBABC5C00A4C158 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 54F605D71DBABC5C00A4C158 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3319A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS";
+		};
+		54F605E41DBABC5C00A4C158 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 54F605D71DBABC5C00A4C158 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3E19A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS Tests";
+		};
+		54F605E61DBABC5C00A4C158 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 54F605D71DBABC5C00A4C158 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4DD67C0B1A5C55C900ED2280;
+			remoteInfo = "Alamofire macOS";
+		};
+		54F605E81DBABC5C00A4C158 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 54F605D71DBABC5C00A4C158 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F829C6B21A7A94F100A2CD59;
+			remoteInfo = "Alamofire macOS Tests";
+		};
+		54F605EA1DBABC5C00A4C158 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 54F605D71DBABC5C00A4C158 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4CF626EF1BA7CB3E0011A099;
+			remoteInfo = "Alamofire tvOS";
+		};
+		54F605EC1DBABC5C00A4C158 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 54F605D71DBABC5C00A4C158 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4CF626F81BA7CB3E0011A099;
+			remoteInfo = "Alamofire tvOS Tests";
+		};
+		54F605EE1DBABC5C00A4C158 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 54F605D71DBABC5C00A4C158 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E4202FE01B667AA100C997FB;
+			remoteInfo = "Alamofire watchOS";
+		};
+		54F605F21DBABCC600A4C158 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 54F605D71DBABC5C00A4C158 /* Alamofire.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F8111E3219A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		54F605D61DBAB8AC00A4C158 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				54F605F11DBABCC600A4C158 /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		38C281E6BF4D2BAA46D631A3 /* Pods-FitCat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitCat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FitCat/Pods-FitCat.debug.xcconfig"; sourceTree = "<group>"; };
-		5487C07E1DB888A300CA2D4D /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../Downloads/FacebookSDKs-iOS-4.16.1/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
 		5487C0801DB8892000CA2D4D /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../Documents/FacebookSDKs-iOS-4.16.1/Bolts.framework"; sourceTree = "<group>"; };
 		5487C0821DB8893100CA2D4D /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../Documents/FacebookSDKs-iOS-4.16.1/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
 		5487C0841DB8893F00CA2D4D /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "../../Documents/FacebookSDKs-iOS-4.16.1/FBSDKShareKit.framework"; sourceTree = "<group>"; };
@@ -36,6 +110,8 @@
 		54A5BCD01DB87716006F3433 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		54A5BCD21DB87716006F3433 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54A5BCD81DB87D40006F3433 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		54F605D71DBABC5C00A4C158 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
+		54F605F61DBAF45F00A4C158 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		94CA7355E5ACCD0285253A5A /* Pods_FitCat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitCat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F43721544A279B09C6CE8437 /* Pods-FitCat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitCat.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitCat/Pods-FitCat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -46,11 +122,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5487C0811DB8892000CA2D4D /* Bolts.framework in Frameworks */,
+				54F605F01DBABCC600A4C158 /* Alamofire.framework in Frameworks */,
 				548865261DB9813200BBC714 /* FBSDKCoreKit.framework in Frameworks */,
 				F02A45E6F09625A76877455E /* Pods_FitCat.framework in Frameworks */,
+				54F605F71DBAF45F00A4C158 /* Alamofire.framework in Frameworks */,
 				5487C0851DB8893F00CA2D4D /* FBSDKShareKit.framework in Frameworks */,
 				5487C0831DB8893100CA2D4D /* FBSDKLoginKit.framework in Frameworks */,
-				5487C07F1DB888A300CA2D4D /* FBSDKCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +146,7 @@
 		54A5BCBA1DB87716006F3433 = {
 			isa = PBXGroup;
 			children = (
+				54F605D71DBABC5C00A4C158 /* Alamofire.xcodeproj */,
 				54A5BCC51DB87716006F3433 /* FitCat */,
 				54A5BCC41DB87716006F3433 /* Products */,
 				263C8DCDED4E97699C85AD06 /* Pods */,
@@ -98,14 +176,28 @@
 			path = FitCat;
 			sourceTree = "<group>";
 		};
+		54F605D81DBABC5C00A4C158 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				54F605E31DBABC5C00A4C158 /* Alamofire.framework */,
+				54F605E51DBABC5C00A4C158 /* Alamofire iOS Tests.xctest */,
+				54F605E71DBABC5C00A4C158 /* Alamofire.framework */,
+				54F605E91DBABC5C00A4C158 /* Alamofire macOS Tests.xctest */,
+				54F605EB1DBABC5C00A4C158 /* Alamofire.framework */,
+				54F605ED1DBABC5C00A4C158 /* Alamofire tvOS Tests.xctest */,
+				54F605EF1DBABC5C00A4C158 /* Alamofire.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		74FCD87406936B61F241673E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				54F605F61DBAF45F00A4C158 /* Alamofire.framework */,
 				548865251DB9813200BBC714 /* FBSDKCoreKit.framework */,
 				5487C0841DB8893F00CA2D4D /* FBSDKShareKit.framework */,
 				5487C0821DB8893100CA2D4D /* FBSDKLoginKit.framework */,
 				5487C0801DB8892000CA2D4D /* Bolts.framework */,
-				5487C07E1DB888A300CA2D4D /* FBSDKCoreKit.framework */,
 				94CA7355E5ACCD0285253A5A /* Pods_FitCat.framework */,
 			);
 			name = Frameworks;
@@ -124,10 +216,12 @@
 				54A5BCC11DB87716006F3433 /* Resources */,
 				44F82CC97ABD2A9773138AB0 /* [CP] Embed Pods Frameworks */,
 				A777B8BECAC92078729A2E15 /* [CP] Copy Pods Resources */,
+				54F605D61DBAB8AC00A4C158 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				54F605F31DBABCC600A4C158 /* PBXTargetDependency */,
 			);
 			name = FitCat;
 			productName = FitCat;
@@ -162,12 +256,70 @@
 			mainGroup = 54A5BCBA1DB87716006F3433;
 			productRefGroup = 54A5BCC41DB87716006F3433 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 54F605D81DBABC5C00A4C158 /* Products */;
+					ProjectRef = 54F605D71DBABC5C00A4C158 /* Alamofire.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				54A5BCC21DB87716006F3433 /* FitCat */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		54F605E31DBABC5C00A4C158 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 54F605E21DBABC5C00A4C158 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		54F605E51DBABC5C00A4C158 /* Alamofire iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire iOS Tests.xctest";
+			remoteRef = 54F605E41DBABC5C00A4C158 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		54F605E71DBABC5C00A4C158 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 54F605E61DBABC5C00A4C158 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		54F605E91DBABC5C00A4C158 /* Alamofire macOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire macOS Tests.xctest";
+			remoteRef = 54F605E81DBABC5C00A4C158 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		54F605EB1DBABC5C00A4C158 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 54F605EA1DBABC5C00A4C158 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		54F605ED1DBABC5C00A4C158 /* Alamofire tvOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire tvOS Tests.xctest";
+			remoteRef = 54F605EC1DBABC5C00A4C158 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		54F605EF1DBABC5C00A4C158 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 54F605EE1DBABC5C00A4C158 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		54A5BCC11DB87716006F3433 /* Resources */ = {
@@ -242,6 +394,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		54F605F31DBABCC600A4C158 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Alamofire iOS";
+			targetProxy = 54F605F21DBABCC600A4C158 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		54A5BCCA1DB87716006F3433 /* Main.storyboard */ = {
@@ -358,6 +518,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 38C281E6BF4D2BAA46D631A3 /* Pods-FitCat.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = ALM2K2B6Z6;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -371,6 +532,7 @@
 					"\"${PODS_ROOT}/GoogleSymbolUtilities/Frameworks/frameworks\"",
 					"\"${PODS_ROOT}/GoogleUtilities/Frameworks/frameworks\"",
 					"~/Documents/FacebookSDKs-iOS-4.16.1",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = FitCat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -384,6 +546,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F43721544A279B09C6CE8437 /* Pods-FitCat.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = ALM2K2B6Z6;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -397,6 +560,7 @@
 					"\"${PODS_ROOT}/GoogleSymbolUtilities/Frameworks/frameworks\"",
 					"\"${PODS_ROOT}/GoogleUtilities/Frameworks/frameworks\"",
 					"~/Documents/FacebookSDKs-iOS-4.16.1",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = FitCat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
