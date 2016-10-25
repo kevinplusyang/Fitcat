@@ -13,16 +13,21 @@ import Alamofire
 
 class SecondViewController: UIViewController {
     var selectedName: String = "Anonymous"
-   var toPass: String = "Anonymous"
+    var toPass: String = "Anonymous"
+    var u_id = floginobj.f_id
+    
+    
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        let myCustomViewController: loginController = loginController(nibName: nil, bundle: nil)
+        let getThatValue = myCustomViewController.result
         
     
-        
+        print("resultis:\(u_id)")
         
     }
     

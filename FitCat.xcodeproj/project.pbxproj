@@ -116,6 +116,7 @@
 		54A5BCD01DB87716006F3433 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		54A5BCD21DB87716006F3433 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54A5BCD81DB87D40006F3433 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		54C9C7B91DBFE80100FFC8B1 /* log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = log.h; sourceTree = "<group>"; };
 		54F605D71DBABC5C00A4C158 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		54F605F61DBAF45F00A4C158 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		94CA7355E5ACCD0285253A5A /* Pods_FitCat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitCat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,6 +182,7 @@
 				548D45E01DBBE584001153D5 /* Join.swift */,
 				548D45E91DBC04DB001153D5 /* login.swift */,
 				543955C81DBC60CB0023135B /* secondViewController.swift */,
+				54C9C7B91DBFE80100FFC8B1 /* log.h */,
 			);
 			path = FitCat;
 			sourceTree = "<group>";

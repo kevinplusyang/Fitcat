@@ -132,7 +132,7 @@
         <!--Second View Controller-->
         <scene sceneID="ztg-F2-j4H">
             <objects>
-                <viewController storyboardIdentifier="xxx" useStoryboardIdentifierAsRestorationIdentifier="YES" id="crn-ev-Ykc" customClass="SecondViewController" customModule="FitCat" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SecondViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="crn-ev-Ykc" customClass="SecondViewController" customModule="FitCat" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hzd-Qw-bF1"/>
                         <viewControllerLayoutGuide type="bottom" id="Oap-Ib-VTZ"/>
@@ -140,6 +140,15 @@
                     <view key="view" contentMode="scaleToFill" id="Nkn-ja-yMS" customClass="Se">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Second" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L9A-Dh-CGa">
+                                <frame key="frameInset" minX="166" minY="100" width="59" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
@@ -238,6 +247,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Bw9-De-4cC"/>
+        <segue reference="ftU-fd-dcC"/>
     </inferredMetricsTieBreakers>
 </document>

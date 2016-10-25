@@ -10,6 +10,15 @@ import UIKit
 import Foundation
 import Alamofire
 
+class FBCred {
+    var f_id : Int = 0
+    var f_name: String = ""
+   
+}
+
+var floginobj = FBCred()
+
+
 class loginController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var username: UITextField!
@@ -35,6 +44,7 @@ class loginController: UIViewController, UITextFieldDelegate {
     var result = 0
     
     @IBAction func submit(_ sender: UIButton) {
+        
         print("Clikced Submit")
         print("User Name: \(username.text!)")
         print("Password: \(password.text!)")
@@ -53,16 +63,9 @@ class loginController: UIViewController, UITextFieldDelegate {
         
         
         if(result != 0){
-            print("Auth Successed with ID: \(result)")
-//            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "SecondViewController") as! SecondViewController
-//            self.navigationController?.pushViewController(secondViewController, animated: true)
-            
-            
-            let viewControllerB = SecondViewController()
-            viewControllerB.selectedName = "Taylor Swift"
-            navigationController?.pushViewController(viewControllerB, animated: true)
-            
-            self.performSegue(withIdentifier: "SecondViewController", sender: self)
+            floginobj.f_id = result
+            let dest = self.storyboard?.instantiateViewController(withIdentifier: "SecondViewController")
+            self.present(dest!, animated: true, completion: nil)
             
             
         } else {
