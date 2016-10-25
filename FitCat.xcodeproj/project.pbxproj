@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		543955C91DBC60CB0023135B /* secondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543955C81DBC60CB0023135B /* secondViewController.swift */; };
 		5487C0811DB8892000CA2D4D /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5487C0801DB8892000CA2D4D /* Bolts.framework */; };
 		5487C0831DB8893100CA2D4D /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5487C0821DB8893100CA2D4D /* FBSDKLoginKit.framework */; };
 		5487C0851DB8893F00CA2D4D /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5487C0841DB8893F00CA2D4D /* FBSDKShareKit.framework */; };
 		548865261DB9813200BBC714 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548865251DB9813200BBC714 /* FBSDKCoreKit.framework */; };
+		548D45E11DBBE584001153D5 /* Join.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548D45E01DBBE584001153D5 /* Join.swift */; };
+		548D45EA1DBC04DB001153D5 /* login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548D45E91DBC04DB001153D5 /* login.swift */; };
 		54A5BCC71DB87716006F3433 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A5BCC61DB87716006F3433 /* AppDelegate.swift */; };
 		54A5BCC91DB87716006F3433 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A5BCC81DB87716006F3433 /* ViewController.swift */; };
 		54A5BCCC1DB87716006F3433 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54A5BCCA1DB87716006F3433 /* Main.storyboard */; };
@@ -98,10 +101,13 @@
 
 /* Begin PBXFileReference section */
 		38C281E6BF4D2BAA46D631A3 /* Pods-FitCat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitCat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FitCat/Pods-FitCat.debug.xcconfig"; sourceTree = "<group>"; };
+		543955C81DBC60CB0023135B /* secondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = secondViewController.swift; sourceTree = "<group>"; };
 		5487C0801DB8892000CA2D4D /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../Documents/FacebookSDKs-iOS-4.16.1/Bolts.framework"; sourceTree = "<group>"; };
 		5487C0821DB8893100CA2D4D /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../Documents/FacebookSDKs-iOS-4.16.1/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
 		5487C0841DB8893F00CA2D4D /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "../../Documents/FacebookSDKs-iOS-4.16.1/FBSDKShareKit.framework"; sourceTree = "<group>"; };
 		548865251DB9813200BBC714 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../Documents/FacebookSDKs-iOS-4.16.1/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
+		548D45E01DBBE584001153D5 /* Join.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Join.swift; sourceTree = "<group>"; };
+		548D45E91DBC04DB001153D5 /* login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = login.swift; sourceTree = "<group>"; };
 		54A5BCC31DB87716006F3433 /* FitCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54A5BCC61DB87716006F3433 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54A5BCC81DB87716006F3433 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +178,9 @@
 				54A5BCCD1DB87716006F3433 /* Assets.xcassets */,
 				54A5BCCF1DB87716006F3433 /* LaunchScreen.storyboard */,
 				54A5BCD21DB87716006F3433 /* Info.plist */,
+				548D45E01DBBE584001153D5 /* Join.swift */,
+				548D45E91DBC04DB001153D5 /* login.swift */,
+				543955C81DBC60CB0023135B /* secondViewController.swift */,
 			);
 			path = FitCat;
 			sourceTree = "<group>";
@@ -390,6 +399,9 @@
 			files = (
 				54A5BCC91DB87716006F3433 /* ViewController.swift in Sources */,
 				54A5BCC71DB87716006F3433 /* AppDelegate.swift in Sources */,
+				548D45E11DBBE584001153D5 /* Join.swift in Sources */,
+				543955C91DBC60CB0023135B /* secondViewController.swift in Sources */,
+				548D45EA1DBC04DB001153D5 /* login.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
