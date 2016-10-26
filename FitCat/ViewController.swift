@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import FBSDKCoreKit
-import FBSDKLoginKit
-import Firebase
+//import FBSDKCoreKit
+//import FBSDKLoginKit
+//import Firebase
 import Foundation
 import Alamofire
 
