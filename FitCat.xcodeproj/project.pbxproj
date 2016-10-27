@@ -545,7 +545,6 @@
 					"\"${PODS_ROOT}/GoogleNetworkingUtilities/Frameworks/frameworks\"",
 					"\"${PODS_ROOT}/GoogleSymbolUtilities/Frameworks/frameworks\"",
 					"\"${PODS_ROOT}/GoogleUtilities/Frameworks/frameworks\"",
-					"~/Documents/FacebookSDKs-iOS-4.16.1",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = FitCat/Info.plist;
@@ -573,7 +572,6 @@
 					"\"${PODS_ROOT}/GoogleNetworkingUtilities/Frameworks/frameworks\"",
 					"\"${PODS_ROOT}/GoogleSymbolUtilities/Frameworks/frameworks\"",
 					"\"${PODS_ROOT}/GoogleUtilities/Frameworks/frameworks\"",
-					"~/Documents/FacebookSDKs-iOS-4.16.1",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = FitCat/Info.plist;
