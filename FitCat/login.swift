@@ -69,6 +69,7 @@ class loginController: UIViewController, UITextFieldDelegate {
             
             
         } else {
+            
             print("Auth Wrong!")
         }
         

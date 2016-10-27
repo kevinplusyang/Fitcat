@@ -6,11 +6,11 @@ target 'FitCat' do
   use_frameworks!
 
   # Pods for FitCat
-  pod 'Firebase/Core'
-  pod ‘Firebase/Database’
-pod ‘Firebase’
- pod 'Firebase/Auth'
-pod 'GoogleSignIn'
+  #pod 'Firebase/Core'
+ # pod ‘Firebase/Database’
+#pod ‘Firebase’
+ #pod 'Firebase/Auth'
+#pod 'GoogleSignIn'
  pod 'Alamofire', '~> 4.0'
-pod 'GoogleSignIn'
+#pod 'GoogleSignIn'
 end
