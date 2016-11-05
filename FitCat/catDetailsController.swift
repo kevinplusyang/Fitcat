@@ -99,7 +99,6 @@ class catDetailsController: UIViewController,UITextFieldDelegate {
         newDateFormat = String(newDateFormat.characters.dropLast())
         newDateFormatYear = newDateFormatYear + "/" +  newDateFormat
         print("NEWDATE: \(newDateFormatYear)")
-        
         catDobField.text = newDateFormatYear
     }
     
