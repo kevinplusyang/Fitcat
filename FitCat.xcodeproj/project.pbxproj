@@ -20,6 +20,11 @@
 		54A5BCCE1DB87716006F3433 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54A5BCCD1DB87716006F3433 /* Assets.xcassets */; };
 		54A5BCD11DB87716006F3433 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54A5BCCF1DB87716006F3433 /* LaunchScreen.storyboard */; };
 		54A5BCD91DB87D40006F3433 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54A5BCD81DB87D40006F3433 /* GoogleService-Info.plist */; };
+		54A7AC0B1DCBCE1200DD2327 /* createCat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A7AC0A1DCBCE1200DD2327 /* createCat.swift */; };
+		54A7AC141DCBCEB900DD2327 /* catDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A7AC131DCBCEB900DD2327 /* catDetailsController.swift */; };
+		54DC47981DCBD6C4001B8BE2 /* selectBcsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DC47971DCBD6C4001B8BE2 /* selectBcsController.swift */; };
+		54DC47A11DCBD6CC001B8BE2 /* tipsForSuccessControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DC47A01DCBD6CC001B8BE2 /* tipsForSuccessControllerViewController.swift */; };
+		54DC47A31DCBE319001B8BE2 /* testingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DC47A21DCBE319001B8BE2 /* testingTableViewController.swift */; };
 		54F605F01DBABCC600A4C158 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F605E31DBABC5C00A4C158 /* Alamofire.framework */; };
 		54F605F11DBABCC600A4C158 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 54F605E31DBABC5C00A4C158 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		54F605F71DBAF45F00A4C158 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F605F61DBAF45F00A4C158 /* Alamofire.framework */; };
@@ -116,7 +121,12 @@
 		54A5BCD01DB87716006F3433 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		54A5BCD21DB87716006F3433 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54A5BCD81DB87D40006F3433 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		54A7AC0A1DCBCE1200DD2327 /* createCat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createCat.swift; sourceTree = "<group>"; };
+		54A7AC131DCBCEB900DD2327 /* catDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = catDetailsController.swift; sourceTree = "<group>"; };
 		54C9C7B91DBFE80100FFC8B1 /* log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = log.h; sourceTree = "<group>"; };
+		54DC47971DCBD6C4001B8BE2 /* selectBcsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = selectBcsController.swift; sourceTree = "<group>"; };
+		54DC47A01DCBD6CC001B8BE2 /* tipsForSuccessControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tipsForSuccessControllerViewController.swift; sourceTree = "<group>"; };
+		54DC47A21DCBE319001B8BE2 /* testingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testingTableViewController.swift; sourceTree = "<group>"; };
 		54F605D71DBABC5C00A4C158 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		54F605F61DBAF45F00A4C158 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		94CA7355E5ACCD0285253A5A /* Pods_FitCat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitCat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,7 +184,10 @@
 			children = (
 				54A5BCC61DB87716006F3433 /* AppDelegate.swift */,
 				54A5BCD81DB87D40006F3433 /* GoogleService-Info.plist */,
+				54DC47971DCBD6C4001B8BE2 /* selectBcsController.swift */,
 				54A5BCC81DB87716006F3433 /* ViewController.swift */,
+				54DC47A01DCBD6CC001B8BE2 /* tipsForSuccessControllerViewController.swift */,
+				54DC47A21DCBE319001B8BE2 /* testingTableViewController.swift */,
 				54A5BCCA1DB87716006F3433 /* Main.storyboard */,
 				54A5BCCD1DB87716006F3433 /* Assets.xcassets */,
 				54A5BCCF1DB87716006F3433 /* LaunchScreen.storyboard */,
@@ -183,6 +196,8 @@
 				548D45E91DBC04DB001153D5 /* login.swift */,
 				543955C81DBC60CB0023135B /* secondViewController.swift */,
 				54C9C7B91DBFE80100FFC8B1 /* log.h */,
+				54A7AC0A1DCBCE1200DD2327 /* createCat.swift */,
+				54A7AC131DCBCEB900DD2327 /* catDetailsController.swift */,
 			);
 			path = FitCat;
 			sourceTree = "<group>";
@@ -399,11 +414,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54DC47981DCBD6C4001B8BE2 /* selectBcsController.swift in Sources */,
 				54A5BCC91DB87716006F3433 /* ViewController.swift in Sources */,
 				54A5BCC71DB87716006F3433 /* AppDelegate.swift in Sources */,
+				54A7AC0B1DCBCE1200DD2327 /* createCat.swift in Sources */,
 				548D45E11DBBE584001153D5 /* Join.swift in Sources */,
 				543955C91DBC60CB0023135B /* secondViewController.swift in Sources */,
+				54DC47A31DCBE319001B8BE2 /* testingTableViewController.swift in Sources */,
 				548D45EA1DBC04DB001153D5 /* login.swift in Sources */,
+				54A7AC141DCBCEB900DD2327 /* catDetailsController.swift in Sources */,
+				54DC47A11DCBD6CC001B8BE2 /* tipsForSuccessControllerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,6 +565,7 @@
 					"\"${PODS_ROOT}/GoogleNetworkingUtilities/Frameworks/frameworks\"",
 					"\"${PODS_ROOT}/GoogleSymbolUtilities/Frameworks/frameworks\"",
 					"\"${PODS_ROOT}/GoogleUtilities/Frameworks/frameworks\"",
+					"~/Documents/FacebookSDKs-iOS-4.16.1",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = FitCat/Info.plist;
@@ -572,6 +593,7 @@
 					"\"${PODS_ROOT}/GoogleNetworkingUtilities/Frameworks/frameworks\"",
 					"\"${PODS_ROOT}/GoogleSymbolUtilities/Frameworks/frameworks\"",
 					"\"${PODS_ROOT}/GoogleUtilities/Frameworks/frameworks\"",
+					"~/Documents/FacebookSDKs-iOS-4.16.1",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = FitCat/Info.plist;

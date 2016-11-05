@@ -41,7 +41,7 @@ class loginController: UIViewController, UITextFieldDelegate {
         
     }
     
-    var result = 0
+    
     
     @IBAction func submit(_ sender: UIButton) {
         
@@ -50,36 +50,27 @@ class loginController: UIViewController, UITextFieldDelegate {
         print("Password: \(password.text!)")
         
         Alamofire.request("http://mingplusyang.com/fitcatDB/login.php?username=\(username.text!)&password=\(password.text!)").response { response in
+           
+            
             print("Request: \(response.request)")
             print("Response: \(response.response)")
             print("Error: \(response.error)")
             
             if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                var result = 0
                 print("Data: \(utf8Text)")
-                self.result = Int(utf8Text)!
+                result = Int(utf8Text)!
                 
+                if(result != 0){
+                    floginobj.f_id = result
+                    let dest = self.storyboard?.instantiateViewController(withIdentifier: "SecondViewController")
+                    self.present(dest!, animated: true, completion: nil)
+                } else {
+                    print("Auth Wrong!")
+                }
             }
         }
-        
-        
-        if(result != 0){
-            floginobj.f_id = result
-            let dest = self.storyboard?.instantiateViewController(withIdentifier: "SecondViewController")
-            self.present(dest!, animated: true, completion: nil)
-            
-            
-        } else {
-            
-            print("Auth Wrong!")
-        }
-        
-        
-        
-        
-        
     }
-    
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -90,9 +81,6 @@ class loginController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
         return false
     }
-    
-    
-    
     
     
     

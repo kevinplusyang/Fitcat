@@ -21,13 +21,68 @@ class SecondViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
-        let myCustomViewController: loginController = loginController(nibName: nil, bundle: nil)
-        let getThatValue = myCustomViewController.result
         
-    
+        
         print("resultis:\(u_id)")
+        
+        
+        var result = 9;
+
+        
+        Alamofire.request("http://mingplusyang.com/fitcatDB/navigationAfterLogin.php?user_id=\(u_id)").response { response in
+            print("Request: \(response.request)")
+            print("Response: \(response.response)")
+            print("Error: \(response.error)")
+            
+            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                print("Data: \(utf8Text)")
+                result = Int(utf8Text)!
+                
+                if(result == 0){
+                    let dest = self.storyboard?.instantiateViewController(withIdentifier: "createCatView")
+                    self.present(dest!, animated: true, completion: nil)
+                }
+                
+                if(result == 1){
+                    let dest = self.storyboard?.instantiateViewController(withIdentifier: "catTable")
+                    self.present(dest!, animated: true, completion: nil)
+                }
+                
+               
+                
+            }
+        }
+        
+        print("RRR: \(result)")
+        
+       
+        
+//        if(result == 0){
+//            
+//            print("CreateCatview")
+//            
+//            let dest = self.storyboard?.instantiateViewController(withIdentifier: "createCatView")
+//            self.present(dest!, animated: true, completion: nil)
+//            
+//        }
+//        print("R1")
+//        
+//        if(result == 1){
+//         
+//            let dest = self.storyboard?.instantiateViewController(withIdentifier: "catTable")
+//            self.present(dest!, animated: true, completion: nil)
+//            
+//            
+//        }
+//        print("R2")
+
+        
+        
+        
+        
+        
+        
         
     }
     
