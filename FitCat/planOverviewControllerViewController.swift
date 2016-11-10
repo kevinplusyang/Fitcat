@@ -48,20 +48,20 @@ class planOverviewControllerViewController: UIViewController {
         
         
     
-        Alamofire.request("http://mingplusyang.com/fitcatDB/getCatIdByPlan.php?a1=1").response { response in
+        Alamofire.request("http://mingplusyang.com/fitcatDB/getCatIdByPlan.php?a1=\(planObj.plan_id)").response { response in
             if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
                planObj.cat_id = Int(utf8Text)!
             }
         }
     
-        Alamofire.request("http://mingplusyang.com/fitcatDB/getEndDateByPlan.php?a1=1").response { response in
+        Alamofire.request("http://mingplusyang.com/fitcatDB/getEndDateByPlan.php?a1=\(planObj.plan_id)").response { response in
             if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
 //                self.endDate.text = "\(utf8Text)"
                 planObj.end_date = utf8Text
             }
         }
         
-        Alamofire.request("http://mingplusyang.com/fitcatDB/getStartDateByPlan.php?a1=1").response { response in
+        Alamofire.request("http://mingplusyang.com/fitcatDB/getStartDateByPlan.php?a1=\(planObj.plan_id)").response { response in
             if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
                 planObj.start_date = utf8Text
             }
@@ -69,14 +69,14 @@ class planOverviewControllerViewController: UIViewController {
        
        
         
-        Alamofire.request("http://mingplusyang.com/fitcatDB/getWeightLosePerMonthByPlan.php?a1=1").response { response in
+        Alamofire.request("http://mingplusyang.com/fitcatDB/getWeightLosePerMonthByPlan.php?a1=\(planObj.plan_id)").response { response in
             if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
                 planObj.weight_lose_per_month = Double(utf8Text)!
                 
             }
         }
         
-        Alamofire.request("http://mingplusyang.com/fitcatDB/getWeightLossByPlan.php?a1=1").response { response in
+        Alamofire.request("http://mingplusyang.com/fitcatDB/getWeightLossByPlan.php?a1=\(planObj.plan_id)").response { response in
             if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
                 planObj.weight_lose = Double(utf8Text)!
             
