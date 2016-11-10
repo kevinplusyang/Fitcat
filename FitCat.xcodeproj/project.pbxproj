@@ -24,6 +24,7 @@
 		54A7AC0B1DCBCE1200DD2327 /* createCat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A7AC0A1DCBCE1200DD2327 /* createCat.swift */; };
 		54A7AC141DCBCEB900DD2327 /* catDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A7AC131DCBCEB900DD2327 /* catDetailsController.swift */; };
 		54D4F4E41DD2A2B700A2670E /* breedTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D4F4E31DD2A2B700A2670E /* breedTableTableViewController.swift */; };
+		54D690A51DD3E68D007E3DCF /* planOverviewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D690A41DD3E68D007E3DCF /* planOverviewControllerViewController.swift */; };
 		54DC47981DCBD6C4001B8BE2 /* selectBcsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DC47971DCBD6C4001B8BE2 /* selectBcsController.swift */; };
 		54DC47A11DCBD6CC001B8BE2 /* tipsForSuccessControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DC47A01DCBD6CC001B8BE2 /* tipsForSuccessControllerViewController.swift */; };
 		54DC47A31DCBE319001B8BE2 /* testingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DC47A21DCBE319001B8BE2 /* testingTableViewController.swift */; };
@@ -128,6 +129,7 @@
 		54A7AC131DCBCEB900DD2327 /* catDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = catDetailsController.swift; sourceTree = "<group>"; };
 		54C9C7B91DBFE80100FFC8B1 /* log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = log.h; sourceTree = "<group>"; };
 		54D4F4E31DD2A2B700A2670E /* breedTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = breedTableTableViewController.swift; sourceTree = "<group>"; };
+		54D690A41DD3E68D007E3DCF /* planOverviewControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = planOverviewControllerViewController.swift; sourceTree = "<group>"; };
 		54DC47971DCBD6C4001B8BE2 /* selectBcsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = selectBcsController.swift; sourceTree = "<group>"; };
 		54DC47A01DCBD6CC001B8BE2 /* tipsForSuccessControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tipsForSuccessControllerViewController.swift; sourceTree = "<group>"; };
 		54DC47A21DCBE319001B8BE2 /* testingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testingTableViewController.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				54A7AC131DCBCEB900DD2327 /* catDetailsController.swift */,
 				54D4F4E31DD2A2B700A2670E /* breedTableTableViewController.swift */,
 				5439F34D1DD2B78E00717DE3 /* planGeneration.swift */,
+				54D690A41DD3E68D007E3DCF /* planOverviewControllerViewController.swift */,
 			);
 			path = FitCat;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				54A5BCC91DB87716006F3433 /* ViewController.swift in Sources */,
 				5439F34E1DD2B78E00717DE3 /* planGeneration.swift in Sources */,
 				54A5BCC71DB87716006F3433 /* AppDelegate.swift in Sources */,
+				54D690A51DD3E68D007E3DCF /* planOverviewControllerViewController.swift in Sources */,
 				54A7AC0B1DCBCE1200DD2327 /* createCat.swift in Sources */,
 				548D45E11DBBE584001153D5 /* Join.swift in Sources */,
 				543955C91DBC60CB0023135B /* secondViewController.swift in Sources */,

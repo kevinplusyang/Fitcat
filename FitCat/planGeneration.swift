@@ -15,7 +15,7 @@ class PlanObj {
     var cat_id : Int = 0
     var start_date: String = ""
     var end_date: String = ""
-    var weight_lose: Double = 0
+    var weight_lose: Double = 5
     var weight_lose_per_month: Double = 0
     var calories_to_lose_per_day: Double = 0
     var food_volume_required: Double = 0
@@ -86,7 +86,7 @@ class planGeneration: UIViewController, UITextFieldDelegate {
                 planObj.plan_id = Int(utf8Text)!
                 print("PlanID:\(planObj.plan_id)")
                 
-                let dest = self.storyboard?.instantiateViewController(withIdentifier: "mainView")
+                let dest = self.storyboard?.instantiateViewController(withIdentifier: "planView")
                 self.present(dest!, animated: true, completion: nil)
                 
             }
