@@ -45,8 +45,15 @@ class SecondViewController: UIViewController {
                 }
                 
                 if(result == 1){
-                    let dest = self.storyboard?.instantiateViewController(withIdentifier: "catTable")
-                    self.present(dest!, animated: true, completion: nil)
+//                    let dest = self.storyboard?.instantiateViewController(withIdentifier: "catTable")
+//                    self.present(dest!, animated: true, completion: nil)
+                    
+//                    var storyboard = UIStoryboard(name: "TableViewCont", bundle: nil)
+                    let tvc = (self.storyboard?.instantiateViewController(withIdentifier: "catTable") as! UITableViewController)
+                     self.present(tvc, animated: true, completion: nil)
+
+                    
+                    
                 }
                 
                

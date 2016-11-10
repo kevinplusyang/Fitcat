@@ -799,6 +799,34 @@
             </objects>
             <point key="canvasLocation" x="8415" y="527"/>
         </scene>
+        <!--Table View Controller-->
+        <scene sceneID="W8d-BH-Xx3">
+            <objects>
+                <tableViewController storyboardIdentifier="catTable" id="0k8-hb-Z0k" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="118" sectionHeaderHeight="28" sectionFooterHeight="28" id="7Ip-Pg-vez">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="118" id="HBr-NI-ydL">
+                                <rect key="frame" x="0.0" y="28" width="375" height="118"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HBr-NI-ydL" id="MEN-V3-Wj0">
+                                    <frame key="frameInset" width="375" height="117"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="0k8-hb-Z0k" id="QLy-bc-P7q"/>
+                            <outlet property="delegate" destination="0k8-hb-Z0k" id="Ugh-tJ-Yp2"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aWT-Hs-hH6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2850" y="-407"/>
+        </scene>
         <!--Breed Table Table View Controller-->
         <scene sceneID="Znn-EV-WGv">
             <objects>
@@ -817,11 +845,11 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="62n-uk-iCu" id="7Nn-Bl-377">
-                                    <frame key="frameInset" width="375" height="43"/>
+                                    <frame key="frameInset" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C5G-3x-Smq">
-                                            <frame key="frameInset" minX="-2" minY="-1" height="44" maxX="1"/>
+                                            <frame key="frameInset" minX="-3" minY="-1" height="44" maxX="2"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.87368464469999996" green="0.30182510610000002" blue="0.2273154855" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <items>
@@ -841,7 +869,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pjf-qd-PBK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3378" y="-407"/>
+            <point key="canvasLocation" x="3511" y="-947"/>
         </scene>
         <!--planOverview-->
         <scene sceneID="4PI-wq-XU8">
