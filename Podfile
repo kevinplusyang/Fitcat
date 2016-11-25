@@ -7,6 +7,9 @@ target 'FitCat2' do
 
   # Pods for FitCat2
 pod 'Alamofire', '~> 4.0'
+ pod 'SwiftyJSON'
+
+
   target 'FitCat2Tests' do
     inherit! :search_paths
     # Pods for testing
@@ -16,5 +19,6 @@ pod 'Alamofire', '~> 4.0'
     inherit! :search_paths
     # Pods for testing
   end
+
 
 end
