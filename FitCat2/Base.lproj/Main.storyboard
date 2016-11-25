@@ -807,7 +807,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FrX-VK-RcC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7610" y="-232"/>
+            <point key="canvasLocation" x="7166" y="-589"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="Cyw-9u-gZh">
@@ -859,7 +859,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NjN-ct-o4M">
-                                            <rect key="frame" x="-10" y="-1" width="378" height="44"/>
+                                            <rect key="frame" x="-12" y="-1" width="378" height="44"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.87368464469999996" green="0.30182510610000002" blue="0.2273154855" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <items>
@@ -987,17 +987,6 @@
                                 <color key="textColor" red="0.99759765619999996" green="0.99759765619999996" blue="0.99759765619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="gotItBtn2" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zz8-ap-HC1">
-                                <rect key="frame" x="30" y="607" width="315" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Got it!">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="gotItButton:" destination="0g9-Mb-cjw" eventType="touchUpInside" id="3ai-Sh-7ta"/>
-                                    <segue destination="IEG-tg-M7g" kind="show" id="Yf9-15-q2w"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N6l-h9-6Zn">
                                 <rect key="frame" x="30" y="218" width="315" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1044,6 +1033,16 @@
                                 <color key="textColor" red="0.99759765619999996" green="0.99759765619999996" blue="0.99759765619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dBg-cB-w72">
+                                <rect key="frame" x="30" y="599" width="314" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Got it!">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="IEG-tg-M7g" kind="show" id="g8V-VO-XTX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.29411764709999999" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -1052,7 +1051,6 @@
                         <outlet property="catImg" destination="uFg-Zm-ETO" id="YiV-ll-t60"/>
                         <outlet property="endDate" destination="wmf-nw-7iM" id="TbU-cG-eCV"/>
                         <outlet property="endDateBig" destination="RbE-E3-abv" id="0x5-Th-dfY"/>
-                        <outlet property="gotItBtn" destination="Zz8-ap-HC1" id="9g3-3D-dzz"/>
                         <outlet property="startDate" destination="9dn-d6-pff" id="Vof-Mp-SrI"/>
                         <outlet property="volumePerDay" destination="V23-ee-bsp" id="fTW-Hc-XYr"/>
                         <outlet property="weightLoss" destination="Li5-GE-r6f" id="nXL-cp-EdF"/>
@@ -1469,7 +1467,7 @@
         <scene sceneID="7FD-0f-YcJ">
             <objects>
                 <collectionViewController title="Cupboard" id="LP8-NH-bdf" customClass="cupboardCollectionViewController" customModule="FitCat2" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="SjE-NX-rp6">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="SjE-NX-rp6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -1684,6 +1682,14 @@
                                 <rect key="frame" x="56" y="29" width="19" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ISl-c9-Ag2">
+                                <rect key="frame" x="51" y="23" width="32" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="        "/>
+                                <connections>
+                                    <segue destination="Nrq-2C-WbR" kind="show" id="Zyb-vW-r8x"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1694,7 +1700,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ztr-Nw-5K2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8700" y="-339"/>
+            <point key="canvasLocation" x="8700" y="-339.58020989505252"/>
         </scene>
     </scenes>
     <resources>
@@ -1717,7 +1723,7 @@
         <image name="user-icon" width="20" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Yf9-15-q2w"/>
         <segue reference="4EB-V8-NTC"/>
+        <segue reference="g8V-VO-XTX"/>
     </inferredMetricsTieBreakers>
 </document>

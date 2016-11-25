@@ -21,18 +21,18 @@
 		C860BC1D1DE360AE005E00CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C860BC1B1DE360AE005E00CC /* LaunchScreen.storyboard */; };
 		C860BC281DE360AE005E00CC /* FitCat2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C860BC271DE360AE005E00CC /* FitCat2Tests.swift */; };
 		C860BC331DE360AE005E00CC /* FitCat2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C860BC321DE360AE005E00CC /* FitCat2UITests.swift */; };
-		C8A6CA751DE36A9D00B70795 /* breedTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A6CA691DE36A9D00B70795 /* breedTableTableViewController.swift */; };
-		C8A6CA761DE36A9D00B70795 /* catDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A6CA6A1DE36A9D00B70795 /* catDetailsController.swift */; };
-		C8A6CA771DE36A9D00B70795 /* createCat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A6CA6B1DE36A9D00B70795 /* createCat.swift */; };
-		C8A6CA781DE36A9D00B70795 /* Join.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A6CA6C1DE36A9D00B70795 /* Join.swift */; };
-		C8A6CA791DE36A9D00B70795 /* login.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A6CA6D1DE36A9D00B70795 /* login.swift */; };
-		C8A6CA7A1DE36A9D00B70795 /* planGeneration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A6CA6E1DE36A9D00B70795 /* planGeneration.swift */; };
-		C8A6CA7B1DE36A9D00B70795 /* planOverviewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A6CA6F1DE36A9D00B70795 /* planOverviewControllerViewController.swift */; };
-		C8A6CA7C1DE36A9D00B70795 /* secondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A6CA701DE36A9D00B70795 /* secondViewController.swift */; };
-		C8A6CA7D1DE36A9D00B70795 /* selectBcsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A6CA711DE36A9D00B70795 /* selectBcsController.swift */; };
-		C8A6CA7E1DE36A9D00B70795 /* testingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A6CA721DE36A9D00B70795 /* testingTableViewController.swift */; };
-		C8A6CA7F1DE36A9D00B70795 /* tipsForSuccessControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A6CA731DE36A9D00B70795 /* tipsForSuccessControllerViewController.swift */; };
-		C8A6CA801DE36A9D00B70795 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A6CA741DE36A9D00B70795 /* ViewController.swift */; };
+		C8927BE41DE61FAF000711DD /* breedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8927BE31DE61FAF000711DD /* breedTableViewController.swift */; };
+		C8927BE61DE61FF1000711DD /* catDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8927BE51DE61FF1000711DD /* catDetailsController.swift */; };
+		C8927BE81DE6204E000711DD /* createCat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8927BE71DE6204E000711DD /* createCat.swift */; };
+		C8927BEA1DE62099000711DD /* Join.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8927BE91DE62099000711DD /* Join.swift */; };
+		C8927BEC1DE6215A000711DD /* login.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8927BEB1DE6215A000711DD /* login.swift */; };
+		C8927BEE1DE6222B000711DD /* planGeneration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8927BED1DE6222B000711DD /* planGeneration.swift */; };
+		C8927BF01DE6224F000711DD /* planOverviewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8927BEF1DE6224F000711DD /* planOverviewControllerViewController.swift */; };
+		C8927BF21DE6228F000711DD /* secondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8927BF11DE6228F000711DD /* secondViewController.swift */; };
+		C8927BF41DE622E8000711DD /* selectBcsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8927BF31DE622E8000711DD /* selectBcsController.swift */; };
+		C8927BF61DE6230B000711DD /* testingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8927BF51DE6230B000711DD /* testingTableViewController.swift */; };
+		C8927BF81DE6232B000711DD /* tipsForSuccessControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8927BF71DE6232B000711DD /* tipsForSuccessControllerViewController.swift */; };
+		C8927BFA1DE62349000711DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8927BF91DE62349000711DD /* ViewController.swift */; };
 		C8B460DC1DE38E32003DB92E /* dataObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B460DB1DE38E32003DB92E /* dataObjects.swift */; };
 /* End PBXBuildFile section */
 
@@ -126,19 +126,19 @@
 		C860BC2E1DE360AE005E00CC /* FitCat2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitCat2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C860BC321DE360AE005E00CC /* FitCat2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitCat2UITests.swift; sourceTree = "<group>"; };
 		C860BC341DE360AE005E00CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C8927BE31DE61FAF000711DD /* breedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = breedTableViewController.swift; sourceTree = "<group>"; };
+		C8927BE51DE61FF1000711DD /* catDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = catDetailsController.swift; sourceTree = "<group>"; };
+		C8927BE71DE6204E000711DD /* createCat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createCat.swift; sourceTree = "<group>"; };
+		C8927BE91DE62099000711DD /* Join.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Join.swift; sourceTree = "<group>"; };
+		C8927BEB1DE6215A000711DD /* login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = login.swift; sourceTree = "<group>"; };
+		C8927BED1DE6222B000711DD /* planGeneration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = planGeneration.swift; sourceTree = "<group>"; };
+		C8927BEF1DE6224F000711DD /* planOverviewControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = planOverviewControllerViewController.swift; sourceTree = "<group>"; };
+		C8927BF11DE6228F000711DD /* secondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = secondViewController.swift; sourceTree = "<group>"; };
+		C8927BF31DE622E8000711DD /* selectBcsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = selectBcsController.swift; sourceTree = "<group>"; };
+		C8927BF51DE6230B000711DD /* testingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testingTableViewController.swift; sourceTree = "<group>"; };
+		C8927BF71DE6232B000711DD /* tipsForSuccessControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tipsForSuccessControllerViewController.swift; sourceTree = "<group>"; };
+		C8927BF91DE62349000711DD /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C8A6CA371DE3691600B70795 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "../../Downloads/Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
-		C8A6CA691DE36A9D00B70795 /* breedTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = breedTableTableViewController.swift; path = ../../Fitcat/FitCat/breedTableTableViewController.swift; sourceTree = "<group>"; };
-		C8A6CA6A1DE36A9D00B70795 /* catDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = catDetailsController.swift; path = ../../Fitcat/FitCat/catDetailsController.swift; sourceTree = "<group>"; };
-		C8A6CA6B1DE36A9D00B70795 /* createCat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = createCat.swift; path = ../../Fitcat/FitCat/createCat.swift; sourceTree = "<group>"; };
-		C8A6CA6C1DE36A9D00B70795 /* Join.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Join.swift; path = ../../Fitcat/FitCat/Join.swift; sourceTree = "<group>"; };
-		C8A6CA6D1DE36A9D00B70795 /* login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = login.swift; path = ../../Fitcat/FitCat/login.swift; sourceTree = "<group>"; };
-		C8A6CA6E1DE36A9D00B70795 /* planGeneration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = planGeneration.swift; path = ../../Fitcat/FitCat/planGeneration.swift; sourceTree = "<group>"; };
-		C8A6CA6F1DE36A9D00B70795 /* planOverviewControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = planOverviewControllerViewController.swift; path = ../../Fitcat/FitCat/planOverviewControllerViewController.swift; sourceTree = "<group>"; };
-		C8A6CA701DE36A9D00B70795 /* secondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = secondViewController.swift; path = ../../Fitcat/FitCat/secondViewController.swift; sourceTree = "<group>"; };
-		C8A6CA711DE36A9D00B70795 /* selectBcsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = selectBcsController.swift; path = ../../Fitcat/FitCat/selectBcsController.swift; sourceTree = "<group>"; };
-		C8A6CA721DE36A9D00B70795 /* testingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = testingTableViewController.swift; path = ../../Fitcat/FitCat/testingTableViewController.swift; sourceTree = "<group>"; };
-		C8A6CA731DE36A9D00B70795 /* tipsForSuccessControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = tipsForSuccessControllerViewController.swift; path = ../../Fitcat/FitCat/tipsForSuccessControllerViewController.swift; sourceTree = "<group>"; };
-		C8A6CA741DE36A9D00B70795 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../../Fitcat/FitCat/ViewController.swift; sourceTree = "<group>"; };
 		C8B460DB1DE38E32003DB92E /* dataObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dataObjects.swift; sourceTree = "<group>"; };
 		D3504D3B2294E124901D9BCC /* Pods-FitCat2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitCat2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FitCat2/Pods-FitCat2.debug.xcconfig"; sourceTree = "<group>"; };
 		D9868AC8BB66EC9287342934 /* Pods-FitCat2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitCat2Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FitCat2Tests/Pods-FitCat2Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -222,29 +222,29 @@
 		C860BC111DE360AE005E00CC /* FitCat2 */ = {
 			isa = PBXGroup;
 			children = (
-				C8A6CA691DE36A9D00B70795 /* breedTableTableViewController.swift */,
-				C8A6CA6A1DE36A9D00B70795 /* catDetailsController.swift */,
-				C8A6CA6B1DE36A9D00B70795 /* createCat.swift */,
-				C8A6CA6C1DE36A9D00B70795 /* Join.swift */,
 				C8601D751DE371A800EB1301 /* KDCircularProgress.swift */,
-				C8A6CA6D1DE36A9D00B70795 /* login.swift */,
-				C8A6CA6E1DE36A9D00B70795 /* planGeneration.swift */,
-				C8A6CA6F1DE36A9D00B70795 /* planOverviewControllerViewController.swift */,
 				C8601D771DE372A000EB1301 /* catCardsViewController.swift */,
 				C8601D781DE372A000EB1301 /* cupboardCollectionViewController.swift */,
 				C8601D791DE372A000EB1301 /* foodMarketTableViewController.swift */,
-				C8A6CA701DE36A9D00B70795 /* secondViewController.swift */,
 				C8601D6B1DE3718400EB1301 /* mainPageController.swift */,
-				C8A6CA711DE36A9D00B70795 /* selectBcsController.swift */,
-				C8A6CA721DE36A9D00B70795 /* testingTableViewController.swift */,
-				C8A6CA731DE36A9D00B70795 /* tipsForSuccessControllerViewController.swift */,
-				C8A6CA741DE36A9D00B70795 /* ViewController.swift */,
 				C860BC121DE360AE005E00CC /* AppDelegate.swift */,
 				C860BC161DE360AE005E00CC /* Main.storyboard */,
 				C860BC191DE360AE005E00CC /* Assets.xcassets */,
 				C860BC1B1DE360AE005E00CC /* LaunchScreen.storyboard */,
 				C860BC1E1DE360AE005E00CC /* Info.plist */,
 				C8B460DB1DE38E32003DB92E /* dataObjects.swift */,
+				C8927BE31DE61FAF000711DD /* breedTableViewController.swift */,
+				C8927BE51DE61FF1000711DD /* catDetailsController.swift */,
+				C8927BE71DE6204E000711DD /* createCat.swift */,
+				C8927BE91DE62099000711DD /* Join.swift */,
+				C8927BEB1DE6215A000711DD /* login.swift */,
+				C8927BED1DE6222B000711DD /* planGeneration.swift */,
+				C8927BEF1DE6224F000711DD /* planOverviewControllerViewController.swift */,
+				C8927BF11DE6228F000711DD /* secondViewController.swift */,
+				C8927BF31DE622E8000711DD /* selectBcsController.swift */,
+				C8927BF51DE6230B000711DD /* testingTableViewController.swift */,
+				C8927BF71DE6232B000711DD /* tipsForSuccessControllerViewController.swift */,
+				C8927BF91DE62349000711DD /* ViewController.swift */,
 			);
 			path = FitCat2;
 			sourceTree = "<group>";
@@ -620,25 +620,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8A6CA7B1DE36A9D00B70795 /* planOverviewControllerViewController.swift in Sources */,
 				C860BC131DE360AE005E00CC /* AppDelegate.swift in Sources */,
+				C8927BFA1DE62349000711DD /* ViewController.swift in Sources */,
 				C8B460DC1DE38E32003DB92E /* dataObjects.swift in Sources */,
-				C8A6CA771DE36A9D00B70795 /* createCat.swift in Sources */,
 				C8601D6C1DE3718400EB1301 /* mainPageController.swift in Sources */,
-				C8A6CA801DE36A9D00B70795 /* ViewController.swift in Sources */,
-				C8A6CA7E1DE36A9D00B70795 /* testingTableViewController.swift in Sources */,
+				C8927BE81DE6204E000711DD /* createCat.swift in Sources */,
+				C8927BF41DE622E8000711DD /* selectBcsController.swift in Sources */,
+				C8927BEC1DE6215A000711DD /* login.swift in Sources */,
 				C8601D7B1DE372A000EB1301 /* cupboardCollectionViewController.swift in Sources */,
+				C8927BEE1DE6222B000711DD /* planGeneration.swift in Sources */,
 				C8601D7C1DE372A000EB1301 /* foodMarketTableViewController.swift in Sources */,
 				C8601D761DE371A800EB1301 /* KDCircularProgress.swift in Sources */,
-				C8A6CA7D1DE36A9D00B70795 /* selectBcsController.swift in Sources */,
-				C8A6CA751DE36A9D00B70795 /* breedTableTableViewController.swift in Sources */,
-				C8A6CA761DE36A9D00B70795 /* catDetailsController.swift in Sources */,
-				C8A6CA791DE36A9D00B70795 /* login.swift in Sources */,
+				C8927BF81DE6232B000711DD /* tipsForSuccessControllerViewController.swift in Sources */,
+				C8927BE61DE61FF1000711DD /* catDetailsController.swift in Sources */,
+				C8927BF61DE6230B000711DD /* testingTableViewController.swift in Sources */,
 				C8601D7A1DE372A000EB1301 /* catCardsViewController.swift in Sources */,
-				C8A6CA7A1DE36A9D00B70795 /* planGeneration.swift in Sources */,
-				C8A6CA7C1DE36A9D00B70795 /* secondViewController.swift in Sources */,
-				C8A6CA7F1DE36A9D00B70795 /* tipsForSuccessControllerViewController.swift in Sources */,
-				C8A6CA781DE36A9D00B70795 /* Join.swift in Sources */,
+				C8927BF01DE6224F000711DD /* planOverviewControllerViewController.swift in Sources */,
+				C8927BF21DE6228F000711DD /* secondViewController.swift in Sources */,
+				C8927BEA1DE62099000711DD /* Join.swift in Sources */,
+				C8927BE41DE61FAF000711DD /* breedTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
