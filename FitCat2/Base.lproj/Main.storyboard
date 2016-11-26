@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="giu-aD-0yx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Xax-sW-2Fc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1040,7 +1040,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="IEG-tg-M7g" kind="show" id="g8V-VO-XTX"/>
+                                    <action selector="gotItButton:" destination="0g9-Mb-cjw" eventType="touchUpInside" id="vtY-1K-E8U"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1065,7 +1065,7 @@
         <!--main-->
         <scene sceneID="0cc-zT-wrR">
             <objects>
-                <viewController title="main" id="IEG-tg-M7g" customClass="mainPageController" customModule="FitCat2" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mainPage" title="main" id="IEG-tg-M7g" customClass="mainPageController" customModule="FitCat2" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lBx-T1-7Hs"/>
                         <viewControllerLayoutGuide type="bottom" id="BMg-Ei-coC"/>
@@ -1387,6 +1387,7 @@
                         <outlet property="caloriesProgress" destination="w29-ae-x6R" id="N4s-54-biZ"/>
                         <outlet property="calories_remaining" destination="bdg-a6-Iet" id="9rl-wI-2aQ"/>
                         <outlet property="catImg" destination="nk7-1E-2CP" id="due-wf-AeB"/>
+                        <outlet property="catName" destination="qBo-9G-w75" id="nsY-Yi-VRm"/>
                         <outlet property="circularProgressView" destination="IlE-8v-OxE" id="QPP-wk-jne"/>
                         <outlet property="current_BCS" destination="10B-h4-X1R" id="rjc-90-Qpp"/>
                         <outlet property="current_weight" destination="sv7-jJ-1wM" id="4Gm-WW-rLi"/>
@@ -1447,13 +1448,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eWF-rQ-1lQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9351" y="1188"/>
+            <point key="canvasLocation" x="9313" y="1376"/>
         </scene>
         <!--Cupboard-->
         <scene sceneID="7FD-0f-YcJ">
             <objects>
                 <collectionViewController title="Cupboard" id="LP8-NH-bdf" customClass="cupboardCollectionViewController" customModule="FitCat2" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="SjE-NX-rp6">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="SjE-NX-rp6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -1709,7 +1710,6 @@
         <image name="user-icon" width="20" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="riM-v7-S1G"/>
-        <segue reference="4EB-V8-NTC"/>
+        <segue reference="RYO-5b-SZn"/>
     </inferredMetricsTieBreakers>
 </document>

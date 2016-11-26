@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 class planOverviewControllerViewController: UIViewController {
     
@@ -27,6 +28,33 @@ class planOverviewControllerViewController: UIViewController {
     @IBOutlet weak var volumePerDay: UILabel!
     @IBOutlet weak var endDateBig: UILabel!
     
+    @IBAction func gotItButton(_ sender: UIButton) {
+        
+        Alamofire.request("http://mingplusyang.com/fitcatDB/getCurrentCat.php?catId=\(planObj.cat_id)").responseJSON { response in
+
+            if let jsonData = response.result.value {
+                let json = JSON(jsonData)
+                currentCatObj.cat_id = json["catId"].intValue  //Useful index
+                currentCatObj.cat_name = json["catName"].stringValue //Display Useful
+                currentCatObj.calories_total = json["calories_total"].doubleValue //Display Useful
+                currentCatObj.calories_today = json["calories_today"].doubleValue  //Display Useful
+                currentCatObj.food_total = json["food_total"].doubleValue //Display Useful
+                currentCatObj.food_today = json["food_today"].doubleValue  //Display Useful
+                currentCatObj.goal_weight = json["goal_weight"].floatValue //Display Useful
+                currentCatObj.current_weight = json["current_weight"].floatValue  //Display Useful
+                currentCatObj.current_bcs = json["current_bcs"].intValue //Display Useful
+                currentCatObj.goal_bcs = json["goal_bcs"].intValue  //Goal BCS, typically is 5
+                currentCatObj.weight_lose = json["weight_lose"].doubleValue
+                currentCatObj.initial_weight = json["initial_weight"].floatValue
+                
+                let dest = self.storyboard?.instantiateViewController(withIdentifier: "mainPage")
+                self.present(dest!, animated: true, completion: nil)
+                
+            }
+        }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,14 +66,6 @@ class planOverviewControllerViewController: UIViewController {
         catImg.layer.borderColor = UIColor.white.cgColor
         catImg.layer.cornerRadius = catImg.frame.height/2
         catImg.clipsToBounds = true
-        
-        //button UI editing
-//        gotItBtn.backgroundColor = UIColor.clear
-//        gotItBtn.layer.cornerRadius = 5
-//        gotItBtn.layer.borderWidth = 1
-//        gotItBtn.layer.borderColor = UIColor.white.cgColor
-        
-        
         
         
         Alamofire.request("http://mingplusyang.com/fitcatDB/getCatIdByPlan.php?a1=\(planObj.plan_id)").response { response in

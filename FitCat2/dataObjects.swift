@@ -18,7 +18,7 @@ class currentCat {
     var food_today: Double = 100  //Display Useful
     var goal_weight: Float = 0 //Display Useful
     var current_weight: Float = 0  //Display Useful
-    var initial_bcs: Int = 7  //Display Useful
+    var current_bcs: Int = 7  //Display Useful
     var goal_bcs: Int = 5  //Goal BCS, typically is 5
     var weight_lose: Double = 5
     var initial_weight: Float = 0
@@ -95,7 +95,7 @@ class cleanData {
         currentCatObj.food_today = 100  //Display Useful
         currentCatObj.goal_weight = 0 //Display Useful
         currentCatObj.current_weight = 0  //Display Useful
-        currentCatObj.initial_bcs = 7  //Display Useful
+        currentCatObj.current_bcs = 7  //Display Useful
         currentCatObj.goal_bcs = 5  //Goal BCS, typically is 5
         currentCatObj.weight_lose = 5
         currentCatObj.initial_weight = 0

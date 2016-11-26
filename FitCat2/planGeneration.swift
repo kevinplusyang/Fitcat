@@ -49,15 +49,6 @@ class planGeneration: UIViewController, UITextFieldDelegate {
         var result = formatter.string(from: date)
         
         
-        
-        
-        //        print("initial_bcs\(initial_bcs)")
-        //        print("initial_weight\(initial_weight)")
-        //        print("weightNeedToLoss\(weightNeedToLoss)")
-        //        print("monthNeeded\(monthNeeded)")
-        //        print("weightLossPerMonth\(weightLossPerMonth)")
-        
-        
         planObj.cat_id = createCatObj.cat_id
         planObj.start_date = result
         
@@ -66,6 +57,11 @@ class planGeneration: UIViewController, UITextFieldDelegate {
         planObj.weight_lose = weightNeedToLoss
         planObj.weight_lose_per_month = weightLossPerMonth
         planObj.calories_to_lose_per_day = 0.8 * (30 * Double(createCatObj.initial_weight)! + 70)
+        
+        
+        
+        
+        
         
         Alamofire.request("http://mingplusyang.com/fitcatDB/createPlan.php?a1=\(planObj.cat_id)&a2=\(planObj.start_date)&a3=\(planObj.end_date)&a4=\(planObj.weight_lose)&a5=\(planObj.weight_lose_per_month)&a6=\(planObj.calories_to_lose_per_day)&a7=\(planObj.food_volume_required)").response { response in
             print("Request: \(response.request)")
