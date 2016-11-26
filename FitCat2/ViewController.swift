@@ -94,16 +94,6 @@ class ViewController: UIViewController {
     func get(){
         
         
-        //        let url = URL(string: "http://www.mingplusyang.com/fitcatDB/get.php")
-        //        var request = URLRequest(url: url! as URL)
-        //        request.httpMethod = "GET"
-        //        let task = URLSession.shared.dataTask(with: request as URLRequest){
-        //
-        //        }
-        
-        
-        
-        
         print("Here3")
         
         if let url = URL(string: "http://www.mingplusyang.com/fitcatDB/get.php") {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IEG-tg-M7g">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="giu-aD-0yx">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="xo3-bG-Ty0">
             <objects>
-                <viewController id="uqK-ua-2zN" customClass="ViewController" customModule="FitCat2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="welcomePage" id="uqK-ua-2zN" customClass="ViewController" customModule="FitCat2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ptw-j7-PZ7"/>
                         <viewControllerLayoutGuide type="bottom" id="627-jL-gob"/>
@@ -1453,7 +1453,7 @@
         <scene sceneID="7FD-0f-YcJ">
             <objects>
                 <collectionViewController title="Cupboard" id="LP8-NH-bdf" customClass="cupboardCollectionViewController" customModule="FitCat2" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="SjE-NX-rp6">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="SjE-NX-rp6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -1537,7 +1537,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ri-gZ-Ozr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10070" y="-340"/>
+            <point key="canvasLocation" x="10585" y="-590"/>
         </scene>
         <!--Cat Cards-->
         <scene sceneID="YTr-Im-eak">
@@ -1686,7 +1686,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ztr-Nw-5K2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8700" y="-339.58020989505252"/>
+            <point key="canvasLocation" x="8558" y="-542"/>
         </scene>
     </scenes>
     <resources>

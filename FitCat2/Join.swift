@@ -33,6 +33,10 @@ class JoinController: UIViewController, UITextFieldDelegate {
         
     }
     @IBAction func submitResult(_ sender: UIButton) {
+       
+        
+        
+        
         print("Clikced Submit")
         print("User Name: \(username.text!)")
         print("Password: \(password.text!)")
@@ -42,16 +46,37 @@ class JoinController: UIViewController, UITextFieldDelegate {
             print("Response: \(response.response)")
             print("Error: \(response.error)")
             
+            
+            
+            
+            
             if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
                 print("Data: \(utf8Text)")
+                if(utf8Text == "1"){
+                    let dest = self.storyboard?.instantiateViewController(withIdentifier: "welcomePage")
+                    self.present(dest!, animated: true, completion: nil)
+                    
+                }else{
+                    let alert = UIAlertController(title: "Error", message:"User Name Already Exist", preferredStyle: .alert)
+                    let closeAction = UIAlertAction(title:"Close", style: .cancel, handler: nil)
+                    alert.addAction(closeAction)
+                    self.present(alert, animated: true, completion:nil)
+                }
+                
+            }else{
+                let alert = UIAlertController(title: "Error", message:"Network Connection Error", preferredStyle: .alert)
+                let closeAction = UIAlertAction(title:"Close", style: .cancel, handler: nil)
+                alert.addAction(closeAction)
+                self.present(alert, animated: true, completion:nil)
             }
         }
         
         
         
-        
     }
     
+    
+   
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
