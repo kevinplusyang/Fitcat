@@ -58,7 +58,10 @@ class loginController: UIViewController, UITextFieldDelegate {
                     let dest = self.storyboard?.instantiateViewController(withIdentifier: "SecondViewController")
                     self.present(dest!, animated: true, completion: nil)
                 } else {
-                    print("Auth Wrong!")
+                    let alert = UIAlertController(title: "Error", message:"Username or password wrong.", preferredStyle: .alert)
+                    let closeAction = UIAlertAction(title:"Close", style: .cancel, handler: nil)
+                    alert.addAction(closeAction)
+                    self.present(alert, animated: true, completion:nil)
                 }
             }
         }
