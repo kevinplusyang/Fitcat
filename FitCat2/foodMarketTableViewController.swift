@@ -86,7 +86,7 @@ class foodMarketTableViewController: UITableViewController{
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
-        Alamofire.request("http://mingplusyang.com/fitcatDB/changeFavorite.php?a1=1&a2=\(Int(indexPath.row))").response { response in
+        Alamofire.request("http://mingplusyang.com/fitcatDB/changeFavorite.php?a1=1&a2=\(Int(indexPath.row)+1)").response { response in
             
             
             if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
