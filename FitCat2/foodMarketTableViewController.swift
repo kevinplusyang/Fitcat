@@ -32,7 +32,7 @@ class foodMarketTableViewController: UITableViewController{
     
         super.viewDidLoad()
         
-        Alamofire.request("http://www.mingplusyang.com/fitcatDB/getFavoriteStatus.php?a1=1").responseJSON { response in
+        Alamofire.request("http://www.mingplusyang.com/fitcatDB/getFavoriteStatus.php?a1=\(floginobj.f_id)").responseJSON { response in
             print("alo")
             print("Request: \(response.request)")
             print("Response: \(response.response)")
@@ -86,7 +86,7 @@ class foodMarketTableViewController: UITableViewController{
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
-        Alamofire.request("http://mingplusyang.com/fitcatDB/changeFavorite.php?a1=1&a2=\(Int(indexPath.row)+1)").response { response in
+        Alamofire.request("http://mingplusyang.com/fitcatDB/changeFavorite.php?a1=\(floginobj.f_id)&a2=\(Int(indexPath.row)+1)").response { response in
             
             
             if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {

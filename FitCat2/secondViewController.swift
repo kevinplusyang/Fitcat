@@ -49,7 +49,8 @@ class SecondViewController: UIViewController {
                     //                    self.present(dest!, animated: true, completion: nil)
                     
                     //                    var storyboard = UIStoryboard(name: "TableViewCont", bundle: nil)
-                    let tvc = (self.storyboard?.instantiateViewController(withIdentifier: "catTable") as! UITableViewController)
+                    
+                    let tvc = (self.storyboard?.instantiateViewController(withIdentifier: "allCats") as! UICollectionViewController)
                     self.present(tvc, animated: true, completion: nil)
                     
                     
