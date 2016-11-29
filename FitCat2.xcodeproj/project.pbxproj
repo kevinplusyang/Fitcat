@@ -35,6 +35,8 @@
 		C8927BF81DE6232B000711DD /* tipsForSuccessControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8927BF71DE6232B000711DD /* tipsForSuccessControllerViewController.swift */; };
 		C8927BFA1DE62349000711DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8927BF91DE62349000711DD /* ViewController.swift */; };
 		C8B460DC1DE38E32003DB92E /* dataObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B460DB1DE38E32003DB92E /* dataObjects.swift */; };
+		C8D432481DEC053900474E29 /* newCatCardsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D432471DEC053900474E29 /* newCatCardsCollectionViewController.swift */; };
+		C8D432531DECA10500474E29 /* amountSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D432521DECA10500474E29 /* amountSelectionViewController.swift */; };
 		C8DE82441DEA875F0054721B /* foodMarketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8DE82431DEA875F0054721B /* foodMarketTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -143,6 +145,8 @@
 		C8927BF91DE62349000711DD /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C8A6CA371DE3691600B70795 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "../../Downloads/Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
 		C8B460DB1DE38E32003DB92E /* dataObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dataObjects.swift; sourceTree = "<group>"; };
+		C8D432471DEC053900474E29 /* newCatCardsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newCatCardsCollectionViewController.swift; sourceTree = "<group>"; };
+		C8D432521DECA10500474E29 /* amountSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = amountSelectionViewController.swift; sourceTree = "<group>"; };
 		C8DE82431DEA875F0054721B /* foodMarketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = foodMarketTableViewController.swift; sourceTree = "<group>"; };
 		D3504D3B2294E124901D9BCC /* Pods-FitCat2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitCat2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FitCat2/Pods-FitCat2.debug.xcconfig"; sourceTree = "<group>"; };
 		D9868AC8BB66EC9287342934 /* Pods-FitCat2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitCat2Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FitCat2Tests/Pods-FitCat2Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -251,6 +255,8 @@
 				C8DE82431DEA875F0054721B /* foodMarketTableViewController.swift */,
 				C8343F771DEB5C5C00AE0DF6 /* TableViewCell.swift */,
 				C8343F811DEB5DAC00AE0DF6 /* allFoodUIViewController.swift */,
+				C8D432471DEC053900474E29 /* newCatCardsCollectionViewController.swift */,
+				C8D432521DECA10500474E29 /* amountSelectionViewController.swift */,
 			);
 			path = FitCat2;
 			sourceTree = "<group>";
@@ -364,6 +370,7 @@
 				TargetAttributes = {
 					C860BC0E1DE360AE005E00CC = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = ALM2K2B6Z6;
 						ProvisioningStyle = Automatic;
 					};
 					C860BC221DE360AE005E00CC = {
@@ -629,11 +636,13 @@
 				C860BC131DE360AE005E00CC /* AppDelegate.swift in Sources */,
 				C8927BFA1DE62349000711DD /* ViewController.swift in Sources */,
 				C8B460DC1DE38E32003DB92E /* dataObjects.swift in Sources */,
+				C8D432531DECA10500474E29 /* amountSelectionViewController.swift in Sources */,
 				C8601D6C1DE3718400EB1301 /* mainPageController.swift in Sources */,
 				C8927BE81DE6204E000711DD /* createCat.swift in Sources */,
 				C8343F781DEB5C5C00AE0DF6 /* TableViewCell.swift in Sources */,
 				C8927BF41DE622E8000711DD /* selectBcsController.swift in Sources */,
 				C8927BEC1DE6215A000711DD /* login.swift in Sources */,
+				C8D432481DEC053900474E29 /* newCatCardsCollectionViewController.swift in Sources */,
 				C8601D7B1DE372A000EB1301 /* cupboardCollectionViewController.swift in Sources */,
 				C8927BEE1DE6222B000711DD /* planGeneration.swift in Sources */,
 				C8601D761DE371A800EB1301 /* KDCircularProgress.swift in Sources */,
@@ -797,11 +806,13 @@
 			baseConfigurationReference = D3504D3B2294E124901D9BCC /* Pods-FitCat2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = ALM2K2B6Z6;
 				INFOPLIST_FILE = FitCat2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Cornell-Information-Science.FitCat2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -810,11 +821,13 @@
 			baseConfigurationReference = 5BE0D10F1C8FDC7CC650A736 /* Pods-FitCat2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = ALM2K2B6Z6;
 				INFOPLIST_FILE = FitCat2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Cornell-Information-Science.FitCat2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -54,10 +54,19 @@ class PlanObj {
     
 }
 
+class FoodSelection {
+    var foodID : Int = 0
+    var foodName : String = ""
+    var ifWet: Int = 2;
+    var cal: Float = 0
+    var standardCan : Float = 0
+}
+
 var planObj = PlanObj()
 var floginobj = LoginClass()
 var createCatObj = CreateCat()
 var currentCatObj = currentCat()
+var foodSelection = FoodSelection()
 
 class cleanData {
     func cleanCreateCat() {
