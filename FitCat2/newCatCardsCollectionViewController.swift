@@ -112,10 +112,10 @@ class newCatCardsCollectionViewController: UICollectionViewController {
                     
                     if(json["foodCurrent"][i]["cal"].intValue - json["foodTotal"][i]["cal"].intValue >= 0){
                         
-                        self.alertInformation.append("Normal")
+                        self.alertInformation.append("Careful!")
                         
                     } else {
-                        self.alertInformation.append("Careful!")
+                        self.alertInformation.append("Normal")
                     }
                     
                     i = i + 1
@@ -228,10 +228,10 @@ class newCatCardsCollectionViewController: UICollectionViewController {
         label8.text = alertInformation[indexPath.row]
         
         let calProgressBar = cell.viewWithTag(6) as! UIProgressView
-        calProgressBar.progress = calProgress[indexPath.row]
+        calProgressBar.progress = 1 - calProgress[indexPath.row]
         
         let foodProgressBar = cell.viewWithTag(7) as! UIProgressView
-        foodProgressBar.progress = foodProgress[indexPath.row]
+        foodProgressBar.progress = 1 - foodProgress[indexPath.row]
         
         return cell
         
