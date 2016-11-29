@@ -45,7 +45,7 @@ class newCatCardsCollectionViewController: UICollectionViewController {
         
         
         
-        Alamofire.request("http://www.mingplusyang.com/fitcatDB/getCat.php?a1=1").responseJSON { response in
+        Alamofire.request("http://www.mingplusyang.com/fitcatDB/getCat.php?a1=\(floginobj.f_id)").responseJSON { response in
             print("alo")
             print("Request: \(response.request)")
             print("Response: \(response.response)")
