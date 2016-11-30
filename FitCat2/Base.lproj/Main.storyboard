@@ -171,7 +171,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ESl-F4-FiZ" customClass="JBBarChartView">
-                                <rect key="frame" x="20" y="10" width="333" height="118"/>
+                                <rect key="frame" x="20" y="10" width="335" height="118"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -184,7 +184,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9s1-dl-4Xg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9047" y="1379"/>
+            <point key="canvasLocation" x="9045.6000000000004" y="1378.56071964018"/>
         </scene>
         <!--Second View Controller-->
         <scene sceneID="a07-At-JxE">
@@ -1394,7 +1394,7 @@
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O5b-Ly-YRh">
-                                        <rect key="frame" x="0.0" y="233" width="375" height="136"/>
+                                        <rect key="frame" x="0.0" y="233" width="381" height="136"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <connections>
                                             <segue destination="hri-mi-aw7" kind="embed" id="dsm-eY-iUJ"/>

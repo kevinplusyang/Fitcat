@@ -73,9 +73,7 @@ class JBChartViewController: UIViewController, JBBarChartViewDelegate, JBBarChar
         
         barChart.maximumValue = 50
         
-        
-        
-        
+    
         barChart.reloadData()
         
         
