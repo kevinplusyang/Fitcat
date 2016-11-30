@@ -1,15 +1,18 @@
 PODS:
   - Alamofire (4.2.0)
+  - JBChartView (3.0.12)
   - SwiftyJSON (3.1.3)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
+  - JBChartView
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
+  JBChartView: 08877554448ccf99c12625ad0ebce70588ff8318
   SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
 
-PODFILE CHECKSUM: ba4adb4c77b48a7593ada291e3d33bfc8e350043
+PODFILE CHECKSUM: 12ef9e6c8383920be3767c1cb2178cff82a8739d
 
 COCOAPODS: 1.1.1

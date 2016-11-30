@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '9FA7090506B7E815E9166493B2F82CCA'
-               BlueprintName = 'SwiftyJSON'
+               BlueprintIdentifier = '7A4752E1A78EE7604F2EEFBC36866BB3'
+               BlueprintName = 'JBChartView'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SwiftyJSON.framework'>
+               BuildableName = 'JBChartView.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

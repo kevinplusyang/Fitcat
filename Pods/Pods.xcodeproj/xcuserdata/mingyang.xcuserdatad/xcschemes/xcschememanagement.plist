@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>JBChartView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-FitCat2.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,17 +37,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0208D7E3E0839B56138FE9FCCB9C8532</key>
+		<key>464AE7A43A4F0E3BCAEE60CF0C855646</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>646604D0CEFBAC279949304D1F43076C</key>
+		<key>7A4752E1A78EE7604F2EEFBC36866BB3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9FA7090506B7E815E9166493B2F82CCA</key>
 		<dict>
 			<key>primary</key>
 			<true/>

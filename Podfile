@@ -8,6 +8,8 @@ target 'FitCat2' do
   # Pods for FitCat2
 pod 'Alamofire', '~> 4.0'
  pod 'SwiftyJSON'
+platform :ios, '10.1'
+pod 'JBChartView'
 
 
   target 'FitCat2Tests' do

@@ -10,6 +10,7 @@
 		4B33674AA79D7C495F04881B /* Pods_FitCat2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A41889A4EAA11BE6953CE999 /* Pods_FitCat2.framework */; };
 		5658C0980CA8592D66FFB172 /* Pods_FitCat2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 066762C49929BB70E9648594 /* Pods_FitCat2Tests.framework */; };
 		686370EB8E56D8C174442C29 /* Pods_FitCat2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A3A79738E9C12C61779FA7C /* Pods_FitCat2UITests.framework */; };
+		C80F66E31DEF24AF0008F4AD /* JBChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80F66E21DEF24AF0008F4AD /* JBChartViewController.swift */; };
 		C8155B881DEE7C8E000535FC /* todayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8155B871DEE7C8E000535FC /* todayTableViewController.swift */; };
 		C8343F781DEB5C5C00AE0DF6 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8343F771DEB5C5C00AE0DF6 /* TableViewCell.swift */; };
 		C8343F821DEB5DAC00AE0DF6 /* allFoodUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8343F811DEB5DAC00AE0DF6 /* allFoodUIViewController.swift */; };
@@ -114,6 +115,8 @@
 		8A3A79738E9C12C61779FA7C /* Pods_FitCat2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitCat2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A41889A4EAA11BE6953CE999 /* Pods_FitCat2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitCat2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7DC5F54A5833CBD644BE2D6 /* Pods-FitCat2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitCat2Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitCat2Tests/Pods-FitCat2Tests.release.xcconfig"; sourceTree = "<group>"; };
+		C80F66D91DEF248B0008F4AD /* JBChartView-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JBChartView-Bridging-Header.h"; sourceTree = "<group>"; };
+		C80F66E21DEF24AF0008F4AD /* JBChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JBChartViewController.swift; sourceTree = "<group>"; };
 		C8155B871DEE7C8E000535FC /* todayTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = todayTableViewController.swift; sourceTree = "<group>"; };
 		C8343F771DEB5C5C00AE0DF6 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		C8343F811DEB5DAC00AE0DF6 /* allFoodUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = allFoodUIViewController.swift; sourceTree = "<group>"; };
@@ -209,6 +212,7 @@
 		C860BC061DE360AE005E00CC = {
 			isa = PBXGroup;
 			children = (
+				C80F66D91DEF248B0008F4AD /* JBChartView-Bridging-Header.h */,
 				C8A6CA371DE3691600B70795 /* Alamofire.xcodeproj */,
 				C860BC111DE360AE005E00CC /* FitCat2 */,
 				C860BC261DE360AE005E00CC /* FitCat2Tests */,
@@ -260,6 +264,7 @@
 				C8D432471DEC053900474E29 /* newCatCardsCollectionViewController.swift */,
 				C8D432521DECA10500474E29 /* amountSelectionViewController.swift */,
 				C8155B871DEE7C8E000535FC /* todayTableViewController.swift */,
+				C80F66E21DEF24AF0008F4AD /* JBChartViewController.swift */,
 			);
 			path = FitCat2;
 			sourceTree = "<group>";
@@ -659,6 +664,7 @@
 				C8927BF01DE6224F000711DD /* planOverviewControllerViewController.swift in Sources */,
 				C8927BF21DE6228F000711DD /* secondViewController.swift in Sources */,
 				C8927BEA1DE62099000711DD /* Join.swift in Sources */,
+				C80F66E31DEF24AF0008F4AD /* JBChartViewController.swift in Sources */,
 				C8927BE41DE61FAF000711DD /* breedTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
