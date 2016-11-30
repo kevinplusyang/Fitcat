@@ -46,6 +46,7 @@ class planOverviewControllerViewController: UIViewController {
                 currentCatObj.goal_bcs = json["goal_bcs"].intValue  //Goal BCS, typically is 5
                 currentCatObj.weight_lose = json["weight_lose"].doubleValue
                 currentCatObj.initial_weight = json["initial_weight"].floatValue
+                currentCatObj.image_ID = json["img_ID"].stringValue
                 
                 let dest = self.storyboard?.instantiateViewController(withIdentifier: "mainPage")
                 self.present(dest!, animated: true, completion: nil)

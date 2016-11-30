@@ -155,6 +155,7 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
            
              let localUrl = (info[UIImagePickerControllerMediaURL] ?? info[UIImagePickerControllerReferenceURL]) as? NSURL
                 print (localUrl!)
+            createCatObj.image_id = String(describing: localUrl!)
             
             catProfileImg.image = image
             
@@ -174,7 +175,7 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         createCatObj.birthday = catDobField.text!
         createCatObj.initial_weight = catWeightField.text!
         createCatObj.breed_id = catBreedField.text!
-        createCatObj.image_id = "xxx"
+        
         
         
     }

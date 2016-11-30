@@ -39,15 +39,7 @@ class loginController: UIViewController, UITextFieldDelegate {
         
         
         
-        let parameters: Parameters = [
-            "uu": "assets-library://asset/asset.JPG?id=7021ACCE-2A88-46FA-AA81-14887053BBB4&ext=JPG"
-        ]
-        
-        // All three of these calls are equivalent
-        Alamofire.request("http://mingplusyang.com/fitcatDB/care.php", method: .post, parameters: parameters)
-        
-        
-        
+                
         
         print("Clikced Submit")
         print("User Name: \(username.text!)")

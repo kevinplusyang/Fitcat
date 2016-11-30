@@ -22,6 +22,7 @@ class currentCat {
     var goal_bcs: Int = 5  //Goal BCS, typically is 5
     var weight_lose: Double = 5
     var initial_weight: Float = 0
+    var image_ID: String = "Current Cat Name"
 }
 
 class CreateCat {

@@ -79,6 +79,21 @@ class planGeneration: UIViewController, UITextFieldDelegate {
             }
         }
         
+        
+        let parameters: Parameters = [
+            "photoID": "\(createCatObj.image_id)",
+            "catID": "\(createCatObj.cat_id)"
+        ]
+        
+        // All three of these calls are equivalent
+        Alamofire.request("http://mingplusyang.com/fitcatDB/catPhotoID.php", method: .post, parameters: parameters)
+        
+        
+
+        
+        
+        
+        
     }
     
     

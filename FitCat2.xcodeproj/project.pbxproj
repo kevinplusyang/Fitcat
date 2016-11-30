@@ -10,6 +10,7 @@
 		4B33674AA79D7C495F04881B /* Pods_FitCat2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A41889A4EAA11BE6953CE999 /* Pods_FitCat2.framework */; };
 		5658C0980CA8592D66FFB172 /* Pods_FitCat2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 066762C49929BB70E9648594 /* Pods_FitCat2Tests.framework */; };
 		686370EB8E56D8C174442C29 /* Pods_FitCat2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A3A79738E9C12C61779FA7C /* Pods_FitCat2UITests.framework */; };
+		C8155B881DEE7C8E000535FC /* todayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8155B871DEE7C8E000535FC /* todayTableViewController.swift */; };
 		C8343F781DEB5C5C00AE0DF6 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8343F771DEB5C5C00AE0DF6 /* TableViewCell.swift */; };
 		C8343F821DEB5DAC00AE0DF6 /* allFoodUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8343F811DEB5DAC00AE0DF6 /* allFoodUIViewController.swift */; };
 		C8601D6C1DE3718400EB1301 /* mainPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8601D6B1DE3718400EB1301 /* mainPageController.swift */; };
@@ -113,6 +114,7 @@
 		8A3A79738E9C12C61779FA7C /* Pods_FitCat2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitCat2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A41889A4EAA11BE6953CE999 /* Pods_FitCat2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitCat2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7DC5F54A5833CBD644BE2D6 /* Pods-FitCat2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitCat2Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitCat2Tests/Pods-FitCat2Tests.release.xcconfig"; sourceTree = "<group>"; };
+		C8155B871DEE7C8E000535FC /* todayTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = todayTableViewController.swift; sourceTree = "<group>"; };
 		C8343F771DEB5C5C00AE0DF6 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		C8343F811DEB5DAC00AE0DF6 /* allFoodUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = allFoodUIViewController.swift; sourceTree = "<group>"; };
 		C8601D6B1DE3718400EB1301 /* mainPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = mainPageController.swift; path = "../../../Downloads/Fitcat-master/FitCat/mainPageController.swift"; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				C8343F811DEB5DAC00AE0DF6 /* allFoodUIViewController.swift */,
 				C8D432471DEC053900474E29 /* newCatCardsCollectionViewController.swift */,
 				C8D432521DECA10500474E29 /* amountSelectionViewController.swift */,
+				C8155B871DEE7C8E000535FC /* todayTableViewController.swift */,
 			);
 			path = FitCat2;
 			sourceTree = "<group>";
@@ -634,6 +637,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C860BC131DE360AE005E00CC /* AppDelegate.swift in Sources */,
+				C8155B881DEE7C8E000535FC /* todayTableViewController.swift in Sources */,
 				C8927BFA1DE62349000711DD /* ViewController.swift in Sources */,
 				C8B460DC1DE38E32003DB92E /* dataObjects.swift in Sources */,
 				C8D432531DECA10500474E29 /* amountSelectionViewController.swift in Sources */,
