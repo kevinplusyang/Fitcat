@@ -11,7 +11,7 @@ import UIKit
 import Alamofire
 
 
-class catDetailsController: UIViewController,UITextFieldDelegate {
+class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     //cat profile img
     @IBOutlet weak var catProfileImg: UIImageView!
@@ -87,13 +87,12 @@ class catDetailsController: UIViewController,UITextFieldDelegate {
         
         datePicker.addTarget(self, action: #selector(catDetailsController.dateChanged(datePicker:)), for: UIControlEvents.valueChanged)
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("dismissKeyboard()"))
-        
-        
-        
-        
         
     }
+    
+    
+    
+    
     
     @IBAction func breedSelection(sender: UIButton) {
         let dest = self.storyboard?.instantiateViewController(withIdentifier: "SecondViewController")
@@ -124,22 +123,57 @@ class catDetailsController: UIViewController,UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     @IBAction func uploadProfileImg(_ sender: UIButton) {
         
         
+        
+        print("OKOK")
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        imagePicker.allowsEditing = false
+        self.present(imagePicker, animated: true, completion: nil)
+        
+    }
+    
+   
+//    func imagePickerController(_ picker: UIImagePickerController,didFinishPickingImage image: UIImage, didFinishPickingMediaWithInfo info: [String : Any]) {
+//        
+//        self.dismiss(animated: true, completion: nil)
+//        print("seectedIMG")
+//        
+//        self.catProfileImg.image = image
+//    }
+    
+    
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+           
+             let localUrl = (info[UIImagePickerControllerMediaURL] ?? info[UIImagePickerControllerReferenceURL]) as? NSURL
+                print (localUrl!)
+            
+            catProfileImg.image = image
+            
+        } else{
+            print("Something went wrong")
+        }
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     //continue btn
     @IBAction func btn3(_ sender: UIButton) {
         
         sender.layer.backgroundColor = UIColor(white: 1.0, alpha:0.1).cgColor
-        
         createCatObj.user_id = floginobj.f_id
         createCatObj.name = catNameField.text!
         createCatObj.birthday = catDobField.text!
         createCatObj.initial_weight = catWeightField.text!
         createCatObj.breed_id = catBreedField.text!
-        
         createCatObj.image_id = "xxx"
         
         
