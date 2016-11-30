@@ -8,15 +8,17 @@
 
 import UIKit
 import JBChartView
+import Alamofire
+import SwiftyJSON
 
 class JBChartViewController: UIViewController, JBBarChartViewDelegate, JBBarChartViewDataSource {
     
     
     @IBOutlet weak var barChart: JBBarChartView!
     
-    var chartLegend:[String] = []
+    var chartLegend:[String] = ["1","Today"]
     
-    var chartData:[Int] = []
+    var chartData:[Int] = [1,30]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,22 +31,68 @@ class JBChartViewController: UIViewController, JBBarChartViewDelegate, JBBarChar
         barChart.delegate = self
         barChart.dataSource = self
         barChart.minimumValue = 0
-        barChart.maximumValue = 30
+        barChart.maximumValue = 40
+
         
-        var i = 1
-        while i < 31 {
-            chartData.append(i)
-            i += 1
+        Alamofire.request("http://mingplusyang.com/fitcatDB/getMonthCalories.php?a1=1").responseJSON { response in
+            
+            
+//             print("sdfsdf")
+            if let jsonData = response.result.value {
+                let json = JSON(jsonData)
+                
+              print("aedwedwdwde")
+                print("dayNumber:\(json["dayNumber"].intValue)")
+                print("dayNumber:\(json["date"].stringValue)")
+                
+                
+                self.chartLegend.removeAll()
+                self.chartData.removeAll()
+                
+//                self.chartLegend.append("Data1")
+//                self.chartLegend.append("Data2")
+//                self.chartData.append(40)
+//                self.chartData.append(4)
+            
+                var i = 0
+                var dayNum = json["dayNumber"].intValue
+                while i < dayNum {
+                    print("\(json["calData"][i]["data"].intValue)")
+                    self.chartData.append(json["calData"][i]["data"].intValue)
+                    self.chartLegend.append("Today")
+                    i = i + 1
+                }
+                
+                self.barChart.reloadData()
+                
+                print("e:\(self.chartLegend[1])")
+                
+            }
         }
         
-        i = 0
-        while i < 30 {
-            chartLegend.append("\(i)")
-            i += 1
-        }
+        
+        barChart.maximumValue = 50
+        
+        
         
         
         barChart.reloadData()
+        
+        
+        
+        
+        
+        
+       
+        
+     
+        
+       
+        
+        
+        
+        
+//        barChart.reloadData()
         
         barChart.setState(.collapsed, animated: false)
     }
