@@ -12,6 +12,7 @@
 		686370EB8E56D8C174442C29 /* Pods_FitCat2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A3A79738E9C12C61779FA7C /* Pods_FitCat2UITests.framework */; };
 		C80F66E31DEF24AF0008F4AD /* JBChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80F66E21DEF24AF0008F4AD /* JBChartViewController.swift */; };
 		C8155B881DEE7C8E000535FC /* todayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8155B871DEE7C8E000535FC /* todayTableViewController.swift */; };
+		C82B78AD1DF0638500B1890F /* JBLineChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82B78AC1DF0638500B1890F /* JBLineChartViewController.swift */; };
 		C8343F781DEB5C5C00AE0DF6 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8343F771DEB5C5C00AE0DF6 /* TableViewCell.swift */; };
 		C8343F821DEB5DAC00AE0DF6 /* allFoodUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8343F811DEB5DAC00AE0DF6 /* allFoodUIViewController.swift */; };
 		C8601D6C1DE3718400EB1301 /* mainPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8601D6B1DE3718400EB1301 /* mainPageController.swift */; };
@@ -119,6 +120,7 @@
 		C80F66D91DEF248B0008F4AD /* JBChartView-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JBChartView-Bridging-Header.h"; sourceTree = "<group>"; };
 		C80F66E21DEF24AF0008F4AD /* JBChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JBChartViewController.swift; sourceTree = "<group>"; };
 		C8155B871DEE7C8E000535FC /* todayTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = todayTableViewController.swift; sourceTree = "<group>"; };
+		C82B78AC1DF0638500B1890F /* JBLineChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JBLineChartViewController.swift; sourceTree = "<group>"; };
 		C8343F771DEB5C5C00AE0DF6 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		C8343F811DEB5DAC00AE0DF6 /* allFoodUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = allFoodUIViewController.swift; sourceTree = "<group>"; };
 		C8601D6B1DE3718400EB1301 /* mainPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = mainPageController.swift; path = "../../../Downloads/Fitcat-master/FitCat/mainPageController.swift"; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				C8155B871DEE7C8E000535FC /* todayTableViewController.swift */,
 				C80F66E21DEF24AF0008F4AD /* JBChartViewController.swift */,
 				C8E102031DEFA450007E4027 /* yearJBChartViewController.swift */,
+				C82B78AC1DF0638500B1890F /* JBLineChartViewController.swift */,
 			);
 			path = FitCat2;
 			sourceTree = "<group>";
@@ -648,6 +651,7 @@
 				C8155B881DEE7C8E000535FC /* todayTableViewController.swift in Sources */,
 				C8927BFA1DE62349000711DD /* ViewController.swift in Sources */,
 				C8B460DC1DE38E32003DB92E /* dataObjects.swift in Sources */,
+				C82B78AD1DF0638500B1890F /* JBLineChartViewController.swift in Sources */,
 				C8D432531DECA10500474E29 /* amountSelectionViewController.swift in Sources */,
 				C8601D6C1DE3718400EB1301 /* mainPageController.swift in Sources */,
 				C8927BE81DE6204E000711DD /* createCat.swift in Sources */,
