@@ -40,6 +40,7 @@
 		C8D432481DEC053900474E29 /* newCatCardsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D432471DEC053900474E29 /* newCatCardsCollectionViewController.swift */; };
 		C8D432531DECA10500474E29 /* amountSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D432521DECA10500474E29 /* amountSelectionViewController.swift */; };
 		C8DE82441DEA875F0054721B /* foodMarketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8DE82431DEA875F0054721B /* foodMarketTableViewController.swift */; };
+		C8E102041DEFA450007E4027 /* yearJBChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E102031DEFA450007E4027 /* yearJBChartViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,6 +154,7 @@
 		C8D432471DEC053900474E29 /* newCatCardsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newCatCardsCollectionViewController.swift; sourceTree = "<group>"; };
 		C8D432521DECA10500474E29 /* amountSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = amountSelectionViewController.swift; sourceTree = "<group>"; };
 		C8DE82431DEA875F0054721B /* foodMarketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = foodMarketTableViewController.swift; sourceTree = "<group>"; };
+		C8E102031DEFA450007E4027 /* yearJBChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = yearJBChartViewController.swift; sourceTree = "<group>"; };
 		D3504D3B2294E124901D9BCC /* Pods-FitCat2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitCat2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FitCat2/Pods-FitCat2.debug.xcconfig"; sourceTree = "<group>"; };
 		D9868AC8BB66EC9287342934 /* Pods-FitCat2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitCat2Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FitCat2Tests/Pods-FitCat2Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		FB5BF5A827F67128467B61AB /* Pods-FitCat2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitCat2UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FitCat2UITests/Pods-FitCat2UITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				C8D432521DECA10500474E29 /* amountSelectionViewController.swift */,
 				C8155B871DEE7C8E000535FC /* todayTableViewController.swift */,
 				C80F66E21DEF24AF0008F4AD /* JBChartViewController.swift */,
+				C8E102031DEFA450007E4027 /* yearJBChartViewController.swift */,
 			);
 			path = FitCat2;
 			sourceTree = "<group>";
@@ -657,6 +660,7 @@
 				C8601D761DE371A800EB1301 /* KDCircularProgress.swift in Sources */,
 				C8927BF81DE6232B000711DD /* tipsForSuccessControllerViewController.swift in Sources */,
 				C8927BE61DE61FF1000711DD /* catDetailsController.swift in Sources */,
+				C8E102041DEFA450007E4027 /* yearJBChartViewController.swift in Sources */,
 				C8927BF61DE6230B000711DD /* testingTableViewController.swift in Sources */,
 				C8343F821DEB5DAC00AE0DF6 /* allFoodUIViewController.swift in Sources */,
 				C8601D7A1DE372A000EB1301 /* catCardsViewController.swift in Sources */,

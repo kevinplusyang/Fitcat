@@ -1,24 +1,24 @@
 //
-//  ViewController.swift
-//  JB2
+//  yearJBChartViewController.swift
+//  FitCat2
 //
 //  Created by Ming Yang on 11/30/16.
 //  Copyright © 2016 Ming Yang. All rights reserved.
 //
 
+
+
+import Foundation
 import UIKit
 import JBChartView
-import Alamofire
-import SwiftyJSON
 
-class JBChartViewController: UIViewController, JBBarChartViewDelegate, JBBarChartViewDataSource {
+class yearJBChartViewController: UIViewController, JBBarChartViewDelegate, JBBarChartViewDataSource {
     
     
     @IBOutlet weak var barChart: JBBarChartView!
     
-    var chartLegend:[String] = ["Month Start","Today"]
-    
-    var chartData:[Int] = [1,30]
+    var chartLegend = ["11-14", "11-15", "11-16", "11-17"]
+    var chartData = [70, 80, 76, 88]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,67 +31,9 @@ class JBChartViewController: UIViewController, JBBarChartViewDelegate, JBBarChar
         barChart.delegate = self
         barChart.dataSource = self
         barChart.minimumValue = 0
-        barChart.maximumValue = 40
-
+        barChart.maximumValue = 100
         
-        Alamofire.request("http://mingplusyang.com/fitcatDB/getMonthCalories.php?a1=\(currentCatObj.cat_id)").responseJSON { response in
-            
-            
-//             print("sdfsdf")
-            if let jsonData = response.result.value {
-                let json = JSON(jsonData)
-                
-              print("aedwedwdwde")
-                print("dayNumber:\(json["dayNumber"].intValue)")
-                print("dayNumber:\(json["date"].stringValue)")
-                
-                
-                self.chartLegend.removeAll()
-                self.chartData.removeAll()
-                self.chartLegend.append(json["date"].stringValue)
-//                self.chartLegend.append("Data1")
-//                self.chartLegend.append("Data2")
-//                self.chartData.append(40)
-//                self.chartData.append(4)
-            
-                var i = 0
-                var dayNum = json["dayNumber"].intValue
-                while i < dayNum {
-                    print("\(json["calData"][i]["data"].intValue)")
-                    self.chartData.append(json["calData"][i]["data"].intValue)
-                    self.chartLegend.append("Today")
-                    i = i + 1
-                }
-                
-                self.barChart.reloadData()
-                
-                
-                
-            }
-        }
-        
-        
-        barChart.maximumValue = 50
-        
-    
         barChart.reloadData()
-        
-        
-        
-        
-        
-        
-        
-       
-        
-     
-        
-       
-        
-        
-        
-        
-//        barChart.reloadData()
         
         barChart.setState(.collapsed, animated: false)
     }
@@ -107,7 +49,7 @@ class JBChartViewController: UIViewController, JBBarChartViewDelegate, JBBarChar
         footer1.textColor = UIColor.white
         footer1.text = "\(chartLegend[0])"
         
-        var footer2 = UILabel(frame: CGRect(x: barChart.frame.width/2 , y: 0, width: barChart.frame.width/2 , height: 16))
+        var footer2 = UILabel(frame: CGRect(x: barChart.frame.width/2 - 8, y: 0, width: barChart.frame.width/2 - 8, height: 16))
         footer2.textColor = UIColor.white
         footer2.text = "\(chartLegend[chartLegend.count - 1])"
         footer2.textAlignment = NSTextAlignment.right
@@ -115,14 +57,14 @@ class JBChartViewController: UIViewController, JBBarChartViewDelegate, JBBarChar
         footerView.addSubview(footer1)
         footerView.addSubview(footer2)
         
-//        var header = UILabel(frame: CGRect(x: 0, y: 0, width: barChart.frame.width, height: 50))
-//        header.textColor = UIColor.white
-//        header.font = UIFont.systemFont(ofSize: 24)
-//        header.text = "Weather: San Jose, CA"
-//        header.textAlignment = NSTextAlignment.center
-//        
+        var header = UILabel(frame: CGRect(x: 0, y: 0, width: barChart.frame.width, height: 50))
+        header.textColor = UIColor.white
+        header.font = UIFont.systemFont(ofSize: 24)
+        header.text = "Weather: San Jose, CA"
+        header.textAlignment = NSTextAlignment.center
+        
         barChart.footerView = footerView
-//        barChart.headerView = header
+        barChart.headerView = header
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -131,7 +73,7 @@ class JBChartViewController: UIViewController, JBBarChartViewDelegate, JBBarChar
         // our code
         barChart.reloadData()
         
-        var timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(JBChartViewController.showChart), userInfo: nil, repeats: false)
+        var timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(yearJBChartViewController.showChart), userInfo: nil, repeats: false)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
