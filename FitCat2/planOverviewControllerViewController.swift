@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import Photos
 
 class planOverviewControllerViewController: UIViewController {
     
@@ -67,6 +68,22 @@ class planOverviewControllerViewController: UIViewController {
         catImg.layer.borderColor = UIColor.white.cgColor
         catImg.layer.cornerRadius = catImg.frame.height/2
         catImg.clipsToBounds = true
+        
+        let assetUrl = URL(string: createCatObj.image_id)!
+        
+        // retrieve the list of matching results for your asset url
+        let fetchResult = PHAsset.fetchAssets(withALAssetURLs: [assetUrl], options: nil)
+        
+        
+        if let photo = fetchResult.firstObject {
+            
+            // retrieve the image for the first result
+            PHImageManager.default().requestImage(for: photo, targetSize: PHImageManagerMaximumSize, contentMode: .aspectFill, options: nil) {
+                image, info in
+                
+                self.catImg.image = image //here is the image
+            }
+        }
         
         
         Alamofire.request("http://mingplusyang.com/fitcatDB/getCatIdByPlan.php?a1=\(planObj.plan_id)").response { response in

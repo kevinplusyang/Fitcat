@@ -167,7 +167,7 @@
                         <viewControllerLayoutGuide type="bottom" id="l8j-he-xUp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ZfY-gf-ihY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="381" height="136"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ESl-F4-FiZ" customClass="JBBarChartView">
@@ -1463,7 +1463,7 @@
                         <viewControllerLayoutGuide type="bottom" id="3oj-MM-B6j"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fTm-bc-gAz" customClass="table">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="145"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="39" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kpg-BS-AKi">
@@ -1528,7 +1528,7 @@
                         <viewControllerLayoutGuide type="bottom" id="SKr-Nk-t4Y"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xQt-WW-j7U">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="377" height="136"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YUa-sp-r1f" customClass="JBBarChartView">
@@ -1556,7 +1556,7 @@
                         <viewControllerLayoutGuide type="bottom" id="LPG-8E-PgK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="s5N-EC-xiP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="380" height="215"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CJJ-1v-lQX" customClass="JBLineChartView">
@@ -1617,34 +1617,34 @@
         <scene sceneID="7FD-0f-YcJ">
             <objects>
                 <collectionViewController title="Cupboard" id="LP8-NH-bdf" customClass="cupboardCollectionViewController" customModule="FitCat2" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="SjE-NX-rp6">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="SjE-NX-rp6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="86K-90-GMf">
-                            <size key="itemSize" width="137" height="175"/>
+                            <size key="itemSize" width="137" height="191"/>
                             <size key="headerReferenceSize" width="50" height="94"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="tPd-b4-f8v">
-                                <rect key="frame" x="0.0" y="94" width="137" height="175"/>
+                                <rect key="frame" x="0.0" y="94" width="137" height="191"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="137" height="175"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="137" height="191"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ylg-yd-ygb">
+                                            <rect key="frame" x="26" y="21" width="85" height="61"/>
+                                            <color key="backgroundColor" red="0.96862745100000003" green="0.91764705879999997" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkB-yJ-UgK">
                                             <rect key="frame" x="8" y="89" width="121" height="82"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ylg-yd-ygb">
-                                            <rect key="frame" x="26" y="21" width="85" height="61"/>
-                                            <color key="backgroundColor" red="0.96862745100000003" green="0.91764705879999997" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
-                                        </imageView>
                                     </subviews>
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1832,32 +1832,32 @@
         <scene sceneID="zD4-Hl-DAR">
             <objects>
                 <tableViewController id="Al0-ec-Rdg" customClass="foodMarketTableViewController" customModule="FitCat2" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="wCR-4B-lm8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="58" sectionHeaderHeight="28" sectionFooterHeight="28" id="wCR-4B-lm8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="Peh-ge-wF6">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="58" id="Peh-ge-wF6">
+                                <rect key="frame" x="0.0" y="28" width="375" height="58"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Peh-ge-wF6" id="Eef-oH-DNr">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="57.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xX2-3p-O8k">
-                                            <rect key="frame" x="94" y="0.0" width="185" height="45"/>
+                                            <rect key="frame" x="107" y="6" width="172" height="45"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gxM-Nv-b4m">
-                                            <rect key="frame" x="17" y="5" width="44" height="32"/>
+                                            <rect key="frame" x="17" y="5" width="32" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Food Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wF-B8-Tpm">
-                                            <rect key="frame" x="303" y="12" width="72" height="21"/>
+                                            <rect key="frame" x="303" y="18" width="72" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                             <color key="textColor" red="0.91484612226486206" green="0.38115984201431274" blue="0.26722317934036255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1875,7 +1875,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xi1-O2-CId" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="11888.799999999999" y="166.41679160419793"/>
+            <point key="canvasLocation" x="11888.799999999999" y="164.6176911544228"/>
         </scene>
         <!--newCatCards-->
         <scene sceneID="Kus-3C-RQl">
@@ -2454,6 +2454,10 @@
         <scene sceneID="Go0-De-B5E">
             <objects>
                 <viewController id="3Pc-Dr-GkQ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="x6H-3w-8mk"/>
+                        <viewControllerLayoutGuide type="bottom" id="f7b-Rj-8qK"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9fJ-23-fcr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2492,7 +2496,7 @@
         <image name="user-icon" width="20" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="481-fo-wcQ"/>
-        <segue reference="RYO-5b-SZn"/>
+        <segue reference="DFq-eL-Zii"/>
+        <segue reference="hl1-V6-txc"/>
     </inferredMetricsTieBreakers>
 </document>

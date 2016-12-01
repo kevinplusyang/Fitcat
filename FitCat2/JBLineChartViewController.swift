@@ -20,7 +20,7 @@ class JBLineChartViewController: UIViewController, JBLineChartViewDelegate, JBLi
    
     
     var chartLegend = ["Initial", "Now"]
-    var chartData = [70, 80, 76, 88, 90, 69, 74]
+    var chartData = [0, 0]
     //    var lastYearChartData = [75, 88, 79, 95, 72, 55, 90]
     
     override func viewDidLoad() {
@@ -50,7 +50,7 @@ class JBLineChartViewController: UIViewController, JBLineChartViewDelegate, JBLi
             if let jsonData = response.result.value {
                 let json = JSON(jsonData)
                 
-                print("kakakakayear")
+                print("LINEE1")
            
                 
                 
@@ -67,22 +67,33 @@ class JBLineChartViewController: UIViewController, JBLineChartViewDelegate, JBLi
                     self.chartLegend.append("Now")
                     i = i + 1
                 }
-                
-                self.lineChart.minimumValue = CGFloat(self.chartData.min()!)
-                self.lineChart.maximumValue = CGFloat(self.chartData.max()!+5)
-                self.lineChart.reloadData()
-                
-                
+                print("LINEE2")
+                if(self.chartData.count == 0){
+                    
+                } else{
+                    self.lineChart.minimumValue = CGFloat(self.chartData.min()!)
+                    self.lineChart.maximumValue = CGFloat(self.chartData.max()!+5)
+                    self.lineChart.reloadData()
+                    
+                    print("LINEE3")
+                }
+               
                 
             }
         }
         
+        print("LINEE4")
         
-        
-        lineChart.minimumValue = CGFloat(chartData.min()!)
-        lineChart.maximumValue = CGFloat(chartData.max()!+5)
-        
-       lineChart.reloadData()
+        if(chartData.count == 0){
+            
+        } else{
+            lineChart.minimumValue = CGFloat(chartData.min()!)
+            lineChart.maximumValue = CGFloat(chartData.max()!+5)
+            
+            lineChart.reloadData()
+
+        }
+
         
         
         

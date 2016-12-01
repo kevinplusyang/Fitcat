@@ -33,6 +33,26 @@ class newCatCardsCollectionViewController: UICollectionViewController {
     var imgURL:[String] = []
     
 
+    func addPhoto(x: URL) {
+        
+        var assetUrl = x
+        var fetchResult = PHAsset.fetchAssets(withALAssetURLs: [assetUrl], options: nil)
+        
+        if let photo = fetchResult.firstObject {
+        
+        print("ddddx")
+                                // retrieve the image for the first result
+            PHImageManager.default().requestImage(for: photo, targetSize: PHImageManagerMaximumSize, contentMode: .aspectFill, options: nil) {
+            image, info in
+            self.img.append(image!)
+                self.img.append(#imageLiteral(resourceName: "catImagePlaceHolder"))
+                
+                                     //here is the image
+            }
+        }
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,47 +102,11 @@ class newCatCardsCollectionViewController: UICollectionViewController {
 //                var fetchResult = PHAsset.fetchAssets(withALAssetURLs: [assetUrl], options: nil)
 //                var photo = fetchResult.firstObject
                 
-//                while i < count {
-////                    self.imgURL.append(json["imgID"][i]["id"].stringValue)
-//                    
-//                    
-//                  
-//                    
-//                    
-//                    print("\(json["imgID"][i]["id"].stringValue)");
-//                    
-//                    // declare your asset url
-//                    
-//                    let assetUrl = URL(string: "assets-library://asset/asset.JPG?id=8DBC806D-6B98-479E-8133-9FA7E993F540&ext=JPG")!
-//                    
-//                    // retrieve the list of matching results for your asset url
-//                    let fetchResult = PHAsset.fetchAssets(withALAssetURLs: [assetUrl], options: nil)
-//
-//                    if let photo = fetchResult.firstObject {
-//                        
-//                        
-//                        
-//                        
-//                       
-//                        
-//                        
-//                        print("dddd")
-//                        // retrieve the image for the first result
-//                        PHImageManager.default().requestImage(for: photo, targetSize: PHImageManagerMaximumSize, contentMode: .aspectFill, options: nil) {
-//                            image, info in
-//                            self.img.append(image!)
-//                             //here is the image
-//                        }
-//                       
-//                        
-//                    }
-//                    sleep(1)
-//                    
-//                    
-//                    print("hhhh\(self.img.count)");
-//
-//                    i = i + 1
-//                }
+                while i < count {
+//                    self.imgURL.append(json["imgID"][i]["id"].stringValue)
+                    self.addPhoto(x: NSURL(string: json["imgID"][i]["id"].stringValue) as! URL)
+                    i = i + 1
+                }
                 
                 i = 0
                 while i < count {
@@ -303,6 +287,8 @@ class newCatCardsCollectionViewController: UICollectionViewController {
         img2.append(#imageLiteral(resourceName: "catImagePlaceHolder"))
         img2.append(#imageLiteral(resourceName: "catImagePlaceHolder"))
         
+        
+        print("jJJJJJJJJ:\(img.count)")
         imgView.image = img2[indexPath.row]
         
         return cell

@@ -127,7 +127,7 @@ class selectBcsController: UIViewController {
         BCStext.text! = "Spine, ribs, and pelvic bones not visible but easily felt, evenly distributed muscle mass, minimal abdominal fat with abdominal tuck."
         
         print("selected5")
-        createCatObj.initial_bcs = 5
+        createCatObj.initial_bcs = 6
         
     }
     

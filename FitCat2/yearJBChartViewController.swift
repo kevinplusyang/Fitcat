@@ -45,17 +45,13 @@ class yearJBChartViewController: UIViewController, JBBarChartViewDelegate, JBBar
                 let json = JSON(jsonData)
                 
                 print("kakakakayear")
-                print("dayNumber:\(json["monthNumber"].intValue)")
-                print("dayNumber:\(json["date"].stringValue)")
+               
                 
                 
                 self.chartLegend.removeAll()
                 self.chartData.removeAll()
                 self.chartLegend.append(json["date"].stringValue)
-                //                self.chartLegend.append("Data1")
-                //                self.chartLegend.append("Data2")
-                //                self.chartData.append(40)
-                //                self.chartData.append(4)
+                
                 
                 var i = 0
                 
@@ -66,7 +62,7 @@ class yearJBChartViewController: UIViewController, JBBarChartViewDelegate, JBBar
                     i = i + 1
                 }
                 
-                
+                print("DAHA")
                 self.barChart.reloadData()
                 
                 

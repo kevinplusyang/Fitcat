@@ -18,9 +18,9 @@ class foodMarketTableViewController: UITableViewController{
     
   
     
-    var data:[String] = ["Beyond Grain Free Ocean Whitefish and Egg Recipe Natural Dry Cat Food","Beyond Grain Free White Meat Chicken and Egg Recipe Natural Dry Cat Food","EVO 95 Chicken and Turkey Recipe in Gravy Canned Cat Food","food4","food5","food6"]
+    var data:[String] = ["Beyond Grain Free Ocean Whitefish and Egg Recipe Natural Dry Cat Food","Beyond Grain Free White Meat Chicken and Egg Recipe Natural Dry Cat Food","EVO 95 Chicken and Turkey Recipe in Gravy Canned Cat Food","Beyond Superfood Blend Barley Egg and Cranberry Recipe Dry Cat Food","Beyond Superfood Blend Herring Egg Sweet Potato Recipe Dry Cat Food","Beyond White Meat Chicken While Oat Meal Recipe Dry Cat Food"]
     var data2:[String] = ["Add to favorite","Add to favorite","Add to favorite","Add to favorite","Add to favorite","Add to favorite","Add to favorite"]
-    var images = [UIImage(named:"food1"),UIImage(named:"food1"),UIImage(named:"food2"),UIImage(named:"food1"),UIImage(named:"food1"),UIImage(named:"food1"),UIImage(named:"food1")]
+    var images = [UIImage(named:"Beyond Grain Free Ocean Whitefish and Egg Recipe Natural Dry Cat Food"),UIImage(named:"Beyond Grain Free White Meat Chicken and Egg Recipe Natural Dry Cat Food"),UIImage(named:"EVO 95 Chicken and Turkey Recipe in Gravy Canned Cat Food"),UIImage(named:"Beyond Superfood Blend Barley Egg and Cranberry Recipe Dry Cat Food"),UIImage(named:"Beyond Superfood Blend Herring Egg Sweet Potato Recipe Dry Cat Food"),UIImage(named:"Beyond White Meat Chicken While Oat Meal Recipe Dry Cat Food"),UIImage(named:"food1")]
     
     var selectedData:String = ""
     

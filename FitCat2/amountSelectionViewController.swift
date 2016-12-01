@@ -112,6 +112,7 @@ class amountSelectionViewController: UIViewController {
             foodProgressBar.progress = 0.25 / 2
         }
         
+        foodImg.image = UIImage(named:"\(foodSelection.foodName)")
         
         
         
