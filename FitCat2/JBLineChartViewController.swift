@@ -10,6 +10,8 @@
 
 import UIKit
 import JBChartView
+import Alamofire
+import SwiftyJSON
 
 class JBLineChartViewController: UIViewController, JBLineChartViewDelegate, JBLineChartViewDataSource {
     
@@ -17,7 +19,7 @@ class JBLineChartViewController: UIViewController, JBLineChartViewDelegate, JBLi
     @IBOutlet weak var lineChart: JBLineChartView!
    
     
-    var chartLegend = ["11-14", "11-15", "11-16", "11-17", "11-18", "11-19", "11-20"]
+    var chartLegend = ["Initial", "Now"]
     var chartData = [70, 80, 76, 88, 90, 69, 74]
     //    var lastYearChartData = [75, 88, 79, 95, 72, 55, 90]
     
@@ -31,12 +33,63 @@ class JBLineChartViewController: UIViewController, JBLineChartViewDelegate, JBLi
         lineChart.backgroundColor = UIColor.darkGray
         lineChart.delegate = self
         lineChart.dataSource = self
-        lineChart.minimumValue = 55
-        lineChart.maximumValue = 100
+        lineChart.minimumValue = 10
+        lineChart.maximumValue = 30+10
         
         lineChart.reloadData()
         
         lineChart.setState(.collapsed, animated: false)
+        
+        
+        
+        
+        Alamofire.request("http://mingplusyang.com/fitcatDB/getWeight.php?a1=\(currentCatObj.cat_id)").responseJSON { response in
+            
+            
+           
+            if let jsonData = response.result.value {
+                let json = JSON(jsonData)
+                
+                print("kakakakayear")
+           
+                
+                
+                self.chartLegend.removeAll()
+                self.chartData.removeAll()
+                self.chartLegend.append("Now")
+               
+                
+                var i = 0
+                
+                while i < json["num"].intValue {
+                   
+                    self.chartData.append(json["weight"][i]["data"].intValue)
+                    self.chartLegend.append("Now")
+                    i = i + 1
+                }
+                
+                self.lineChart.minimumValue = CGFloat(self.chartData.min()!)
+                self.lineChart.maximumValue = CGFloat(self.chartData.max()!+5)
+                self.lineChart.reloadData()
+                
+                
+                
+            }
+        }
+        
+        
+        
+        lineChart.minimumValue = CGFloat(chartData.min()!)
+        lineChart.maximumValue = CGFloat(chartData.max()!+5)
+        
+       lineChart.reloadData()
+        
+        
+        
+        
+        
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
