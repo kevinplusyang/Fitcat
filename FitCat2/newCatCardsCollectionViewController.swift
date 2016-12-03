@@ -154,10 +154,10 @@ class newCatCardsCollectionViewController: UICollectionViewController {
                     
                     if(json["foodCurrent"][i]["cal"].intValue - json["foodTotal"][i]["cal"].intValue >= 0){
                         
-                        self.alertInformation.append("Careful!")
+                        self.alertInformation.append("Fed too Much")
                         
                     } else {
-                        self.alertInformation.append("Normal")
+                        self.alertInformation.append("Fed in Normal Range")
                     }
                     
                     i = i + 1

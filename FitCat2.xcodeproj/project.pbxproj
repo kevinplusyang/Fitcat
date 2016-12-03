@@ -15,10 +15,6 @@
 		C82B78AD1DF0638500B1890F /* JBLineChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82B78AC1DF0638500B1890F /* JBLineChartViewController.swift */; };
 		C8343F781DEB5C5C00AE0DF6 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8343F771DEB5C5C00AE0DF6 /* TableViewCell.swift */; };
 		C8343F821DEB5DAC00AE0DF6 /* allFoodUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8343F811DEB5DAC00AE0DF6 /* allFoodUIViewController.swift */; };
-		C8601D6C1DE3718400EB1301 /* mainPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8601D6B1DE3718400EB1301 /* mainPageController.swift */; };
-		C8601D761DE371A800EB1301 /* KDCircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8601D751DE371A800EB1301 /* KDCircularProgress.swift */; };
-		C8601D7A1DE372A000EB1301 /* catCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8601D771DE372A000EB1301 /* catCardsViewController.swift */; };
-		C8601D7B1DE372A000EB1301 /* cupboardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8601D781DE372A000EB1301 /* cupboardCollectionViewController.swift */; };
 		C860BC131DE360AE005E00CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C860BC121DE360AE005E00CC /* AppDelegate.swift */; };
 		C860BC181DE360AE005E00CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C860BC161DE360AE005E00CC /* Main.storyboard */; };
 		C860BC1A1DE360AE005E00CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C860BC191DE360AE005E00CC /* Assets.xcassets */; };
@@ -37,6 +33,10 @@
 		C8927BF61DE6230B000711DD /* testingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8927BF51DE6230B000711DD /* testingTableViewController.swift */; };
 		C8927BF81DE6232B000711DD /* tipsForSuccessControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8927BF71DE6232B000711DD /* tipsForSuccessControllerViewController.swift */; };
 		C8927BFA1DE62349000711DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8927BF91DE62349000711DD /* ViewController.swift */; };
+		C8A278E71DF35F5F0064E11C /* mainPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A278E61DF35F5F0064E11C /* mainPageController.swift */; };
+		C8A278E91DF3601B0064E11C /* KDCircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A278E81DF3601B0064E11C /* KDCircularProgress.swift */; };
+		C8A278EB1DF3608F0064E11C /* catCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A278EA1DF3608F0064E11C /* catCardsViewController.swift */; };
+		C8A278ED1DF360E50064E11C /* cupboardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A278EC1DF360E50064E11C /* cupboardCollectionViewController.swift */; };
 		C8B460DC1DE38E32003DB92E /* dataObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B460DB1DE38E32003DB92E /* dataObjects.swift */; };
 		C8D432481DEC053900474E29 /* newCatCardsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D432471DEC053900474E29 /* newCatCardsCollectionViewController.swift */; };
 		C8D432531DECA10500474E29 /* amountSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D432521DECA10500474E29 /* amountSelectionViewController.swift */; };
@@ -123,10 +123,6 @@
 		C82B78AC1DF0638500B1890F /* JBLineChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JBLineChartViewController.swift; sourceTree = "<group>"; };
 		C8343F771DEB5C5C00AE0DF6 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		C8343F811DEB5DAC00AE0DF6 /* allFoodUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = allFoodUIViewController.swift; sourceTree = "<group>"; };
-		C8601D6B1DE3718400EB1301 /* mainPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = mainPageController.swift; path = "../../../Downloads/Fitcat-master/FitCat/mainPageController.swift"; sourceTree = "<group>"; };
-		C8601D751DE371A800EB1301 /* KDCircularProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KDCircularProgress.swift; path = "../../../Downloads/Fitcat-master/FitCat/KDCircularProgress.swift"; sourceTree = "<group>"; };
-		C8601D771DE372A000EB1301 /* catCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = catCardsViewController.swift; path = "../../../Downloads/Fitcat-master/FitCat/catCardsViewController.swift"; sourceTree = "<group>"; };
-		C8601D781DE372A000EB1301 /* cupboardCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = cupboardCollectionViewController.swift; path = "../../../Downloads/Fitcat-master/FitCat/cupboardCollectionViewController.swift"; sourceTree = "<group>"; };
 		C860BC0F1DE360AE005E00CC /* FitCat2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitCat2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C860BC121DE360AE005E00CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C860BC171DE360AE005E00CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -151,6 +147,10 @@
 		C8927BF51DE6230B000711DD /* testingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testingTableViewController.swift; sourceTree = "<group>"; };
 		C8927BF71DE6232B000711DD /* tipsForSuccessControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tipsForSuccessControllerViewController.swift; sourceTree = "<group>"; };
 		C8927BF91DE62349000711DD /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C8A278E61DF35F5F0064E11C /* mainPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mainPageController.swift; sourceTree = "<group>"; };
+		C8A278E81DF3601B0064E11C /* KDCircularProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KDCircularProgress.swift; sourceTree = "<group>"; };
+		C8A278EA1DF3608F0064E11C /* catCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = catCardsViewController.swift; sourceTree = "<group>"; };
+		C8A278EC1DF360E50064E11C /* cupboardCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cupboardCollectionViewController.swift; sourceTree = "<group>"; };
 		C8A6CA371DE3691600B70795 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "../../Downloads/Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
 		C8B460DB1DE38E32003DB92E /* dataObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dataObjects.swift; sourceTree = "<group>"; };
 		C8D432471DEC053900474E29 /* newCatCardsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newCatCardsCollectionViewController.swift; sourceTree = "<group>"; };
@@ -240,10 +240,6 @@
 		C860BC111DE360AE005E00CC /* FitCat2 */ = {
 			isa = PBXGroup;
 			children = (
-				C8601D751DE371A800EB1301 /* KDCircularProgress.swift */,
-				C8601D771DE372A000EB1301 /* catCardsViewController.swift */,
-				C8601D781DE372A000EB1301 /* cupboardCollectionViewController.swift */,
-				C8601D6B1DE3718400EB1301 /* mainPageController.swift */,
 				C860BC121DE360AE005E00CC /* AppDelegate.swift */,
 				C860BC161DE360AE005E00CC /* Main.storyboard */,
 				C860BC191DE360AE005E00CC /* Assets.xcassets */,
@@ -271,6 +267,10 @@
 				C80F66E21DEF24AF0008F4AD /* JBChartViewController.swift */,
 				C8E102031DEFA450007E4027 /* yearJBChartViewController.swift */,
 				C82B78AC1DF0638500B1890F /* JBLineChartViewController.swift */,
+				C8A278E61DF35F5F0064E11C /* mainPageController.swift */,
+				C8A278E81DF3601B0064E11C /* KDCircularProgress.swift */,
+				C8A278EA1DF3608F0064E11C /* catCardsViewController.swift */,
+				C8A278EC1DF360E50064E11C /* cupboardCollectionViewController.swift */,
 			);
 			path = FitCat2;
 			sourceTree = "<group>";
@@ -651,28 +651,28 @@
 				C8155B881DEE7C8E000535FC /* todayTableViewController.swift in Sources */,
 				C8927BFA1DE62349000711DD /* ViewController.swift in Sources */,
 				C8B460DC1DE38E32003DB92E /* dataObjects.swift in Sources */,
+				C8A278ED1DF360E50064E11C /* cupboardCollectionViewController.swift in Sources */,
 				C82B78AD1DF0638500B1890F /* JBLineChartViewController.swift in Sources */,
 				C8D432531DECA10500474E29 /* amountSelectionViewController.swift in Sources */,
-				C8601D6C1DE3718400EB1301 /* mainPageController.swift in Sources */,
 				C8927BE81DE6204E000711DD /* createCat.swift in Sources */,
 				C8343F781DEB5C5C00AE0DF6 /* TableViewCell.swift in Sources */,
 				C8927BF41DE622E8000711DD /* selectBcsController.swift in Sources */,
+				C8A278EB1DF3608F0064E11C /* catCardsViewController.swift in Sources */,
+				C8A278E91DF3601B0064E11C /* KDCircularProgress.swift in Sources */,
 				C8927BEC1DE6215A000711DD /* login.swift in Sources */,
 				C8D432481DEC053900474E29 /* newCatCardsCollectionViewController.swift in Sources */,
-				C8601D7B1DE372A000EB1301 /* cupboardCollectionViewController.swift in Sources */,
 				C8927BEE1DE6222B000711DD /* planGeneration.swift in Sources */,
-				C8601D761DE371A800EB1301 /* KDCircularProgress.swift in Sources */,
 				C8927BF81DE6232B000711DD /* tipsForSuccessControllerViewController.swift in Sources */,
 				C8927BE61DE61FF1000711DD /* catDetailsController.swift in Sources */,
 				C8E102041DEFA450007E4027 /* yearJBChartViewController.swift in Sources */,
 				C8927BF61DE6230B000711DD /* testingTableViewController.swift in Sources */,
 				C8343F821DEB5DAC00AE0DF6 /* allFoodUIViewController.swift in Sources */,
-				C8601D7A1DE372A000EB1301 /* catCardsViewController.swift in Sources */,
 				C8DE82441DEA875F0054721B /* foodMarketTableViewController.swift in Sources */,
 				C8927BF01DE6224F000711DD /* planOverviewControllerViewController.swift in Sources */,
 				C8927BF21DE6228F000711DD /* secondViewController.swift in Sources */,
 				C8927BEA1DE62099000711DD /* Join.swift in Sources */,
 				C80F66E31DEF24AF0008F4AD /* JBChartViewController.swift in Sources */,
+				C8A278E71DF35F5F0064E11C /* mainPageController.swift in Sources */,
 				C8927BE41DE61FAF000711DD /* breedTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

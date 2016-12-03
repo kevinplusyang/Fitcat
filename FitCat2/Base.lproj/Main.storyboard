@@ -882,7 +882,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NjN-ct-o4M">
-                                            <rect key="frame" x="-25.5" y="-1" width="381" height="44"/>
+                                            <rect key="frame" x="-26" y="-1" width="380.5" height="44"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.87368464469999996" green="0.30182510610000002" blue="0.2273154855" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <items>
@@ -1881,7 +1881,7 @@
         <scene sceneID="Kus-3C-RQl">
             <objects>
                 <collectionViewController storyboardIdentifier="allCats" title="newCatCards" id="XQa-x5-gg2" customClass="newCatCardsCollectionViewController" customModule="FitCat2" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" directionalLockEnabled="YES" alwaysBounceVertical="YES" dataMode="prototypes" id="JSu-eh-wwi">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceVertical="YES" dataMode="prototypes" id="JSu-eh-wwi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -1905,14 +1905,14 @@
                                             <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cat Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5eq-KK-TRK">
-                                            <rect key="frame" x="110" y="28" width="76" height="21"/>
+                                            <rect key="frame" x="94" y="28" width="76" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="8" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="alert" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ijn-3H-3Xx">
-                                            <rect key="frame" x="203" y="28" width="105" height="21"/>
+                                            <rect key="frame" x="171" y="28" width="166" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -2184,6 +2184,7 @@
                                         </state>
                                         <connections>
                                             <action selector="feedAction:" destination="SPX-cj-VE7" eventType="touchUpInside" id="8ut-Be-RX3"/>
+                                            <segue destination="IEG-tg-M7g" kind="show" id="aaY-ps-oIP"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZT-IS-Crd">
@@ -2496,7 +2497,8 @@
         <image name="user-icon" width="20" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DFq-eL-Zii"/>
+        <segue reference="aaY-ps-oIP"/>
+        <segue reference="mhe-F9-Fmu"/>
         <segue reference="hl1-V6-txc"/>
     </inferredMetricsTieBreakers>
 </document>

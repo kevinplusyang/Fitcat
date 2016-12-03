@@ -45,13 +45,13 @@ class todayTableViewController: UIViewController, UITableViewDataSource, UITable
                 
                 i = 0
                 while i < count {
-                    self.cal.append(json["cal"][i]["num"].stringValue)
+                    self.cal.append("\(json["cal"][i]["num"].stringValue) Cal")
                     i = i + 1
                 }
                 
                 i = 0
                 while i < count {
-                    self.food.append(json["food"][i]["num"].stringValue)
+                    self.food.append("\(json["food"][i]["num"].stringValue) oz")
                     i = i + 1
                 }
                 
