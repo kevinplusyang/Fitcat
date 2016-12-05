@@ -13,6 +13,7 @@ import Alamofire
 
 class selectBcsController: UIViewController {
     
+    @IBOutlet weak var catNameLable: UILabel!
     @IBOutlet weak var bcs5: UIButton!
     @IBOutlet weak var bcs7: UIButton!
     @IBOutlet weak var bcs9: UIButton!
@@ -62,6 +63,7 @@ class selectBcsController: UIViewController {
         BCStext.backgroundColor = UIColor.clear
         BCStext.text! = "Spine, ribs, and pelvic bones not easily felt with moderate fat layer covering them, waist diminished, abdomen rounded with moderate abdominal fat pad."
         BCStext.textColor = UIColor.white
+        catNameLable.text = createCatObj.name
     }
     
     override func didReceiveMemoryWarning() {
