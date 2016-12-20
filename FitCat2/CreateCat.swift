@@ -16,8 +16,6 @@ class createCat: UIViewController {
     var u_id = floginobj.f_id
     var result = 2;
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("resultis:\(u_id)")
@@ -32,21 +30,19 @@ class createCat: UIViewController {
             }
         }
         
-        if(result == 0){
+        if(result == 0) {
             
             let dest = self.storyboard?.instantiateViewController(withIdentifier: "SecondViewController")
             self.present(dest!, animated: true, completion: nil)
         }
         
-        if(result == 1){
+        if(result == 1) {
             
             let dest = self.storyboard?.instantiateViewController(withIdentifier: "SecondViewController")
             self.present(dest!, animated: true, completion: nil)
             
         }
     }
-    
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -56,9 +52,5 @@ class createCat: UIViewController {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
-    }
-    
-    
-    
-    
+    }  
 }

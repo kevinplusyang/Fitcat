@@ -18,35 +18,20 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
     
     //yes no label for Neutered
     @IBOutlet weak var yesNoLabel: UILabel!
-    
     //UI TextFields
     @IBOutlet weak var catNameField: UITextField!
     @IBOutlet weak var catDobField: UITextField!
     @IBOutlet weak var catBreedField: UITextField!
     @IBOutlet weak var catWeightField: UITextField!
-    
     //female btn outlet
     @IBOutlet weak var btn1ol: UIButton!
-    
     //male btn outlet
     @IBOutlet weak var btn2ol: UIButton!
-    
     //continue btn outlet
     @IBOutlet weak var btn3ol: UIButton!
     
     var datePicker = UIDatePicker()
-    
-    
-    
-    
-    
-    
-    
-    
     override func viewDidLoad() {
-        
-    
-        
         createCatObj.user_id = 0
         createCatObj.name = ""
         createCatObj.birthday = ""
@@ -57,10 +42,7 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         createCatObj.initial_bcs = 7
         createCatObj.image_id = ""
         createCatObj.cat_id = 0
-        
-
-        
-        
+       
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
@@ -86,26 +68,14 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         catDobField.inputView = datePicker
         
         datePicker.addTarget(self, action: #selector(catDetailsController.dateChanged(datePicker:)), for: UIControlEvents.valueChanged)
-        
-        
     }
-    
-    
-    
-    
     
     @IBAction func breedSelection(sender: UIButton) {
         let dest = self.storyboard?.instantiateViewController(withIdentifier: "SecondViewController")
         self.present(dest!, animated: true, completion: nil)
-        
-        
     }
     
-    
-    
-    
-    func dateChanged(datePicker: UIDatePicker)
-    {
+    func dateChanged(datePicker: UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = DateFormatter.Style.short
         print("DATEFORMAT:\(dateFormatter.string(from: datePicker.date))")
@@ -126,9 +96,6 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
     
     
     @IBAction func uploadProfileImg(_ sender: UIButton) {
-        
-        
-        
         print("OKOK")
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -148,18 +115,14 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
 //    }
     
     
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-           
              let localUrl = (info[UIImagePickerControllerMediaURL] ?? info[UIImagePickerControllerReferenceURL]) as? NSURL
                 print (localUrl!)
             createCatObj.image_id = String(describing: localUrl!)
-            
             catProfileImg.image = image
             
-        } else{
+        } else {
             print("Something went wrong")
         }
         
@@ -168,16 +131,12 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
     
     //continue btn
     @IBAction func btn3(_ sender: UIButton) {
-        
         sender.layer.backgroundColor = UIColor(white: 1.0, alpha:0.1).cgColor
         createCatObj.user_id = floginobj.f_id
         createCatObj.name = catNameField.text!
         createCatObj.birthday = catDobField.text!
         createCatObj.initial_weight = catWeightField.text!
         createCatObj.breed_id = catBreedField.text!
-        
-        
-        
     }
     
     @IBAction func touchCancel(_ sender: UIButton){
@@ -189,11 +148,8 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         sender.layer.cornerRadius = 10
         sender.layer.borderWidth = 1
         sender.layer.borderColor = UIColor.white.cgColor
-        
         btn2ol.layer.borderColor = UIColor(white: 1.0, alpha: 0.0).cgColor
         createCatObj.gender = 0
-        
-        
     }
     
     //male btn
@@ -201,41 +157,25 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         sender.layer.cornerRadius = 10
         sender.layer.borderWidth = 1
         sender.layer.borderColor = UIColor.white.cgColor
-        
         btn1ol.layer.borderColor = UIColor(white: 1.0, alpha: 0.0).cgColor
         createCatObj.gender = 1
-        
     }
-    
+
     @IBAction func neuteredSwitch(_ sender: UISwitch){
-        if sender.isOn {
-            yesNoLabel.text = "Yes"
-            createCatObj.neutered = 1
-        }else{
-            yesNoLabel.text = "No"
-            createCatObj.neutered = 0
-        }
+        yesNoLabel.text = sender.isOn ? "Yes" : "No"
+        createCatObj.neutered = sender.isOn ? 1 : 0
     }
-    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         for textField in self.view.subviews where textField is UITextField {
             textField.resignFirstResponder()
         }
         return true
-        
     }
     
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
-    
-    
-    
-    
-    
-    
-    
 }
 

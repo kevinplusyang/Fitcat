@@ -14,34 +14,26 @@ import SwiftyJSON
 
 class todayTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    
     @IBOutlet weak var tableView: UITableView!
-    
     var date:[String] = []
     var cal:[String] = []
     var food:[String] = []
-    
     var foodLibrary:[String] = ["Beyond Grain Free Ocean Whitefish and Egg Recipe Natural Dry Cat Food","Beyond Grain Free White Meat Chicken and Egg Recipe Natural Dry Cat Food","EVO 95 Chicken and Turkey Recipe in Gravy Canned Cat Food","food4","food5","food6"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       print("IN TABLE")
-        
         Alamofire.request("http://mingplusyang.com/fitcatDB/getTodayRecord.php?a1=\(currentCatObj.cat_id)").responseJSON { response in
             
             if let jsonData = response.result.value {
                 let json = JSON(jsonData)
-                
                 let count = json["count"].intValue
-                
                 
                 var i = 0
                 while i < count {
                     self.date.append(json["date"][i]["num"].stringValue)
                     i = i + 1
                 }
-                
                 
                 i = 0
                 while i < count {
@@ -57,14 +49,7 @@ class todayTableViewController: UIViewController, UITableViewDataSource, UITable
                 
                 print(self.date)
                 print(self.cal)
-               
-                
-                
                 self.tableView.reloadData()
-                
-                
-
-                
             }
         }
         
@@ -98,8 +83,6 @@ class todayTableViewController: UIViewController, UITableViewDataSource, UITable
       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
-      
-        
         // Configure the cell...
         let dateLabel = cell.viewWithTag(1) as! UILabel
         dateLabel.text = date[indexPath.row]
@@ -112,11 +95,6 @@ class todayTableViewController: UIViewController, UITableViewDataSource, UITable
         let foodLabel = cell.viewWithTag(3) as! UILabel
         foodLabel.text = food[indexPath.row]
       
-        
-
-        
-//         Configure the cell...
-
         return cell
     }
     

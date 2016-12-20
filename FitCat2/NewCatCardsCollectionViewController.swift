@@ -29,46 +29,34 @@ class newCatCardsCollectionViewController: UICollectionViewController {
     var alertInformation:[String] = []
     var img:[UIImage] = []
     var img2:[UIImage] = []
-    
     var imgURL:[String] = []
     
-
     func addPhoto(x: URL) {
         
-        var assetUrl = x
-        var fetchResult = PHAsset.fetchAssets(withALAssetURLs: [assetUrl], options: nil)
+        let assetUrl = x
+        let fetchResult = PHAsset.fetchAssets(withALAssetURLs: [assetUrl], options: nil)
         
         if let photo = fetchResult.firstObject {
-        
-        print("ddddx")
-                                // retrieve the image for the first result
+            // retrieve the image for the first result
             PHImageManager.default().requestImage(for: photo, targetSize: PHImageManagerMaximumSize, contentMode: .aspectFill, options: nil) {
             image, info in
             self.img.append(image!)
                 self.img.append(#imageLiteral(resourceName: "catImagePlaceHolder"))
-                
-                                     //here is the image
+            //here is the image
             }
         }
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-        
         // Register cell classes
         //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        
         // Do any additional setup after loading the view.
         layoutCells()
         self.collectionView!.bounces = true
         self.collectionView!.isScrollEnabled = true
-        
-        
         
         Alamofire.request("http://www.mingplusyang.com/fitcatDB/getCat.php?a1=\(floginobj.f_id)").responseJSON { response in
             print("alo")
@@ -77,9 +65,7 @@ class newCatCardsCollectionViewController: UICollectionViewController {
             
             if let jsonData = response.result.value {
                 let json = JSON(jsonData)
-                
-                
-                var count = json["count"].intValue
+                let count = json["count"].intValue
                 print("JJSON:\(count)")
                 var i = 0
                 while i < count {
@@ -94,8 +80,6 @@ class newCatCardsCollectionViewController: UICollectionViewController {
                     self.calCurrent.append(json["calCurrent"][i]["cal"].intValue)
                     i = i + 1
                 }
-                
-                
                 i = 0
                 
 //                var assetUrl = URL(string: "assets-library://asset/asset.JPG?id=6484AD65-8FB1-405B-9B8A-BFE7E17756D8&ext=JPG")!
@@ -138,16 +122,11 @@ class newCatCardsCollectionViewController: UICollectionViewController {
                     i = i + 1
                 }
                 
-               
-                
-                
-                
                 i = 0
                 while i < count {
                     self.foodProgress.append(Float(json["foodCurrent"][i]["cal"].intValue) / Float(json["foodTotal"][i]["cal"].intValue))
                     i = i + 1
                 }
-                
                 
                 i = 0
                 while i < count {
@@ -164,15 +143,8 @@ class newCatCardsCollectionViewController: UICollectionViewController {
                 }
                 
                 self.collectionView?.reloadData()
-                
             }
         }
-
-        
-        
-        
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -195,10 +167,8 @@ class newCatCardsCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Selected:qw\(indexPath.row)")
         
-        var selectedCatId = catID[indexPath.row]
+        let selectedCatId = catID[indexPath.row]
         print("Selected:ID\(selectedCatId)")
-        
-        
         
         Alamofire.request("http://mingplusyang.com/fitcatDB/getCurrentCat.php?catId=\(selectedCatId)").responseJSON { response in
             
@@ -217,14 +187,11 @@ class newCatCardsCollectionViewController: UICollectionViewController {
                 currentCatObj.weight_lose = json["weight_lose"].doubleValue
                 currentCatObj.initial_weight = json["initial_weight"].floatValue
                 currentCatObj.image_ID = json["img_ID"].stringValue
-                
                 let dest = self.storyboard?.instantiateViewController(withIdentifier: "mainPage")
                 self.present(dest!, animated: true, completion: nil)
-                
             }
         }
     }
-    
     
     /*
      // MARK: - Navigation
@@ -242,7 +209,6 @@ class newCatCardsCollectionViewController: UICollectionViewController {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-    
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
@@ -262,7 +228,6 @@ class newCatCardsCollectionViewController: UICollectionViewController {
         let label5 = cell.viewWithTag(5) as! UILabel
         let label8 = cell.viewWithTag(8) as! UILabel
 
-        
         label.text = catName[indexPath.row]
         label2.text = String(calCurrent[indexPath.row])
         label3.text = String(calTotal[indexPath.row])
@@ -275,8 +240,7 @@ class newCatCardsCollectionViewController: UICollectionViewController {
         
         let foodProgressBar = cell.viewWithTag(7) as! UIProgressView
         foodProgressBar.progress = 1 - foodProgress[indexPath.row]
-        
-        
+
         let imgView = cell.viewWithTag(10) as! UIImageView
         
         img2.append(#imageLiteral(resourceName: "catImagePlaceHolder"))

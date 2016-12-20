@@ -25,12 +25,9 @@ class cupboardCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-        
         // Do any additional setup after loading the view.
-        
         //gradient color
         let bottomColor = UIColor(red:84/255.0,green:187/255.0,blue:117/255.0,alpha: 1)
         let topColor = UIColor(red:15/255.0,green:118/255.0,blue:128/255.0,alpha: 1)
@@ -44,9 +41,6 @@ class cupboardCollectionViewController: UICollectionViewController {
         self.view.layer.insertSublayer(gradientLayer,at: 0)
         
         layoutCells()
-        
-        
-        
         Alamofire.request("http://www.mingplusyang.com/fitcatDB/getFavoriteStatus.php?a1=\(floginobj.f_id)").responseJSON { response in
             print("alo")
             print("Request: \(response.request)")
@@ -55,8 +49,7 @@ class cupboardCollectionViewController: UICollectionViewController {
             if let jsonData = response.result.value {
                 let json = JSON(jsonData)
                 
-                
-                var count = json["count"].intValue
+                let count = json["count"].intValue
                 print("JJSON:\(count)")
                 var i = 0
                 while i < count {
@@ -64,8 +57,7 @@ class cupboardCollectionViewController: UICollectionViewController {
                     self.imageUsed.append(self.images[json["foods"][i]["id"].intValue]!)
                     
                     self.foodID.append(json["foods"][i]["id"].intValue)
-                    
-                    
+
                     i = i + 1
                 }
                 
@@ -74,10 +66,6 @@ class cupboardCollectionViewController: UICollectionViewController {
                 
             }
         }
-        
-        
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -114,8 +102,6 @@ class cupboardCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        
         return data.count
     }
     
@@ -127,11 +113,8 @@ class cupboardCollectionViewController: UICollectionViewController {
         cell.layer.cornerRadius = 5.0
         let label = cell.viewWithTag(1) as! UILabel
         label.text = data[indexPath.row]
-        
         let imgView = cell.viewWithTag(2) as! UIImageView
-        
         imgView.image = imageUsed[indexPath.row]
-        
         
         return cell
     }
@@ -145,23 +128,18 @@ class cupboardCollectionViewController: UICollectionViewController {
         return headerView
     }
     
-    
-    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Selected:qw\(indexPath.row)")
         
-        var selectedCatId = foodID[indexPath.row]
+        let selectedCatId = foodID[indexPath.row]
         print("Selected:ID\(selectedCatId)")
         
-        var requestFoodID = selectedCatId + 1;
-        
-        
+        let requestFoodID = selectedCatId + 1;
         
         Alamofire.request("http://mingplusyang.com/fitcatDB/getFoodById.php?a1=\(requestFoodID)").responseJSON { response in
             
             if let jsonData = response.result.value {
                 let json = JSON(jsonData)
-                
                 
                 foodSelection.foodID = requestFoodID
                 foodSelection.foodName = json["foodName"].stringValue
@@ -175,7 +153,6 @@ class cupboardCollectionViewController: UICollectionViewController {
             }
         }
     }
-    
     
     
     // MARK: UICollectionViewDelegate

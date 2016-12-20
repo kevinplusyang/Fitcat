@@ -16,11 +16,9 @@ import SwiftyJSON
 
 class yearJBChartViewController: UIViewController, JBBarChartViewDelegate, JBBarChartViewDataSource {
     
-    
     @IBOutlet weak var barChart: JBBarChartView!
     
     var chartLegend:[String] = ["January","December"]
-    
     var chartData:[Int] = [1,30]
     
     override func viewDidLoad() {
@@ -28,7 +26,6 @@ class yearJBChartViewController: UIViewController, JBBarChartViewDelegate, JBBar
         // Do any additional setup after loading the view, typically from a nib.
         
         view.backgroundColor = UIColor.darkGray
-        
         // bar chart setup
         barChart.backgroundColor = UIColor.darkGray
         barChart.delegate = self
@@ -36,78 +33,43 @@ class yearJBChartViewController: UIViewController, JBBarChartViewDelegate, JBBar
         barChart.minimumValue = 0
         barChart.maximumValue = 40
         
-        
         Alamofire.request("http://mingplusyang.com/fitcatDB/getYearCalories.php?a1=\(currentCatObj.cat_id)").responseJSON { response in
-            
-            
-            //             print("sdfsdf")
             if let jsonData = response.result.value {
                 let json = JSON(jsonData)
-                
-                print("kakakakayear")
-               
-                
-                
+            
                 self.chartLegend.removeAll()
                 self.chartData.removeAll()
                 self.chartLegend.append(json["date"].stringValue)
                 
-                
                 var i = 0
-                
                 while i < 12 {
                     print("kakaka\(json["calData"][i]["data"].intValue)")
                     self.chartData.append(json["calData"][i]["data"].intValue)
                     self.chartLegend.append("December")
                     i = i + 1
                 }
-                
-                print("DAHA")
+            
                 self.barChart.reloadData()
-                
-                
-                
             }
         }
         
-        
         barChart.maximumValue = 50
-        
-        
         barChart.reloadData()
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        //        barChart.reloadData()
-        
         barChart.setState(.collapsed, animated: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        var footerView = UIView(frame: CGRect(x: 0, y: 0, width: barChart.frame.width, height: 16))
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: barChart.frame.width, height: 16))
         
         print("viewDidLoad: \(barChart.frame.width)")
         
-        var footer1 = UILabel(frame: CGRect(x: 0, y: 0, width: barChart.frame.width/2 - 8, height: 16))
+        let footer1 = UILabel(frame: CGRect(x: 0, y: 0, width: barChart.frame.width/2 - 8, height: 16))
         footer1.textColor = UIColor.white
         footer1.text = "\(chartLegend[0])"
         
-        var footer2 = UILabel(frame: CGRect(x: barChart.frame.width/2 , y: 0, width: barChart.frame.width/2 , height: 16))
+        let footer2 = UILabel(frame: CGRect(x: barChart.frame.width/2 , y: 0, width: barChart.frame.width/2 , height: 16))
         footer2.textColor = UIColor.white
         footer2.text = "\(chartLegend[chartLegend.count - 1])"
         footer2.textAlignment = NSTextAlignment.right
@@ -131,7 +93,7 @@ class yearJBChartViewController: UIViewController, JBBarChartViewDelegate, JBBar
         // our code
         barChart.reloadData()
         
-        var timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(JBChartViewController.showChart), userInfo: nil, repeats: false)
+        let timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(JBChartViewController.showChart), userInfo: nil, repeats: false)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -148,7 +110,6 @@ class yearJBChartViewController: UIViewController, JBBarChartViewDelegate, JBBar
     }
     
     // MARK: JBBarChartView
-    
     func numberOfBars(in barChartView: JBBarChartView!) -> UInt {
         return UInt(chartData.count)
     }
@@ -165,15 +126,10 @@ class yearJBChartViewController: UIViewController, JBBarChartViewDelegate, JBBar
         let data = chartData[Int(index)]
         let key = chartLegend[Int(index)]
         
-        //        informationLabel.text = "Weather on \(key): \(data)"
+        //informationLabel.text = "Weather on \(key): \(data)"
     }
     
     func didDeselect(_ barChartView: JBBarChartView!) {
         //        informationLabel.text = ""
     }
-    
-    
 }
-
-
-

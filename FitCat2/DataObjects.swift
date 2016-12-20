@@ -81,10 +81,8 @@ class cleanData {
         createCatObj.initial_bcs = 7
         createCatObj.image_id = ""
         createCatObj.cat_id = 0
-        
     }
     
- 
     func cleanPlan()  {
         planObj.cat_id = 0
         planObj.start_date = ""
@@ -110,6 +108,4 @@ class cleanData {
         currentCatObj.weight_lose = 5
         currentCatObj.initial_weight = 0
     }
-    
-    
 }
