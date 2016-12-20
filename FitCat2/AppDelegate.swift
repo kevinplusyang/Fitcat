@@ -1,7 +1,6 @@
 //
 //  AppDelegate.swift
 //  FitCat2
-//
 //  Created by Ming Yang on 11/21/16.
 //  Copyright © 2016 Ming Yang. All rights reserved.
 //
@@ -10,6 +9,7 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
 
     var window: UIWindow?
 
