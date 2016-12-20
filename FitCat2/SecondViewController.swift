@@ -16,19 +16,10 @@ class SecondViewController: UIViewController {
     var toPass: String = "Anonymous"
     var u_id = floginobj.f_id
     
-    
-    
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
-        
-        
         print("resultis:\(u_id)")
-        
-        
-        var result = 9;
-        
+        var result = 9
         
         Alamofire.request("http://mingplusyang.com/fitcatDB/navigationAfterLogin.php?user_id=\(u_id)").response { response in
             print("Request: \(response.request)")
@@ -38,7 +29,7 @@ class SecondViewController: UIViewController {
             if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
                 print("Data: \(utf8Text)")
                 result = Int(utf8Text)!
-                
+
                 if(result == 0){
                     let dest = self.storyboard?.instantiateViewController(withIdentifier: "createCatView")
                     self.present(dest!, animated: true, completion: nil)
@@ -52,20 +43,10 @@ class SecondViewController: UIViewController {
                     
                     let tvc = (self.storyboard?.instantiateViewController(withIdentifier: "allCats") as! UICollectionViewController)
                     self.present(tvc, animated: true, completion: nil)
-                    
-                    
-                    
                 }
-                
-                
-                
             }
         }
-        
         print("RRR: \(result)")
-        
-        
-        
         //        if(result == 0){
         //
         //            print("CreateCatview")
@@ -84,18 +65,9 @@ class SecondViewController: UIViewController {
         //
         //        }
         //        print("R2")
-        
-        
-        
-        
-        
-        
-        
-        
+   
     }
-    
-    
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -104,10 +76,6 @@ class SecondViewController: UIViewController {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
-    }
-    
-    
-    
-    
+    }   
 }
 

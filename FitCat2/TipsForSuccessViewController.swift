@@ -28,7 +28,6 @@ class tipsForSuccessControllerViewController: UIViewController {
     @IBOutlet weak var line2: UIView!
     @IBOutlet weak var line3: UIView!
     
-    
     @IBOutlet weak var gotItBtn: UIButton!
     @IBOutlet weak var gotItBtn2: UIButton!
     
@@ -148,12 +147,8 @@ class tipsForSuccessControllerViewController: UIViewController {
             gotItBtn2.layer.cornerRadius = 5
             gotItBtn2.layer.borderWidth = 1
             gotItBtn2.layer.borderColor = UIColor.white.cgColor
-            
         }
-        
-        
     }
-    
     
     /*
      // MARK: - Navigation
@@ -165,6 +160,5 @@ class tipsForSuccessControllerViewController: UIViewController {
      // Pass the selected object to the new view controller.
      }
      */
-    
 }
 

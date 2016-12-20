@@ -17,17 +17,11 @@ class ViewController: UIViewController {
         var f_id : String = ""
         var f_name: String = ""
     }
-    
-    
     //     let ref = FIRDatabase.database().reference()
-    
-    
     //    var loginButton = FBSDKLoginButton()
     var floginobj = FBCred()
-    
-    
     override func viewDidLoad() {
-        
+        super.viewDidLoad()
         //        Alamofire.request("https://httpbin.org/get").responseJSON { response in
         //            print(response.request)  // original URL request
         //            print(response.response) // HTTP URL response
@@ -59,13 +53,7 @@ class ViewController: UIViewController {
                 print("Data: \(utf8Text)")
             }
         }
-        
-        
-        
-        
-        super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
         // Optional: Place the button in the center of your view.
         get()
         //        loginButton.readPermissions = ["public_profile", "email", "user_friends"]
@@ -77,25 +65,10 @@ class ViewController: UIViewController {
         //        if (FBSDKAccessToken.current() != nil) {
         //            print("Loggined in")
         //        }
-        
-        
-        
-        
-        
-        
-        
-        
     }
     
-    
-    
-    
-    
     func get(){
-        
-        
         print("Here3")
-        
         if let url = URL(string: "http://www.mingplusyang.com/fitcatDB/get.php") {
             do {
                 let contents = try String(contentsOf: url)
@@ -112,13 +85,10 @@ class ViewController: UIViewController {
         
     }
     
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-   
 }
 
 

@@ -12,11 +12,8 @@ import SwiftyJSON
 import Alamofire
 
 
-class foodMarketTableViewController: UITableViewController{
-    
+class foodMarketTableViewController: UITableViewController {
     //temp data placeholder
-    
-  
     
     var data:[String] = ["Beyond Grain Free Ocean Whitefish and Egg Recipe Natural Dry Cat Food","Beyond Grain Free White Meat Chicken and Egg Recipe Natural Dry Cat Food","EVO 95 Chicken and Turkey Recipe in Gravy Canned Cat Food","Beyond Superfood Blend Barley Egg and Cranberry Recipe Dry Cat Food","Beyond Superfood Blend Herring Egg Sweet Potato Recipe Dry Cat Food","Beyond White Meat Chicken While Oat Meal Recipe Dry Cat Food","EVO 95 Duck Recipe in Gravy Canned Cat Food"]
     var data2:[String] = ["Add to favorite","Add to favorite","Add to favorite","Add to favorite","Add to favorite","Add to favorite","Add to favorite","Add to favorite"]
@@ -24,12 +21,7 @@ class foodMarketTableViewController: UITableViewController{
     
     var selectedData:String = ""
     
-   
-    
-
-    
     override func viewDidLoad() {
-    
         super.viewDidLoad()
         
         Alamofire.request("http://www.mingplusyang.com/fitcatDB/getFavoriteStatus.php?a1=\(floginobj.f_id)").responseJSON { response in
@@ -39,25 +31,18 @@ class foodMarketTableViewController: UITableViewController{
            
             if let jsonData = response.result.value {
                 let json = JSON(jsonData)
-                
-                
-                var count = json["count"].intValue
+                let count = json["count"].intValue
                 print("JJSON:\(count)")
                 var i = 0
                 while i < count {
                     self.data2[json["foods"][i]["id"].intValue] = "Added"
                     i = i + 1
                 }
-
                 print("ssss:\(self.data2)")
                 self.tableView.reloadData()
-                
             }
         }
 
-        
-        
-        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -73,16 +58,12 @@ class foodMarketTableViewController: UITableViewController{
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        // #warning Incomplete implementation, return the number of rows
         return data.count
     }
-    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
@@ -90,32 +71,21 @@ class foodMarketTableViewController: UITableViewController{
             
             
             if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
-                var result = 0
+                _ = 0
                 print("Data: \(utf8Text)")
-
                 if(self.data2[Int(indexPath.row)] == "Add to favorite"){
                     self.data2[Int(indexPath.row)] = "Added"
                 } else if(self.data2[Int(indexPath.row)] == "Added"){
                     self.data2[Int(indexPath.row)] = "Add to favorite"
                 }
-                
                 self.tableView.reloadData()
-                
             }
         }
-        
-        
         print("rowselected:\(indexPath.row)")
-
-        
-        
-
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
         // Configure the cell...
         let label = cell.viewWithTag(1) as! UILabel
         let label2 = cell.viewWithTag(2) as! UILabel
@@ -125,9 +95,6 @@ class foodMarketTableViewController: UITableViewController{
         cell.imageView?.image = images[indexPath.row]
         return cell
     }
-    
-    
-    
     /*
      // Override to support conditional editing of the table view.
      override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

@@ -30,9 +30,7 @@ class planOverviewControllerViewController: UIViewController {
     @IBOutlet weak var endDateBig: UILabel!
     
     @IBAction func gotItButton(_ sender: UIButton) {
-        
         Alamofire.request("http://mingplusyang.com/fitcatDB/getCurrentCat.php?catId=\(planObj.cat_id)").responseJSON { response in
-
             if let jsonData = response.result.value {
                 let json = JSON(jsonData)
                 currentCatObj.cat_id = json["catId"].intValue  //Useful index
@@ -48,43 +46,32 @@ class planOverviewControllerViewController: UIViewController {
                 currentCatObj.weight_lose = json["weight_lose"].doubleValue
                 currentCatObj.initial_weight = json["initial_weight"].floatValue
                 currentCatObj.image_ID = json["img_ID"].stringValue
-                
                 let dest = self.storyboard?.instantiateViewController(withIdentifier: "mainPage")
                 self.present(dest!, animated: true, completion: nil)
-                
             }
         }
-        
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
-        
         //cat image
         catImg.layer.borderWidth = 1
         catImg.layer.masksToBounds = false
         catImg.layer.borderColor = UIColor.white.cgColor
         catImg.layer.cornerRadius = catImg.frame.height/2
         catImg.clipsToBounds = true
-        
         let assetUrl = URL(string: createCatObj.image_id)!
-        
         // retrieve the list of matching results for your asset url
         let fetchResult = PHAsset.fetchAssets(withALAssetURLs: [assetUrl], options: nil)
-        
-        
         if let photo = fetchResult.firstObject {
-            
             // retrieve the image for the first result
             PHImageManager.default().requestImage(for: photo, targetSize: PHImageManagerMaximumSize, contentMode: .aspectFill, options: nil) {
                 image, info in
-                
                 self.catImg.image = image //here is the image
             }
         }
-        
         
         Alamofire.request("http://mingplusyang.com/fitcatDB/getCatIdByPlan.php?a1=\(planObj.plan_id)").response { response in
             if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
@@ -105,22 +92,17 @@ class planOverviewControllerViewController: UIViewController {
             }
         }
         
-        
-        
         Alamofire.request("http://mingplusyang.com/fitcatDB/getWeightLosePerMonthByPlan.php?a1=\(planObj.plan_id)").response { response in
             if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
                 planObj.weight_lose_per_month = Double(utf8Text)!
-                
             }
         }
         
         Alamofire.request("http://mingplusyang.com/fitcatDB/getWeightLossByPlan.php?a1=\(planObj.plan_id)").response { response in
             if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
                 planObj.weight_lose = Double(utf8Text)!
-                
             }
         }
-        
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
             self.startDate.text = planObj.start_date
@@ -132,10 +114,6 @@ class planOverviewControllerViewController: UIViewController {
             self.volumePerDay.text = "\(planObj.food_volume_required) OZ"
             self.endDateBig.text = planObj.end_date
         })
-        
-        
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -143,16 +121,13 @@ class planOverviewControllerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
     /*
      // MARK: - Navigation
-     
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
      }
      */
-    
 }
 

@@ -13,33 +13,20 @@ class amountSelectionViewController: UIViewController {
     
     //@IBOutlet weak var addToBowlBtn: UIButton!
     @IBOutlet weak var FeedBtn: UIButton!
-    
     @IBOutlet weak var wetDrylabel: UILabel!
-    
     @IBOutlet weak var cupLabel: UILabel!
     @IBOutlet weak var caloriesLabel: UILabel!
     @IBOutlet weak var volumeLabel: UILabel!
-    
     @IBOutlet weak var slider: UIView!
-    
     @IBOutlet weak var amountView: UIView!
-    
     @IBOutlet weak var foodImg: UIImageView!
-    
     @IBOutlet weak var foodNameLabel: UILabel!
-    
     @IBOutlet weak var calDataLabel: UILabel!
-    
     @IBOutlet weak var cupOrCanLabel: UILabel!
-    
     @IBOutlet weak var unitDataLabel: UILabel!
-    
     @IBOutlet weak var cupOrCanLabel2: UILabel!
-    
     @IBOutlet weak var calProgressBar: UIProgressView!
-    
     @IBOutlet weak var foodProgressBar: UIProgressView!
-    
     @IBAction func feedAction(_ sender: UIButton) {
         print("clicked")
         print("OO:\(caloriesLabel.text)")
@@ -66,12 +53,8 @@ class amountSelectionViewController: UIViewController {
             
             if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
                 print("Data: \(utf8Text)")
-                
             }
         }
-        
-        
-        
     }
     
     override func viewDidLoad() {
@@ -82,9 +65,7 @@ class amountSelectionViewController: UIViewController {
         wetDrylabel.layer.cornerRadius = 10
         //addToBowlBtn.layer.cornerRadius = 5
         FeedBtn.layer.cornerRadius = 5
-        
-       
-        
+    
         print("vv:\(foodSelection.foodID)")
         print("vv:\(foodSelection.foodName)")
         print("vv:\(foodSelection.ifWet)")
@@ -113,13 +94,6 @@ class amountSelectionViewController: UIViewController {
         }
         
         foodImg.image = UIImage(named:"\(foodSelection.foodName)")
-        
-        
-        
-        
-        
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -128,20 +102,14 @@ class amountSelectionViewController: UIViewController {
     }
     
     @IBAction func sliderChanged(_ sender: UISlider) {
-        
         // Make slider stop every round number size.
         sender.setValue(Float(roundf(sender.value)), animated: true)
-        
         // Define the current value as float.
         let currentValue = Float(sender.value/4)
-        
         // Format slider value with two decimal points.
        
-        
-        
         if(foodSelection.ifWet == 0){
             let decimalValue = NSString(format: "%.2f", currentValue)
-            
             // Output slider value in our label. for wet food
             if (decimalValue == "0.00"){
                 cupLabel.text! = "0 Cup"
@@ -203,55 +171,55 @@ class amountSelectionViewController: UIViewController {
             let decimalValue = NSString(format: "%.2f", currentValue)
             
             // Output slider value in our label. for wet food
-            if (decimalValue == "0.00"){
+            if (decimalValue == "0.00") {
                 cupLabel.text! = "0 Can"
                  calProgressBar.progress = 0.00 / 2
                  foodProgressBar.progress = 0.00 / 2
                  caloriesLabel.text = "\(foodSelection.cal * 0) Cal"
                  volumeLabel.text = "\(8 * 0.00 ) oz"
-            }else if(decimalValue == "0.25"){
+            } else if(decimalValue == "0.25") {
                 cupLabel.text! = "1/4 Can"
                  calProgressBar.progress = 0.25 / 2
                  foodProgressBar.progress = 0.25 / 2
                  caloriesLabel.text = "\(foodSelection.cal * 0.25) Cal"
                  volumeLabel.text = "\(8 * 0.25 ) oz"
-            }else if(decimalValue == "0.50"){
+            } else if(decimalValue == "0.50") {
                 cupLabel.text! = "1/2 Can"
                  calProgressBar.progress = 0.50 / 2
                  foodProgressBar.progress = 0.50 / 2
                  caloriesLabel.text = "\(foodSelection.cal * 0.50) Cal"
                  volumeLabel.text = "\(8 * 0.50 ) oz"
-            }else if(decimalValue == "0.75"){
+            } else if(decimalValue == "0.75") {
                 cupLabel.text! = "3/4 Can"
                  calProgressBar.progress = 0.75 / 2
                  foodProgressBar.progress = 0.75 / 2
                  caloriesLabel.text = "\(foodSelection.cal * 0.75) Cal"
                 volumeLabel.text = "\(8 * 0.75 ) oz"
-            }else if(decimalValue == "1.00"){
+            } else if(decimalValue == "1.00") {
                 cupLabel.text! = "1 Can"
                  calProgressBar.progress = 1.00 / 2
                  foodProgressBar.progress = 1.00 / 2
                  caloriesLabel.text = "\(foodSelection.cal * 1.00) Cal"
                  volumeLabel.text = "\(8 * 1.00 ) oz"
-            }else if(decimalValue == "1.25"){
+            } else if(decimalValue == "1.25"){
                 cupLabel.text! = "1 and 1/4 Can"
                  calProgressBar.progress = 1.25 / 2
                  foodProgressBar.progress = 1.25 / 2
                  caloriesLabel.text = "\(foodSelection.cal * 1.25) Cal"
                  volumeLabel.text = "\(8 * 1.25 ) oz"
-            }else if(decimalValue == "1.50"){
+            } else if(decimalValue == "1.50") {
                 cupLabel.text! = "1 and 1/2 Can"
                  calProgressBar.progress = 1.50 / 2
                  foodProgressBar.progress = 1.50 / 2
                  caloriesLabel.text = "\(foodSelection.cal * 1.50) Cal"
                  volumeLabel.text = "\(8 * 1.50 ) oz"
-            }else if(decimalValue == "1.75"){
+            } else if(decimalValue == "1.75") {
                 cupLabel.text! = "1 and 3/4 Can"
                  calProgressBar.progress = 1.75 / 2
                  foodProgressBar.progress = 1.75 / 2
                  caloriesLabel.text = "\(foodSelection.cal * 1.75) Cal"
                  volumeLabel.text = "\(8 * 1.75 ) oz"
-            }else if(decimalValue == "2.00"){
+            } else if(decimalValue == "2.00") {
                 cupLabel.text! = "2 Cans"
                  calProgressBar.progress = 2.00 / 2
                  foodProgressBar.progress = 2.00 / 2
@@ -259,8 +227,6 @@ class amountSelectionViewController: UIViewController {
                  volumeLabel.text = "\(8 * 2.00 ) oz"
             }
         }
-        
-        
         //cupLabel.text! = "\(decimalValue)"
     }
     

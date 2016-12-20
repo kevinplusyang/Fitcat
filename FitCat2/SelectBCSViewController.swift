@@ -9,8 +9,6 @@
 import UIKit
 import Alamofire
 
-
-
 class selectBcsController: UIViewController {
     
     @IBOutlet weak var catNameLable: UILabel!
@@ -20,11 +18,8 @@ class selectBcsController: UIViewController {
     @IBOutlet weak var individualBtn: UIButton!
     @IBOutlet weak var superimposedBtn: UIButton!
     @IBOutlet weak var continueBtnOL: UIButton!
-    
     @IBOutlet weak var BCStext: UITextView!
-    
     @IBOutlet weak var BCSLabel: UILabel!
-    
     @IBOutlet weak var individualView: UIView!
     @IBOutlet weak var superimposedView: UIView!
     
@@ -80,13 +75,11 @@ class selectBcsController: UIViewController {
     
     //background gradient color
     func backgroundGradient(){
-        
         let bottomColor = UIColor(red:227/255.0,green:70/255.0,blue:51/255.0,alpha: 1)
         let topColor = UIColor(red:228/255.0,green:100/255.0,blue:73/255.0,alpha: 1)
         let gradientColors:[CGColor] = [topColor.cgColor, bottomColor.cgColor,topColor.cgColor, bottomColor.cgColor]
         let gradientLocations:[Float] = [0.0,1.0]
         let gradientLayer:CAGradientLayer = CAGradientLayer()
-        
         gradientLayer.colors = gradientColors
         gradientLayer.locations = gradientLocations as [NSNumber]?
         gradientLayer.frame = self.view.bounds
@@ -121,58 +114,40 @@ class selectBcsController: UIViewController {
         sender.layer.borderColor = UIColor.white.cgColor
         
         bcs7.layer.borderColor = UIColor(white: 1.0, alpha: 0.0).cgColor
-        
         bcs9.layer.borderColor = UIColor(white: 1.0, alpha: 0.0).cgColor
-        
         BCSLabel.text! = "BCS 5"
-        
         BCStext.text! = "Spine, ribs, and pelvic bones not visible but easily felt, evenly distributed muscle mass, minimal abdominal fat with abdominal tuck."
-        
         print("selected5")
         createCatObj.initial_bcs = 6
-        
     }
     
     //BCS7 btn
     @IBAction func bcs7tapped(_ sender: UIButton) {
-        
         sender.layer.borderWidth = 2
         sender.layer.borderColor = UIColor.white.cgColor
-        
         bcs5.layer.borderColor = UIColor(white: 1.0, alpha: 0.0).cgColor
-        
         bcs9.layer.borderColor = UIColor(white: 1.0, alpha: 0.0).cgColor
-        
         BCSLabel.text! = "BCS 7"
-        
         BCStext.text! = "Spine, ribs, and pelvic bones not easily felt with moderate fat layer covering them, waist diminished, abdomen rounded with moderate abdominal fat pad."
         print("selected7")
         createCatObj.initial_bcs = 7
     }
-
+    
     //BCS9 btn
     @IBAction func bcs9tapped(_ sender: UIButton) {
-        
         sender.layer.borderWidth = 2
         sender.layer.borderColor = UIColor.white.cgColor
-        
         bcs5.layer.borderColor = UIColor(white: 1.0, alpha: 0.0).cgColor
-        
         bcs7.layer.borderColor = UIColor(white: 1.0, alpha: 0.0).cgColor
-        
         BCSLabel.text! = "BCS 9"
-        
         BCStext.text! = "Spine, ribs, and pelvic bones cannot be felt, excessive abdominal fat, waist absent."
         print("selected9")
         createCatObj.initial_bcs = 9
     }
     
-    
     //continue button
     @IBAction func continueBtnClicked(_ sender: UIButton) {
         print("What here is: \(createCatObj.name)")
-        
-        
         
         Alamofire.request("http://mingplusyang.com/fitcatDB/createCat.php?a1=\(createCatObj.user_id)&a2=\(createCatObj.name)&a3=\(createCatObj.birthday)&a4=\(createCatObj.breed_id)&a5=\(createCatObj.initial_weight)&a6=\(createCatObj.neutered)&a7=\(createCatObj.gender)&a8=\(createCatObj.initial_bcs)&a9=\(createCatObj.image_id)").response { response in
             print("Request: \(response.request)")
@@ -185,11 +160,5 @@ class selectBcsController: UIViewController {
                 print("CatID:\(createCatObj.cat_id)")
             }
         }
-        
-        
-        
-        
     }
-    
-    
 }

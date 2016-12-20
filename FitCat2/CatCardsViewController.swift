@@ -10,7 +10,6 @@ import UIKit
 
 class catCardsViewController: UIViewController {
     
-    
     @IBOutlet weak var cardBg: UIView!
     @IBOutlet weak var catImg: UIImageView!
     
@@ -18,7 +17,6 @@ class catCardsViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
         //card rounded corner
         cardBg.layer.cornerRadius = 5
         
@@ -28,14 +26,12 @@ class catCardsViewController: UIViewController {
         catImg.layer.borderColor = UIColor.white.cgColor
         catImg.layer.cornerRadius = catImg.frame.height/2
         catImg.clipsToBounds = true
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     /*
      // MARK: - Navigation
@@ -46,5 +42,4 @@ class catCardsViewController: UIViewController {
      // Pass the selected object to the new view controller.
      }
      */
-    
 }

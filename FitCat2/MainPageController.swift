@@ -37,8 +37,6 @@ class mainPageController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var weigtBtnLabel: UILabel!
     @IBOutlet weak var feedingsBtnLabel: UILabel!
     
-    //segments control
-    
     @IBOutlet weak var segments: UISegmentedControl!
     @IBOutlet weak var monthView: UIView!
     @IBOutlet weak var yearView: UIView!
@@ -59,8 +57,7 @@ class mainPageController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var weightTextField: UITextField!
     
     override func viewDidLoad() {
-        
-        
+        super.viewDidLoad()
         
         Alamofire.request("http://mingplusyang.com/fitcatDB/getCurrentCat.php?catId=\(currentCatObj.cat_id)").responseJSON { response in
             
@@ -80,8 +77,6 @@ class mainPageController: UIViewController,UITextFieldDelegate {
                 currentCatObj.initial_weight = json["initial_weight"].floatValue
                 currentCatObj.image_ID = json["img_ID"].stringValue
                 
-                
-                
                 self.current_weight.text = String(currentCatObj.current_weight) + " lb"
                 self.current_BCS.text = String(currentCatObj.current_bcs) + " BCS"
                 self.goal_weight.text = String(currentCatObj.goal_weight) + " lb"
@@ -92,15 +87,9 @@ class mainPageController: UIViewController,UITextFieldDelegate {
                 self.caloriesProgress.progress = 1 - Float(temp1)
                 self.volumeProgress.progress = 1 - Float(temp2)
                 self.catName.text = currentCatObj.cat_name
-                
-                
-                
-                
             }
         }
-        
-        
-        
+
         //        print("asas")
         //        print(currentCatObj.cat_id)
         //         print(currentCatObj.cat_name)
@@ -124,11 +113,7 @@ class mainPageController: UIViewController,UITextFieldDelegate {
         caloriesProgress.progress = 1 - Float(temp1)
         volumeProgress.progress = 1 - Float(temp2)
         catName.text = currentCatObj.cat_name
-        
-        
-        
-        super.viewDidLoad()
-        
+
         // Do any additional setup after loading the view.
         //circularProgressView.angle = 0
         //round cat image
@@ -192,14 +177,8 @@ class mainPageController: UIViewController,UITextFieldDelegate {
                 self.catImg.image = image //here is the image
             }
         }
-        
     }
-    
-    
-    
-    
-    
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -210,7 +189,6 @@ class mainPageController: UIViewController,UITextFieldDelegate {
         return Int(360 * (currentCount / maxCount))
     }
     
-    
     @IBAction func animateTapped(_ sender: UIButton) {
         if currentCount != maxCount {
             currentCount += 1
@@ -219,15 +197,12 @@ class mainPageController: UIViewController,UITextFieldDelegate {
             print("newAngleValue \(newAngleValue)")
             circularProgressView.animate(toAngle: Double(90), duration: 0.5, completion: nil)
         }
-        
     }
     
     @IBAction func resetTapped(_ sender: UIButton) {
         currentCount = 0
         circularProgressView.animate(fromAngle: circularProgressView.angle, toAngle: 0, duration: 0.5, completion: nil)
     }
-    
-    
     
     @IBAction func feedingsBtnTapped(_ sender: UIButton) {
         weightsView.isHidden = true
@@ -252,7 +227,6 @@ class mainPageController: UIViewController,UITextFieldDelegate {
         
     }
     
-    
     @IBAction func segmentsChanged(_ sender: UISegmentedControl) {
         let index: Int = sender.selectedSegmentIndex
         let title: String = sender.titleForSegment(at: index)!
@@ -262,26 +236,22 @@ class mainPageController: UIViewController,UITextFieldDelegate {
             todayView.isHidden = false
             monthView.isHidden = true
             yearView.isHidden = true
-        }else if (index == 1){
+        } else if (index == 1) {
             todayView.isHidden = true
             monthView.isHidden = false
             yearView.isHidden = true
-        }else{
+        } else {
             todayView.isHidden = true
             monthView.isHidden = true
             yearView.isHidden = false
             
         }
-        
     }
     
     @IBAction func logWeightBtnTapped(_ sender: UIButton) {
         var weight = Double(weightTextField.text!)!
         print("weight is \(weight)")
-        
         Alamofire.request("http://mingplusyang.com/fitcatDB/addWeightRecord.php?a1=\(currentCatObj.cat_id)&a2=\(Double(weightTextField.text!)!)").response { response in
-            
-            
             print("Request: \(response.request)")
             print("Response: \(response.response)")
             print("Error: \(response.error)")
@@ -296,8 +266,6 @@ class mainPageController: UIViewController,UITextFieldDelegate {
                 
             }
         }
-        
-        
     }
     
     //    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -319,8 +287,6 @@ class mainPageController: UIViewController,UITextFieldDelegate {
         return true
     }
     
-    
-    
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
@@ -330,12 +296,6 @@ class mainPageController: UIViewController,UITextFieldDelegate {
         print("touchedBack")
         view.endEditing(true)
     }
-    
-    
-    
-    
-    
-    
     
     /*
      // MARK: - Navigation
