@@ -19,16 +19,8 @@ class createCat: UIViewController {
     
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
-        
-        
         print("resultis:\(u_id)")
-        
-        
-        
-        
         Alamofire.request("http://mingplusyang.com/fitcatDB/navigationAfterLogin.php?user_id=\(u_id)").response { response in
             print("Request: \(response.request)")
             print("Response: \(response.response)")
@@ -37,16 +29,13 @@ class createCat: UIViewController {
             if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
                 print("Data: \(utf8Text)")
                 self.result = Int(utf8Text)!
-                
             }
         }
-        
         
         if(result == 0){
             
             let dest = self.storyboard?.instantiateViewController(withIdentifier: "SecondViewController")
             self.present(dest!, animated: true, completion: nil)
-            
         }
         
         if(result == 1){
