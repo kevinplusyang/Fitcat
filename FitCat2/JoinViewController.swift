@@ -33,9 +33,9 @@ class JoinController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func submitResult(_ sender: UIButton) {
-        print("Clikced Submit")
         print("User Name: \(username.text!)")
         print("Password: \(password.text!)")
+        if (password.text?.characters.count)! >= 8 {
         
         Alamofire.request("http://mingplusyang.com/fitcatDB/join.php?username=\(username.text!)&password=\(password.text!)").response { response in
             print("Request: \(response.request)")
@@ -61,9 +61,15 @@ class JoinController: UIViewController, UITextFieldDelegate {
                 alert.addAction(closeAction)
                 self.present(alert, animated: true, completion:nil)
             }
+            }
+        } else {
+            let alert = UIAlertController(title: "Error", message:"Password Needs To Be At Least 8 Characters Long.", preferredStyle: .alert)
+            let closeAction = UIAlertAction(title:"Close", style: .cancel, handler: nil)
+            alert.addAction(closeAction)
+            self.present(alert, animated: true, completion:nil)
         }
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
