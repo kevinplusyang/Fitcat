@@ -27,6 +27,11 @@ class loginController: UIViewController, UITextFieldDelegate {
         view.addGestureRecognizer(tap)
     }
     
+    @IBAction func cancel(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
     @IBAction func submit(_ sender: UIButton) {
         print("Clikced Submit")
         print("User Name: \(username.text!)")
