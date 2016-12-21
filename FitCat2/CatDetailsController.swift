@@ -96,7 +96,6 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
     
     
     @IBAction func uploadProfileImg(_ sender: UIButton) {
-        print("OKOK")
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary

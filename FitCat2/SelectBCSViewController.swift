@@ -147,9 +147,25 @@ class selectBcsController: UIViewController {
     
     //continue button
     @IBAction func continueBtnClicked(_ sender: UIButton) {
-        print("What here is: \(createCatObj.name)")
+        //Prepare the information to be transmitted
+        let parameters: Parameters = [
+            "a1" : createCatObj.user_id,
+            "a2" : createCatObj.name,
+            "a3" : createCatObj.birthday,
+            "a4" : createCatObj.breed_id,
+            "a5" : createCatObj.initial_weight,
+            "a6" : createCatObj.neutered,
+            "a7" : createCatObj.gender,
+            "a8" : createCatObj.initial_bcs,
+            "a9" : createCatObj.image_id
+        ]
         
-        Alamofire.request("http://mingplusyang.com/fitcatDB/createCat.php?a1=\(createCatObj.user_id)&a2=\(createCatObj.name)&a3=\(createCatObj.birthday)&a4=\(createCatObj.breed_id)&a5=\(createCatObj.initial_weight)&a6=\(createCatObj.neutered)&a7=\(createCatObj.gender)&a8=\(createCatObj.initial_bcs)&a9=\(createCatObj.image_id)").response { response in
+        //Communicate with server via Alamofire
+        //Using POST method.
+        //After successfully create a cat profile on server, Server will response the cat id which is a unique 
+        //number to mark the cat.
+        Alamofire.request("http://mingplusyang.com/fitcatDB/createCat.php", method: .post, parameters: parameters).response{
+            response in
             print("Request: \(response.request)")
             print("Response: \(response.response)")
             print("Error: \(response.error)")
@@ -160,5 +176,8 @@ class selectBcsController: UIViewController {
                 print("CatID:\(createCatObj.cat_id)")
             }
         }
+        
+        
+        
     }
 }

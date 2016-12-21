@@ -31,13 +31,22 @@ class loginController: UIViewController, UITextFieldDelegate {
         dismiss(animated: true, completion: nil)
     }
     
-    
+    //Submit login information to server
     @IBAction func submit(_ sender: UIButton) {
         print("Clikced Submit")
         print("User Name: \(username.text!)")
         print("Password: \(password.text!)")
         
-        Alamofire.request("http://mingplusyang.com/fitcatDB/login.php?username=\(username.text!)&password=\(password.text!)").response { response in
+        //Prepare for login information
+        let parameters: Parameters = [
+            "username" : username.text!,
+            "password" : password.text!
+        ]
+        
+        //Communicate with server via Alamofire.
+        //Method: POST
+        Alamofire.request("http://mingplusyang.com/fitcatDB/login.php", method: .post, parameters: parameters).response{
+            response in
             print("Request: \(response.request)")
             print("Response: \(response.response)")
             print("Error: \(response.error)")
@@ -58,7 +67,12 @@ class loginController: UIViewController, UITextFieldDelegate {
                     self.present(alert, animated: true, completion:nil)
                 }
             }
+            
+            
         }
+        
+
+        
     }
     
     override func didReceiveMemoryWarning() {
