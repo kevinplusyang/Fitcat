@@ -147,12 +147,25 @@ class selectBcsController: UIViewController {
     
     //continue button
     @IBAction func continueBtnClicked(_ sender: UIButton) {
-        print("What here is: \(createCatObj.name)")
+        //Prepare the information to be transmitted
+        let parameters: Parameters = [
+            "a1" : createCatObj.user_id,
+            "a2" : createCatObj.name,
+            "a3" : createCatObj.birthday,
+            "a4" : createCatObj.breed_id,
+            "a5" : createCatObj.initial_weight,
+            "a6" : createCatObj.neutered,
+            "a7" : createCatObj.gender,
+            "a8" : createCatObj.initial_bcs,
+            "a9" : createCatObj.image_id
+        ]
         
-        
-        
-        
-        Alamofire.request("http://mingplusyang.com/fitcatDB/createCat.php?a1=\(createCatObj.user_id)&a2=\(createCatObj.name)&a3=\(createCatObj.birthday)&a4=\(createCatObj.breed_id)&a5=\(createCatObj.initial_weight)&a6=\(createCatObj.neutered)&a7=\(createCatObj.gender)&a8=\(createCatObj.initial_bcs)&a9=\(createCatObj.image_id)").response { response in
+        //Communicate with server via Alamofire
+        //Using POST method.
+        //After successfully create a cat profile on server, Server will response the cat id which is a unique 
+        //number to mark the cat.
+        Alamofire.request("http://mingplusyang.com/fitcatDB/createCat.php", method: .post, parameters: parameters).response{
+            response in
             print("Request: \(response.request)")
             print("Response: \(response.response)")
             print("Error: \(response.error)")
@@ -162,51 +175,6 @@ class selectBcsController: UIViewController {
                 createCatObj.cat_id = Int(utf8Text)!
                 print("CatID:\(createCatObj.cat_id)")
             }
-        }
-        
-        
-        //Prepare the inputed text in fields and store them in variable parameters
-        let parameters: Parameters = [
-            "a1" : createCatObj.user_id,
-            "a2" : createCatObj.name,
-            "a3" : createCatObj.birthday,
-            "a4" : createCatObj.breed_id,
-            "a5" : username.text!,
-            "a6" : username.text!,
-            "a7" : username.text!,
-            "a8" : username.text!
-        ]
-        
-        //Communicate with server via Alamofire
-        //Using POST method.
-        //Only when the insertion success, the server will response status '1'
-        Alamofire.request("http://mingplusyang.com/fitcatDB/join.php", method: .post, parameters: parameters).response{
-            response in
-            print("Request: \(response.request)")
-            print("Response: \(response.response)")
-            print("Error: \(response.error)")
-            
-            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
-                print("Data: \(utf8Text)")
-                //Server response 1 indicates register success.
-                if(utf8Text == "1"){
-                    let dest = self.storyboard?.instantiateViewController(withIdentifier: "welcomePage")
-                    self.present(dest!, animated: true, completion: nil)
-                    
-                } else {
-                    let alert = UIAlertController(title: "Error", message:"User Name Already Exists", preferredStyle: .alert)
-                    let closeAction = UIAlertAction(title:"Close", style: .cancel, handler: nil)
-                    alert.addAction(closeAction)
-                    self.present(alert, animated: true, completion:nil)
-                }
-                
-            } else {
-                let alert = UIAlertController(title: "Error", message:"Network Connection Error", preferredStyle: .alert)
-                let closeAction = UIAlertAction(title:"Close", style: .cancel, handler: nil)
-                alert.addAction(closeAction)
-                self.present(alert, animated: true, completion:nil)
-            }
-            
         }
         
         
