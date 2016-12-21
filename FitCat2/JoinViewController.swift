@@ -26,6 +26,12 @@ class JoinController: UIViewController, UITextFieldDelegate {
         //tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
+    
+    @IBAction func cancel(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
     @IBAction func submitResult(_ sender: UIButton) {
         print("Clikced Submit")
         print("User Name: \(username.text!)")
