@@ -63,8 +63,16 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         btn3ol.layer.borderWidth = 1
         btn3ol.layer.borderColor = UIColor.white.cgColor
         
-        datePicker = UIDatePicker()
+        //create done button for catDobField
+        let doneToolbar = UIToolbar.init()
+        doneToolbar.sizeToFit()
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem.init(barButtonSystemItem: .done, target: self, action: #selector(dismissKeyboard))
+        doneToolbar.items = [flexSpace,doneButton]
+        
         datePicker.datePickerMode = UIDatePickerMode.date
+        datePicker.maximumDate = Date()
+        catDobField.inputAccessoryView = doneToolbar
         catDobField.inputView = datePicker
         
         datePicker.addTarget(self, action: #selector(catDetailsController.dateChanged(datePicker:)), for: UIControlEvents.valueChanged)
@@ -78,15 +86,7 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
     func dateChanged(datePicker: UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = DateFormatter.Style.short
-        print("DATEFORMAT:\(dateFormatter.string(from: datePicker.date))")
-        var newDateFormat = dateFormatter.string(from: datePicker.date)
-        var newDateFormatYear = newDateFormat.substring(from: newDateFormat.index(newDateFormat.endIndex, offsetBy: -2))
-        newDateFormat = String(newDateFormat.characters.dropLast())
-        newDateFormat = String(newDateFormat.characters.dropLast())
-        newDateFormat = String(newDateFormat.characters.dropLast())
-        newDateFormatYear = newDateFormatYear + "/" +  newDateFormat
-        print("NEWDATE: \(newDateFormatYear)")
-        catDobField.text = newDateFormatYear
+        catDobField.text = dateFormatter.string(from: datePicker.date)
     }
     
     override func didReceiveMemoryWarning() {
