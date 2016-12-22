@@ -29,7 +29,7 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
     @IBOutlet weak var btn2ol: UIButton!
     //continue btn outlet
     @IBOutlet weak var btn3ol: UIButton!
-    
+    var standardDateFormat = ""
     var datePicker = UIDatePicker()
     override func viewDidLoad() {
         createCatObj.user_id = 0
@@ -87,6 +87,10 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = DateFormatter.Style.short
         catDobField.text = dateFormatter.string(from: datePicker.date)
+        
+        //Server will accept the date format like yy/mm/dd
+        dateFormatter.dateFormat = "yy/MM/dd"
+        standardDateFormat = dateFormatter.string(from: datePicker.date)
     }
     
     override func didReceiveMemoryWarning() {
@@ -131,14 +135,18 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
     //continue btn
     @IBAction func btn3(_ sender: UIButton) {
         sender.layer.backgroundColor = UIColor(white: 1.0, alpha:0.1).cgColor
+        
+        
+        //The server will accept the following data format:
+        // mm/dd/yy
+    
         createCatObj.user_id = floginobj.f_id
         createCatObj.name = catNameField.text!
-        createCatObj.birthday = catDobField.text!
+        createCatObj.birthday = standardDateFormat
         createCatObj.initial_weight = catWeightField.text!
         createCatObj.breed_id = catBreedField.text!
         performSegue(withIdentifier: "selectBCSView", sender: self)
-        //let selectBcsViewController = selectBcsController()
-        //present(selectBcsViewController, animated: true, completion: nil)
+        
     }
     
     @IBAction func touchCancel(_ sender: UIButton){
