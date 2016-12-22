@@ -74,13 +74,14 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         let doneButton = UIBarButtonItem.init(barButtonSystemItem: .done, target: self, action: #selector(dismissKeyboard))
         doneToolbar.items = [flexSpace,doneButton]
         
-        
         datePicker.datePickerMode = .date
         datePicker.maximumDate = Date()
         catDobField.inputAccessoryView = doneToolbar
         catDobField.inputView = datePicker
-        
         datePicker.addTarget(self, action: #selector(catDetailsController.dateChanged(datePicker:)), for: UIControlEvents.valueChanged)
+        
+        let weightPicker = WeightPicker()
+        catWeightField.inputView = weightPicker
     }
     
     @IBAction func breedSelection(sender: UIButton) {

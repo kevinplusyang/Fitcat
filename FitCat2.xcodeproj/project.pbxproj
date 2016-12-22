@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4B33674AA79D7C495F04881B /* Pods_FitCat2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A41889A4EAA11BE6953CE999 /* Pods_FitCat2.framework */; };
+		5030E28B1E0B8358000EFC28 /* WeightPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5030E28A1E0B8358000EFC28 /* WeightPicker.swift */; };
 		5658C0980CA8592D66FFB172 /* Pods_FitCat2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 066762C49929BB70E9648594 /* Pods_FitCat2Tests.framework */; };
 		686370EB8E56D8C174442C29 /* Pods_FitCat2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A3A79738E9C12C61779FA7C /* Pods_FitCat2UITests.framework */; };
 		C80F66E31DEF24AF0008F4AD /* JBChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80F66E21DEF24AF0008F4AD /* JBChartViewController.swift */; };
@@ -61,6 +62,7 @@
 
 /* Begin PBXFileReference section */
 		066762C49929BB70E9648594 /* Pods_FitCat2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitCat2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5030E28A1E0B8358000EFC28 /* WeightPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightPicker.swift; sourceTree = "<group>"; };
 		5BE0D10F1C8FDC7CC650A736 /* Pods-FitCat2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitCat2.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitCat2/Pods-FitCat2.release.xcconfig"; sourceTree = "<group>"; };
 		86E9A460290C9786C3197B6D /* Pods-FitCat2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitCat2UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitCat2UITests/Pods-FitCat2UITests.release.xcconfig"; sourceTree = "<group>"; };
 		8A3A79738E9C12C61779FA7C /* Pods_FitCat2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitCat2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,6 +175,7 @@
 		50E734841E08F691005B0792 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5030E28A1E0B8358000EFC28 /* WeightPicker.swift */,
 				C8927BED1DE6222B000711DD /* PlanGeneration.swift */,
 				C8927BE71DE6204E000711DD /* CreateCat.swift */,
 				C8B460DB1DE38E32003DB92E /* DataObjects.swift */,
@@ -541,6 +544,7 @@
 				C8343F781DEB5C5C00AE0DF6 /* TableViewCell.swift in Sources */,
 				C8927BF41DE622E8000711DD /* SelectBCSViewController.swift in Sources */,
 				C8A278EB1DF3608F0064E11C /* CatCardsViewController.swift in Sources */,
+				5030E28B1E0B8358000EFC28 /* WeightPicker.swift in Sources */,
 				C8A278E91DF3601B0064E11C /* KDCircularProgress.swift in Sources */,
 				C8927BEC1DE6215A000711DD /* LoginViewController.swift in Sources */,
 				C8D432481DEC053900474E29 /* NewCatCardsCollectionViewController.swift in Sources */,
