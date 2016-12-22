@@ -13,6 +13,8 @@ import Alamofire
 
 class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
+    @IBOutlet var catNameLabel: UILabel!
+    
     //cat profile img
     @IBOutlet weak var catProfileImg: UIImageView!
     
@@ -43,6 +45,8 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         createCatObj.image_id = ""
         createCatObj.cat_id = 0
        
+//        catNameLabel.text = "Cat Name *"
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
@@ -70,7 +74,8 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         let doneButton = UIBarButtonItem.init(barButtonSystemItem: .done, target: self, action: #selector(dismissKeyboard))
         doneToolbar.items = [flexSpace,doneButton]
         
-        datePicker.datePickerMode = UIDatePickerMode.date
+        
+        datePicker.datePickerMode = .date
         datePicker.maximumDate = Date()
         catDobField.inputAccessoryView = doneToolbar
         catDobField.inputView = datePicker
@@ -145,7 +150,22 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         createCatObj.birthday = standardDateFormat
         createCatObj.initial_weight = catWeightField.text!
         createCatObj.breed_id = catBreedField.text!
-        performSegue(withIdentifier: "selectBCSView", sender: self)
+        
+        
+        if (catNameField.text?.isEmpty)! || (catDobField.text?.isEmpty)! || (catWeightField.text?.isEmpty)! {
+            
+            let alert = UIAlertController(title: "Error", message:"Opps, Some required fields have not been filled.", preferredStyle: .alert)
+            let closeAction = UIAlertAction(title:"Close", style: .cancel, handler: nil)
+            alert.addAction(closeAction)
+            self.present(alert, animated: true, completion:nil)
+            
+        } else {
+            performSegue(withIdentifier: "selectBCSView", sender: self)
+        }
+        
+        
+        
+        
         
     }
     
