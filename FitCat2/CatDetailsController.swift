@@ -136,6 +136,9 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         createCatObj.birthday = catDobField.text!
         createCatObj.initial_weight = catWeightField.text!
         createCatObj.breed_id = catBreedField.text!
+        performSegue(withIdentifier: "selectBCSView", sender: self)
+        //let selectBcsViewController = selectBcsController()
+        //present(selectBcsViewController, animated: true, completion: nil)
     }
     
     @IBAction func touchCancel(_ sender: UIButton){

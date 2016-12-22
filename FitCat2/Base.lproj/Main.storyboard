@@ -428,7 +428,7 @@
                                 <connections>
                                     <action selector="btn3:" destination="Nrq-2C-WbR" eventType="touchUpInside" id="PNS-tV-L32"/>
                                     <action selector="touchCancel:" destination="Nrq-2C-WbR" eventType="touchCancel" id="piX-Jc-X3k"/>
-                                    <segue destination="q8Q-b3-iB4" kind="show" id="8yr-83-EKY"/>
+                                    <segue destination="q8Q-b3-iB4" kind="show" identifier="selectBCSView" id="JnQ-yu-amO"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Neutered" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lni-d1-ZyD">
@@ -2278,7 +2278,7 @@
         <!--select BCS-->
         <scene sceneID="xOP-sY-XUC">
             <objects>
-                <viewController title="select BCS" id="q8Q-b3-iB4" customClass="selectBcsController" customModule="FitCat2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="selectBcsController" title="select BCS" id="q8Q-b3-iB4" customClass="selectBcsController" customModule="FitCat2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SC6-pC-Bsy"/>
                         <viewControllerLayoutGuide type="bottom" id="S5E-U0-PZt"/>
