@@ -140,26 +140,32 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
     //continue btn
     @IBAction func btn3(_ sender: UIButton) {
         sender.layer.backgroundColor = UIColor(white: 1.0, alpha:0.1).cgColor
-        
-        
-        //The server will accept the following data format:
-        // mm/dd/yy
-    
-        createCatObj.user_id = floginobj.f_id
-        createCatObj.name = catNameField.text!
-        createCatObj.birthday = standardDateFormat
-        createCatObj.initial_weight = catWeightField.text!
-        createCatObj.breed_id = catBreedField.text!
-        
-        
+
         if (catNameField.text?.isEmpty)! || (catDobField.text?.isEmpty)! || (catWeightField.text?.isEmpty)! {
-            
+
             let alert = UIAlertController(title: "Error", message:"Opps, Some required fields have not been filled.", preferredStyle: .alert)
             let closeAction = UIAlertAction(title:"Close", style: .cancel, handler: nil)
             alert.addAction(closeAction)
             self.present(alert, animated: true, completion:nil)
             
         } else {
+            //The server will accept the following data format:
+            // mm/dd/yy
+            createCatObj.user_id = floginobj.f_id
+            createCatObj.name = catNameField.text!
+            createCatObj.birthday = standardDateFormat
+            createCatObj.breed_id = catBreedField.text!
+            
+            let testNum = Float(catWeightField.text!)
+            if testNum != nil {
+                createCatObj.initial_weight = catWeightField.text!
+            } else {
+                let alert = UIAlertController(title: "Error", message:"Please enter number in weight.", preferredStyle: .alert)
+                let closeAction = UIAlertAction(title:"Close", style: .cancel, handler: nil)
+                alert.addAction(closeAction)
+                self.present(alert, animated: true, completion:nil)
+            }
+            
             performSegue(withIdentifier: "selectBCSView", sender: self)
         }
         
