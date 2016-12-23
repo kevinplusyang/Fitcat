@@ -10,8 +10,11 @@ import UIKit
 
 class WeightPicker: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    let pounds = ["1 Pound","2 Pounds","3 Pounds","4 Pounds","5 Pounds","6 Pounds","7 Pounds","8 Pounds","9 Pounds","10 Pounds"]
-    let ounces = ["1 Ounce","2 Ounces","3 Ounces","4 Ounces","5 Ounces","6 Ounces","7 Ounces","8 Ounces","9 Ounces","10 Ounces", "11 Ounces", "12 Ounces", "13 Ounces", "14 Ounces", "15 Ounces", "16 Ounces"]
+    var isPounds = true
+    let pounds = [3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
+    let ounces = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+    let kilograms = [2,3,4,5,6,7,8,9,10,11,12]
+    let grams = [0,1,2,3,4,5,6,7,8,9]
     var selectedPounds = ""
     var selectedOunces = ""
 
@@ -28,24 +31,61 @@ class WeightPicker: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
      func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 2
+        return 4
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return component == 0 ? pounds.count : ounces.count
+        if isPounds {
+            if component % 2 != 0 {
+                return 1
+            } else {
+             return component == 0 ? pounds.count : ounces.count
+            }
+        } else {
+            if component % 2 != 0 {
+                return 1
+            } else {
+              return component == 0 ? kilograms.count : grams.count
+            }
+        }
     }
     
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return component == 0 ? pounds[row] : ounces[row]
+        if isPounds {
+            if component % 2 != 0 {
+                return component == 1 ? "Pounds" : "Ounces"
+            } else {
+                return component == 0 ? String(pounds[row]) : String(ounces[row])
+            }
+        } else {
+            if component % 2 != 0 {
+                return component == 1 ? "." : "Kilograms"
+            } else {
+                return component == 0 ? String(kilograms[row]) : String(grams[row])
+            }
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print("Selected")
         if component == 0 {
-            selectedPounds = pounds[row]
+            selectedPounds = String(pounds[row])
         } else {
-            selectedOunces = ounces[row]
+            selectedOunces = String(ounces[row])
         }
     }
-
+    
+    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+        if isPounds {
+            if component % 2 != 0 {
+                return 100.0
+            } else {
+                return 30.0
+            }
+        } else {
+                return component == 3 ? 140.0 : 30.0
+            
+        }
+    }
 }

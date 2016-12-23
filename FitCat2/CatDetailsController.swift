@@ -33,6 +33,7 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
     @IBOutlet weak var btn3ol: UIButton!
     var standardDateFormat = ""
     var datePicker = UIDatePicker()
+    var weightPicker = WeightPicker()
     override func viewDidLoad() {
         createCatObj.user_id = 0
         createCatObj.name = ""
@@ -80,9 +81,25 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         catDobField.inputView = datePicker
         datePicker.addTarget(self, action: #selector(catDetailsController.dateChanged(datePicker:)), for: UIControlEvents.valueChanged)
         
-        let weightPicker = WeightPicker()
+        let weightToolbar = UIToolbar.init()
+        weightToolbar.sizeToFit()
+        let poundsButton = UIBarButtonItem.init(title: "Pounds", style: .plain, target: self, action: #selector(changeWeightToPounds))
+        let kilogramsButton = UIBarButtonItem.init(title: "Kilograms", style: .plain, target: self, action: #selector(changeWeightToKilograms))
+        weightToolbar.items = [poundsButton,flexSpace,kilogramsButton]
+        catWeightField.inputAccessoryView = weightToolbar
         catWeightField.inputView = weightPicker
     }
+    
+    func changeWeightToPounds() {
+        weightPicker.isPounds = true
+        weightPicker.reloadAllComponents()
+    }
+    
+    func changeWeightToKilograms() {
+        weightPicker.isPounds = false
+        weightPicker.reloadAllComponents()
+    }
+
     
     @IBAction func breedSelection(sender: UIButton) {
         let dest = self.storyboard?.instantiateViewController(withIdentifier: "SecondViewController")
