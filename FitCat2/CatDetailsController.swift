@@ -34,7 +34,12 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
     var standardDateFormat = ""
     var datePicker = UIDatePicker()
     var weightPicker = WeightPicker()
+    var kilogramPicker = WeightPicker()
+    var pounds = true
     override func viewDidLoad() {
+        kilogramPicker.isPounds = false
+        
+        
         createCatObj.user_id = 0
         createCatObj.name = ""
         createCatObj.birthday = ""
@@ -83,21 +88,29 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         
         let weightToolbar = UIToolbar.init()
         weightToolbar.sizeToFit()
+        let weightDoneButton = UIBarButtonItem.init(barButtonSystemItem: .done, target: self, action: #selector(updateWeightDisplay))
         let poundsButton = UIBarButtonItem.init(title: "Pounds", style: .plain, target: self, action: #selector(changeWeightToPounds))
         let kilogramsButton = UIBarButtonItem.init(title: "Kilograms", style: .plain, target: self, action: #selector(changeWeightToKilograms))
-        weightToolbar.items = [poundsButton,flexSpace,kilogramsButton]
+        weightToolbar.items = [poundsButton,kilogramsButton,flexSpace,weightDoneButton]
         catWeightField.inputAccessoryView = weightToolbar
         catWeightField.inputView = weightPicker
     }
     
+    func updateWeightDisplay() {
+        catWeightField.text = pounds ? weightPicker.weightString : kilogramPicker.weightString
+        dismissKeyboard()
+    }
+    
     func changeWeightToPounds() {
-        weightPicker.isPounds = true
-        weightPicker.reloadAllComponents()
+        pounds = true
+        catWeightField.inputView = weightPicker
+        catWeightField.reloadInputViews()
     }
     
     func changeWeightToKilograms() {
-        weightPicker.isPounds = false
-        weightPicker.reloadAllComponents()
+        pounds = false
+        catWeightField.inputView = kilogramPicker
+        catWeightField.reloadInputViews()
     }
 
     

@@ -15,8 +15,7 @@ class WeightPicker: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
     let ounces = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
     let kilograms = [2,3,4,5,6,7,8,9,10,11,12]
     let grams = [0,1,2,3,4,5,6,7,8,9]
-    var selectedPounds = ""
-    var selectedOunces = ""
+    var weightString = ""
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -68,12 +67,8 @@ class WeightPicker: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print("Selected")
-        if component == 0 {
-            selectedPounds = String(pounds[row])
-        } else {
-            selectedOunces = String(ounces[row])
-        }
+        weightString = isPounds ? "\(pounds[row]) Pounds \(ounces[row]) Ounces" : "\(kilograms[row]).\(grams[row]) Kilograms"
+       
     }
     
     func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
@@ -81,10 +76,10 @@ class WeightPicker: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
             if component % 2 != 0 {
                 return 100.0
             } else {
-                return 30.0
+                return 35.0
             }
         } else {
-                return component == 3 ? 140.0 : 30.0
+                return component == 3 ? 140.0 : 35.0
             
         }
     }
