@@ -39,7 +39,7 @@ class InitialViewController: UIViewController, UITextFieldDelegate {
         
     
         //emailTextField set up
-        emailTextField.frame =  CGRect(x: CGFloat(0), y: loginButton.frame.minY - 400.0, width: buttonWidth, height: CGFloat(buttonHeight) - 10.0)
+        emailTextField.frame =  CGRect(x: CGFloat(0), y: loginButton.frame.minY - view.frame.midY, width: buttonWidth, height: CGFloat(buttonHeight) - 10.0)
         emailTextField.center.x = view.center.x
         emailTextField.textColor = .white
         emailTextField.returnKeyType = .continue
@@ -59,7 +59,7 @@ class InitialViewController: UIViewController, UITextFieldDelegate {
         welcomeLabel.center.y = (emailLabel.frame.minY)/2.0
         welcomeLabel.center.x = view.center.x
         welcomeLabel.textColor = .white
-        welcomeLabel.font = UIFont.boldSystemFont(ofSize: 36)
+        welcomeLabel.font = UIFont.boldSystemFont(ofSize: 30)
         welcomeLabel.sizeToFit()
         
         //white line below
