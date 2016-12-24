@@ -88,17 +88,17 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         
         let weightToolbar = UIToolbar.init()
         weightToolbar.sizeToFit()
-        let weightDoneButton = UIBarButtonItem.init(barButtonSystemItem: .done, target: self, action: #selector(updateWeightDisplay))
+        weightPicker.catViewController = self
+        kilogramPicker.catViewController = self
         let poundsButton = UIBarButtonItem.init(title: "Pounds", style: .plain, target: self, action: #selector(changeWeightToPounds))
         let kilogramsButton = UIBarButtonItem.init(title: "Kilograms", style: .plain, target: self, action: #selector(changeWeightToKilograms))
-        weightToolbar.items = [poundsButton,kilogramsButton,flexSpace,weightDoneButton]
+        weightToolbar.items = [poundsButton,kilogramsButton,flexSpace,doneButton]
         catWeightField.inputAccessoryView = weightToolbar
         catWeightField.inputView = weightPicker
     }
     
     func updateWeightDisplay() {
-        catWeightField.text = pounds ? weightPicker.weightString : kilogramPicker.weightString
-        dismissKeyboard()
+        catWeightField.text = pounds ? (weightPicker.poundsString + weightPicker.ouncesString) : (kilogramPicker.kilogramsString + kilogramPicker.gramsString)
     }
     
     func changeWeightToPounds() {

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4B33674AA79D7C495F04881B /* Pods_FitCat2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A41889A4EAA11BE6953CE999 /* Pods_FitCat2.framework */; };
 		5030E28B1E0B8358000EFC28 /* WeightPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5030E28A1E0B8358000EFC28 /* WeightPicker.swift */; };
+		5030E28D1E0E0676000EFC28 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5030E28C1E0E0676000EFC28 /* InitialViewController.swift */; };
+		5030E28F1E0E709C000EFC28 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5030E28E1E0E709C000EFC28 /* Extensions.swift */; };
 		5658C0980CA8592D66FFB172 /* Pods_FitCat2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 066762C49929BB70E9648594 /* Pods_FitCat2Tests.framework */; };
 		686370EB8E56D8C174442C29 /* Pods_FitCat2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A3A79738E9C12C61779FA7C /* Pods_FitCat2UITests.framework */; };
 		C80F66E31DEF24AF0008F4AD /* JBChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80F66E21DEF24AF0008F4AD /* JBChartViewController.swift */; };
@@ -63,6 +65,8 @@
 /* Begin PBXFileReference section */
 		066762C49929BB70E9648594 /* Pods_FitCat2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitCat2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5030E28A1E0B8358000EFC28 /* WeightPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightPicker.swift; sourceTree = "<group>"; };
+		5030E28C1E0E0676000EFC28 /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		5030E28E1E0E709C000EFC28 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5BE0D10F1C8FDC7CC650A736 /* Pods-FitCat2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitCat2.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitCat2/Pods-FitCat2.release.xcconfig"; sourceTree = "<group>"; };
 		86E9A460290C9786C3197B6D /* Pods-FitCat2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitCat2UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitCat2UITests/Pods-FitCat2UITests.release.xcconfig"; sourceTree = "<group>"; };
 		8A3A79738E9C12C61779FA7C /* Pods_FitCat2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitCat2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +140,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5030E2901E0E70A0000EFC28 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5030E28E1E0E709C000EFC28 /* Extensions.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		50E734821E08F63F005B0792 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +172,7 @@
 				C8A278E61DF35F5F0064E11C /* MainPageController.swift */,
 				C8A278EA1DF3608F0064E11C /* CatCardsViewController.swift */,
 				C8A278EC1DF360E50064E11C /* CupboardCollectionViewController.swift */,
+				5030E28C1E0E0676000EFC28 /* InitialViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -245,6 +258,7 @@
 				C860BC1E1DE360AE005E00CC /* Info.plist */,
 				50E734831E08F65F005B0792 /* TableViewCells */,
 				50E734821E08F63F005B0792 /* ViewControllers */,
+				5030E2901E0E70A0000EFC28 /* Extensions */,
 				50E734841E08F691005B0792 /* Models */,
 				50E734851E08F8FD005B0792 /* Animations */,
 			);
@@ -328,7 +342,7 @@
 				TargetAttributes = {
 					C860BC0E1DE360AE005E00CC = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = ALM2K2B6Z6;
+						DevelopmentTeam = 4JJ97T2879;
 						ProvisioningStyle = Automatic;
 					};
 					C860BC221DE360AE005E00CC = {
@@ -552,11 +566,13 @@
 				C8927BF81DE6232B000711DD /* TipsForSuccessViewController.swift in Sources */,
 				C8927BE61DE61FF1000711DD /* CatDetailsController.swift in Sources */,
 				C8E102041DEFA450007E4027 /* YearJBChartViewController.swift in Sources */,
+				5030E28D1E0E0676000EFC28 /* InitialViewController.swift in Sources */,
 				C8927BF61DE6230B000711DD /* TestingTableViewController.swift in Sources */,
 				C8343F821DEB5DAC00AE0DF6 /* AllFoodUIViewController.swift in Sources */,
 				C8DE82441DEA875F0054721B /* FoodMarketTableViewController.swift in Sources */,
 				C8927BF01DE6224F000711DD /* PlanOverviewControllerViewController.swift in Sources */,
 				C8927BF21DE6228F000711DD /* SecondViewController.swift in Sources */,
+				5030E28F1E0E709C000EFC28 /* Extensions.swift in Sources */,
 				C8927BEA1DE62099000711DD /* JoinViewController.swift in Sources */,
 				C80F66E31DEF24AF0008F4AD /* JBChartViewController.swift in Sources */,
 				C8A278E71DF35F5F0064E11C /* MainPageController.swift in Sources */,
@@ -709,8 +725,9 @@
 			baseConfigurationReference = D3504D3B2294E124901D9BCC /* Pods-FitCat2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = ALM2K2B6Z6;
+				DEVELOPMENT_TEAM = 4JJ97T2879;
 				INFOPLIST_FILE = FitCat2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Cornell-Information-Science.FitCat2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -724,8 +741,9 @@
 			baseConfigurationReference = 5BE0D10F1C8FDC7CC650A736 /* Pods-FitCat2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = ALM2K2B6Z6;
+				DEVELOPMENT_TEAM = 4JJ97T2879;
 				INFOPLIST_FILE = FitCat2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Cornell-Information-Science.FitCat2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
