@@ -18,6 +18,7 @@ class InitialViewController: UIViewController, UITextFieldDelegate {
     let emailTextField = UITextField()
     let lineBelowEmailTextField = CALayer()
     let footerLabel = UILabel()
+    let incorrectEmailFooterLabel = InsetLabel()
     var isEmailValid = false
     
     override func viewDidLoad() {
@@ -80,6 +81,7 @@ class InitialViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(emailLabel)
         view.layer.addSublayer(lineBelowEmailTextField)
         view.addSubview(footerLabel)
+        view.addSubview(incorrectEmailFooterLabel)
 
         // Do any additional setup after loading the view.
     }
@@ -127,15 +129,19 @@ class InitialViewController: UIViewController, UITextFieldDelegate {
     func continueToNextScreen() {
         if !isEmailValid {
             //display invalid email error
-            footerLabel.text = "Oops. Please enter a valid email address"
-            footerLabel.textColor = UIColor(red: 217.0/255.0, green: 73.0/255.0, blue: 55.0/255.0, alpha: 1.0)
-            footerLabel.backgroundColor = .white
-            footerLabel.sizeToFit()
+            footerLabel.isHidden = true
+            incorrectEmailFooterLabel.frame = footerLabel.frame
+            incorrectEmailFooterLabel.text = "Oops. Please enter a valid email address."
+            incorrectEmailFooterLabel.textColor = UIColor(red: 217.0/255.0, green: 73.0/255.0, blue: 55.0/255.0, alpha: 1.0)
+            incorrectEmailFooterLabel.backgroundColor = .white
+            incorrectEmailFooterLabel.adjustsFontSizeToFitWidth = true
+            
             emailTextField.shake()
             
         } else {
             //check if email is in the system, if not show join page, if so show password screen
             footerLabel.isHidden = true
+            incorrectEmailFooterLabel.isHidden = true
         }
     }
 
