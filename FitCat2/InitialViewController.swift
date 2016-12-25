@@ -143,11 +143,9 @@ class InitialViewController: UIViewController, UITextFieldDelegate {
             //check if email is in the system, if not show join page, if so show password screen
             footerLabel.isHidden = true
             incorrectEmailFooterLabel.isHidden = true
-            print("About to segue")
             let signUpVC = SignUpViewController()
             navigationController?.pushViewController(signUpVC, animated: true)
-            //self.present(signUpVC, animated: true, completion: nil)
-            print("pushed viewController")
+    
         }
     }
 

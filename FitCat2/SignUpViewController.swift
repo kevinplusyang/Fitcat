@@ -12,14 +12,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     
     let gradient = CAGradientLayer()
-    let welcomeLabel = UILabel()
-    let loginButton = UIButton()
-    let emailLabel = UILabel()
-    let emailTextField = UITextField()
-    let lineBelowEmailTextField = CALayer()
+    let signUpLabel = UILabel()
+    let createAccountButton = UIButton()
+    let passwordLabel = UILabel()
+    let passwordTextField = UITextField()
+    let lineBelowPasswordTextField = CALayer()
     let footerLabel = UILabel()
-    let incorrectEmailFooterLabel = InsetLabel()
-    var isEmailValid = false
+    let incorrectPasswordFooterLabel = InsetLabel()
+    var isPasswordValid = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,61 +28,61 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         //Button set up
         let buttonWidth = view.frame.width * 0.828
         let buttonHeight = 55.0
-        loginButton.frame = CGRect(x: CGFloat(0), y: view.frame.height - 85.0, width: buttonWidth, height: CGFloat(buttonHeight))
-        loginButton.center.x = view.center.x
-        loginButton.layer.borderWidth = 2.0
-        loginButton.layer.borderColor = UIColor.white.cgColor
-        loginButton.layer.cornerRadius = 7
-        loginButton.setTitle("Login", for: .normal)
-        loginButton.setTitleColor(.lightGray, for: .highlighted)
-        loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
+        createAccountButton.frame = CGRect(x: CGFloat(0), y: view.frame.height - 85.0, width: buttonWidth, height: CGFloat(buttonHeight))
+        createAccountButton.center.x = view.center.x
+        createAccountButton.layer.borderWidth = 2.0
+        createAccountButton.layer.borderColor = UIColor.white.cgColor
+        createAccountButton.layer.cornerRadius = 7
+        createAccountButton.setTitle("Create Account", for: .normal)
+        createAccountButton.setTitleColor(.lightGray, for: .highlighted)
+        createAccountButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         
         
-        //emailTextField set up
-        emailTextField.frame =  CGRect(x: CGFloat(0), y: loginButton.frame.minY - view.frame.midY, width: buttonWidth, height: CGFloat(buttonHeight) - 10.0)
-        emailTextField.center.x = view.center.x
-        emailTextField.textColor = .white
-        emailTextField.returnKeyType = .continue
-        emailTextField.attributedPlaceholder = NSAttributedString(string: "Please Create A Password", attributes: [NSForegroundColorAttributeName: UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6)])
-        emailTextField.delegate = self
+        //passwordTextField set up
+        passwordTextField.frame =  CGRect(x: CGFloat(0), y: createAccountButton.frame.minY - view.frame.midY, width: buttonWidth, height: CGFloat(buttonHeight) - 10.0)
+        passwordTextField.center.x = view.center.x
+        passwordTextField.textColor = .white
+        passwordTextField.returnKeyType = .continue
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Please Create A Password", attributes: [NSForegroundColorAttributeName: UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6)])
+        passwordTextField.delegate = self
+        passwordTextField.isSecureTextEntry = true
         
-        //email Label
-        emailLabel.frame = emailTextField.frame
-        emailLabel.center.y = emailTextField.center.y - emailTextField.bounds.height
-        emailLabel.textColor = .white
-        emailLabel.text = "Password"
+        //password Label
+        passwordLabel.frame = passwordTextField.frame
+        passwordLabel.center.y = passwordTextField.center.y - passwordTextField.bounds.height
+        passwordLabel.textColor = .white
+        passwordLabel.text = "Password"
         
         
-        //welcome label
-        welcomeLabel.text = "Sign Up"
-        welcomeLabel.frame = loginButton.frame
-        welcomeLabel.center.y = (emailLabel.frame.minY)/2.0
-        welcomeLabel.center.x = view.center.x
-        welcomeLabel.textColor = .white
-        welcomeLabel.font = UIFont.boldSystemFont(ofSize: 30)
-        welcomeLabel.sizeToFit()
+        //sign up label
+        signUpLabel.text = "Sign Up"
+        signUpLabel.frame = createAccountButton.frame
+        signUpLabel.center.y = (passwordLabel.frame.minY)/2.0
+        signUpLabel.center.x = view.center.x
+        signUpLabel.textColor = .white
+        signUpLabel.font = UIFont.boldSystemFont(ofSize: 30)
+        signUpLabel.sizeToFit()
         
         //white line below
-        lineBelowEmailTextField.frame = CGRect(x: emailTextField.frame.minX, y: emailTextField.frame.maxY + 5.0, width: buttonWidth, height: 2.0)
-        lineBelowEmailTextField.backgroundColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6).cgColor
+        lineBelowPasswordTextField.frame = CGRect(x: passwordTextField.frame.minX, y: passwordTextField.frame.maxY + 5.0, width: buttonWidth, height: 2.0)
+        lineBelowPasswordTextField.backgroundColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6).cgColor
         
         
         //footer label
-        footerLabel.frame = CGRect(x: emailTextField.frame.minX, y: emailTextField.frame.maxY + 10.0, width: buttonWidth, height: 20.0)
-        footerLabel.center.y = lineBelowEmailTextField.frame.maxY + (footerLabel.frame.height/2.0) + 10.0
+        footerLabel.frame = CGRect(x: passwordTextField.frame.minX, y: passwordTextField.frame.maxY + 10.0, width: buttonWidth, height: 20.0)
+        footerLabel.center.y = lineBelowPasswordTextField.frame.maxY + (footerLabel.frame.height/2.0) + 10.0
         footerLabel.text = "Your Password Must Be 8 Characters Or Longer"
         footerLabel.textColor = .white
         footerLabel.adjustsFontSizeToFitWidth = true
-        footerLabel.sizeToFit()
         
         
-        view.addSubview(loginButton)
-        view.addSubview(welcomeLabel)
-        view.addSubview(emailTextField)
-        view.addSubview(emailLabel)
-        view.layer.addSublayer(lineBelowEmailTextField)
+        view.addSubview(createAccountButton)
+        view.addSubview(signUpLabel)
+        view.addSubview(passwordTextField)
+        view.addSubview(passwordLabel)
+        view.layer.addSublayer(lineBelowPasswordTextField)
         view.addSubview(footerLabel)
-        view.addSubview(incorrectEmailFooterLabel)
+        view.addSubview(incorrectPasswordFooterLabel)
         
         // Do any additional setup after loading the view.
     }
@@ -112,10 +112,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
         
-        lineBelowEmailTextField.backgroundColor = emailTextField.text?.characters.count == 0 ? UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6).cgColor : UIColor.white.cgColor
-        isEmailValid = emailTextField.text?.characters.count == 0 ? false : isValidPassword(testStr: emailTextField.text!)
+        lineBelowPasswordTextField.backgroundColor = passwordTextField.text?.characters.count == 0 ? UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6).cgColor : UIColor.white.cgColor
+        isPasswordValid = passwordTextField.text?.characters.count == 0 ? false : isValidPassword(testStr: passwordTextField.text!)
         continueToNextScreen()
         return true
     }
@@ -126,21 +126,22 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     func continueToNextScreen() {
-        if !isEmailValid {
+        if !isPasswordValid {
             //display invalid email error
             footerLabel.isHidden = true
-            incorrectEmailFooterLabel.frame = footerLabel.frame
-            incorrectEmailFooterLabel.text = "Oops. Please enter a valid password"
-            incorrectEmailFooterLabel.textColor = UIColor(red: 217.0/255.0, green: 73.0/255.0, blue: 55.0/255.0, alpha: 1.0)
-            incorrectEmailFooterLabel.backgroundColor = .white
-            incorrectEmailFooterLabel.adjustsFontSizeToFitWidth = true
-            
-            emailTextField.shake()
+            incorrectPasswordFooterLabel.frame = footerLabel.frame
+            incorrectPasswordFooterLabel.text = "Oops. Please enter a valid password"
+            incorrectPasswordFooterLabel.textColor = UIColor(red: 217.0/255.0, green: 73.0/255.0, blue: 55.0/255.0, alpha: 1.0)
+            incorrectPasswordFooterLabel.backgroundColor = .white
+            incorrectPasswordFooterLabel.adjustsFontSizeToFitWidth = true
+            passwordTextField.shake()
             
         } else {
             //check if email is in the system, if not show join page, if so show password screen
             footerLabel.isHidden = true
-            incorrectEmailFooterLabel.isHidden = true
+            incorrectPasswordFooterLabel.isHidden = true
+            let tosVC = TermsOfServiceViewController()
+            navigationController?.pushViewController(tosVC, animated: true)
         }
     }
     
