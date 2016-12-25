@@ -24,7 +24,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpGradient()
-        
+        self.navigationItem.title = ""
         //Button set up
         let buttonWidth = view.frame.width * 0.828
         let buttonHeight = 55.0
@@ -33,7 +33,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         createAccountButton.layer.borderWidth = 2.0
         createAccountButton.layer.borderColor = UIColor.white.cgColor
         createAccountButton.layer.cornerRadius = 7
-        createAccountButton.setTitle("Create Account", for: .normal)
+        createAccountButton.setTitle("Continue", for: .normal)
         createAccountButton.setTitleColor(.lightGray, for: .highlighted)
         createAccountButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         

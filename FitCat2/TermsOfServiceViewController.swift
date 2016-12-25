@@ -20,7 +20,7 @@ class TermsOfServiceViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpGradient()
-        
+        self.navigationItem.title = ""
         //Button set up
         let buttonWidth = view.frame.width * 0.828
         let buttonHeight = 55.0
