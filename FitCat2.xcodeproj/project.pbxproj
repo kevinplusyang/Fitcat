@@ -13,6 +13,7 @@
 		5030E28F1E0E709C000EFC28 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5030E28E1E0E709C000EFC28 /* Extensions.swift */; };
 		5030E2921E0F81C6000EFC28 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5030E2911E0F81C6000EFC28 /* SignUpViewController.swift */; };
 		5030E2941E0FAF74000EFC28 /* TermsOfServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5030E2931E0FAF74000EFC28 /* TermsOfServiceViewController.swift */; };
+		5030E2961E110E95000EFC28 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5030E2951E110E95000EFC28 /* PreferencesViewController.swift */; };
 		5658C0980CA8592D66FFB172 /* Pods_FitCat2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 066762C49929BB70E9648594 /* Pods_FitCat2Tests.framework */; };
 		686370EB8E56D8C174442C29 /* Pods_FitCat2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A3A79738E9C12C61779FA7C /* Pods_FitCat2UITests.framework */; };
 		C80F66E31DEF24AF0008F4AD /* JBChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80F66E21DEF24AF0008F4AD /* JBChartViewController.swift */; };
@@ -71,6 +72,7 @@
 		5030E28E1E0E709C000EFC28 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5030E2911E0F81C6000EFC28 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		5030E2931E0FAF74000EFC28 /* TermsOfServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsOfServiceViewController.swift; sourceTree = "<group>"; };
+		5030E2951E110E95000EFC28 /* PreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		5BE0D10F1C8FDC7CC650A736 /* Pods-FitCat2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitCat2.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitCat2/Pods-FitCat2.release.xcconfig"; sourceTree = "<group>"; };
 		86E9A460290C9786C3197B6D /* Pods-FitCat2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitCat2UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitCat2UITests/Pods-FitCat2UITests.release.xcconfig"; sourceTree = "<group>"; };
 		8A3A79738E9C12C61779FA7C /* Pods_FitCat2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitCat2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,6 +179,7 @@
 				C8A278EA1DF3608F0064E11C /* CatCardsViewController.swift */,
 				C8A278EC1DF360E50064E11C /* CupboardCollectionViewController.swift */,
 				5030E28C1E0E0676000EFC28 /* InitialViewController.swift */,
+				5030E2951E110E95000EFC28 /* PreferencesViewController.swift */,
 				5030E2911E0F81C6000EFC28 /* SignUpViewController.swift */,
 				5030E2931E0FAF74000EFC28 /* TermsOfServiceViewController.swift */,
 			);
@@ -585,6 +588,7 @@
 				C80F66E31DEF24AF0008F4AD /* JBChartViewController.swift in Sources */,
 				C8A278E71DF35F5F0064E11C /* MainPageController.swift in Sources */,
 				C8927BE41DE61FAF000711DD /* BreedTableViewController.swift in Sources */,
+				5030E2961E110E95000EFC28 /* PreferencesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

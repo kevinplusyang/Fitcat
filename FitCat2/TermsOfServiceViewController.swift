@@ -96,7 +96,8 @@ class TermsOfServiceViewController: UIViewController{
 
 
     func continueToNextScreen() {
-       
+        let prefVC = PreferencesViewController()
+        navigationController?.pushViewController(prefVC, animated: true)
     }
     
     /*
