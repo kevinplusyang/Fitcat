@@ -11,10 +11,14 @@ import Foundation
 import Alamofire
 
 class planGeneration: UIViewController, UITextFieldDelegate {
+    @IBOutlet weak var gotItBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        gotItBtn.layer.borderWidth = 1
+        gotItBtn.layer.borderColor = UIColor.white.cgColor
+        gotItBtn.layer.cornerRadius = 5
     }
     
     @IBAction func generatePlan(_ sender: UIButton) {

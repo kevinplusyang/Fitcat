@@ -143,6 +143,7 @@ class tipsForSuccessControllerViewController: UIViewController {
             tip3.textColor = UIColor(white: 1.0, alpha: 0.5)
             
             //show the button which directs to the next page when clicked
+            gotItBtn.isHidden = true
             gotItBtn2.isHidden = false
             gotItBtn2.layer.cornerRadius = 5
             gotItBtn2.layer.borderWidth = 1
