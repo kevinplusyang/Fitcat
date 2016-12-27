@@ -20,24 +20,38 @@ class planGeneration: UIViewController, UITextFieldDelegate {
     @IBAction func generatePlan(_ sender: UIButton) {
         let initial_bcs = createCatObj.initial_bcs
         let initial_weight = createCatObj.initial_weight
-        var weightNeedToLoss = Double(initial_bcs - 5) * 0.075 * Double(initial_weight)!
-        var monthNeeded = Double(initial_bcs - 5) * 7.5
-        var weightLossPerMonth = weightNeedToLoss / monthNeeded
-        let currentDate = NSData()
+        let weightNeedToLoss = Double(initial_bcs - 5) * 0.075 * Double(initial_weight)!
+        let monthNeeded = Double(initial_bcs - 5) * 7.5
+        let weightLossPerMonth = weightNeedToLoss / monthNeeded
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = DateFormatter.Style.short
-        //        var newDateFormat = dateFormatter.date(from: currentDate)
         
-        var date = Date()
+        print("weight need to lose:\(weightNeedToLoss)")
+        print("month needed:\(monthNeeded)")
+        let monthNeededInt = Int(monthNeeded)
+        let monthRestDouble = monthNeeded - Double(Int(monthNeeded))
+
+        let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "yy/MM/dd"
-        var result = formatter.string(from: date)
-        
+        let result = formatter.string(from: date)
+
         planObj.cat_id = createCatObj.cat_id
         planObj.start_date = result
+
         
-        result = formatter.string(from: date.addingTimeInterval(monthNeeded*30*24*60*60))
-        planObj.end_date = result
+        var endDate = Calendar.current.date(byAdding: .month, value: monthNeededInt, to: Date())
+        
+        let enddateFM1 = formatter.string(from: endDate!)
+        print("end:\(enddateFM1)");
+        
+        let interval = TimeInterval(60 * 60 * 24 * 30 * monthRestDouble)
+        endDate = endDate?.addingTimeInterval(interval)
+        let enddateFM = formatter.string(from: endDate!)
+        print("end:\(enddateFM)");
+
+
+        planObj.end_date = enddateFM
         planObj.weight_lose = weightNeedToLoss
         planObj.weight_lose_per_month = weightLossPerMonth
         planObj.calories_to_lose_per_day = 0.8 * (30 * Double(createCatObj.initial_weight)! + 70)
