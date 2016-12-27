@@ -33,6 +33,7 @@ class ViewController: UIViewController {
         //            }
         //        }
         
+                
         Alamofire.request("http://mingplusyang.com/fitcatDB/jsontest.php").response { response in
             print("Request: \(response.request)")
             print("Response: \(response.response)")
