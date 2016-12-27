@@ -2,7 +2,7 @@
 require_once "dbaccess.php";
 
 
-$email = $_POST['a1'];
+$email = $_POST['email'];
 
 
 $result = mysql_query("select count(*) from user where email = '".$email."' ");
