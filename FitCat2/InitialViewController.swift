@@ -10,7 +10,7 @@ import UIKit
 
 class InitialViewController: UIViewController, UITextFieldDelegate {
     
-    
+    var userEmail = ""
     let gradient = CAGradientLayer()
     let welcomeLabel = UILabel()
     let loginButton = UIButton()
@@ -114,9 +114,6 @@ class InitialViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         emailTextField.resignFirstResponder()
-        
-        lineBelowEmailTextField.backgroundColor = emailTextField.text?.characters.count == 0 ? UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6).cgColor : UIColor.white.cgColor
-        isEmailValid = emailTextField.text?.characters.count == 0 ? false : isValidEmail(testStr: emailTextField.text!)
         continueToNextScreen()
         return true
     }
@@ -125,11 +122,18 @@ class InitialViewController: UIViewController, UITextFieldDelegate {
     func isValidEmail(testStr:String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        print("Is \(testStr) a valid email? \(emailTest.evaluate(with: testStr))")
         return emailTest.evaluate(with: testStr)
     }
     
     func continueToNextScreen() {
+        //MARK: check here if email is in system, not down there
+        lineBelowEmailTextField.backgroundColor = emailTextField.text?.characters.count == 0 ? UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6).cgColor : UIColor.white.cgColor
+        isEmailValid = emailTextField.text?.characters.count == 0 ? false : isValidEmail(testStr: emailTextField.text!)
+        userEmail = emailTextField.text?.characters.count == 0 ? "" : emailTextField.text!
+        
         if !isEmailValid {
+            print("Email is not valid!")
             //display invalid email error
             footerLabel.isHidden = true
             incorrectEmailFooterLabel.frame = footerLabel.frame
@@ -144,7 +148,11 @@ class InitialViewController: UIViewController, UITextFieldDelegate {
             footerLabel.isHidden = true
             incorrectEmailFooterLabel.isHidden = true
             let signUpVC = SignUpViewController()
+            signUpVC.userEmail = userEmail
+            //let returningUserVC = ReturningUserViewController()
+            //returningUserVC.userEmail = userEmail
             navigationController?.pushViewController(signUpVC, animated: true)
+            //navigationController?.pushViewController(returningUserVC, animated: true)
     
         }
     }

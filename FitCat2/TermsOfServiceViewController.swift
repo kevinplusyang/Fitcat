@@ -10,7 +10,8 @@ import UIKit
 
 class TermsOfServiceViewController: UIViewController{
 
-    
+    var userEmail = ""
+    var userPassword = ""
     let gradient = CAGradientLayer()
     let termsOfServiceLabel = UILabel()
     let agreeButton = UIButton()
@@ -58,10 +59,7 @@ class TermsOfServiceViewController: UIViewController{
         termsOfServiceLabel.textColor = .white
         termsOfServiceLabel.font = UIFont.boldSystemFont(ofSize: 30)
         termsOfServiceLabel.sizeToFit()
-        
-    
-        
-    
+
         view.addSubview(agreeButton)
         view.addSubview(termsOfServiceLabel)
         view.addSubview(termsOfServiceTextView)
@@ -92,22 +90,11 @@ class TermsOfServiceViewController: UIViewController{
     func loginButtonPressed() {
         continueToNextScreen()
     }
-    
-
 
     func continueToNextScreen() {
+        //use userEmail and userPassword to create a new user and then continue to prefVC
+        
         let prefVC = PreferencesViewController()
         navigationController?.pushViewController(prefVC, animated: true)
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
