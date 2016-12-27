@@ -106,7 +106,7 @@ class PreferencesViewController: UIViewController {
         let dailyFeedingToggleWidth = remindMeOfDailyFeedingToggle.bounds.width
         let dailyFeedingToggleHeight = remindMeOfDailyFeedingToggle.bounds.height
         remindMeOfDailyFeedingToggle.isOn = true
-        remindMeOfDailyFeedingToggle.onTintColor = .clear
+        //remindMeOfDailyFeedingToggle.onTintColor = .clear
         remindMeOfDailyFeedingToggle.frame = CGRect(x: lineBelowButtons.frame.maxX - dailyFeedingToggleWidth, y: remindMeOfDailyFeedingLabel.frame.maxY + (spaceBetweenElements/2.0), width: dailyFeedingToggleWidth, height: dailyFeedingToggleHeight)
         remindMeOfDailyFeedingToggle.addTarget(self, action: #selector(dailyFeedingTogglePressed(sender:)), for: .primaryActionTriggered)
         remindMeOfDailyFeedingToggle.layer.borderWidth = 1.5
@@ -117,8 +117,9 @@ class PreferencesViewController: UIViewController {
         remindMeOfDailyFeedingToggleLabel.text = "Yes"
         remindMeOfDailyFeedingToggleLabel.textColor = .white
         remindMeOfDailyFeedingToggleLabel.frame = CGRect(x: remindMeOfDailyFeedingToggle.frame.minX - 40.0, y: 0.0, width: 30.0, height: 10.0)
-        remindMeOfDailyFeedingToggleLabel.center.y = remindMeOfDailyFeedingToggle.center.y
         remindMeOfDailyFeedingToggleLabel.sizeToFit()
+        remindMeOfDailyFeedingToggleLabel.center.y = remindMeOfDailyFeedingToggle.center.y
+        
         
         //Line Below Plan Goes Wrong Section
         lineBelowDailyFeeding.frame = CGRect(x: preferencesLabel.frame.minX, y: remindMeOfDailyFeedingToggle.frame.maxY + (spaceBetweenElements/2.0), width: view.bounds.width - (preferencesLabel.frame.minX * 2.0), height: 2.0)
@@ -136,7 +137,7 @@ class PreferencesViewController: UIViewController {
         let planGoesWrongToggleWidth = remindMeWhenPlanGoesWrongToggle.bounds.width
         let planGoesWrongToggleHeight = remindMeWhenPlanGoesWrongToggle.bounds.height
         remindMeWhenPlanGoesWrongToggle.isOn = true
-        remindMeWhenPlanGoesWrongToggle.onTintColor = .clear
+        //remindMeWhenPlanGoesWrongToggle.onTintColor = .clear
         remindMeWhenPlanGoesWrongToggle.frame = CGRect(x: lineBelowDailyFeeding.frame.maxX - dailyFeedingToggleWidth, y: remindMeWhenPlanGoesWrongLabel.frame.maxY + (spaceBetweenElements/2.0), width: planGoesWrongToggleWidth, height: planGoesWrongToggleHeight)
         remindMeWhenPlanGoesWrongToggle.addTarget(self, action: #selector(planGoesWrongTogglePressed(sender:)), for: .primaryActionTriggered)
         remindMeWhenPlanGoesWrongToggle.layer.borderWidth = 1.5
@@ -147,8 +148,9 @@ class PreferencesViewController: UIViewController {
         remindMeWhenPlanGoesWrongToggleLabel.text = "Yes"
         remindMeWhenPlanGoesWrongToggleLabel.textColor = .white
         remindMeWhenPlanGoesWrongToggleLabel.frame = CGRect(x: remindMeWhenPlanGoesWrongToggle.frame.minX - 40.0, y: 0.0, width: 30.0, height: 10.0)
-        remindMeWhenPlanGoesWrongToggleLabel.center.y = remindMeWhenPlanGoesWrongToggle.center.y
         remindMeWhenPlanGoesWrongToggleLabel.sizeToFit()
+        remindMeWhenPlanGoesWrongToggleLabel.center.y = remindMeWhenPlanGoesWrongToggle.center.y
+        
         
         //Line Below Plan Goes Wrong Section
         lineBelowPlanGoesWrong.frame = CGRect(x: preferencesLabel.frame.minX, y: remindMeWhenPlanGoesWrongToggle.frame.maxY + (spaceBetweenElements/2.0), width: view.bounds.width - (preferencesLabel.frame.minX * 2.0), height: 2.0)
@@ -212,8 +214,12 @@ class PreferencesViewController: UIViewController {
         //present(mainVC, animated: true, completion: nil)
         //let createACatVC = catDetailsController()
         //present(createACatVC, animated: true, completion: nil)
-        let dest = storyboard?.instantiateViewController(withIdentifier: "createCatView")
-        present(dest!, animated: true, completion: nil)
+        guard let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "createCatView") as? catDetailsController
+            else {
+                print("Could not instantiate view controller with identifier of type SecondViewController")
+                return
+        }
+        present(vc, animated: true, completion: nil)
     }
     
     func unitsOfMeasurementPressed(sender: UIButton) {

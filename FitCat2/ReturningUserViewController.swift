@@ -151,8 +151,14 @@ class ReturningUserViewController: UIViewController, UITextFieldDelegate {
                     
                     //let mainVC = catCardsViewController()
                     //self.present(mainVC, animated: true, completion: nil)
-                    let dest = self.storyboard?.instantiateViewController(withIdentifier: "createCatView")
-                    self.present(dest!, animated: true, completion: nil)
+                    //let dest = self.storyboard?.instantiateViewController(withIdentifier: "createCatView")
+                    //self.present(dest!, animated: true, completion: nil)
+                    guard let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "createCatView") as? catDetailsController
+                        else {
+                            print("Could not instantiate view controller with identifier of type SecondViewController")
+                            return
+                    }
+                    self.present(vc, animated: true, completion: nil)
                     
                 } else {
                     self.footerLabel.isHidden = true
