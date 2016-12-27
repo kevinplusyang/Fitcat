@@ -14,7 +14,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     var userPassword = ""
     let gradient = CAGradientLayer()
     let signUpLabel = UILabel()
-    let createAccountButton = UIButton()
+    let continueButton = UIButton()
     let passwordLabel = UILabel()
     let passwordTextField = UITextField()
     let lineBelowPasswordTextField = CALayer()
@@ -26,21 +26,22 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         setUpGradient()
         self.navigationItem.title = ""
+        
         //Button set up
         let buttonWidth = view.frame.width * 0.828
         let buttonHeight = 55.0
-        createAccountButton.frame = CGRect(x: CGFloat(0), y: view.frame.height - 85.0, width: buttonWidth, height: CGFloat(buttonHeight))
-        createAccountButton.center.x = view.center.x
-        createAccountButton.layer.borderWidth = 2.0
-        createAccountButton.layer.borderColor = UIColor.white.cgColor
-        createAccountButton.layer.cornerRadius = 7
-        createAccountButton.setTitle("Continue", for: .normal)
-        createAccountButton.setTitleColor(.lightGray, for: .highlighted)
-        createAccountButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
+        continueButton.frame = CGRect(x: CGFloat(0), y: view.frame.height - 85.0, width: buttonWidth, height: CGFloat(buttonHeight))
+        continueButton.center.x = view.center.x
+        continueButton.layer.borderWidth = 2.0
+        continueButton.layer.borderColor = UIColor.white.cgColor
+        continueButton.layer.cornerRadius = 7
+        continueButton.setTitle("Continue", for: .normal)
+        continueButton.setTitleColor(.lightGray, for: .highlighted)
+        continueButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         
         
         //passwordTextField set up
-        passwordTextField.frame =  CGRect(x: CGFloat(0), y: createAccountButton.frame.minY - view.frame.midY, width: buttonWidth, height: CGFloat(buttonHeight) - 10.0)
+        passwordTextField.frame =  CGRect(x: CGFloat(0), y: continueButton.frame.minY - view.frame.midY, width: buttonWidth, height: CGFloat(buttonHeight) - 10.0)
         passwordTextField.center.x = view.center.x
         passwordTextField.textColor = .white
         passwordTextField.returnKeyType = .continue
@@ -57,7 +58,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
         //sign up label
         signUpLabel.text = "Sign Up"
-        signUpLabel.frame = createAccountButton.frame
+        signUpLabel.frame = continueButton.frame
         signUpLabel.center.y = (passwordLabel.frame.minY)/2.0
         signUpLabel.center.x = view.center.x
         signUpLabel.textColor = .white
@@ -77,7 +78,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         footerLabel.adjustsFontSizeToFitWidth = true
         
         
-        view.addSubview(createAccountButton)
+        view.addSubview(continueButton)
         view.addSubview(signUpLabel)
         view.addSubview(passwordTextField)
         view.addSubview(passwordLabel)
@@ -114,10 +115,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         passwordTextField.resignFirstResponder()
-        
-        lineBelowPasswordTextField.backgroundColor = passwordTextField.text?.characters.count == 0 ? UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6).cgColor : UIColor.white.cgColor
-        isPasswordValid = passwordTextField.text?.characters.count == 0 ? false : isValidPassword(testStr: passwordTextField.text!)
-        userPassword = passwordTextField.text?.characters.count == 0 ? "" : passwordTextField.text!
         continueToNextScreen()
         return true
     }
@@ -128,6 +125,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     func continueToNextScreen() {
+        
+        lineBelowPasswordTextField.backgroundColor = passwordTextField.text?.characters.count == 0 ? UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6).cgColor : UIColor.white.cgColor
+        isPasswordValid = passwordTextField.text?.characters.count == 0 ? false : isValidPassword(testStr: passwordTextField.text!)
+        userPassword = passwordTextField.text?.characters.count == 0 ? "" : passwordTextField.text!
+        
         if !isPasswordValid {
             //display invalid email error
             footerLabel.isHidden = true
@@ -139,7 +141,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             passwordTextField.shake()
             
         } else {
-            //check if email is in the system, if not show join page, if so show password screen
             footerLabel.isHidden = true
             incorrectPasswordFooterLabel.isHidden = true
             let tosVC = TermsOfServiceViewController()

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ReturningUserViewController: UIViewController, UITextFieldDelegate {
     
@@ -20,7 +21,6 @@ class ReturningUserViewController: UIViewController, UITextFieldDelegate {
     let lineBelowPasswordTextField = CALayer()
     let footerLabel = UILabel()
     let incorrectPasswordFooterLabel = InsetLabel()
-    var isPasswordCorrect = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,42 +116,54 @@ class ReturningUserViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         passwordTextField.resignFirstResponder()
-        lineBelowPasswordTextField.backgroundColor = passwordTextField.text?.characters.count == 0 ? UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6).cgColor : UIColor.white.cgColor
-        isPasswordCorrect = passwordTextField.text?.characters.count == 0 ? false : isPasswordCorrect(testStr: passwordTextField.text!)
-        userPassword = passwordTextField.text?.characters.count == 0 ? "" : passwordTextField.text!
         continueToNextScreen()
         return true
     }
     
-    
-    func isPasswordCorrect(testStr:String) -> Bool {
-        //check with Database to see if password is correct with the userEmail
-        return testStr.characters.count >= 8
-    }
-    
+
     func continueToNextScreen() {
         //Check if email and password is correct
-        if !isPasswordCorrect {
-            //display invalid email error
-            footerLabel.isHidden = true
-            incorrectPasswordFooterLabel.frame = footerLabel.frame
-            incorrectPasswordFooterLabel.text = "Your Password Is Incorrect"
-            incorrectPasswordFooterLabel.textColor = UIColor(red: 217.0/255.0, green: 73.0/255.0, blue: 55.0/255.0, alpha: 1.0)
-            incorrectPasswordFooterLabel.backgroundColor = .white
-            incorrectPasswordFooterLabel.adjustsFontSizeToFitWidth = true
-            passwordTextField.shake()
+        
+        lineBelowPasswordTextField.backgroundColor = passwordTextField.text?.characters.count == 0 ? UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6).cgColor : UIColor.white.cgColor
+        userPassword = passwordTextField.text?.characters.count == 0 ? "" : passwordTextField.text!
+        
+        
+        let parameters: Parameters = [
+            "useremail" : userEmail.lowercased(),
+            "password" : userPassword
+        ]
+        print("Parameters for returning user: \(parameters)")
+        //Communicate with server via Alamofire.
+        //Method: POST
+        Alamofire.request("http://mingplusyang.com/fitcatDB/login.php", method: .post, parameters: parameters).response{
+            response in
+            print("Request: \(response.request)")
+            print("Response: \(response.response)")
+            print("Error: \(response.error)")
             
-        } else {
-            //check if email is in the system, if not show join page, if so show password screen. can use userEmail
-            footerLabel.isHidden = true
-            incorrectPasswordFooterLabel.isHidden = true
-            print(userEmail)
-            print(userPassword)
-    
-            
-            //MARK: Fix with correct emails
-            //let mainVC = catCardsViewController()
-            //present(mainVC, animated: true, completion: nil)
+            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                print("Data: \(utf8Text)")
+                let userID = Int(utf8Text)!
+                let userCanLogin = userID != 0
+                if userCanLogin {
+                    self.footerLabel.isHidden = true
+                    self.incorrectPasswordFooterLabel.isHidden = true
+                    
+                    //let mainVC = catCardsViewController()
+                    //self.present(mainVC, animated: true, completion: nil)
+                    let dest = self.storyboard?.instantiateViewController(withIdentifier: "createCatView")
+                    self.present(dest!, animated: true, completion: nil)
+                    
+                } else {
+                    self.footerLabel.isHidden = true
+                    self.incorrectPasswordFooterLabel.frame = self.footerLabel.frame
+                    self.incorrectPasswordFooterLabel.text = "Your Password Is Incorrect"
+                    self.incorrectPasswordFooterLabel.textColor = UIColor(red: 217.0/255.0, green: 73.0/255.0, blue: 55.0/255.0, alpha: 1.0)
+                    self.incorrectPasswordFooterLabel.backgroundColor = .white
+                    self.incorrectPasswordFooterLabel.adjustsFontSizeToFitWidth = true
+                    self.passwordTextField.shake()
+                }
+            }
         }
     }
 }

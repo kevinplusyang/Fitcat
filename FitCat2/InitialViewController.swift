@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class InitialViewController: UIViewController, UITextFieldDelegate {
     
@@ -74,7 +75,6 @@ class InitialViewController: UIViewController, UITextFieldDelegate {
         footerLabel.text = "Please Enter Your Email To Continue"
         footerLabel.textColor = .white
         footerLabel.adjustsFontSizeToFitWidth = true
-        footerLabel.sizeToFit()
         
    
         view.addSubview(loginButton)
@@ -127,44 +127,45 @@ class InitialViewController: UIViewController, UITextFieldDelegate {
     }
     
     func continueToNextScreen() {
-        //MARK: check here if email is in system, not down there
         lineBelowEmailTextField.backgroundColor = emailTextField.text?.characters.count == 0 ? UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6).cgColor : UIColor.white.cgColor
         isEmailValid = emailTextField.text?.characters.count == 0 ? false : isValidEmail(testStr: emailTextField.text!)
         userEmail = emailTextField.text?.characters.count == 0 ? "" : emailTextField.text!
-        
-        if !isEmailValid {
-            print("Email is not valid!")
-            //display invalid email error
-            footerLabel.isHidden = true
-            incorrectEmailFooterLabel.frame = footerLabel.frame
-            incorrectEmailFooterLabel.text = "Oops. Please enter a valid email address."
-            incorrectEmailFooterLabel.textColor = UIColor(red: 217.0/255.0, green: 73.0/255.0, blue: 55.0/255.0, alpha: 1.0)
-            incorrectEmailFooterLabel.backgroundColor = .white
-            incorrectEmailFooterLabel.adjustsFontSizeToFitWidth = true
-            emailTextField.shake()
-            
-        } else {
-            //check if email is in the system, if not show join page, if so show password screen
-            footerLabel.isHidden = true
-            incorrectEmailFooterLabel.isHidden = true
-            let signUpVC = SignUpViewController()
-            signUpVC.userEmail = userEmail
-            //let returningUserVC = ReturningUserViewController()
-            //returningUserVC.userEmail = userEmail
-            navigationController?.pushViewController(signUpVC, animated: true)
-            //navigationController?.pushViewController(returningUserVC, animated: true)
     
+        let parameters: Parameters = [
+            "email" : userEmail
+        ]
+        
+        Alamofire.request("http://mingplusyang.com/fitcatDB/checkEmail.php", method: .post, parameters: parameters).response { response in
+            print("Request: \(response.request)")
+            print("Response: \(response.response)")
+            print("Error: \(response.error)")
+            
+            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                print("Data: \(utf8Text)")
+                let isInDatabase = Int(utf8Text)! == 1
+                if isInDatabase && self.isEmailValid {
+                    self.footerLabel.isHidden = true
+                     self.incorrectEmailFooterLabel.isHidden = true
+                     let returningUserVC = ReturningUserViewController()
+                    returningUserVC.userEmail = self.userEmail
+                     self.navigationController?.pushViewController(returningUserVC, animated: true)
+                } else if !isInDatabase && self.isEmailValid {
+                    let signUpVC = SignUpViewController()
+                    signUpVC.userEmail = self.userEmail
+                    self.navigationController?.pushViewController(signUpVC, animated: true)
+                    
+                } else {
+                    //display invalid email error
+                    self.footerLabel.isHidden = true
+                    self.incorrectEmailFooterLabel.frame = self.footerLabel.frame
+                    self.incorrectEmailFooterLabel.text = "Oops. Please enter a valid email address."
+                    self.incorrectEmailFooterLabel.textColor = UIColor(red: 217.0/255.0, green: 73.0/255.0, blue: 55.0/255.0, alpha: 1.0)
+                    self.incorrectEmailFooterLabel.backgroundColor = .white
+                    self.incorrectEmailFooterLabel.adjustsFontSizeToFitWidth = true
+                    self.emailTextField.shake()
+
+                }
+            }
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

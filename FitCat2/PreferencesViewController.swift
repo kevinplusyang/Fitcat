@@ -57,7 +57,7 @@ class PreferencesViewController: UIViewController {
         //MARK: Start and End of Main Content and Space Between Elements
         let startOfContent = preferencesLabel.frame.maxY + (preferencesLabel.frame.maxY * 0.20)
         let endOfContent = startFitCatButton.frame.minY - (startFitCatButton.frame.minY * 0.15)
-        let spaceBetweenElements = (endOfContent - startOfContent) / 8.0
+        let spaceBetweenElements = (endOfContent - startOfContent) / 10.0
         
         //MARK: Units of Measurment Section
         
@@ -207,10 +207,13 @@ class PreferencesViewController: UIViewController {
     
     
     func continueToNextScreen() {
-        //MARK: Fix CatCardsVC
-        
+        //Fix this so it goes to catCardVC
         //let mainVC = catCardsViewController()
         //present(mainVC, animated: true, completion: nil)
+        //let createACatVC = catDetailsController()
+        //present(createACatVC, animated: true, completion: nil)
+        let dest = storyboard?.instantiateViewController(withIdentifier: "createCatView")
+        present(dest!, animated: true, completion: nil)
     }
     
     func unitsOfMeasurementPressed(sender: UIButton) {
@@ -235,7 +238,6 @@ class PreferencesViewController: UIViewController {
     func planGoesWrongTogglePressed(sender: UISwitch) {
         data.set(sender.isOn, forKey: "remindPlanWrong")
         remindMeWhenPlanGoesWrongToggleLabel.text = sender.isOn ? "Yes" : "No"
-        
         //if true, set up notifs stuff to see if plan goes wrong
     }    
 }

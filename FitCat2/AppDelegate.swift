@@ -25,8 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         nav1.navigationBar.backIndicatorImage = backImage
         nav1.navigationBar.backIndicatorTransitionMaskImage = backImage
         nav1.navigationBar.tintColor = .white
-       
-        
         let mainView = InitialViewController()
         nav1.viewControllers = [mainView]
         self.window!.rootViewController = nav1

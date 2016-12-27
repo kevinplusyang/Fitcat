@@ -37,9 +37,8 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
     var kilogramPicker = WeightPicker()
     var pounds = true
     override func viewDidLoad() {
+         super.viewDidLoad()
         kilogramPicker.isPounds = false
-        
-        
         createCatObj.user_id = 0
         createCatObj.name = ""
         createCatObj.birthday = ""
@@ -51,9 +50,6 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         createCatObj.image_id = ""
         createCatObj.cat_id = 0
        
-//        catNameLabel.text = "Cat Name *"
-        
-        super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         //cat profile image UI: round images

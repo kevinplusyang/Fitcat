@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import Alamofire
 
 class TermsOfServiceViewController: UIViewController{
-
+    
+    let userDefaults = UserDefaults.standard
     var userEmail = ""
     var userPassword = ""
     let gradient = CAGradientLayer()
@@ -93,7 +95,31 @@ class TermsOfServiceViewController: UIViewController{
 
     func continueToNextScreen() {
         //use userEmail and userPassword to create a new user and then continue to prefVC
+        //Prepare the inputed text in fields and store them in variable parameters
         
+        //MARK: Get Actual Username From Client
+        let parameters: Parameters = [
+            "useremail" : userEmail.lowercased(),
+            "password" : userPassword,
+            "username" : "default_username"
+        ]
+        
+        print("Parameters for join.php: \(parameters)")
+        //Communicate with server via Alamofire
+        //Using POST method.
+        //Only when the insertion success, the server will response status '1'
+        Alamofire.request("http://mingplusyang.com/fitcatDB/join.php", method: .post, parameters: parameters).response{
+            response in
+            print("Request: \(response.request)")
+            print("Response: \(response.response)")
+            print("Error: \(response.error)")
+            
+            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                let userID = Int(utf8Text) != nil ? Int(utf8Text)! : 0
+                print("userID is: \(userID)")
+                self.userDefaults.set(userID, forKey: "userID")
+            }
+        }
         let prefVC = PreferencesViewController()
         navigationController?.pushViewController(prefVC, animated: true)
     }
