@@ -16,5 +16,3 @@ mysql_query("insert into cat (user_id,name,birthday,breed_id,initial_weight, cur
 $result = mysql_query("select * from cat where user_id = '".$_POST['a1']."' and name = '".$_POST['a2']."' and birthday = '".$_POST['a3']."' ");
 $row = mysql_fetch_array( $result );
 echo $row['id'];
-
-

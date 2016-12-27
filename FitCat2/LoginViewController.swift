@@ -68,6 +68,31 @@ class loginController: UIViewController, UITextFieldDelegate {
                 }
             }
             
+        }
+        
+        
+        
+        //Communicate with server via Alamofire.
+        //Method: POST
+        
+        //Prepare for login information
+        let parameters: Parameters = [
+            "email" : username.text!
+        ]
+        
+        Alamofire.request("http://mingplusyang.com/fitcatDB/checkEmail.php", method: .post, parameters: parameters).response{
+            response in
+            print("Request: \(response.request)")
+            print("Response: \(response.response)")
+            print("Error: \(response.error)")
+            
+            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                var result = 0
+                print("Data: \(utf8Text)")
+                let result = Int(utf8Text)!
+                let isInDatabase = result == 1 ? true : false
+                
+            }
             
         }
         
