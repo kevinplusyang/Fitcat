@@ -109,9 +109,9 @@ class PreferencesViewController: UIViewController {
         //remindMeOfDailyFeedingToggle.onTintColor = .clear
         remindMeOfDailyFeedingToggle.frame = CGRect(x: lineBelowButtons.frame.maxX - dailyFeedingToggleWidth, y: remindMeOfDailyFeedingLabel.frame.maxY + (spaceBetweenElements/2.0), width: dailyFeedingToggleWidth, height: dailyFeedingToggleHeight)
         remindMeOfDailyFeedingToggle.addTarget(self, action: #selector(dailyFeedingTogglePressed(sender:)), for: .primaryActionTriggered)
-        remindMeOfDailyFeedingToggle.layer.borderWidth = 1.5
-        remindMeOfDailyFeedingToggle.layer.borderColor = UIColor.white.cgColor
-        remindMeOfDailyFeedingToggle.layer.cornerRadius = dailyFeedingToggleHeight/2.0
+//        remindMeOfDailyFeedingToggle.layer.borderWidth = 1.5
+//        remindMeOfDailyFeedingToggle.layer.borderColor = UIColor.white.cgColor
+//        remindMeOfDailyFeedingToggle.layer.cornerRadius = dailyFeedingToggleHeight/2.0
         
         //Daily Feeding Yes/No Label
         remindMeOfDailyFeedingToggleLabel.text = "Yes"
@@ -140,9 +140,9 @@ class PreferencesViewController: UIViewController {
         //remindMeWhenPlanGoesWrongToggle.onTintColor = .clear
         remindMeWhenPlanGoesWrongToggle.frame = CGRect(x: lineBelowDailyFeeding.frame.maxX - dailyFeedingToggleWidth, y: remindMeWhenPlanGoesWrongLabel.frame.maxY + (spaceBetweenElements/2.0), width: planGoesWrongToggleWidth, height: planGoesWrongToggleHeight)
         remindMeWhenPlanGoesWrongToggle.addTarget(self, action: #selector(planGoesWrongTogglePressed(sender:)), for: .primaryActionTriggered)
-        remindMeWhenPlanGoesWrongToggle.layer.borderWidth = 1.5
-        remindMeWhenPlanGoesWrongToggle.layer.borderColor = UIColor.white.cgColor
-        remindMeWhenPlanGoesWrongToggle.layer.cornerRadius = dailyFeedingToggleHeight/2.0
+//        remindMeWhenPlanGoesWrongToggle.layer.borderWidth = 1.5
+//        remindMeWhenPlanGoesWrongToggle.layer.borderColor = UIColor.white.cgColor
+//        remindMeWhenPlanGoesWrongToggle.layer.cornerRadius = dailyFeedingToggleHeight/2.0
         
         //Plan Goes Wrong Yes/No Label
         remindMeWhenPlanGoesWrongToggleLabel.text = "Yes"
@@ -214,6 +214,8 @@ class PreferencesViewController: UIViewController {
         //present(mainVC, animated: true, completion: nil)
         //let createACatVC = catDetailsController()
         //present(createACatVC, animated: true, completion: nil)
+        
+        //MARK: Daily Feeding Toggle is True ? Time Set Up Page : Start FitCat
         guard let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "createCatView") as? catDetailsController
             else {
                 print("Could not instantiate view controller with identifier of type SecondViewController")
@@ -237,6 +239,8 @@ class PreferencesViewController: UIViewController {
     func dailyFeedingTogglePressed(sender: UISwitch) {
         data.set(sender.isOn, forKey: "remindDailyFeedings")
         remindMeOfDailyFeedingToggleLabel.text = sender.isOn ? "Yes" : "No"
+        let titleForButton = sender.isOn ? "Continue" : "Start FitCat"
+        startFitCatButton.setTitle(titleForButton, for: .normal)
         
         //if true, set daily notifications etc
     }

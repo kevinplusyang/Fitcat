@@ -14,11 +14,11 @@ class WeightPicker: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
     let pounds = [3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
     let ounces = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
     let kilograms = [2,3,4,5,6,7,8,9,10,11,12]
-    let grams = [0,1,2,3,4,5,6,7,8,9]
+    let grams = [".0",".1",".2",".3",".4",".5",".6",".7",".8",".9"]
     var poundsString = "3 Pounds"
     var ouncesString = " 0 Ounces"
-    var kilogramsString = "2."
-    var gramsString = "0 Kilograms"
+    var kilogramsString = "2"
+    var gramsString = ".0 Kilograms"
     var catViewController : catDetailsController? = nil
 
     /*
@@ -34,7 +34,7 @@ class WeightPicker: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
      func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 4
+        return isPounds ? 4 : 3
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -45,7 +45,7 @@ class WeightPicker: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
              return component == 0 ? pounds.count : ounces.count
             }
         } else {
-            if component % 2 != 0 {
+            if component == 2 {
                 return 1
             } else {
               return component == 0 ? kilograms.count : grams.count
@@ -62,8 +62,8 @@ class WeightPicker: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
                 return component == 0 ? String(pounds[row]) : String(ounces[row])
             }
         } else {
-            if component % 2 != 0 {
-                return component == 1 ? "." : "Kilograms"
+            if component == 2 {
+                return "Kilograms"
             } else {
                 return component == 0 ? String(kilograms[row]) : String(grams[row])
             }
@@ -79,7 +79,7 @@ class WeightPicker: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
             }
         } else {
             if component == 0 {
-                kilogramsString = "\(kilograms[row])."
+                kilogramsString = "\(kilograms[row])"
             } else {
                gramsString = "\(grams[row]) Kilograms"
             }
@@ -97,7 +97,7 @@ class WeightPicker: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
                 return 38.0
             }
         } else {
-                return component == 3 ? 140.0 : 38.0
+                return component == 2 ? 140.0 : 38.0
             
         }
     }
