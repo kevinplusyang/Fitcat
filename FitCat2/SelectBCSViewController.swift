@@ -160,6 +160,8 @@ class selectBcsController: UIViewController {
             "a9" : createCatObj.image_id
         ]
         
+        print(parameters)
+        
         //Communicate with server via Alamofire
         //Using POST method.
         //After successfully create a cat profile on server, Server will response the cat id which is a unique 
@@ -172,7 +174,8 @@ class selectBcsController: UIViewController {
             
             if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
                 print("Data: \(utf8Text)")
-                createCatObj.cat_id = Int(utf8Text)!
+                
+                createCatObj.cat_id = Int(utf8Text) != nil ? Int(utf8Text)! : 999
                 print("CatID:\(createCatObj.cat_id)")
             }
         }

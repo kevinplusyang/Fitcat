@@ -13,7 +13,8 @@ import Alamofire
 
 class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
-    @IBOutlet var catNameLabel: UILabel!
+    let gradient = CAGradientLayer()
+
     
     //cat profile img
     @IBOutlet weak var catProfileImg: UIImageView!
@@ -31,9 +32,26 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
     @IBOutlet weak var btn2ol: UIButton!
     //continue btn outlet
     @IBOutlet weak var btn3ol: UIButton!
+    
+    
+    @IBOutlet weak var toggle: UISwitch!
+    
+    
     var standardDateFormat = ""
     var datePicker = UIDatePicker()
+    var weightPicker = WeightPicker()
+    var pounds = true
+    let userDefaults = UserDefaults.standard
+
+    let lineBelowCatName = CALayer()
+    let lineBelowDob = CALayer()
+    let lineBelowBreed = CALayer()
+    let lineBelowWeight = CALayer()
+    
     override func viewDidLoad() {
+         super.viewDidLoad()
+        
+        setUpGradient()
         createCatObj.user_id = 0
         createCatObj.name = ""
         createCatObj.birthday = ""
@@ -44,10 +62,9 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         createCatObj.initial_bcs = 7
         createCatObj.image_id = ""
         createCatObj.cat_id = 0
-       
-//        catNameLabel.text = "Cat Name *"
         
-        super.viewDidLoad()
+        pounds = userDefaults.value(forKey: "pounds") as! Bool
+       
         // Do any additional setup after loading the view, typically from a nib.
         
         //cat profile image UI: round images
@@ -66,6 +83,7 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         btn3ol.layer.cornerRadius = 5
         btn3ol.layer.borderWidth = 1
         btn3ol.layer.borderColor = UIColor.white.cgColor
+        btn3ol.frame = CGRect(x: btn3ol.frame.minX, y: btn3ol.frame.minY, width: btn3ol.frame.width, height: 55.0)
         
         //create done button for catDobField
         let doneToolbar = UIToolbar.init()
@@ -74,15 +92,70 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         let doneButton = UIBarButtonItem.init(barButtonSystemItem: .done, target: self, action: #selector(dismissKeyboard))
         doneToolbar.items = [flexSpace,doneButton]
         
-        
         datePicker.datePickerMode = .date
         datePicker.maximumDate = Date()
         catDobField.inputAccessoryView = doneToolbar
         catDobField.inputView = datePicker
-        
         datePicker.addTarget(self, action: #selector(catDetailsController.dateChanged(datePicker:)), for: UIControlEvents.valueChanged)
+        
+        let weightToolbar = UIToolbar.init()
+        weightToolbar.sizeToFit()
+        weightPicker.catViewController = self
+       
+        weightToolbar.items = [flexSpace,doneButton]
+        catWeightField.inputAccessoryView = weightToolbar
+        let isWeightPounds = userDefaults.value(forKey: "pounds") as! Bool
+        weightPicker.isPounds = isWeightPounds
+        catWeightField.inputView = weightPicker
+        
+        let margin = view.bounds.width * 0.08
+        let spaceBelow = CGFloat(30.0)
+        
+        lineBelowCatName.frame = CGRect(x: margin, y: catNameField.frame.maxY + spaceBelow, width: view.bounds.width - (margin * 2.0), height: 2.0)
+        lineBelowCatName.backgroundColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6).cgColor
+        
+        lineBelowDob.frame = CGRect(x: margin, y: catDobField.frame.maxY + spaceBelow, width: view.bounds.width - (margin * 2.0), height: 2.0)
+        lineBelowDob.backgroundColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6).cgColor
+        
+        lineBelowBreed.frame = CGRect(x: margin, y: catBreedField.frame.maxY + spaceBelow, width: view.bounds.width - (margin * 2.0), height: 2.0)
+        lineBelowBreed.backgroundColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6).cgColor
+        
+        lineBelowWeight.frame = CGRect(x: margin, y: catWeightField.frame.maxY + spaceBelow, width: view.bounds.width - (margin * 2.0), height: 2.0)
+        lineBelowWeight.backgroundColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6).cgColor
+        
+        toggle.center.y = yesNoLabel.center.y
+        
+        
+        
+        view.layer.addSublayer(lineBelowCatName)
+        view.layer.addSublayer(lineBelowDob)
+        view.layer.addSublayer(lineBelowBreed)
+        view.layer.addSublayer(lineBelowWeight)
+        
+        
+        
     }
     
+    override func viewDidLayoutSubviews() {
+        updateGradient()
+    }
+    
+    func setUpGradient() {
+        let topColor = UIColor(red: 240.0/255.0, green: 97.0/255.0, blue: 68.0/255.0, alpha: 1.0).cgColor
+        let bottomColor = UIColor(red: 211.0/255.0, green: 61.0/255.0, blue: 43.0/255.0, alpha: 1.0).cgColor
+        gradient.colors = [topColor,bottomColor]
+        self.view.layer.insertSublayer(gradient, at: 0)
+    }
+    func updateGradient() {
+        gradient.frame = view.bounds
+        gradient.locations = [0.0,1.0]
+    }
+
+    
+    func updateWeightDisplay() {
+        catWeightField.text = pounds ? (weightPicker.poundsString + weightPicker.ouncesString) : (weightPicker.kilogramsString + weightPicker.gramsString)
+    }
+
     @IBAction func breedSelection(sender: UIButton) {
         let dest = self.storyboard?.instantiateViewController(withIdentifier: "SecondViewController")
         self.present(dest!, animated: true, completion: nil)
@@ -172,6 +245,19 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         
         
         
+
+        //The server will accept the following data format:
+        // mm/dd/yy
+    
+        createCatObj.user_id = floginobj.f_id
+        createCatObj.name = catNameField.text!
+        createCatObj.birthday = standardDateFormat
+        
+        //MARK: temp fix
+        //createCatObj.initial_weight = catWeightField.text!
+        createCatObj.initial_weight = "12.7"
+        createCatObj.breed_id = catBreedField.text!
+        performSegue(withIdentifier: "selectBCSView", sender: self)
         
     }
     

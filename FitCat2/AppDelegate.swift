@@ -16,6 +16,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let nav1 = UINavigationController()
+        nav1.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        nav1.navigationBar.shadowImage = UIImage()
+        nav1.navigationBar.isTranslucent = true
+        let backImage = UIImage(named: "backBtn")
+        nav1.navigationBar.backIndicatorImage = backImage
+        nav1.navigationBar.backIndicatorTransitionMaskImage = backImage
+        nav1.navigationBar.tintColor = .white
+        let mainView = InitialViewController()
+        nav1.viewControllers = [mainView]
+        self.window!.rootViewController = nav1
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 
