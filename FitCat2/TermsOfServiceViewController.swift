@@ -12,8 +12,13 @@ import Alamofire
 class TermsOfServiceViewController: UIViewController{
     
     let userDefaults = UserDefaults.standard
+//    var userEmail = ""
+//    var userPassword = ""
     var userEmail = ""
-    var userPassword = ""
+    var userGivenName = ""
+    var userFamilyName = ""
+    var userGoogleID = ""
+    var userGoogleImageID = ""
     let gradient = CAGradientLayer()
     let termsOfServiceLabel = UILabel()
     let agreeButton = UIButton()
@@ -22,6 +27,15 @@ class TermsOfServiceViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        
+        print(userEmail)
+        print(userGivenName)
+        print(userFamilyName)
+        print(userGoogleID)
+        print(userGoogleImageID)
+        
+        
         setUpGradient()
         self.navigationItem.title = ""
         //Button set up
@@ -99,16 +113,18 @@ class TermsOfServiceViewController: UIViewController{
         
         //MARK: Get Actual Username From Client
         let parameters: Parameters = [
-            "useremail" : userEmail.lowercased(),
-            "password" : userPassword,
-            "username" : "default_username"
+            "useremail" : userEmail,
+            "userGivenName" : userGivenName,
+            "userFamilyName" : userFamilyName,
+            "userGoogleID" : userGoogleID,
+            "userGoogleImageID" : userGoogleImageID
         ]
-        
+    
         print("Parameters for join.php: \(parameters)")
         //Communicate with server via Alamofire
         //Using POST method.
         //Only when the insertion success, the server will response status '1'
-        Alamofire.request("http://mingplusyang.com/fitcatDB/join.php", method: .post, parameters: parameters).response{
+        Alamofire.request("http://mingplusyang.com/fitcatDB/googleJoin.php", method: .post, parameters: parameters).response{
             response in
             print("Request: \(response.request)")
             print("Response: \(response.response)")
@@ -120,6 +136,14 @@ class TermsOfServiceViewController: UIViewController{
                 self.userDefaults.set(userID, forKey: "userID")
             }
         }
+        
+//        guard let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "createCatView") as? catDetailsController
+//            else {
+//                print("Could not instantiate view controller with identifier of type SecondViewController")
+//                return
+//        }
+//        present(vc, animated: true, completion: nil)
+
         let prefVC = PreferencesViewController()
         navigationController?.pushViewController(prefVC, animated: true)
     }

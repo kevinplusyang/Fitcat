@@ -8,9 +8,12 @@
 
 import UIKit
 import Alamofire
+import Google
+import GoogleSignIn
 
-class InitialViewController: UIViewController, UITextFieldDelegate {
+class InitialViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDSignInDelegate {
     
+    let userDefaults = UserDefaults.standard
     var userEmail = ""
     let gradient = CAGradientLayer()
     let welcomeLabel = UILabel()
@@ -24,6 +27,22 @@ class InitialViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        
+        var error: NSError?
+        GGLContext.sharedInstance().configureWithError(&error)
+        
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().delegate = self
+        
+        let signInButton = GIDSignInButton(frame: CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: 100, height: 100)) )
+        signInButton.center = view.center
+        view.addSubview(signInButton)
+
+        
+        
         setUpGradient()
         self.navigationItem.title = ""
         
@@ -77,15 +96,16 @@ class InitialViewController: UIViewController, UITextFieldDelegate {
         footerLabel.adjustsFontSizeToFitWidth = true
         
    
-        view.addSubview(loginButton)
+//        view.addSubview(loginButton)
         view.addSubview(welcomeLabel)
-        view.addSubview(emailTextField)
-        view.addSubview(emailLabel)
-        view.layer.addSublayer(lineBelowEmailTextField)
-        view.addSubview(footerLabel)
-        view.addSubview(incorrectEmailFooterLabel)
+//        view.addSubview(emailTextField)
+//        view.addSubview(emailLabel)
+//        view.layer.addSublayer(lineBelowEmailTextField)
+//        view.addSubview(footerLabel)
+//        view.addSubview(incorrectEmailFooterLabel)
 
         // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -168,4 +188,67 @@ class InitialViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        print(user.profile.email)
+        print(user.profile.givenName)
+        print(user.profile.imageURL(withDimension: 400))
+        print(user.userID)
+        print(user.profile.familyName)
+        
+        
+        
+        let parameters: Parameters = [
+            "email" : user.profile.email,
+            "givenName" : user.profile.givenName,
+            "familyName" : user.profile.familyName,
+            "googleId" : user.userID,
+            "googleImage" : user.profile.imageURL(withDimension: 400)
+        ]
+        
+        Alamofire.request("http://mingplusyang.com/fitcatDB/checkGoogleAccount.php", method: .post, parameters: parameters).response { response in
+            print("Request: \(response.request)")
+            print("Response: \(response.response)")
+            print("Error: \(response.error)")
+            
+            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                print("Data: \(utf8Text)")
+                let isInDatabase = Int(utf8Text)
+                if isInDatabase == 0 {
+//                    self.footerLabel.isHidden = true
+//                    self.incorrectEmailFooterLabel.isHidden = true
+//                    let returningUserVC = ReturningUserViewController()
+//                    returningUserVC.userEmail = self.userEmail
+//                    self.navigationController?.pushViewController(returningUserVC, animated: true)
+                    
+                    let tosVC = TermsOfServiceViewController()
+                    tosVC.userEmail = user.profile.email
+                    tosVC.userGivenName = user.profile.givenName
+                    tosVC.userFamilyName = user.profile.familyName
+                    tosVC.userGoogleID = user.userID
+                    tosVC.userGoogleImageID = String(describing: user.profile.imageURL(withDimension: 400)!)
+                    self.navigationController?.pushViewController(tosVC, animated: true)
+                    
+                } else {
+                    self.userDefaults.set(isInDatabase, forKey: "userID")
+                    self.userDefaults.set(isInDatabase, forKey: "userGivenName")
+                    self.userDefaults.set(isInDatabase, forKey: "userFamilyName")
+                    self.userDefaults.set(isInDatabase, forKey: "userGoogleID")
+                    self.userDefaults.set(isInDatabase, forKey: "userGoogleImageID")
+                    guard let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "createCatView") as? catDetailsController
+                        else {
+                            print("Could not instantiate view controller with identifier of type SecondViewController")
+                            return
+                    }
+                    self.present(vc, animated: true, completion: nil)
+                }
+            }
+        }
+
+    }
+    
+    func googleLoginUser(email : String, givenName : String, familyName : String, userId : String, userImage : String) {
+        
+    }
+
 }

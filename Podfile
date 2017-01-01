@@ -10,6 +10,7 @@ pod 'Alamofire', '~> 4.0'
  pod 'SwiftyJSON'
 platform :ios, '10.1'
 pod 'JBChartView'
+pod 'Google/SignIn'
 
 
   target 'FitCat2Tests' do
