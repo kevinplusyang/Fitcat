@@ -231,11 +231,11 @@ class InitialViewController: UIViewController, UITextFieldDelegate, GIDSignInUID
                     
                 } else {
                     self.userDefaults.set(isInDatabase, forKey: "userID")
-                    self.userDefaults.set(isInDatabase, forKey: "userGivenName")
-                    self.userDefaults.set(isInDatabase, forKey: "userFamilyName")
-                    self.userDefaults.set(isInDatabase, forKey: "userGoogleID")
-                    self.userDefaults.set(isInDatabase, forKey: "userGoogleImageID")
-                    guard let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "createCatView") as? catDetailsController
+                    self.userDefaults.set(user.profile.givenName, forKey: "userGivenName")
+                    self.userDefaults.set(user.profile.familyName, forKey: "userFamilyName")
+                    self.userDefaults.set(user.userID, forKey: "userGoogleID")
+                    self.userDefaults.set(String(describing: user.profile.imageURL(withDimension: 400)!), forKey: "userGoogleImageID")
+                    guard let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "allCats") as? newCatCardsCollectionViewController
                         else {
                             print("Could not instantiate view controller with identifier of type SecondViewController")
                             return
