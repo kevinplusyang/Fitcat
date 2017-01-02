@@ -33,6 +33,7 @@ class newCatCardsCollectionViewController: UICollectionViewController {
     var imgURL:[String] = []
     
     var userID = ""
+    let ifCatExistLabel = UILabel()
     
     func addPhoto(x: URL) {
         
@@ -58,6 +59,16 @@ class newCatCardsCollectionViewController: UICollectionViewController {
         //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         // Do any additional setup after loading the view.
        
+        
+        //This is a placeholder UIlable. If user has no cat, the label will show.
+        //The label will be hidden if the user has cats.
+        let tempFrame = CGRect(x: view.frame.width * 0.1, y: view.frame.height * 0.2, width: view.frame.width * 0.8, height: 90)
+        ifCatExistLabel.text = "Please create your first cat proflie"
+        ifCatExistLabel.frame = tempFrame
+        ifCatExistLabel.textColor = .white
+        ifCatExistLabel.textAlignment = .center
+        view.addSubview(ifCatExistLabel)
+
         userID = userDefaults.string(forKey: "userID")!
         
         layoutCells()
@@ -71,6 +82,9 @@ class newCatCardsCollectionViewController: UICollectionViewController {
             if let jsonData = response.result.value {
                 let json = JSON(jsonData)
                 let count = json["count"].intValue
+                self.ifCatExistLabel.isHidden = true
+                
+                
                 print("JJSON:\(count)")
                 var i = 0
                 while i < count {
