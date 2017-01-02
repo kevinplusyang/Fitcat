@@ -32,6 +32,8 @@ class newCatCardsCollectionViewController: UICollectionViewController {
     var img2:[UIImage] = []
     var imgURL:[String] = []
     
+    var userID = ""
+    
     func addPhoto(x: URL) {
         
         let assetUrl = x
@@ -56,14 +58,13 @@ class newCatCardsCollectionViewController: UICollectionViewController {
         //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         // Do any additional setup after loading the view.
        
-        print( "UUUU:\(userDefaults.string(forKey: "userFamilyName")!)")
+        userID = userDefaults.string(forKey: "userID")!
         
         layoutCells()
         self.collectionView!.bounces = true
         self.collectionView!.isScrollEnabled = true
         
-        Alamofire.request("http://www.mingplusyang.com/fitcatDB/getCat.php?a1=\(floginobj.f_id)").responseJSON { response in
-            print("alo")
+        Alamofire.request("http://www.mingplusyang.com/fitcatDB/getCat.php?a1=\(userID)").responseJSON { response in
             print("Request: \(response.request)")
             print("Response: \(response.response)")
             
@@ -86,12 +87,7 @@ class newCatCardsCollectionViewController: UICollectionViewController {
                 }
                 i = 0
                 
-//                var assetUrl = URL(string: "assets-library://asset/asset.JPG?id=6484AD65-8FB1-405B-9B8A-BFE7E17756D8&ext=JPG")!
-//                var fetchResult = PHAsset.fetchAssets(withALAssetURLs: [assetUrl], options: nil)
-//                var photo = fetchResult.firstObject
-                
                 while i < count {
-//                    self.imgURL.append(json["imgID"][i]["id"].stringValue)
                     self.addPhoto(x: NSURL(string: json["imgID"][i]["id"].stringValue) as! URL)
                     i = i + 1
                 }
