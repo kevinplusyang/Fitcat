@@ -145,7 +145,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             incorrectPasswordFooterLabel.isHidden = true
             let tosVC = TermsOfServiceViewController()
             tosVC.userEmail = userEmail
-            tosVC.userPassword = userPassword
+//            tosVC.userPassword = userPassword
             navigationController?.pushViewController(tosVC, animated: true)
         }
     }    

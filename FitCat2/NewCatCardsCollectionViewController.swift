@@ -14,6 +14,7 @@ import Photos
 private let reuseIdentifier = "cardCell"
 
 class newCatCardsCollectionViewController: UICollectionViewController {
+    let userDefaults = UserDefaults.standard
     
     //temp data placeholder
     let data:[String] = ["cat1","cat2","cat3"]
@@ -54,6 +55,9 @@ class newCatCardsCollectionViewController: UICollectionViewController {
         // Register cell classes
         //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         // Do any additional setup after loading the view.
+       
+        print( "UUUU:\(userDefaults.string(forKey: "userFamilyName")!)")
+        
         layoutCells()
         self.collectionView!.bounces = true
         self.collectionView!.isScrollEnabled = true

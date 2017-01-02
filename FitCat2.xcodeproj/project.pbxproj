@@ -43,6 +43,7 @@
 		C8A278EB1DF3608F0064E11C /* CatCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A278EA1DF3608F0064E11C /* CatCardsViewController.swift */; };
 		C8A278ED1DF360E50064E11C /* CupboardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A278EC1DF360E50064E11C /* CupboardCollectionViewController.swift */; };
 		C8B460DC1DE38E32003DB92E /* DataObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B460DB1DE38E32003DB92E /* DataObjects.swift */; };
+		C8CA6B021E188BA80001AD1A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C8CA6B011E188BA80001AD1A /* GoogleService-Info.plist */; };
 		C8D432481DEC053900474E29 /* NewCatCardsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D432471DEC053900474E29 /* NewCatCardsCollectionViewController.swift */; };
 		C8D432531DECA10500474E29 /* AmountSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D432521DECA10500474E29 /* AmountSelectionViewController.swift */; };
 		C8DE82441DEA875F0054721B /* FoodMarketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8DE82431DEA875F0054721B /* FoodMarketTableViewController.swift */; };
@@ -111,6 +112,7 @@
 		C8A278EA1DF3608F0064E11C /* CatCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatCardsViewController.swift; sourceTree = "<group>"; };
 		C8A278EC1DF360E50064E11C /* CupboardCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CupboardCollectionViewController.swift; sourceTree = "<group>"; };
 		C8B460DB1DE38E32003DB92E /* DataObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataObjects.swift; sourceTree = "<group>"; };
+		C8CA6B011E188BA80001AD1A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C8D432471DEC053900474E29 /* NewCatCardsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCatCardsCollectionViewController.swift; sourceTree = "<group>"; };
 		C8D432521DECA10500474E29 /* AmountSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmountSelectionViewController.swift; sourceTree = "<group>"; };
 		C8DE82431DEA875F0054721B /* FoodMarketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodMarketTableViewController.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 			children = (
 				C860BC191DE360AE005E00CC /* Assets.xcassets */,
 				C860BC161DE360AE005E00CC /* Main.storyboard */,
+				C8CA6B011E188BA80001AD1A /* GoogleService-Info.plist */,
 				C860BC1B1DE360AE005E00CC /* LaunchScreen.storyboard */,
 				C860BC121DE360AE005E00CC /* AppDelegate.swift */,
 				C860BC1E1DE360AE005E00CC /* Info.plist */,
@@ -354,7 +357,7 @@
 				TargetAttributes = {
 					C860BC0E1DE360AE005E00CC = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 4JJ97T2879;
+						DevelopmentTeam = ALM2K2B6Z6;
 						ProvisioningStyle = Automatic;
 					};
 					C860BC221DE360AE005E00CC = {
@@ -396,6 +399,7 @@
 			files = (
 				C860BC1D1DE360AE005E00CC /* LaunchScreen.storyboard in Resources */,
 				C860BC1A1DE360AE005E00CC /* Assets.xcassets in Resources */,
+				C8CA6B021E188BA80001AD1A /* GoogleService-Info.plist in Resources */,
 				C860BC181DE360AE005E00CC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -741,7 +745,7 @@
 			baseConfigurationReference = D3504D3B2294E124901D9BCC /* Pods-FitCat2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4JJ97T2879;
+				DEVELOPMENT_TEAM = ALM2K2B6Z6;
 				INFOPLIST_FILE = FitCat2/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -757,7 +761,7 @@
 			baseConfigurationReference = 5BE0D10F1C8FDC7CC650A736 /* Pods-FitCat2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4JJ97T2879;
+				DEVELOPMENT_TEAM = ALM2K2B6Z6;
 				INFOPLIST_FILE = FitCat2/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
