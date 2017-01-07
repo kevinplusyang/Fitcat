@@ -1053,7 +1053,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NjN-ct-o4M">
-                                            <rect key="frame" x="-28" y="-1" width="381.5" height="44"/>
+                                            <rect key="frame" x="-29.5" y="-1" width="382" height="44"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.87368464469999996" green="0.30182510610000002" blue="0.2273154855" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <items>
@@ -2284,9 +2284,6 @@
                                     <rect key="frame" x="21" y="39" width="23" height="23"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="user-icon"/>
-                                    <connections>
-                                        <segue destination="uqK-ua-2zN" kind="show" id="hl1-V6-txc"/>
-                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NlR-67-XyR">
                                     <rect key="frame" x="58" y="41" width="19" height="19"/>
@@ -2294,6 +2291,16 @@
                                     <state key="normal" image="add-icon"/>
                                     <connections>
                                         <segue destination="Nrq-2C-WbR" kind="show" id="4R5-Bu-AI7"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ngd-tR-RSG">
+                                    <rect key="frame" x="93" y="36" width="60" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Sign Out">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="googleSignOut:" destination="XQa-x5-gg2" eventType="touchUpInside" id="CdF-9J-X1q"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -2509,7 +2516,7 @@
         <!--Initial View Controller-->
         <scene sceneID="oGy-lI-u37">
             <objects>
-                <viewController id="jkC-E9-H6G" customClass="InitialViewController" customModule="FitCat2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="initialView" id="jkC-E9-H6G" customClass="InitialViewController" customModule="FitCat2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Gi6-oM-HUP"/>
                         <viewControllerLayoutGuide type="bottom" id="QD8-3w-FKZ"/>

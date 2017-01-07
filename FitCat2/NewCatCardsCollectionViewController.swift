@@ -10,6 +10,8 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import Photos
+import Google
+import GoogleSignIn
 
 private let reuseIdentifier = "cardCell"
 
@@ -31,6 +33,16 @@ class newCatCardsCollectionViewController: UICollectionViewController {
     var img:[UIImage] = []
     var img2:[UIImage] = []
     var imgURL:[String] = []
+    
+    @IBAction func googleSignOut(_ sender: UIButton) {
+        GIDSignIn.sharedInstance().signOut()
+        guard let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "initialView") as? InitialViewController
+            else {
+                print("Could not instantiate view controller with identifier of type SecondViewController")
+                return
+        }
+        self.present(vc, animated: true, completion: nil)
+    }
     
     var userID = ""
     let ifCatExistLabel = UILabel()
