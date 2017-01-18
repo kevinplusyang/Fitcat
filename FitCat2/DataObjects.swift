@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 class currentCat {
@@ -36,6 +37,7 @@ class CreateCat {
     var initial_bcs: Int = 7
     var image_id: String = ""
     var cat_id : Int = 0
+    var catImage : UIImage = #imageLiteral(resourceName: "catImagePlaceHolder")
 }
 
 class LoginClass {

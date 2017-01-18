@@ -202,6 +202,7 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
                 print (localUrl!)
             createCatObj.image_id = String(describing: localUrl!)
             catProfileImg.image = image
+            createCatObj.catImage = image
             
         } else {
             print("Something went wrong")
@@ -228,6 +229,7 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
             createCatObj.name = catNameField.text!
             createCatObj.birthday = standardDateFormat
             createCatObj.breed_id = catBreedField.text!
+            
             
             let testNum = Float(catWeightField.text!)
             if testNum != nil {
