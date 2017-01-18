@@ -7,3 +7,4 @@ require_once "dbaccess.php";
 $p1 = $_POST['username'];
 
 mysql_query("insert into test (str) values ('".$p1."') ");
+
