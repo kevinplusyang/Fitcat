@@ -177,8 +177,39 @@ class selectBcsController: UIViewController {
                 
                 createCatObj.cat_id = Int(utf8Text) != nil ? Int(utf8Text)! : 999
                 print("CatID:\(createCatObj.cat_id)")
+                
+                //Upload the cat picture only after acquire the catID
+                //Image file will be named as (catID).jpg
+                //Stores in server /home/my434/fitCat/resources/img
+                let imageParameters = [
+                    "file_name": "swift_file.jpeg"
+                ]
+                
+                Alamofire.upload(multipartFormData: { (multipartFormData) in
+                    multipartFormData.append(UIImageJPEGRepresentation(createCatObj.catImage,0.2)!, withName: "testPhoto", fileName: "\(createCatObj.cat_id)", mimeType: "image/jpeg")
+                    for (key, value) in imageParameters {
+                        multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
+                    }
+                }, to:"http://mingplusyang.com/fitcatDB/photoUpload.php")
+                { (result) in
+                    switch result {
+                    case .success(let upload, _, _):
+                        
+                        upload.uploadProgress(closure: { (progress) in
+                            print("Upload Progress: \(progress.fractionCompleted)")
+                        })
+                        
+                        upload.responseJSON { response in
+                            debugPrint(response)
+                        }
+                        
+                    case .failure(let _): break
+                        //print encodingError.description
+                    }
+                }
             }
         }
+        
         
         
         
