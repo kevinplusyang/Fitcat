@@ -10,10 +10,11 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import Photos
+import RealmSwift
 
 private let reuseIdentifier = "cardCell"
 
-class newCatCardsCollectionViewController: UICollectionViewController {
+class newCatCardsCollectionViewController: UICollectionViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     let userDefaults = UserDefaults.standard
     
     //temp data placeholder
@@ -31,9 +32,10 @@ class newCatCardsCollectionViewController: UICollectionViewController {
     var img:[UIImage] = []
     var img2:[UIImage] = []
     var imgURL:[String] = []
+    var userCats: Results<CreateCatModel>!
+    var catPlans: Results<PlanModel>!
     
     var userID = ""
-    let ifCatExistLabel = UILabel()
     
     func addPhoto(x: URL) {
         
@@ -58,16 +60,12 @@ class newCatCardsCollectionViewController: UICollectionViewController {
         // Register cell classes
         //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         // Do any additional setup after loading the view.
-       
+        collectionView?.emptyDataSetSource = self
+        collectionView?.emptyDataSetDelegate = self
+        let realm = try! Realm()
+        userCats = realm.objects(CreateCatModel.self)
+        catPlans = realm.objects(PlanModel.self)
         
-        //This is a placeholder UIlable. If user has no cat, the label will show.
-        //The label will be hidden if the user has cats.
-        let tempFrame = CGRect(x: view.frame.width * 0.1, y: view.frame.height * 0.2, width: view.frame.width * 0.8, height: 90)
-        ifCatExistLabel.text = "Please create your first cat proflie"
-        ifCatExistLabel.frame = tempFrame
-        ifCatExistLabel.textColor = .white
-        ifCatExistLabel.textAlignment = .center
-        view.addSubview(ifCatExistLabel)
 
         userID = userDefaults.string(forKey: "userID")!
         
@@ -75,90 +73,90 @@ class newCatCardsCollectionViewController: UICollectionViewController {
         self.collectionView!.bounces = true
         self.collectionView!.isScrollEnabled = true
         
-        Alamofire.request("http://www.mingplusyang.com/fitcatDB/getCat.php?a1=\(userID)").responseJSON { response in
-            print("Request: \(response.request)")
-            print("Response: \(response.response)")
-            
-            if let jsonData = response.result.value {
-                let json = JSON(jsonData)
-                let count = json["count"].intValue
-                self.ifCatExistLabel.isHidden = true
-                
-                
-                print("JJSON:\(count)")
-                var i = 0
-                while i < count {
-                    self.catName.append(json["catName"][i]["id"].stringValue)
-                    i = i + 1
-                }
-                print("ssss:\(count)")
-                print("ssss:\(self.catName)")
-                
-                i = 0
-                while i < count {
-                    self.calCurrent.append(json["calCurrent"][i]["cal"].intValue)
-                    i = i + 1
-                }
-                i = 0
-                
-                while i < count {
-                    self.addPhoto(x: NSURL(string: json["imgID"][i]["id"].stringValue) as! URL)
-                    i = i + 1
-                }
-                
-                i = 0
-                while i < count {
-                    self.catID.append(json["catID"][i]["id"].intValue)
-                    i = i + 1
-                }
-                
-                i = 0
-                while i < count {
-                    self.calTotal.append(json["calTotal"][i]["cal"].intValue)
-                    i = i + 1
-                }
-                
-                i = 0
-                while i < count {
-                    self.foodTotal.append(json["foodTotal"][i]["cal"].intValue)
-                    i = i + 1
-                }
-                
-                i = 0
-                while i < count {
-                    self.foodCurrent.append(json["foodCurrent"][i]["cal"].intValue)
-                    i = i + 1
-                }
-                
-                i = 0
-                while i < count {
-                    self.calProgress.append(Float(json["calCurrent"][i]["cal"].intValue) / Float(json["calTotal"][i]["cal"].intValue))
-                    i = i + 1
-                }
-                
-                i = 0
-                while i < count {
-                    self.foodProgress.append(Float(json["foodCurrent"][i]["cal"].intValue) / Float(json["foodTotal"][i]["cal"].intValue))
-                    i = i + 1
-                }
-                
-                i = 0
-                while i < count {
-                    
-                    if(json["foodCurrent"][i]["cal"].intValue - json["foodTotal"][i]["cal"].intValue >= 0){
-                        
-                        self.alertInformation.append("Fed too Much")
-                        
-                    } else {
-                        self.alertInformation.append("Fed in Normal Range")
-                    }
-                    
-                    i = i + 1
-                }
-                
-                self.collectionView?.reloadData()
-            }
-        }
+//        Alamofire.request("http://www.mingplusyang.com/fitcatDB/getCat.php?a1=\(userID)").responseJSON { response in
+//            print("Request: \(response.request)")
+//            print("Response: \(response.response)")
+//            
+//            if let jsonData = response.result.value {
+//                let json = JSON(jsonData)
+//                let count = json["count"].intValue
+//                self.ifCatExistLabel.isHidden = true
+//                
+//                
+//                print("JJSON:\(count)")
+//                var i = 0
+//                while i < count {
+//                    self.catName.append(json["catName"][i]["id"].stringValue)
+//                    i = i + 1
+//                }
+//                print("ssss:\(count)")
+//                print("ssss:\(self.catName)")
+//                
+//                i = 0
+//                while i < count {
+//                    self.calCurrent.append(json["calCurrent"][i]["cal"].intValue)
+//                    i = i + 1
+//                }
+//                i = 0
+//                
+//                while i < count {
+//                    self.addPhoto(x: NSURL(string: json["imgID"][i]["id"].stringValue) as! URL)
+//                    i = i + 1
+//                }
+//                
+//                i = 0
+//                while i < count {
+//                    self.catID.append(json["catID"][i]["id"].intValue)
+//                    i = i + 1
+//                }
+//                
+//                i = 0
+//                while i < count {
+//                    self.calTotal.append(json["calTotal"][i]["cal"].intValue)
+//                    i = i + 1
+//                }
+//                
+//                i = 0
+//                while i < count {
+//                    self.foodTotal.append(json["foodTotal"][i]["cal"].intValue)
+//                    i = i + 1
+//                }
+//                
+//                i = 0
+//                while i < count {
+//                    self.foodCurrent.append(json["foodCurrent"][i]["cal"].intValue)
+//                    i = i + 1
+//                }
+//                
+//                i = 0
+//                while i < count {
+//                    self.calProgress.append(Float(json["calCurrent"][i]["cal"].intValue) / Float(json["calTotal"][i]["cal"].intValue))
+//                    i = i + 1
+//                }
+//                
+//                i = 0
+//                while i < count {
+//                    self.foodProgress.append(Float(json["foodCurrent"][i]["cal"].intValue) / Float(json["foodTotal"][i]["cal"].intValue))
+//                    i = i + 1
+//                }
+//                
+//                i = 0
+//                while i < count {
+//                    
+//                    if(json["foodCurrent"][i]["cal"].intValue - json["foodTotal"][i]["cal"].intValue >= 0){
+//                        
+//                        self.alertInformation.append("Fed too Much")
+//                        
+//                    } else {
+//                        self.alertInformation.append("Fed in Normal Range")
+//                    }
+//                    
+//                    i = i + 1
+//                }
+//                
+//                self.collectionView?.reloadData()
+//            }
+//        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -181,31 +179,33 @@ class newCatCardsCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Selected:qw\(indexPath.row)")
         
-        let selectedCatId = catID[indexPath.row]
-        print("Selected:ID\(selectedCatId)")
+        let selectedCat = userCats[indexPath.row]
         
-        Alamofire.request("http://mingplusyang.com/fitcatDB/getCurrentCat.php?catId=\(selectedCatId)").responseJSON { response in
-            
-            if let jsonData = response.result.value {
-                let json = JSON(jsonData)
-                currentCatObj.cat_id = json["catId"].intValue  //Useful index
-                currentCatObj.cat_name = json["catName"].stringValue //Display Useful
-                currentCatObj.calories_total = json["calories_total"].doubleValue //Display Useful
-                currentCatObj.calories_today = json["calories_today"].doubleValue  //Display Useful
-                currentCatObj.food_total = json["food_total"].doubleValue //Display Useful
-                currentCatObj.food_today = json["food_today"].doubleValue  //Display Useful
-                currentCatObj.goal_weight = json["goal_weight"].floatValue //Display Useful
-                currentCatObj.current_weight = json["current_weight"].floatValue  //Display Useful
-                currentCatObj.current_bcs = json["current_bcs"].intValue //Display Useful
-                currentCatObj.goal_bcs = json["goal_bcs"].intValue  //Goal BCS, typically is 5
-                currentCatObj.weight_lose = json["weight_lose"].doubleValue
-                currentCatObj.initial_weight = json["initial_weight"].floatValue
-                currentCatObj.image_ID = json["img_ID"].stringValue
-                let dest = self.storyboard?.instantiateViewController(withIdentifier: "mainPage")
-                self.present(dest!, animated: true, completion: nil)
-            }
-        }
+//        Alamofire.request("http://mingplusyang.com/fitcatDB/getCurrentCat.php?catId=\(selectedCatId)").responseJSON { response in
+//            
+//            if let jsonData = response.result.value {
+//                let json = JSON(jsonData)
+//                currentCatObj.cat_id = json["catId"].intValue  //Useful index
+//                currentCatObj.cat_name = json["catName"].stringValue //Display Useful
+//                currentCatObj.calories_total = json["calories_total"].doubleValue //Display Useful
+//                currentCatObj.calories_today = json["calories_today"].doubleValue  //Display Useful
+//                currentCatObj.food_total = json["food_total"].doubleValue //Display Useful
+//                currentCatObj.food_today = json["food_today"].doubleValue  //Display Useful
+//                currentCatObj.goal_weight = json["goal_weight"].floatValue //Display Useful
+//                currentCatObj.current_weight = json["current_weight"].floatValue  //Display Useful
+//                currentCatObj.current_bcs = json["current_bcs"].intValue //Display Useful
+//                currentCatObj.goal_bcs = json["goal_bcs"].intValue  //Goal BCS, typically is 5
+//                currentCatObj.weight_lose = json["weight_lose"].doubleValue
+//                currentCatObj.initial_weight = json["initial_weight"].floatValue
+//                currentCatObj.image_ID = json["img_ID"].stringValue
+                let dest = self.storyboard?.instantiateViewController(withIdentifier: "mainPage") as! mainPageController
+                dest.currentCat = selectedCat
+                self.present(dest, animated: true, completion: nil)
+            //}
+        //}
     }
+
+
     
     /*
      // MARK: - Navigation
@@ -226,11 +226,13 @@ class newCatCardsCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return catName.count
+        return userCats.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let currentCatPlan = catPlans.filter({$0.cat_id == self.userCats[indexPath.row].cat_id}).first
+    
         
         // Configure the cell
         cell.layer.cornerRadius = 5.0
@@ -242,18 +244,25 @@ class newCatCardsCollectionViewController: UICollectionViewController {
         let label5 = cell.viewWithTag(5) as! UILabel
         let label8 = cell.viewWithTag(8) as! UILabel
 
-        label.text = catName[indexPath.row]
-        label2.text = String(calCurrent[indexPath.row])
-        label3.text = String(calTotal[indexPath.row])
-        label4.text = String(foodCurrent[indexPath.row])
-        label5.text = String(foodTotal[indexPath.row])
-        label8.text = alertInformation[indexPath.row]
+        label.text = userCats[indexPath.row].name
+        label2.text = userCats[indexPath.row].name
+        label3.text = currentCatPlan?.calories_to_lose_per_day.description
+        label4.text = userCats[indexPath.row].name
+        label5.text = userCats[indexPath.row].name
+        label8.text = userCats[indexPath.row].name
+//        label2.text = String(calCurrent[indexPath.row])
+//        label3.text = String(calTotal[indexPath.row])
+//        label4.text = String(foodCurrent[indexPath.row])
+//        label5.text = String(foodTotal[indexPath.row])
+//        label8.text = alertInformation[indexPath.row]
         
         let calProgressBar = cell.viewWithTag(6) as! UIProgressView
-        calProgressBar.progress = 1 - calProgress[indexPath.row]
+        calProgressBar.progress = 1.0
+        //calProgressBar.progress = 1 - calProgress[indexPath.row]
         
         let foodProgressBar = cell.viewWithTag(7) as! UIProgressView
-        foodProgressBar.progress = 1 - foodProgress[indexPath.row]
+        //foodProgressBar.progress = 1 - foodProgress[indexPath.row]
+        foodProgressBar.progress = 1.0
 
         let imgView = cell.viewWithTag(10) as! UIImageView
         
@@ -283,6 +292,43 @@ class newCatCardsCollectionViewController: UICollectionViewController {
     }
     
     
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let titleString = "No Cats Yet"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: .headline), NSForegroundColorAttributeName: UIColor.white]
+        return NSAttributedString(string: titleString, attributes: attrs)
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let descriptionString = "Add your first cat to get started!"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: .body), NSForegroundColorAttributeName: UIColor.white]
+        return NSAttributedString(string: descriptionString, attributes: attrs)
+    }
+    
+    func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
+        return UIImage(named: "empty_cat")
+    }
+    
+    func buttonTitle(forEmptyDataSet scrollView: UIScrollView, for state: UIControlState) -> NSAttributedString? {
+        let buttonString = "Add A Cat"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: .callout), NSForegroundColorAttributeName: UIColor.white]
+        return NSAttributedString(string: buttonString, attributes: attrs)
+    }
+    
+    
+    func emptyDataSet(_ scrollView: UIScrollView, didTap button: UIButton) {
+        guard let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "createCatView") as? catDetailsController
+            else {
+                print("Could not instantiate view controller with identifier of type catDetailsController")
+                return
+        }
+        let modalNav = UINavigationController(rootViewController: vc)
+        let backImage = UIImage(named: "backBtn")
+        modalNav.navigationBar.backIndicatorImage = backImage
+        modalNav.navigationBar.backIndicatorTransitionMaskImage = backImage
+        
+        present(modalNav, animated: true, completion: nil)
+}
+
     // MARK: UICollectionViewDelegate
     
     /*

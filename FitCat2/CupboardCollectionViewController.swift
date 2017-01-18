@@ -134,7 +134,8 @@ class cupboardCollectionViewController: UICollectionViewController {
         let selectedCatId = foodID[indexPath.row]
         print("Selected:ID\(selectedCatId)")
         
-        let requestFoodID = selectedCatId + 1;
+        let requestFoodID = selectedCatId + 1
+        let foodSelection = FoodSelectionModel()
         
         Alamofire.request("http://mingplusyang.com/fitcatDB/getFoodById.php?a1=\(requestFoodID)").responseJSON { response in
             

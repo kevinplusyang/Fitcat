@@ -26,6 +26,7 @@ class PreferencesViewController: UIViewController {
     let remindMeWhenPlanGoesWrongToggle = UISwitch()
     let remindMeWhenPlanGoesWrongToggleLabel = UILabel()
     let lineBelowPlanGoesWrong = CALayer()
+    let userDefaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -215,8 +216,11 @@ class PreferencesViewController: UIViewController {
         //let createACatVC = catDetailsController()
         //present(createACatVC, animated: true, completion: nil)
         
+        let userID = userDefaults.integer(forKey: "userID")
+        
+        
         //MARK: Daily Feeding Toggle is True ? Time Set Up Page : Start FitCat
-        guard let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "createCatView") as? catDetailsController
+        guard let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "allCats") as? newCatCardsCollectionViewController
             else {
                 print("Could not instantiate view controller with identifier of type SecondViewController")
                 return

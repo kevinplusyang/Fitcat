@@ -14,7 +14,15 @@ import Alamofire
 class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     let gradient = CAGradientLayer()
+    let imagePicker = UIImagePickerController()
 
+    @IBOutlet weak var catNameLabel: UILabel!
+    @IBOutlet weak var catDobLabel: UILabel!
+    @IBOutlet weak var catBreedLabel: UILabel!
+    @IBOutlet weak var catWeightLabel: UILabel!
+    @IBOutlet weak var catNeuteredLabel: UILabel!
+    
+    @IBOutlet weak var catProfileButton: UIButton!
     
     //cat profile img
     @IBOutlet weak var catProfileImg: UIImageView!
@@ -41,7 +49,11 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
     var datePicker = UIDatePicker()
     var weightPicker = WeightPicker()
     var pounds = true
+    var userId: Int?
     let userDefaults = UserDefaults.standard
+    var gender = 1
+    var imageString: String?
+    var newCat: CreateCatModel!
 
     let lineBelowCatName = CALayer()
     let lineBelowDob = CALayer()
@@ -50,19 +62,21 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
     
     override func viewDidLoad() {
          super.viewDidLoad()
+        userId = Int(userDefaults.string(forKey: "userID")!)!
+        title = "Add A Cat"
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.tintColor = .white
+        let xButton = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(cancelVC))
+        self.navigationItem.setRightBarButton(xButton, animated: true)
         
         setUpGradient()
-        createCatObj.user_id = 0
-        createCatObj.name = ""
-        createCatObj.birthday = ""
-        createCatObj.breed_id = ""
-        createCatObj.initial_weight = ""
-        createCatObj.neutered = 0
-        createCatObj.gender = 0
-        createCatObj.initial_bcs = 7
-        createCatObj.image_id = ""
-        createCatObj.cat_id = 0
         
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = false
         pounds = userDefaults.value(forKey: "pounds") as! Bool
        
         // Do any additional setup after loading the view, typically from a nib.
@@ -101,8 +115,9 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         let weightToolbar = UIToolbar.init()
         weightToolbar.sizeToFit()
         weightPicker.catViewController = self
+          let doneButtonWeight = UIBarButtonItem.init(barButtonSystemItem: .done, target: self, action: #selector(dismissKeyboard))
        
-        weightToolbar.items = [flexSpace,doneButton]
+        weightToolbar.items = [flexSpace,doneButtonWeight]
         catWeightField.inputAccessoryView = weightToolbar
         let isWeightPounds = userDefaults.value(forKey: "pounds") as! Bool
         weightPicker.isPounds = isWeightPounds
@@ -110,23 +125,21 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         
         let margin = view.bounds.width * 0.08
         let spaceBelow = CGFloat(30.0)
-        
-        lineBelowCatName.frame = CGRect(x: margin, y: catNameField.frame.maxY + spaceBelow, width: view.bounds.width - (margin * 2.0), height: 2.0)
-        lineBelowCatName.backgroundColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6).cgColor
-        
-        lineBelowDob.frame = CGRect(x: margin, y: catDobField.frame.maxY + spaceBelow, width: view.bounds.width - (margin * 2.0), height: 2.0)
-        lineBelowDob.backgroundColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6).cgColor
-        
-        lineBelowBreed.frame = CGRect(x: margin, y: catBreedField.frame.maxY + spaceBelow, width: view.bounds.width - (margin * 2.0), height: 2.0)
-        lineBelowBreed.backgroundColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6).cgColor
-        
-        lineBelowWeight.frame = CGRect(x: margin, y: catWeightField.frame.maxY + spaceBelow, width: view.bounds.width - (margin * 2.0), height: 2.0)
-        lineBelowWeight.backgroundColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6).cgColor
-        
         toggle.center.y = yesNoLabel.center.y
         
         
+        lineBelowCatName.frame = CGRect(x: margin, y: (catNameLabel.frame.maxY + catDobLabel.frame.minY)/2.0, width: view.bounds.width - (margin * 2.0), height: 2.0)
+        lineBelowCatName.backgroundColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6).cgColor
         
+        lineBelowDob.frame = CGRect(x: margin, y: (catDobLabel.frame.maxY + catBreedLabel.frame.minY)/2.0, width: view.bounds.width - (margin * 2.0), height: 2.0)
+        lineBelowDob.backgroundColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6).cgColor
+        
+        lineBelowBreed.frame = CGRect(x: margin, y: (catBreedLabel.frame.maxY + catWeightLabel.frame.minY)/2.0, width: view.bounds.width - (margin * 2.0), height: 2.0)
+        lineBelowBreed.backgroundColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6).cgColor
+        
+        lineBelowWeight.frame = CGRect(x: margin, y: (catWeightLabel.frame.maxY + catNeuteredLabel.frame.minY)/2.0, width: view.bounds.width - (margin * 2.0), height: 2.0)
+        lineBelowWeight.backgroundColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6).cgColor
+
         view.layer.addSublayer(lineBelowCatName)
         view.layer.addSublayer(lineBelowDob)
         view.layer.addSublayer(lineBelowBreed)
@@ -138,6 +151,10 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
     
     override func viewDidLayoutSubviews() {
         updateGradient()
+    }
+    
+    func cancelVC() {
+        dismiss(animated: true, completion: nil)
     }
     
     func setUpGradient() {
@@ -178,30 +195,17 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
     
     
     @IBAction func uploadProfileImg(_ sender: UIButton) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        imagePicker.allowsEditing = false
         self.present(imagePicker, animated: true, completion: nil)
         
     }
     
-   
-//    func imagePickerController(_ picker: UIImagePickerController,didFinishPickingImage image: UIImage, didFinishPickingMediaWithInfo info: [String : Any]) {
-//        
-//        self.dismiss(animated: true, completion: nil)
-//        print("seectedIMG")
-//        
-//        self.catProfileImg.image = image
-//    }
-    
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-             let localUrl = (info[UIImagePickerControllerMediaURL] ?? info[UIImagePickerControllerReferenceURL]) as? NSURL
+             let localUrl = (info[UIImagePickerControllerMediaURL] ?? info[UIImagePickerControllerReferenceURL]!) as? NSURL
                 print (localUrl!)
-            createCatObj.image_id = String(describing: localUrl!)
+            imageString = String(describing: localUrl!)
             catProfileImg.image = image
+            catProfileButton.setTitle("", for: .normal)
             
         } else {
             print("Something went wrong")
@@ -214,34 +218,35 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
     @IBAction func btn3(_ sender: UIButton) {
         sender.layer.backgroundColor = UIColor(white: 1.0, alpha:0.1).cgColor
 
-        if (catNameField.text?.isEmpty)! || (catDobField.text?.isEmpty)! || (catWeightField.text?.isEmpty)! {
+//        if (catNameField.text?.isEmpty)! || (catDobField.text?.isEmpty)! || (catWeightField.text?.isEmpty)! {
+//
+//            let alert = UIAlertController(title: "Error", message:"Opps, Some required fields have not been filled.", preferredStyle: .alert)
+//            let closeAction = UIAlertAction(title:"Close", style: .cancel, handler: nil)
+//            alert.addAction(closeAction)
+//            self.present(alert, animated: true, completion:nil)
+//            
+//        } else {
+//            //The server will accept the following data format:
+//            // mm/dd/yy
+//            
+//            createCatObj.user_id = floginobj.f_id
+//            createCatObj.name = catNameField.text!
+//            createCatObj.birthday = standardDateFormat
+//            createCatObj.breed_id = catBreedField.text!
+//            
+//            let testNum = Float(catWeightField.text!)
+//            if testNum != nil {
+//                createCatObj.initial_weight = catWeightField.text!
+//            } else {
+//                let alert = UIAlertController(title: "Error", message:"Please enter number in weight.", preferredStyle: .alert)
+//                let closeAction = UIAlertAction(title:"Close", style: .cancel, handler: nil)
+//                alert.addAction(closeAction)
+//                self.present(alert, animated: true, completion:nil)
+//            }
+//            
+//            performSegue(withIdentifier: "selectBCSView", sender: self)
+//        }
 
-            let alert = UIAlertController(title: "Error", message:"Opps, Some required fields have not been filled.", preferredStyle: .alert)
-            let closeAction = UIAlertAction(title:"Close", style: .cancel, handler: nil)
-            alert.addAction(closeAction)
-            self.present(alert, animated: true, completion:nil)
-            
-        } else {
-            //The server will accept the following data format:
-            // mm/dd/yy
-            createCatObj.user_id = floginobj.f_id
-            createCatObj.name = catNameField.text!
-            createCatObj.birthday = standardDateFormat
-            createCatObj.breed_id = catBreedField.text!
-            
-            let testNum = Float(catWeightField.text!)
-            if testNum != nil {
-                createCatObj.initial_weight = catWeightField.text!
-            } else {
-                let alert = UIAlertController(title: "Error", message:"Please enter number in weight.", preferredStyle: .alert)
-                let closeAction = UIAlertAction(title:"Close", style: .cancel, handler: nil)
-                alert.addAction(closeAction)
-                self.present(alert, animated: true, completion:nil)
-            }
-            
-            performSegue(withIdentifier: "selectBCSView", sender: self)
-        }
-        
         
         
         
@@ -249,16 +254,26 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         //The server will accept the following data format:
         // mm/dd/yy
     
-        createCatObj.user_id = floginobj.f_id
-        createCatObj.name = catNameField.text!
-        createCatObj.birthday = standardDateFormat
+       
         
         //MARK: temp fix
         //createCatObj.initial_weight = catWeightField.text!
-        createCatObj.initial_weight = "12.7"
-        createCatObj.breed_id = catBreedField.text!
-        performSegue(withIdentifier: "selectBCSView", sender: self)
-        
+        let isNeutered = toggle.isOn ? 1 : 0
+        newCat = CreateCatModel()
+        newCat.user_id = userId!
+        newCat.name = catNameField.text!
+        newCat.birthday = standardDateFormat
+        newCat.breed_id = catBreedField.text!
+        newCat.initial_weight = "12.7"
+        newCat.neutered = isNeutered
+        newCat.gender = gender
+        newCat.image_id = imageString!
+       
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destVC = segue.destination as! selectBcsController
+        destVC.newCat = newCat
     }
     
     @IBAction func touchCancel(_ sender: UIButton){
@@ -271,7 +286,7 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         sender.layer.borderWidth = 1
         sender.layer.borderColor = UIColor.white.cgColor
         btn2ol.layer.borderColor = UIColor(white: 1.0, alpha: 0.0).cgColor
-        createCatObj.gender = 0
+        gender = 0
     }
     
     //male btn
@@ -280,12 +295,11 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         sender.layer.borderWidth = 1
         sender.layer.borderColor = UIColor.white.cgColor
         btn1ol.layer.borderColor = UIColor(white: 1.0, alpha: 0.0).cgColor
-        createCatObj.gender = 1
+        gender = 1
     }
 
     @IBAction func neuteredSwitch(_ sender: UISwitch){
         yesNoLabel.text = sender.isOn ? "Yes" : "No"
-        createCatObj.neutered = sender.isOn ? 1 : 0
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

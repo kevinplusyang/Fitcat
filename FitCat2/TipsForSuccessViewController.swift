@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class tipsForSuccessControllerViewController: UIViewController {
     
@@ -30,6 +31,8 @@ class tipsForSuccessControllerViewController: UIViewController {
     
     @IBOutlet weak var gotItBtn: UIButton!
     @IBOutlet weak var gotItBtn2: UIButton!
+    
+    var newCat: CreateCatModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,6 +152,11 @@ class tipsForSuccessControllerViewController: UIViewController {
             gotItBtn2.layer.borderWidth = 1
             gotItBtn2.layer.borderColor = UIColor.white.cgColor
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destVC = segue.destination as! planGeneration
+        destVC.newCat = newCat
     }
     
     /*

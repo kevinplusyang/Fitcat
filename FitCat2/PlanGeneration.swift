@@ -11,19 +11,21 @@ import Foundation
 import Alamofire
 
 class planGeneration: UIViewController, UITextFieldDelegate {
-    @IBOutlet weak var gotItBtn: UIButton!
+//    @IBOutlet weak var gotItBtn: UIButton!
+    
+    var newCat: CreateCatModel!
+    var plan = PlanModel()
+    var catFeedingModel = CatFeedingModel()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        gotItBtn.layer.borderWidth = 1
-        gotItBtn.layer.borderColor = UIColor.white.cgColor
-        gotItBtn.layer.cornerRadius = 5
     }
     
     @IBAction func generatePlan(_ sender: UIButton) {
-        let initial_bcs = createCatObj.initial_bcs
-        let initial_weight = createCatObj.initial_weight
+        let initial_bcs = newCat.initial_bcs
+        let initial_weight = newCat.initial_weight
         let weightNeedToLoss = Double(initial_bcs - 5) * 0.075 * Double(initial_weight)!
         let monthNeeded = Double(initial_bcs - 5) * 7.5
         let weightLossPerMonth = weightNeedToLoss / monthNeeded
@@ -40,8 +42,8 @@ class planGeneration: UIViewController, UITextFieldDelegate {
         formatter.dateFormat = "yy/MM/dd"
         let result = formatter.string(from: date)
 
-        planObj.cat_id = createCatObj.cat_id
-        planObj.start_date = result
+        plan.cat_id = newCat.cat_id
+        plan.start_date = result
 
         
         var endDate = Calendar.current.date(byAdding: .month, value: monthNeededInt, to: Date())
@@ -54,21 +56,35 @@ class planGeneration: UIViewController, UITextFieldDelegate {
         let enddateFM = formatter.string(from: endDate!)
         print("end:\(enddateFM)");
 
-
-        planObj.end_date = enddateFM
-        planObj.weight_lose = weightNeedToLoss
-        planObj.weight_lose_per_month = weightLossPerMonth
-        planObj.calories_to_lose_per_day = 0.8 * (30 * Double(createCatObj.initial_weight)! + 70)
         
-        Alamofire.request("http://mingplusyang.com/fitcatDB/createPlan.php?a1=\(planObj.cat_id)&a2=\(planObj.start_date)&a3=\(planObj.end_date)&a4=\(planObj.weight_lose)&a5=\(planObj.weight_lose_per_month)&a6=\(planObj.calories_to_lose_per_day)&a7=\(planObj.food_volume_required)").response { response in
+        plan.end_date = enddateFM
+        plan.weight_lose = weightNeedToLoss
+        plan.weight_lose_per_month = weightLossPerMonth
+        plan.calories_to_lose_per_day = 0.8 * (30 * Double(newCat.initial_weight)! + 70)
+        
+        catFeedingModel.cat_id = newCat.cat_id
+        catFeedingModel.cat_name = newCat.name
+        catFeedingModel.calories_total = plan.calories_to_lose_per_day
+        catFeedingModel.current_bcs = newCat.initial_bcs
+        catFeedingModel.calories_total = plan.food_volume_required
+        
+        catFeedingModel.weight_lose = plan.weight_lose
+        catFeedingModel.initial_weight = Float(newCat.initial_weight)!
+        catFeedingModel.current_weight = Float(newCat.initial_weight)!
+        catFeedingModel.image_ID = newCat.image_id
+        
+        plan.save()
+        catFeedingModel.save()
+        
+        Alamofire.request("http://mingplusyang.com/fitcatDB/createPlan.php?a1=\(plan.cat_id)&a2=\(plan.start_date)&a3=\(plan.end_date)&a4=\(plan.weight_lose)&a5=\(plan.weight_lose_per_month)&a6=\(plan.calories_to_lose_per_day)&a7=\(plan.food_volume_required)").response { response in
             print("Request: \(response.request)")
             print("Response: \(response.response)")
             print("Error: \(response.error)")
             
             if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
                 print("Data: \(utf8Text)")
-                planObj.plan_id = Int(utf8Text)!
-                print("PlanID:\(planObj.plan_id)")
+                self.plan.plan_id = Int(utf8Text)!
+                print("PlanID:\(self.plan.plan_id)")
                 
                 let dest = self.storyboard?.instantiateViewController(withIdentifier: "planView")
                 self.present(dest!, animated: true, completion: nil)
@@ -78,8 +94,8 @@ class planGeneration: UIViewController, UITextFieldDelegate {
         
         
         let parameters: Parameters = [
-            "photoID": "\(createCatObj.image_id)",
-            "catID": "\(createCatObj.cat_id)"
+            "photoID": "\(newCat.image_id)",
+            "catID": "\(newCat.cat_id)"
         ]
         
         // All three of these calls are equivalent

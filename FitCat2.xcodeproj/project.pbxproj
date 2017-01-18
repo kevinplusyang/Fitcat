@@ -15,6 +15,11 @@
 		5030E2941E0FAF74000EFC28 /* TermsOfServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5030E2931E0FAF74000EFC28 /* TermsOfServiceViewController.swift */; };
 		5030E2961E110E95000EFC28 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5030E2951E110E95000EFC28 /* PreferencesViewController.swift */; };
 		5030E2981E12285F000EFC28 /* ReturningUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5030E2971E12285F000EFC28 /* ReturningUserViewController.swift */; };
+		5078DC791E1C523E00FD9B01 /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5078DC781E1C523E00FD9B01 /* UIScrollView+EmptyDataSet.m */; };
+		5078DC7B1E1C66D700FD9B01 /* CreateCatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5078DC7A1E1C66D700FD9B01 /* CreateCatModel.swift */; };
+		50D94C241E20AF2100B54C27 /* PlanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D94C231E20AF2100B54C27 /* PlanModel.swift */; };
+		50D94C261E20AF9A00B54C27 /* FoodSelectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D94C251E20AF9A00B54C27 /* FoodSelectionModel.swift */; };
+		50F38FC21E282FFB007ABD07 /* CatFeedingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F38FC11E282FFB007ABD07 /* CatFeedingModel.swift */; };
 		5658C0980CA8592D66FFB172 /* Pods_FitCat2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 066762C49929BB70E9648594 /* Pods_FitCat2Tests.framework */; };
 		686370EB8E56D8C174442C29 /* Pods_FitCat2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A3A79738E9C12C61779FA7C /* Pods_FitCat2UITests.framework */; };
 		C80F66E31DEF24AF0008F4AD /* JBChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80F66E21DEF24AF0008F4AD /* JBChartViewController.swift */; };
@@ -76,6 +81,13 @@
 		5030E2931E0FAF74000EFC28 /* TermsOfServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsOfServiceViewController.swift; sourceTree = "<group>"; };
 		5030E2951E110E95000EFC28 /* PreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		5030E2971E12285F000EFC28 /* ReturningUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReturningUserViewController.swift; sourceTree = "<group>"; };
+		5078DC761E1C523D00FD9B01 /* FitCat2-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FitCat2-Bridging-Header.h"; sourceTree = "<group>"; };
+		5078DC771E1C523E00FD9B01 /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+EmptyDataSet.h"; path = "../../Downloads/DZNEmptyDataSet-master/Source/UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
+		5078DC781E1C523E00FD9B01 /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+EmptyDataSet.m"; path = "../../Downloads/DZNEmptyDataSet-master/Source/UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
+		5078DC7A1E1C66D700FD9B01 /* CreateCatModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCatModel.swift; sourceTree = "<group>"; };
+		50D94C231E20AF2100B54C27 /* PlanModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanModel.swift; sourceTree = "<group>"; };
+		50D94C251E20AF9A00B54C27 /* FoodSelectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodSelectionModel.swift; sourceTree = "<group>"; };
+		50F38FC11E282FFB007ABD07 /* CatFeedingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatFeedingModel.swift; sourceTree = "<group>"; };
 		5BE0D10F1C8FDC7CC650A736 /* Pods-FitCat2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitCat2.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitCat2/Pods-FitCat2.release.xcconfig"; sourceTree = "<group>"; };
 		86E9A460290C9786C3197B6D /* Pods-FitCat2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitCat2UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitCat2UITests/Pods-FitCat2UITests.release.xcconfig"; sourceTree = "<group>"; };
 		8A3A79738E9C12C61779FA7C /* Pods_FitCat2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitCat2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -205,7 +217,11 @@
 				5030E28A1E0B8358000EFC28 /* WeightPicker.swift */,
 				C8927BED1DE6222B000711DD /* PlanGeneration.swift */,
 				C8927BE71DE6204E000711DD /* CreateCat.swift */,
+				5078DC7A1E1C66D700FD9B01 /* CreateCatModel.swift */,
+				50D94C231E20AF2100B54C27 /* PlanModel.swift */,
+				50D94C251E20AF9A00B54C27 /* FoodSelectionModel.swift */,
 				C8B460DB1DE38E32003DB92E /* DataObjects.swift */,
+				50F38FC11E282FFB007ABD07 /* CatFeedingModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -245,10 +261,13 @@
 			isa = PBXGroup;
 			children = (
 				C80F66D91DEF248B0008F4AD /* JBChartView-Bridging-Header.h */,
+				5078DC771E1C523E00FD9B01 /* UIScrollView+EmptyDataSet.h */,
+				5078DC781E1C523E00FD9B01 /* UIScrollView+EmptyDataSet.m */,
 				C860BC111DE360AE005E00CC /* FitCat2 */,
 				C860BC101DE360AE005E00CC /* Products */,
 				9237B95F10A1B1F78381B15A /* Pods */,
 				B67A2780EA3928DB0A519EE9 /* Frameworks */,
+				5078DC761E1C523D00FD9B01 /* FitCat2-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -352,12 +371,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Ming Yang";
 				TargetAttributes = {
 					C860BC0E1DE360AE005E00CC = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = ALM2K2B6Z6;
+						DevelopmentTeam = 4JJ97T2879;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					C860BC221DE360AE005E00CC = {
@@ -563,8 +583,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50F38FC21E282FFB007ABD07 /* CatFeedingModel.swift in Sources */,
 				C860BC131DE360AE005E00CC /* AppDelegate.swift in Sources */,
 				5030E2941E0FAF74000EFC28 /* TermsOfServiceViewController.swift in Sources */,
+				50D94C261E20AF9A00B54C27 /* FoodSelectionModel.swift in Sources */,
 				C8155B881DEE7C8E000535FC /* TodayTableViewController.swift in Sources */,
 				C8927BFA1DE62349000711DD /* ViewController.swift in Sources */,
 				C8B460DC1DE38E32003DB92E /* DataObjects.swift in Sources */,
@@ -595,8 +617,11 @@
 				C8927BEA1DE62099000711DD /* JoinViewController.swift in Sources */,
 				C80F66E31DEF24AF0008F4AD /* JBChartViewController.swift in Sources */,
 				C8A278E71DF35F5F0064E11C /* MainPageController.swift in Sources */,
+				5078DC7B1E1C66D700FD9B01 /* CreateCatModel.swift in Sources */,
+				50D94C241E20AF2100B54C27 /* PlanModel.swift in Sources */,
 				C8927BE41DE61FAF000711DD /* BreedTableViewController.swift in Sources */,
 				5030E2961E110E95000EFC28 /* PreferencesViewController.swift in Sources */,
+				5078DC791E1C523E00FD9B01 /* UIScrollView+EmptyDataSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -667,6 +692,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -716,6 +742,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -744,13 +771,17 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D3504D3B2294E124901D9BCC /* Pods-FitCat2.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = ALM2K2B6Z6;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 4JJ97T2879;
 				INFOPLIST_FILE = FitCat2/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Cornell-Information-Science.FitCat2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FitCat2-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -760,13 +791,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5BE0D10F1C8FDC7CC650A736 /* Pods-FitCat2.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = ALM2K2B6Z6;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 4JJ97T2879;
 				INFOPLIST_FILE = FitCat2/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Cornell-Information-Science.FitCat2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FitCat2-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

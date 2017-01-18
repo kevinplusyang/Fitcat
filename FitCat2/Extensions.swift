@@ -39,3 +39,13 @@ class InsetLabel: UILabel
         return intrinsicSuperViewContentSize
     }
 }
+
+extension Int {
+    func toPounds() {
+        
+    }
+    
+    func toKilograms(){
+        
+    }
+}

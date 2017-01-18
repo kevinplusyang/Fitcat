@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import RealmSwift
 
 class selectBcsController: UIViewController {
     
@@ -23,8 +24,11 @@ class selectBcsController: UIViewController {
     @IBOutlet weak var individualView: UIView!
     @IBOutlet weak var superimposedView: UIView!
     
+    var newCat: CreateCatModel!
+    
     override func viewDidLoad() {
         backgroundGradient()
+        title = "Select BCS"
         
         bcs7.layer.borderWidth = 2
         bcs7.layer.borderColor = UIColor.white.cgColor
@@ -58,7 +62,7 @@ class selectBcsController: UIViewController {
         BCStext.backgroundColor = UIColor.clear
         BCStext.text! = "Spine, ribs, and pelvic bones not easily felt with moderate fat layer covering them, waist diminished, abdomen rounded with moderate abdominal fat pad."
         BCStext.textColor = UIColor.white
-        catNameLable.text = createCatObj.name
+        catNameLable.text = newCat.name
     }
     
     override func didReceiveMemoryWarning() {
@@ -70,6 +74,8 @@ class selectBcsController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         //segue.destination
+        let destVC = segue.destination as! tipsForSuccessControllerViewController
+        destVC.newCat = newCat
     }
     
     
@@ -118,7 +124,7 @@ class selectBcsController: UIViewController {
         BCSLabel.text! = "BCS 5"
         BCStext.text! = "Spine, ribs, and pelvic bones not visible but easily felt, evenly distributed muscle mass, minimal abdominal fat with abdominal tuck."
         print("selected5")
-        createCatObj.initial_bcs = 6
+        newCat.initial_bcs = 6
     }
     
     //BCS7 btn
@@ -130,7 +136,7 @@ class selectBcsController: UIViewController {
         BCSLabel.text! = "BCS 7"
         BCStext.text! = "Spine, ribs, and pelvic bones not easily felt with moderate fat layer covering them, waist diminished, abdomen rounded with moderate abdominal fat pad."
         print("selected7")
-        createCatObj.initial_bcs = 7
+        newCat.initial_bcs = 7
     }
     
     //BCS9 btn
@@ -142,22 +148,22 @@ class selectBcsController: UIViewController {
         BCSLabel.text! = "BCS 9"
         BCStext.text! = "Spine, ribs, and pelvic bones cannot be felt, excessive abdominal fat, waist absent."
         print("selected9")
-        createCatObj.initial_bcs = 9
+        newCat.initial_bcs = 9
     }
     
     //continue button
     @IBAction func continueBtnClicked(_ sender: UIButton) {
         //Prepare the information to be transmitted
         let parameters: Parameters = [
-            "a1" : createCatObj.user_id,
-            "a2" : createCatObj.name,
-            "a3" : createCatObj.birthday,
-            "a4" : createCatObj.breed_id,
-            "a5" : createCatObj.initial_weight,
-            "a6" : createCatObj.neutered,
-            "a7" : createCatObj.gender,
-            "a8" : createCatObj.initial_bcs,
-            "a9" : createCatObj.image_id
+            "a1" : newCat.user_id,
+            "a2" : newCat.name,
+            "a3" : newCat.birthday,
+            "a4" : newCat.breed_id,
+            "a5" : newCat.initial_weight,
+            "a6" : newCat.neutered,
+            "a7" : newCat.gender,
+            "a8" : newCat.initial_bcs,
+            "a9" : newCat.image_id
         ]
         
         print(parameters)
@@ -175,8 +181,9 @@ class selectBcsController: UIViewController {
             if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
                 print("Data: \(utf8Text)")
                 
-                createCatObj.cat_id = Int(utf8Text) != nil ? Int(utf8Text)! : 999
-                print("CatID:\(createCatObj.cat_id)")
+                self.newCat.cat_id = Int(utf8Text) != nil ? Int(utf8Text)! : 999
+                print("CatID:\(self.newCat.cat_id)")
+                self.newCat.save()
             }
         }
         

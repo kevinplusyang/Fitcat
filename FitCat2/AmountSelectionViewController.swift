@@ -11,6 +11,8 @@ import Alamofire
 
 class amountSelectionViewController: UIViewController {
     
+    let foodSelection = FoodSelectionModel()
+    
     //@IBOutlet weak var addToBowlBtn: UIButton!
     @IBOutlet weak var FeedBtn: UIButton!
     @IBOutlet weak var wetDrylabel: UILabel!
@@ -40,6 +42,8 @@ class amountSelectionViewController: UIViewController {
         volumeTemp = volumeTemp?.substring(to: (volumeTemp?.index(before:(volumeTemp?.endIndex)!))!)
         volumeTemp = volumeTemp?.substring(to: (volumeTemp?.index(before:(volumeTemp?.endIndex)!))!)
         volumeTemp = volumeTemp?.substring(to: (volumeTemp?.index(before:(volumeTemp?.endIndex)!))!)
+        
+        
     
         print("OO:\(Float(calTemp!))")
         print("OO:\(Float(volumeTemp!))")

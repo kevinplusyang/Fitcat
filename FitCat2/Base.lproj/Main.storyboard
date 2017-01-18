@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Nrq-2C-WbR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2338c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Nrq-2C-WbR">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -386,7 +386,7 @@
                                 </connections>
                             </textField>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0YB-R4-UZp">
-                                <rect key="frame" x="297" y="460" width="51" height="29"/>
+                                <rect key="frame" x="297" y="459" width="51" height="30"/>
                                 <connections>
                                     <action selector="neuteredSwitch:" destination="Nrq-2C-WbR" eventType="valueChanged" id="BFu-IT-EKl"/>
                                 </connections>
@@ -481,8 +481,8 @@
                                     <action selector="uploadProfileImg:" destination="Nrq-2C-WbR" eventType="touchUpInside" id="H1B-S1-b4O"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Neutered" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lni-d1-ZyD">
-                                <rect key="frame" x="32" y="464" width="67" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Neutered/Spayed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lni-d1-ZyD">
+                                <rect key="frame" x="32" y="464" width="126" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="2R0-oA-dKV"/>
                                 </constraints>
@@ -496,7 +496,6 @@
                             <constraint firstItem="d9e-Ff-EK6" firstAttribute="leading" secondItem="jYL-EU-Dq9" secondAttribute="trailing" id="0Hq-dK-Y5u"/>
                             <constraint firstItem="L9N-oD-dtn" firstAttribute="bottom" secondItem="sqH-SH-VuV" secondAttribute="bottom" id="3kQ-bs-7ft"/>
                             <constraint firstItem="8rY-Mv-Ghc" firstAttribute="top" secondItem="d9e-Ff-EK6" secondAttribute="bottom" constant="45" id="3kk-dK-rOg"/>
-                            <constraint firstItem="8rY-Mv-Ghc" firstAttribute="baseline" secondItem="SmX-dI-Fk3" secondAttribute="firstBaseline" id="3lo-6X-Q3e"/>
                             <constraint firstItem="J9D-eA-x28" firstAttribute="leading" secondItem="QJv-9u-tfA" secondAttribute="trailing" constant="75" id="62M-5f-czd"/>
                             <constraint firstItem="J9D-eA-x28" firstAttribute="top" secondItem="0YB-R4-UZp" secondAttribute="bottom" constant="45" id="7Lf-Zy-pQN"/>
                             <constraint firstItem="pEm-Mi-t6f" firstAttribute="top" secondItem="mdh-bF-J62" secondAttribute="bottom" constant="45" id="7OM-lM-lYJ"/>
@@ -505,7 +504,6 @@
                             <constraint firstItem="jYL-EU-Dq9" firstAttribute="leading" secondItem="SmX-dI-Fk3" secondAttribute="leading" id="B24-3K-NOn"/>
                             <constraint firstItem="cad-2R-oRw" firstAttribute="leading" secondItem="jYL-EU-Dq9" secondAttribute="leading" id="B8i-lF-bQJ"/>
                             <constraint firstItem="sqH-SH-VuV" firstAttribute="trailing" secondItem="L9N-oD-dtn" secondAttribute="trailing" id="BCZ-4n-fRY"/>
-                            <constraint firstItem="mdh-bF-J62" firstAttribute="baseline" secondItem="e1z-GC-DKj" secondAttribute="firstBaseline" id="BQg-X5-RYk"/>
                             <constraint firstItem="e1z-GC-DKj" firstAttribute="leading" secondItem="Lni-d1-ZyD" secondAttribute="leading" id="CRh-Dn-CbW"/>
                             <constraint firstItem="pEm-Mi-t6f" firstAttribute="centerX" secondItem="J9D-eA-x28" secondAttribute="centerX" id="E3t-yz-ZSS"/>
                             <constraint firstItem="hg6-J2-84V" firstAttribute="top" secondItem="NoK-XT-v1K" secondAttribute="bottom" constant="19" id="GOH-8J-pOS"/>
@@ -519,7 +517,6 @@
                             <constraint firstAttribute="trailingMargin" secondItem="0YB-R4-UZp" secondAttribute="trailing" constant="13" id="Qsf-5i-K6u"/>
                             <constraint firstItem="FU5-h6-4zP" firstAttribute="leading" secondItem="cad-2R-oRw" secondAttribute="trailing" constant="10" id="RUm-7t-Ah8"/>
                             <constraint firstItem="J9D-eA-x28" firstAttribute="baseline" secondItem="QJv-9u-tfA" secondAttribute="firstBaseline" id="RjR-Is-4Fd"/>
-                            <constraint firstItem="FU5-h6-4zP" firstAttribute="baseline" secondItem="cad-2R-oRw" secondAttribute="firstBaseline" id="S67-FB-Jdf"/>
                             <constraint firstItem="QJv-9u-tfA" firstAttribute="top" secondItem="Lni-d1-ZyD" secondAttribute="bottom" constant="50" id="Spi-mc-DE9"/>
                             <constraint firstItem="d9e-Ff-EK6" firstAttribute="trailing" secondItem="8rY-Mv-Ghc" secondAttribute="trailing" id="TAE-Vn-5jh"/>
                             <constraint firstItem="NoK-XT-v1K" firstAttribute="leading" secondItem="ihn-Ln-M1g" secondAttribute="leadingMargin" constant="14" id="TXf-1F-Bap"/>
@@ -538,7 +535,6 @@
                             <constraint firstItem="L9N-oD-dtn" firstAttribute="leading" secondItem="sqH-SH-VuV" secondAttribute="leading" id="jCn-RK-001"/>
                             <constraint firstItem="mdh-bF-J62" firstAttribute="top" secondItem="8rY-Mv-Ghc" secondAttribute="bottom" constant="26" id="jxa-h9-JSk"/>
                             <constraint firstItem="FU5-h6-4zP" firstAttribute="trailing" secondItem="d9e-Ff-EK6" secondAttribute="trailing" id="kAK-Tb-BmO"/>
-                            <constraint firstItem="d9e-Ff-EK6" firstAttribute="baseline" secondItem="jYL-EU-Dq9" secondAttribute="firstBaseline" id="laa-WQ-Jx1"/>
                             <constraint firstItem="0YB-R4-UZp" firstAttribute="leading" secondItem="pEm-Mi-t6f" secondAttribute="trailing" constant="17" id="mYg-dK-eaA"/>
                             <constraint firstItem="jYL-EU-Dq9" firstAttribute="centerY" secondItem="d9e-Ff-EK6" secondAttribute="centerY" id="ptv-2X-ipq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="J9D-eA-x28" secondAttribute="trailing" constant="53" id="szg-nS-gvs"/>
@@ -552,10 +548,16 @@
                         <outlet property="btn2ol" destination="J9D-eA-x28" id="eqe-cH-jfu"/>
                         <outlet property="btn3ol" destination="NoK-XT-v1K" id="kPu-VR-1cu"/>
                         <outlet property="catBreedField" destination="8rY-Mv-Ghc" id="MI5-Hl-aXs"/>
+                        <outlet property="catBreedLabel" destination="SmX-dI-Fk3" id="98E-Za-Kgw"/>
                         <outlet property="catDobField" destination="d9e-Ff-EK6" id="WJt-a9-GZH"/>
+                        <outlet property="catDobLabel" destination="jYL-EU-Dq9" id="5Uv-D2-BbP"/>
                         <outlet property="catNameField" destination="FU5-h6-4zP" id="269-v2-X4U"/>
+                        <outlet property="catNameLabel" destination="cad-2R-oRw" id="BnC-V7-jgE"/>
+                        <outlet property="catNeuteredLabel" destination="Lni-d1-ZyD" id="c3w-9Y-due"/>
+                        <outlet property="catProfileButton" destination="L9N-oD-dtn" id="jwP-bN-5x9"/>
                         <outlet property="catProfileImg" destination="sqH-SH-VuV" id="FsV-ix-WCx"/>
                         <outlet property="catWeightField" destination="mdh-bF-J62" id="XdA-30-atK"/>
+                        <outlet property="catWeightLabel" destination="e1z-GC-DKj" id="fwf-4Q-v1r"/>
                         <outlet property="toggle" destination="0YB-R4-UZp" id="D9V-5X-81D"/>
                         <outlet property="yesNoLabel" destination="pEm-Mi-t6f" id="vzD-Ef-xlv"/>
                     </connections>
@@ -1053,7 +1055,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NjN-ct-o4M">
-                                            <rect key="frame" x="-28" y="-1" width="381.5" height="44"/>
+                                            <rect key="frame" x="-28" y="-1" width="381" height="44"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.87368464469999996" green="0.30182510610000002" blue="0.2273154855" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <items>
@@ -2123,7 +2125,7 @@
         <!--newCatCards-->
         <scene sceneID="Kus-3C-RQl">
             <objects>
-                <collectionViewController storyboardIdentifier="allCats" title="newCatCards" id="XQa-x5-gg2" customClass="newCatCardsCollectionViewController" customModule="FitCat2" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="allCats" title="newCatCards" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XQa-x5-gg2" customClass="newCatCardsCollectionViewController" customModule="FitCat2" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" directionalLockEnabled="YES" alwaysBounceVertical="YES" dataMode="prototypes" id="JSu-eh-wwi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
