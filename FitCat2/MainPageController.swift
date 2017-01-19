@@ -20,8 +20,6 @@ class mainPageController: UIViewController,UITextFieldDelegate {
     var maxCount: Int = 360
     var currentCat: CreateCatModel!
     
-    var currentCatFeeding: CatFeedingModel!
-    
     @IBOutlet var circularProgressView: KDCircularProgress!
     @IBOutlet var catImg: UIImageView!
     
@@ -64,66 +62,31 @@ class mainPageController: UIViewController,UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let realm = try! Realm()
-        currentCatFeeding = realm.objects(CatFeedingModel.self).filter({$0.cat_id == self.currentCat.cat_id}).first
         
-//        Alamofire.request("http://mingplusyang.com/fitcatDB/getCurrentCat.php?catId=\(currentCat.cat_id)").responseJSON { response in
-//            
-//            if let jsonData = response.result.value {
-//                let json = JSON(jsonData)
-//                currentCatObj.cat_id = json["catId"].intValue  //Useful index
-//                currentCatObj.cat_name = json["catName"].stringValue //Display Useful
-//                currentCatObj.calories_total = json["calories_total"].doubleValue //Display Useful
-//                currentCatObj.calories_today = json["calories_today"].doubleValue  //Display Useful
-//                currentCatObj.food_total = json["food_total"].doubleValue //Display Useful
-//                currentCatObj.food_today = json["food_today"].doubleValue  //Display Useful
-//                currentCatObj.goal_weight = json["goal_weight"].floatValue //Display Useful
-//                currentCatObj.current_weight = json["current_weight"].floatValue  //Display Useful
-//                currentCatObj.current_bcs = json["current_bcs"].intValue //Display Useful
-//                currentCatObj.goal_bcs = json["goal_bcs"].intValue  //Goal BCS, typically is 5
-//                currentCatObj.weight_lose = json["weight_lose"].doubleValue
-//                currentCatObj.initial_weight = json["initial_weight"].floatValue
-//                currentCatObj.image_ID = json["img_ID"].stringValue
-        
-                self.current_weight.text = String(currentCatFeeding.current_weight) + " lb"
-                self.current_BCS.text = String(currentCatFeeding.current_bcs) + " BCS"
-                self.goal_weight.text = String(currentCatFeeding.goal_weight) + " lb"
-                self.calories_remaining.text = String(Int(currentCatFeeding.calories_total - currentCatFeeding.calories_today))
-                self.food_remaining.text = String(currentCatFeeding.food_total - currentCatFeeding.food_today)
-                var temp1 = currentCatFeeding.calories_today / currentCatFeeding.calories_total
-                var temp2 = currentCatFeeding.food_today / currentCatFeeding.food_total
+                //MARK: CHECK PREFERENCES FOR WEIGHT AND DISPLAY ACCORDINGLY
+            print("current_weight: \((self.currentCat.cat_feeding?.current_weight)!)")
+                self.current_weight.text = String(describing: (self.currentCat.cat_feeding?.current_weight)!) + " lb"
+                self.current_BCS.text = String(describing: (self.currentCat.cat_feeding?.current_bcs)!) + " BCS"
+                self.goal_weight.text = String(describing: (self.currentCat.cat_feeding?.goal_weight)!) + " lb"
+                self.calories_remaining.text = String(Int((self.currentCat.cat_feeding?.calories_total)! - (self.currentCat.cat_feeding?.calories_today)!))
+                self.food_remaining.text = String((self.currentCat.cat_feeding?.food_total)! - (self.currentCat.cat_feeding?.food_today)!
+        )
+                var temp1 = (self.currentCat.cat_feeding?.calories_today)! / (self.currentCat.cat_feeding?.calories_total)!
+                var temp2 = (self.currentCat.cat_feeding?.food_today)! / (self.currentCat.cat_feeding?.food_total)!
                 self.caloriesProgress.progress = 1 - Float(temp1)
                 self.volumeProgress.progress = 1 - Float(temp2)
-                self.catName.text = currentCatFeeding.cat_name
-            //}
-        //}
-
-        //        print("asas")
-        //        print(currentCatObj.cat_id)
-        //         print(currentCatObj.cat_name)
-        //         print(currentCatObj.calories_total)
-        //         print(currentCatObj.calories_today)
-        //         print(currentCatObj.food_total)
-        //         print(currentCatObj.goal_weight)
-        //         print(currentCatObj.current_weight)
-        //         print(currentCatObj.current_bcs)
-        //         print(currentCatObj.goal_bcs)
-        //        print(currentCatObj.weight_lose)
-        //         print(currentCatObj.initial_weight)
+                self.catName.text = self.currentCat.name
+    
         
-        current_weight.text = String(currentCatFeeding.current_weight)
-        current_BCS.text = String(currentCatFeeding.current_bcs)
-        goal_weight.text = String(currentCatFeeding.goal_weight) + " lb"
-        calories_remaining.text = String(Int(currentCatFeeding.calories_total - currentCatFeeding.calories_today))
-        food_remaining.text = String(currentCatFeeding.food_total - currentCatFeeding.food_today)
+        current_weight.text = String(describing: self.currentCat.cat_feeding?.current_weight)
+        current_BCS.text = String(describing: self.currentCat.cat_feeding?.current_bcs)
+        goal_weight.text = String(describing: self.currentCat.cat_feeding?.goal_weight) + " lb"
+        calories_remaining.text = String(describing: Int((self.currentCat.cat_feeding?.calories_total)! - (self.currentCat.cat_feeding?.calories_today)!))
+        food_remaining.text = String(describing: (self.currentCat.cat_feeding?.food_total)! - (self.currentCat.cat_feeding?.food_today)!)
         caloriesProgress.progress = 1 - Float(temp1)
         volumeProgress.progress = 1 - Float(temp2)
         catName.text = currentCat.name
 
-        // Do any additional setup after loading the view.
-        //circularProgressView.angle = 0
-        //round cat image
-        
         catImg.layer.borderWidth = 1
         catImg.layer.masksToBounds = false
         catImg.layer.borderColor = UIColor.white.cgColor
@@ -154,11 +117,13 @@ class mainPageController: UIViewController,UITextFieldDelegate {
         
         //log button rounded corner
         logBtn.layer.cornerRadius = 5
-        current_weight.text = String(currentCatFeeding.current_weight) + " lb"
-        current_BCS.text = String(currentCatFeeding.current_bcs) + " BCS"
+        current_weight.text = String(describing: self.currentCat.cat_feeding?.current_weight) + " lb"
+        current_BCS.text = String(describing: self.currentCat.cat_feeding?.current_bcs) + " BCS"
         logWeightBtn.layer.cornerRadius = 5
         
-        circularProgressView.animate(toAngle: Double(Float((currentCatFeeding.initial_weight - currentCatFeeding.current_weight))  / Float(currentCatFeeding.weight_lose) * 360), duration: 0.2, completion: nil)
+        let weightProgress = ((self.currentCat.cat_feeding?.initial_weight)! - (self.currentCat.cat_feeding?.current_weight)!)
+        
+        circularProgressView.animate(toAngle: Double(Float(weightProgress) / Float((self.currentCat.cat_feeding?.weight_lose)!) * 360), duration: 0.2, completion: nil)
         
         //        caloriesProgress.progress = 0.2
         //        volumeProgress.progress = 0.8
@@ -168,7 +133,7 @@ class mainPageController: UIViewController,UITextFieldDelegate {
         //        catImg.image = UIImage(named:"assets-library://asset/asset.JPG?id=87BC395F-5C08-4470-80BE-489575FF7DE7&ext=JPG")
         
         // declare your asset url
-        let assetUrl = URL(string: currentCatFeeding.image_ID)!
+        let assetUrl = URL(string: self.currentCat.image_id)!
         
         // retrieve the list of matching results for your asset url
         let fetchResult = PHAsset.fetchAssets(withALAssetURLs: [assetUrl], options: nil)
@@ -257,7 +222,7 @@ class mainPageController: UIViewController,UITextFieldDelegate {
     @IBAction func logWeightBtnTapped(_ sender: UIButton) {
         var weight = Double(weightTextField.text!)!
         print("weight is \(weight)")
-        Alamofire.request("http://mingplusyang.com/fitcatDB/addWeightRecord.php?a1=\(currentCatFeeding.cat_id)&a2=\(Double(weightTextField.text!)!)").response { response in
+        Alamofire.request("http://mingplusyang.com/fitcatDB/addWeightRecord.php?a1=\(currentCat.cat_id)&a2=\(Double(weightTextField.text!)!)").response { response in
             print("Request: \(response.request)")
             print("Response: \(response.response)")
             print("Error: \(response.error)")
@@ -266,25 +231,15 @@ class mainPageController: UIViewController,UITextFieldDelegate {
                 var result = 0
                 print("Data: \(utf8Text)")
                 self.current_weight.text = String(weight) + " lb"
-                self.currentCatFeeding.current_weight = Float(weight)
+                self.currentCat.cat_feeding?.current_weight = Float(weight)
                 
-                self.circularProgressView.animate(toAngle: Double(Float((self.currentCatFeeding.initial_weight - self.currentCatFeeding.current_weight))  / Float(self.currentCatFeeding.weight_lose) * 360), duration: 0.2, completion: nil)
+                let weightProgress = (self.currentCat.cat_feeding?.initial_weight)! - (self.currentCat.cat_feeding?.current_weight)!
+                
+                self.circularProgressView.animate(toAngle: Double(Float(weightProgress)  / Float((self.currentCat.cat_feeding?.weight_lose)!) * 360), duration: 0.2, completion: nil)
                 
             }
         }
     }
-    
-    //    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    //        for textField in self.view.subviews where textField is UITextField {
-    //            textField.resignFirstResponder()
-    //        }
-    //        return true
-    //    }
-    
-    //    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    //        weightTextField.resignFirstResponder()
-    //        return true;
-    //    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
@@ -302,12 +257,6 @@ class mainPageController: UIViewController,UITextFieldDelegate {
         print("touchedBack")
         view.endEditing(true)
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     */
     
     /*
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

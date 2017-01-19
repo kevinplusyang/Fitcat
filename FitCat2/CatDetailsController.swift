@@ -77,6 +77,7 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = false
+        //MARK: FIX FOR LATER
         pounds = userDefaults.value(forKey: "pounds") as! Bool
        
         // Do any additional setup after loading the view, typically from a nib.
@@ -119,6 +120,7 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
        
         weightToolbar.items = [flexSpace,doneButtonWeight]
         catWeightField.inputAccessoryView = weightToolbar
+        //MARK: FIX FOR LATER
         let isWeightPounds = userDefaults.value(forKey: "pounds") as! Bool
         weightPicker.isPounds = isWeightPounds
         catWeightField.inputView = weightPicker
@@ -218,56 +220,31 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
     @IBAction func btn3(_ sender: UIButton) {
         sender.layer.backgroundColor = UIColor(white: 1.0, alpha:0.1).cgColor
 
-//        if (catNameField.text?.isEmpty)! || (catDobField.text?.isEmpty)! || (catWeightField.text?.isEmpty)! {
-//
-//            let alert = UIAlertController(title: "Error", message:"Opps, Some required fields have not been filled.", preferredStyle: .alert)
-//            let closeAction = UIAlertAction(title:"Close", style: .cancel, handler: nil)
-//            alert.addAction(closeAction)
-//            self.present(alert, animated: true, completion:nil)
-//            
-//        } else {
-//            //The server will accept the following data format:
-//            // mm/dd/yy
-//            
-//            createCatObj.user_id = floginobj.f_id
-//            createCatObj.name = catNameField.text!
-//            createCatObj.birthday = standardDateFormat
-//            createCatObj.breed_id = catBreedField.text!
-//            
-//            let testNum = Float(catWeightField.text!)
-//            if testNum != nil {
-//                createCatObj.initial_weight = catWeightField.text!
-//            } else {
-//                let alert = UIAlertController(title: "Error", message:"Please enter number in weight.", preferredStyle: .alert)
-//                let closeAction = UIAlertAction(title:"Close", style: .cancel, handler: nil)
-//                alert.addAction(closeAction)
-//                self.present(alert, animated: true, completion:nil)
-//            }
-//            
-//            performSegue(withIdentifier: "selectBCSView", sender: self)
-//        }
+        if (catNameField.text?.isEmpty)! || (catDobField.text?.isEmpty)! || (catWeightField.text?.isEmpty)! {
 
-        
-        
-        
-
-        //The server will accept the following data format:
-        // mm/dd/yy
-    
-       
-        
-        //MARK: temp fix
-        //createCatObj.initial_weight = catWeightField.text!
+            let alert = UIAlertController(title: "Error", message:"Oops, Some required fields have not been filled.", preferredStyle: .alert)
+            let closeAction = UIAlertAction(title:"Close", style: .cancel, handler: nil)
+            alert.addAction(closeAction)
+            self.present(alert, animated: true, completion:nil)
+            
+        } else {
+            //The server will accept the following data format:
+            // mm/dd/yy
         let isNeutered = toggle.isOn ? 1 : 0
         newCat = CreateCatModel()
         newCat.user_id = userId!
         newCat.name = catNameField.text!
         newCat.birthday = standardDateFormat
         newCat.breed_id = catBreedField.text!
+        //MARK: CHECK IF WEIGHT IS IN POUNDS AND CONVERT TO KILOS
+        print("CatWeightField is : \(catWeightField.text)")
+        let stringOfWeight = catWeightField.text!
+        print("Pounds of weight: \(stringOfWeight.getPounds())")
         newCat.initial_weight = "12.7"
         newCat.neutered = isNeutered
         newCat.gender = gender
         newCat.image_id = imageString!
+        }
        
     }
     

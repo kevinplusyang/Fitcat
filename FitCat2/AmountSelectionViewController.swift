@@ -47,10 +47,9 @@ class amountSelectionViewController: UIViewController {
     
         print("OO:\(Float(calTemp!))")
         print("OO:\(Float(volumeTemp!))")
-        print("CCT:\(currentCatObj.cat_id))")
-        print("Food:\(foodSelection.foodID)")
+
         
-        Alamofire.request("http://mingplusyang.com/fitcatDB/addFeedingRecord.php?a1=\(currentCatObj.cat_id)&a2=\(foodSelection.foodID)&a3=\(calTemp!)&a4=\(volumeTemp!)").response { response in
+        Alamofire.request("http://mingplusyang.com/fitcatDB/addFeedingRecord.php?a1=\(33)&a2=\(foodSelection.foodID)&a3=\(calTemp!)&a4=\(volumeTemp!)").response { response in
             print("Request: \(response.request)")
             print("Response: \(response.response)")
             print("Error: \(response.error)")

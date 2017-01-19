@@ -31,7 +31,7 @@ class JBChartViewController: UIViewController, JBBarChartViewDelegate, JBBarChar
         barChart.maximumValue = 40
 
         
-        Alamofire.request("http://mingplusyang.com/fitcatDB/getMonthCalories.php?a1=\(currentCatObj.cat_id)").responseJSON { response in
+        Alamofire.request("http://mingplusyang.com/fitcatDB/getMonthCalories.php?a1=\(1)").responseJSON { response in
             
             //print("sdfsdf")
             if let jsonData = response.result.value {

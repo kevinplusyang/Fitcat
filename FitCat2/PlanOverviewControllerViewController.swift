@@ -28,28 +28,30 @@ class planOverviewControllerViewController: UIViewController {
     @IBOutlet weak var caloriesPerDay: UILabel!
     @IBOutlet weak var volumePerDay: UILabel!
     @IBOutlet weak var endDateBig: UILabel!
+    var cat: CreateCatModel!
     
     @IBAction func gotItButton(_ sender: UIButton) {
-        Alamofire.request("http://mingplusyang.com/fitcatDB/getCurrentCat.php?catId=\(planObj.cat_id)").responseJSON { response in
-            if let jsonData = response.result.value {
-                let json = JSON(jsonData)
-                currentCatObj.cat_id = json["catId"].intValue  //Useful index
-                currentCatObj.cat_name = json["catName"].stringValue //Display Useful
-                currentCatObj.calories_total = json["calories_total"].doubleValue //Display Useful
-                currentCatObj.calories_today = json["calories_today"].doubleValue  //Display Useful
-                currentCatObj.food_total = json["food_total"].doubleValue //Display Useful
-                currentCatObj.food_today = json["food_today"].doubleValue  //Display Useful
-                currentCatObj.goal_weight = json["goal_weight"].floatValue //Display Useful
-                currentCatObj.current_weight = json["current_weight"].floatValue  //Display Useful
-                currentCatObj.current_bcs = json["current_bcs"].intValue //Display Useful
-                currentCatObj.goal_bcs = json["goal_bcs"].intValue  //Goal BCS, typically is 5
-                currentCatObj.weight_lose = json["weight_lose"].doubleValue
-                currentCatObj.initial_weight = json["initial_weight"].floatValue
-                currentCatObj.image_ID = json["img_ID"].stringValue
-                let dest = self.storyboard?.instantiateViewController(withIdentifier: "mainPage")
-                self.present(dest!, animated: true, completion: nil)
-            }
-        }
+//        Alamofire.request("http://mingplusyang.com/fitcatDB/getCurrentCat.php?catId=\(planObj.cat_id)").responseJSON { response in
+//            if let jsonData = response.result.value {
+//                let json = JSON(jsonData)
+//                currentCatObj.cat_id = json["catId"].intValue  //Useful index
+//                currentCatObj.cat_name = json["catName"].stringValue //Display Useful
+//                currentCatObj.calories_total = json["calories_total"].doubleValue //Display Useful
+//                currentCatObj.calories_today = json["calories_today"].doubleValue  //Display Useful
+//                currentCatObj.food_total = json["food_total"].doubleValue //Display Useful
+//                currentCatObj.food_today = json["food_today"].doubleValue  //Display Useful
+//                currentCatObj.goal_weight = json["goal_weight"].floatValue //Display Useful
+//                currentCatObj.current_weight = json["current_weight"].floatValue  //Display Useful
+//                currentCatObj.current_bcs = json["current_bcs"].intValue //Display Useful
+//                currentCatObj.goal_bcs = json["goal_bcs"].intValue  //Goal BCS, typically is 5
+//                currentCatObj.weight_lose = json["weight_lose"].doubleValue
+//                currentCatObj.initial_weight = json["initial_weight"].floatValue
+//                currentCatObj.image_ID = json["img_ID"].stringValue
+                let dest = self.storyboard?.instantiateViewController(withIdentifier: "mainPage") as! mainPageController
+                dest.currentCat = cat
+                self.present(dest, animated: true, completion: nil)
+            //}
+        //}
     }
     
     
@@ -62,7 +64,7 @@ class planOverviewControllerViewController: UIViewController {
         catImg.layer.borderColor = UIColor.white.cgColor
         catImg.layer.cornerRadius = catImg.frame.height/2
         catImg.clipsToBounds = true
-        let assetUrl = URL(string: createCatObj.image_id)!
+        let assetUrl = URL(string: cat.image_id)!
         // retrieve the list of matching results for your asset url
         let fetchResult = PHAsset.fetchAssets(withALAssetURLs: [assetUrl], options: nil)
         if let photo = fetchResult.firstObject {
@@ -72,62 +74,19 @@ class planOverviewControllerViewController: UIViewController {
                 self.catImg.image = image //here is the image
             }
         }
-        
-        Alamofire.request("http://mingplusyang.com/fitcatDB/getCatIdByPlan.php?a1=\(planObj.plan_id)").response { response in
-            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
-                planObj.cat_id = Int(utf8Text)!
-            }
-        }
-        
-        Alamofire.request("http://mingplusyang.com/fitcatDB/getEndDateByPlan.php?a1=\(planObj.plan_id)").response { response in
-            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
-                //                self.endDate.text = "\(utf8Text)"
-                planObj.end_date = utf8Text
-            }
-        }
-        
-        Alamofire.request("http://mingplusyang.com/fitcatDB/getStartDateByPlan.php?a1=\(planObj.plan_id)").response { response in
-            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
-                planObj.start_date = utf8Text
-            }
-        }
-        
-        Alamofire.request("http://mingplusyang.com/fitcatDB/getWeightLosePerMonthByPlan.php?a1=\(planObj.plan_id)").response { response in
-            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
-                planObj.weight_lose_per_month = Double(utf8Text)!
-            }
-        }
-        
-        Alamofire.request("http://mingplusyang.com/fitcatDB/getWeightLossByPlan.php?a1=\(planObj.plan_id)").response { response in
-            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
-                planObj.weight_lose = Double(utf8Text)!
-            }
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-            self.startDate.text = planObj.start_date
-            self.endDate.text = planObj.end_date
-            self.weightLoss.text = "\(planObj.weight_lose)lb 5BCS"
-            self.weightToLoss.text = "\(planObj.weight_lose) lbs"
-            self.weightToLossPerMonth.text = "\(planObj.weight_lose_per_month) lbs"
-            self.caloriesPerDay.text = "\(planObj.calories_to_lose_per_day) Cal"
-            self.volumePerDay.text = "\(planObj.food_volume_required) OZ"
-            self.endDateBig.text = planObj.end_date
-        })
+            self.startDate.text = self.cat.cat_plan?.start_date
+            self.endDate.text = self.cat.cat_plan?.end_date
+            self.weightLoss.text = "\(self.cat.cat_plan?.weight_lose)lb 5BCS"
+            self.weightToLoss.text = "\(self.cat.cat_plan?.weight_lose) lbs"
+            self.weightToLossPerMonth.text = "\(self.cat.cat_plan?.weight_lose_per_month) lbs"
+            self.caloriesPerDay.text = "\(self.cat.cat_plan?.calories_to_lose_per_day) Cal"
+            self.volumePerDay.text = "\(self.cat.cat_plan?.food_volume_required) OZ"
+            self.endDateBig.text = self.cat.cat_plan?.end_date
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    /*
-     // MARK: - Navigation
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
 }
 

@@ -386,7 +386,7 @@
                                 </connections>
                             </textField>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0YB-R4-UZp">
-                                <rect key="frame" x="297" y="459" width="51" height="30"/>
+                                <rect key="frame" x="297" y="460" width="51" height="29"/>
                                 <connections>
                                     <action selector="neuteredSwitch:" destination="Nrq-2C-WbR" eventType="valueChanged" id="BFu-IT-EKl"/>
                                 </connections>
@@ -1055,7 +1055,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NjN-ct-o4M">
-                                            <rect key="frame" x="-28" y="-1" width="381" height="44"/>
+                                            <rect key="frame" x="-28.5" y="-1" width="381" height="44"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.87368464469999996" green="0.30182510610000002" blue="0.2273154855" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <items>

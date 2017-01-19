@@ -33,7 +33,7 @@ class yearJBChartViewController: UIViewController, JBBarChartViewDelegate, JBBar
         barChart.minimumValue = 0
         barChart.maximumValue = 40
         
-        Alamofire.request("http://mingplusyang.com/fitcatDB/getYearCalories.php?a1=\(currentCatObj.cat_id)").responseJSON { response in
+        Alamofire.request("http://mingplusyang.com/fitcatDB/getYearCalories.php?a1=\(1)").responseJSON { response in
             if let jsonData = response.result.value {
                 let json = JSON(jsonData)
             

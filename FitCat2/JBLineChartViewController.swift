@@ -36,7 +36,7 @@ class JBLineChartViewController: UIViewController, JBLineChartViewDelegate, JBLi
         lineChart.reloadData()
         lineChart.setState(.collapsed, animated: false)
     
-        Alamofire.request("http://mingplusyang.com/fitcatDB/getWeight.php?a1=\(currentCatObj.cat_id)").responseJSON { response in
+        Alamofire.request("http://mingplusyang.com/fitcatDB/getWeight.php?a1=\(1)").responseJSON { response in
             if let jsonData = response.result.value {
                 let json = JSON(jsonData)
                 self.chartLegend.removeAll()

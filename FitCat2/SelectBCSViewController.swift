@@ -183,7 +183,6 @@ class selectBcsController: UIViewController {
                 
                 self.newCat.cat_id = Int(utf8Text) != nil ? Int(utf8Text)! : 999
                 print("CatID:\(self.newCat.cat_id)")
-                self.newCat.save()
             }
         }
         

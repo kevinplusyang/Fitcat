@@ -214,7 +214,7 @@ class InitialViewController: UIViewController, UITextFieldDelegate, GIDSignInUID
             if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
                 print("Data: \(utf8Text)")
                 let isInDatabase = Int(utf8Text)
-                if isInDatabase == 0 {
+                if isInDatabase == 1 {
 //                    self.footerLabel.isHidden = true
 //                    self.incorrectEmailFooterLabel.isHidden = true
 //                    let returningUserVC = ReturningUserViewController()

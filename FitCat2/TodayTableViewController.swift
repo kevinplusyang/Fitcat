@@ -22,8 +22,8 @@ class todayTableViewController: UIViewController, UITableViewDataSource, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        Alamofire.request("http://mingplusyang.com/fitcatDB/getTodayRecord.php?a1=\(currentCatObj.cat_id)").responseJSON { response in
+        //MARK
+        Alamofire.request("http://mingplusyang.com/fitcatDB/getTodayRecord.php?a1=\(5)").responseJSON { response in
             
             if let jsonData = response.result.value {
                 let json = JSON(jsonData)

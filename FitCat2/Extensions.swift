@@ -40,6 +40,24 @@ class InsetLabel: UILabel
     }
 }
 
+extension String {
+
+    public func firstIndex(of string: String) -> Int? {
+        return Array(self.characters).map({String($0)}).index(of: string)
+    }
+    
+    func getPounds() -> String {
+        let intOfSpace = self.firstIndex(of: " ")!
+        let index = self.index(self.startIndex, offsetBy: intOfSpace)
+        return self.substring(to: index)
+    }
+    
+    
+    func getOunces() {
+        
+    }
+}
+
 extension Int {
     func toPounds() {
         
