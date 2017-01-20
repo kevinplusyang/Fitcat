@@ -15,7 +15,7 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
     
     let gradient = CAGradientLayer()
     let imagePicker = UIImagePickerController()
-
+    
     @IBOutlet weak var catNameLabel: UILabel!
     @IBOutlet weak var catDobLabel: UILabel!
     @IBOutlet weak var catBreedLabel: UILabel!
@@ -45,7 +45,7 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
     @IBOutlet weak var toggle: UISwitch!
     
     
-    var standardDateFormat = ""
+    var standardDateFormat = Date()
     var datePicker = UIDatePicker()
     var weightPicker = WeightPicker()
     var pounds = true
@@ -54,14 +54,14 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
     var gender = 1
     var imageString: String?
     var newCat: CreateCatModel!
-
+    
     let lineBelowCatName = CALayer()
     let lineBelowDob = CALayer()
     let lineBelowBreed = CALayer()
     let lineBelowWeight = CALayer()
     
     override func viewDidLoad() {
-         super.viewDidLoad()
+        super.viewDidLoad()
         userId = Int(userDefaults.string(forKey: "userID")!)!
         title = "Add A Cat"
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
@@ -79,7 +79,7 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         imagePicker.allowsEditing = false
         //MARK: FIX FOR LATER
         pounds = userDefaults.value(forKey: "pounds") as! Bool
-       
+        
         // Do any additional setup after loading the view, typically from a nib.
         
         //cat profile image UI: round images
@@ -116,10 +116,11 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         let weightToolbar = UIToolbar.init()
         weightToolbar.sizeToFit()
         weightPicker.catViewController = self
-          let doneButtonWeight = UIBarButtonItem.init(barButtonSystemItem: .done, target: self, action: #selector(dismissKeyboard))
-       
+        let doneButtonWeight = UIBarButtonItem.init(barButtonSystemItem: .done, target: self, action: #selector(dismissKeyboard))
+        
         weightToolbar.items = [flexSpace,doneButtonWeight]
         catWeightField.inputAccessoryView = weightToolbar
+        
         //MARK: FIX FOR LATER
         let isWeightPounds = userDefaults.value(forKey: "pounds") as! Bool
         weightPicker.isPounds = isWeightPounds
@@ -141,7 +142,7 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         
         lineBelowWeight.frame = CGRect(x: margin, y: (catWeightLabel.frame.maxY + catNeuteredLabel.frame.minY)/2.0, width: view.bounds.width - (margin * 2.0), height: 2.0)
         lineBelowWeight.backgroundColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6).cgColor
-
+        
         view.layer.addSublayer(lineBelowCatName)
         view.layer.addSublayer(lineBelowDob)
         view.layer.addSublayer(lineBelowBreed)
@@ -169,12 +170,12 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         gradient.frame = view.bounds
         gradient.locations = [0.0,1.0]
     }
-
+    
     
     func updateWeightDisplay() {
         catWeightField.text = pounds ? (weightPicker.poundsString + weightPicker.ouncesString) : (weightPicker.kilogramsString + weightPicker.gramsString)
     }
-
+    
     @IBAction func breedSelection(sender: UIButton) {
         let dest = self.storyboard?.instantiateViewController(withIdentifier: "SecondViewController")
         self.present(dest!, animated: true, completion: nil)
@@ -182,12 +183,12 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
     
     func dateChanged(datePicker: UIDatePicker) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = DateFormatter.Style.short
+        dateFormatter.dateStyle = .short
         catDobField.text = dateFormatter.string(from: datePicker.date)
-        
+        let dateString = dateFormatter.string(from: datePicker.date)
         //Server will accept the date format like yy/mm/dd
-        dateFormatter.dateFormat = "yy/MM/dd"
-        standardDateFormat = dateFormatter.string(from: datePicker.date)
+        //dateFormatter.dateFormat = "yy/MM/dd"
+        standardDateFormat = dateFormatter.date(from: dateString)!
     }
     
     override func didReceiveMemoryWarning() {
@@ -203,8 +204,8 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-             let localUrl = (info[UIImagePickerControllerMediaURL] ?? info[UIImagePickerControllerReferenceURL]!) as? NSURL
-                print (localUrl!)
+            let localUrl = (info[UIImagePickerControllerMediaURL] ?? info[UIImagePickerControllerReferenceURL]!) as? NSURL
+            print (localUrl!)
             imageString = String(describing: localUrl!)
             catProfileImg.image = image
             catProfileButton.setTitle("", for: .normal)
@@ -219,9 +220,9 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
     //continue btn
     @IBAction func btn3(_ sender: UIButton) {
         sender.layer.backgroundColor = UIColor(white: 1.0, alpha:0.1).cgColor
-
+        
         if (catNameField.text?.isEmpty)! || (catDobField.text?.isEmpty)! || (catWeightField.text?.isEmpty)! {
-
+            
             let alert = UIAlertController(title: "Error", message:"Oops, Some required fields have not been filled.", preferredStyle: .alert)
             let closeAction = UIAlertAction(title:"Close", style: .cancel, handler: nil)
             alert.addAction(closeAction)
@@ -230,22 +231,30 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         } else {
             //The server will accept the following data format:
             // mm/dd/yy
-        let isNeutered = toggle.isOn ? 1 : 0
-        newCat = CreateCatModel()
-        newCat.user_id = userId!
-        newCat.name = catNameField.text!
-        newCat.birthday = standardDateFormat
-        newCat.breed_id = catBreedField.text!
-        //MARK: CHECK IF WEIGHT IS IN POUNDS AND CONVERT TO KILOS
-        print("CatWeightField is : \(catWeightField.text)")
-        let stringOfWeight = catWeightField.text!
-        print("Pounds of weight: \(stringOfWeight.getPounds())")
-        newCat.initial_weight = "12.7"
-        newCat.neutered = isNeutered
-        newCat.gender = gender
-        newCat.image_id = imageString!
+            let isNeutered = toggle.isOn ? 1 : 0
+            newCat = CreateCatModel()
+            newCat.user_id = userId!
+            newCat.name = catNameField.text!
+            newCat.birthday = standardDateFormat
+            newCat.breed_id = catBreedField.text!
+            //MARK: CHECK IF WEIGHT IS IN POUNDS AND CONVERT TO KILOS
+            
+            let stringOfWeight = catWeightField.text!
+            var initial_weight_parsed = 0.0
+            if pounds {
+                let pounds = Double(stringOfWeight.getPounds())
+                let ounces = Double(stringOfWeight.getOunces())
+                let combinedOunces = (pounds?.poundsToOunces())! + ounces!
+                initial_weight_parsed = combinedOunces.ouncesToKilograms()
+                print(initial_weight_parsed)
+            }
+            
+            newCat.initial_weight = initial_weight_parsed
+            newCat.neutered = isNeutered
+            newCat.gender = gender
+            newCat.image_id = imageString!
         }
-       
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -274,7 +283,7 @@ class catDetailsController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         btn1ol.layer.borderColor = UIColor(white: 1.0, alpha: 0.0).cgColor
         gender = 1
     }
-
+    
     @IBAction func neuteredSwitch(_ sender: UISwitch){
         yesNoLabel.text = sender.isOn ? "Yes" : "No"
     }

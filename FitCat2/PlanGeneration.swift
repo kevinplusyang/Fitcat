@@ -26,11 +26,15 @@ class planGeneration: UIViewController, UITextFieldDelegate {
     @IBAction func generatePlan(_ sender: UIButton) {
         let initial_bcs = newCat.initial_bcs
         let initial_weight = newCat.initial_weight
-        let weightNeedToLoss = Double(initial_bcs - 5) * 0.075 * Double(initial_weight)!
+        let weightNeedToLoss = Double(initial_bcs - 5) * 0.075 * initial_weight
         let monthNeeded = Double(initial_bcs - 5) * 7.5
         let weightLossPerMonth = weightNeedToLoss / monthNeeded
+        let end_weight = initial_weight - weightNeedToLoss
+        
+        
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = DateFormatter.Style.short
+        dateFormatter.dateStyle = .short
+        
         
         print("weight need to lose:\(weightNeedToLoss)")
         print("month needed:\(monthNeeded)")
@@ -38,28 +42,29 @@ class planGeneration: UIViewController, UITextFieldDelegate {
         let monthRestDouble = monthNeeded - Double(Int(monthNeeded))
 
         let date = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yy/MM/dd"
-        let result = formatter.string(from: date)
 
-        plan.start_date = result
-        var endDate = Calendar.current.date(byAdding: .month, value: monthNeededInt, to: Date())
+        let startDate = dateFormatter.string(from: date)
+        let trimmedStartDate = dateFormatter.date(from: startDate)
+        print("Start Date is : \(startDate)")
+        plan.start_date = trimmedStartDate!
+        var endDate = Calendar.current.date(byAdding: .month, value: monthNeededInt, to: trimmedStartDate!)
         
         let interval = TimeInterval(60 * 60 * 24 * 30 * monthRestDouble)
         endDate = endDate?.addingTimeInterval(interval)
-        let enddateFM = formatter.string(from: endDate!)
+        
 
         
-        plan.end_date = enddateFM
+        plan.end_date = endDate!
         plan.weight_lose = weightNeedToLoss
         plan.weight_lose_per_month = weightLossPerMonth
-        plan.calories_to_lose_per_day = 0.8 * (30 * Double(newCat.initial_weight)! + 70)
-        
+        plan.calories_to_lose_per_day = 0.8 * (30 * newCat.initial_weight + 70)
+       
         catFeedingModel.calories_total = plan.calories_to_lose_per_day
         catFeedingModel.current_bcs = newCat.initial_bcs
+        catFeedingModel.goal_weight = end_weight
         
-        catFeedingModel.initial_weight = Float(newCat.initial_weight)!
-        catFeedingModel.current_weight = Float(newCat.initial_weight)!
+        catFeedingModel.initial_weight = newCat.initial_weight
+        catFeedingModel.current_weight = newCat.initial_weight
         newCat.cat_plan = plan
         newCat.cat_feeding = catFeedingModel
         newCat.save()

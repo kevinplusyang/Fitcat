@@ -31,7 +31,7 @@ class selectBcsController: UIViewController {
         title = "Select BCS"
         
         bcs7.layer.borderWidth = 2
-        bcs7.layer.borderColor = UIColor.white.cgColor
+        bcs7.layer.borderColor = UIColor.clear.cgColor
         bcs7.layer.cornerRadius = 5
         bcs7.backgroundColor = UIColor(red:255/255.0,green:255/255.0,blue:255/255.0,alpha: 0.5)
         BCSLabel.text! = "BCS 7"

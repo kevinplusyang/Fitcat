@@ -65,22 +65,25 @@ class mainPageController: UIViewController,UITextFieldDelegate {
         
                 //MARK: CHECK PREFERENCES FOR WEIGHT AND DISPLAY ACCORDINGLY
             print("current_weight: \((self.currentCat.cat_feeding?.current_weight)!)")
-                self.current_weight.text = String(describing: (self.currentCat.cat_feeding?.current_weight)!) + " lb"
-                self.current_BCS.text = String(describing: (self.currentCat.cat_feeding?.current_bcs)!) + " BCS"
-                self.goal_weight.text = String(describing: (self.currentCat.cat_feeding?.goal_weight)!) + " lb"
+        let currentWeight = (self.currentCat.cat_feeding?.current_weight)!.kilogramsToPounds().trim2Decimals()
+                self.current_weight.text = String(describing: currentWeight) + " lb"
+        let currentBCS = (self.currentCat.cat_feeding?.current_bcs)!
+                self.current_BCS.text = String(describing: currentBCS) + " BCS"
+        let goalWeight = (self.currentCat.cat_feeding?.goal_weight)!.kilogramsToPounds().trim2Decimals()
+        
+                self.goal_weight.text = String(describing: goalWeight) + " lb"
+        
+        print("optionals: \(currentWeight) \(currentBCS) \(goalWeight)")
                 self.calories_remaining.text = String(Int((self.currentCat.cat_feeding?.calories_total)! - (self.currentCat.cat_feeding?.calories_today)!))
                 self.food_remaining.text = String((self.currentCat.cat_feeding?.food_total)! - (self.currentCat.cat_feeding?.food_today)!
         )
-                var temp1 = (self.currentCat.cat_feeding?.calories_today)! / (self.currentCat.cat_feeding?.calories_total)!
-                var temp2 = (self.currentCat.cat_feeding?.food_today)! / (self.currentCat.cat_feeding?.food_total)!
+                let temp1 = (self.currentCat.cat_feeding?.calories_today)! / (self.currentCat.cat_feeding?.calories_total)!
+                let temp2 = (self.currentCat.cat_feeding?.food_today)! / (self.currentCat.cat_feeding?.food_total)!
                 self.caloriesProgress.progress = 1 - Float(temp1)
                 self.volumeProgress.progress = 1 - Float(temp2)
                 self.catName.text = self.currentCat.name
     
         
-        current_weight.text = String(describing: self.currentCat.cat_feeding?.current_weight)
-        current_BCS.text = String(describing: self.currentCat.cat_feeding?.current_bcs)
-        goal_weight.text = String(describing: self.currentCat.cat_feeding?.goal_weight) + " lb"
         calories_remaining.text = String(describing: Int((self.currentCat.cat_feeding?.calories_total)! - (self.currentCat.cat_feeding?.calories_today)!))
         food_remaining.text = String(describing: (self.currentCat.cat_feeding?.food_total)! - (self.currentCat.cat_feeding?.food_today)!)
         caloriesProgress.progress = 1 - Float(temp1)
@@ -117,8 +120,6 @@ class mainPageController: UIViewController,UITextFieldDelegate {
         
         //log button rounded corner
         logBtn.layer.cornerRadius = 5
-        current_weight.text = String(describing: self.currentCat.cat_feeding?.current_weight) + " lb"
-        current_BCS.text = String(describing: self.currentCat.cat_feeding?.current_bcs) + " BCS"
         logWeightBtn.layer.cornerRadius = 5
         
         let weightProgress = ((self.currentCat.cat_feeding?.initial_weight)! - (self.currentCat.cat_feeding?.current_weight)!)
@@ -231,7 +232,7 @@ class mainPageController: UIViewController,UITextFieldDelegate {
                 var result = 0
                 print("Data: \(utf8Text)")
                 self.current_weight.text = String(weight) + " lb"
-                self.currentCat.cat_feeding?.current_weight = Float(weight)
+                self.currentCat.cat_feeding?.current_weight = weight
                 
                 let weightProgress = (self.currentCat.cat_feeding?.initial_weight)! - (self.currentCat.cat_feeding?.current_weight)!
                 

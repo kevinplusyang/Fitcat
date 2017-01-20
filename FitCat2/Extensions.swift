@@ -53,17 +53,37 @@ extension String {
     }
     
     
-    func getOunces() {
-        
+    func getOunces() -> String{
+        let intofS = self.firstIndex(of: "s")! + 1
+        let index = self.index(self.startIndex, offsetBy: intofS)
+        let endIndex = self.index(index, offsetBy: 2)
+        let ounces = self[index...endIndex]
+        return ounces.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
 }
 
-extension Int {
-    func toPounds() {
-        
+
+extension Double {
+    func poundsToOunces() -> Double {
+        return self * 16.0
     }
     
-    func toKilograms(){
-        
+    func ouncesToKilograms() -> Double {
+        return self/35.27396195
+    }
+    
+    func kilogramsToPounds() -> Double {
+        return self * 2.2046226218
+    }
+    
+    /// Rounds the double to decimal places value
+    func roundTo(places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
+    }
+    
+    func trim2Decimals() -> Double {
+        let divisor = pow(10.0, 2.0)
+        return (self * divisor).rounded() / divisor
     }
 }

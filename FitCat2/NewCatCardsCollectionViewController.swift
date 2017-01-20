@@ -130,8 +130,8 @@ class newCatCardsCollectionViewController: UICollectionViewController, DZNEmptyD
         let label8 = cell.viewWithTag(8) as! UILabel
         
         label.text = userCats[indexPath.row].name
-        label2.text = String(describing: (userCats[indexPath.row].cat_feeding?.calories_today)!)
-        label3.text = String(describing: (userCats[indexPath.row].cat_feeding?.calories_total)!)
+        label2.text = String(describing: (userCats[indexPath.row].cat_feeding?.calories_today)!.roundTo(places: 1))
+        label3.text = String(describing: (userCats[indexPath.row].cat_feeding?.calories_total)!.roundTo(places: 1))
         label4.text = "Delete" //volume
         label5.text = "Delete" //volume
         label8.text = "Overfed" //alert
