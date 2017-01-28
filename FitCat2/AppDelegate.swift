@@ -8,6 +8,7 @@
 import UIKit
 import GoogleSignIn
 import Google
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -34,9 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         nav1.viewControllers = [mainView]
         self.window!.rootViewController = nav1
         self.window?.makeKeyAndVisible()
-
-
-        
+  
         return true
     }
 

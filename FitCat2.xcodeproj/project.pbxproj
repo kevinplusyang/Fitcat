@@ -17,6 +17,8 @@
 		5030E2981E12285F000EFC28 /* ReturningUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5030E2971E12285F000EFC28 /* ReturningUserViewController.swift */; };
 		5078DC791E1C523E00FD9B01 /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5078DC781E1C523E00FD9B01 /* UIScrollView+EmptyDataSet.m */; };
 		5078DC7B1E1C66D700FD9B01 /* CreateCatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5078DC7A1E1C66D700FD9B01 /* CreateCatModel.swift */; };
+		50B36F6A1E3491A30073AAB9 /* RealmInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B36F691E3491A30073AAB9 /* RealmInstance.swift */; };
+		50C99C6F1E333ED400D8F2F3 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5030E28C1E0E0676000EFC28 /* InitialViewController.swift */; };
 		50D94C241E20AF2100B54C27 /* PlanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D94C231E20AF2100B54C27 /* PlanModel.swift */; };
 		50D94C261E20AF9A00B54C27 /* FoodSelectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D94C251E20AF9A00B54C27 /* FoodSelectionModel.swift */; };
 		50F38FC21E282FFB007ABD07 /* CatFeedingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F38FC11E282FFB007ABD07 /* CatFeedingModel.swift */; };
@@ -85,6 +87,7 @@
 		5078DC771E1C523E00FD9B01 /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+EmptyDataSet.h"; path = "../../Downloads/DZNEmptyDataSet-master/Source/UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
 		5078DC781E1C523E00FD9B01 /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+EmptyDataSet.m"; path = "../../Downloads/DZNEmptyDataSet-master/Source/UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
 		5078DC7A1E1C66D700FD9B01 /* CreateCatModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCatModel.swift; sourceTree = "<group>"; };
+		50B36F691E3491A30073AAB9 /* RealmInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmInstance.swift; sourceTree = "<group>"; };
 		50D94C231E20AF2100B54C27 /* PlanModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanModel.swift; sourceTree = "<group>"; };
 		50D94C251E20AF9A00B54C27 /* FoodSelectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodSelectionModel.swift; sourceTree = "<group>"; };
 		50F38FC11E282FFB007ABD07 /* CatFeedingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatFeedingModel.swift; sourceTree = "<group>"; };
@@ -214,6 +217,7 @@
 		50E734841E08F691005B0792 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				50B36F691E3491A30073AAB9 /* RealmInstance.swift */,
 				5030E28A1E0B8358000EFC28 /* WeightPicker.swift */,
 				C8927BED1DE6222B000711DD /* PlanGeneration.swift */,
 				C8927BE71DE6204E000711DD /* CreateCat.swift */,
@@ -619,6 +623,7 @@
 				C8A278E71DF35F5F0064E11C /* MainPageController.swift in Sources */,
 				5078DC7B1E1C66D700FD9B01 /* CreateCatModel.swift in Sources */,
 				50D94C241E20AF2100B54C27 /* PlanModel.swift in Sources */,
+				50B36F6A1E3491A30073AAB9 /* RealmInstance.swift in Sources */,
 				C8927BE41DE61FAF000711DD /* BreedTableViewController.swift in Sources */,
 				5030E2961E110E95000EFC28 /* PreferencesViewController.swift in Sources */,
 				5078DC791E1C523E00FD9B01 /* UIScrollView+EmptyDataSet.m in Sources */,
@@ -636,6 +641,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50C99C6F1E333ED400D8F2F3 /* InitialViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

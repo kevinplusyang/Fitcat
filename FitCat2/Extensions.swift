@@ -18,6 +18,12 @@ extension UIView {
     }
 }
 
+extension UIApplication {
+    var statusBarView: UIView? {
+        return value(forKey: "statusBar") as? UIView
+    }
+}
+
 class InsetLabel: UILabel
 {
     let topInset = CGFloat(0)

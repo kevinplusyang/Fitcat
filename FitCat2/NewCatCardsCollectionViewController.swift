@@ -89,10 +89,15 @@ class newCatCardsCollectionViewController: UICollectionViewController, DZNEmptyD
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Selected:\(indexPath.row)")
         
+    
         let selectedCat = userCats[indexPath.row]
-        let dest = self.storyboard?.instantiateViewController(withIdentifier: "mainPage") as! mainPageController
-        dest.currentCat = selectedCat
-        self.present(dest, animated: true, completion: nil)
+        guard let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "mainPage") as? mainPageController
+        else {
+            print("Could not instantiate view controller with identifier of type SecondViewController")
+            return
+        }
+        vc.currentCat = selectedCat
+        present(vc, animated: true, completion: nil)
     }
     
     
@@ -109,6 +114,15 @@ class newCatCardsCollectionViewController: UICollectionViewController, DZNEmptyD
     
     // MARK: UICollectionViewDataSource
     
+    @IBAction func addNewCat(_ sender: Any) {
+        let vc = catDetailsController()
+        let modalNav = UINavigationController(rootViewController: vc)
+        let backImage = UIImage(named: "backBtn")
+        modalNav.navigationBar.backIndicatorImage = backImage
+        modalNav.navigationBar.backIndicatorTransitionMaskImage = backImage
+        
+        present(modalNav, animated: true, completion: nil)
+    }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
@@ -201,17 +215,20 @@ class newCatCardsCollectionViewController: UICollectionViewController, DZNEmptyD
     
     
     func emptyDataSet(_ scrollView: UIScrollView, didTap button: UIButton) {
-        guard let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "createCatView") as? catDetailsController
+        /*guard let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "createCatView") as? catDetailsController
             else {
                 print("Could not instantiate view controller with identifier of type catDetailsController")
                 return
-        }
+        } */
+        let vc = catDetailsController()
         let modalNav = UINavigationController(rootViewController: vc)
         let backImage = UIImage(named: "backBtn")
         modalNav.navigationBar.backIndicatorImage = backImage
         modalNav.navigationBar.backIndicatorTransitionMaskImage = backImage
         
-        present(modalNav, animated: true, completion: nil)
+        present(modalNav, animated: true, completion: {
+            UIApplication.shared.statusBarView?.backgroundColor = UIColor(red: 240/255, green: 97/255, blue: 68/255, alpha: 1.0)
+        })
     }
 }
 

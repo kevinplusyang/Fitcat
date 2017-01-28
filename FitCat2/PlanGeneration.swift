@@ -26,6 +26,7 @@ class planGeneration: UIViewController, UITextFieldDelegate {
     @IBAction func generatePlan(_ sender: UIButton) {
         let initial_bcs = newCat.initial_bcs
         let initial_weight = newCat.initial_weight
+        //MARK: vvvvv target weight. final weight
         let weightNeedToLoss = Double(initial_bcs - 5) * 0.075 * initial_weight
         let monthNeeded = Double(initial_bcs - 5) * 7.5
         let weightLossPerMonth = weightNeedToLoss / monthNeeded
@@ -68,7 +69,6 @@ class planGeneration: UIViewController, UITextFieldDelegate {
         newCat.cat_plan = plan
         newCat.cat_feeding = catFeedingModel
         newCat.save()
-
         
         let dest = self.storyboard?.instantiateViewController(withIdentifier: "planView") as! planOverviewControllerViewController
         dest.cat = newCat

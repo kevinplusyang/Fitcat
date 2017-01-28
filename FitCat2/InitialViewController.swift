@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import Google
 import GoogleSignIn
+import RealmSwift
 
 class InitialViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDSignInDelegate {
     
@@ -27,10 +28,10 @@ class InitialViewController: UIViewController, UITextFieldDelegate, GIDSignInUID
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        
+        if userDefaults.bool(forKey: "tos") == nil {
+            userDefaults.set(false, forKey: "tos")
+        }
+    
         var error: NSError?
         GGLContext.sharedInstance().configureWithError(&error)
         
@@ -190,14 +191,10 @@ class InitialViewController: UIViewController, UITextFieldDelegate, GIDSignInUID
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        print(user.profile.email)
-        print(user.profile.givenName)
-        print(user.profile.imageURL(withDimension: 400))
-        print(user.userID)
-        print(user.profile.familyName)
-        
-        
-        
+        let serverURL = URL(string: "http://104.236.122.187:9080")!
+        //let syncAddress = "realm://104.236.122.187:9080/~/fitcat"
+        print("Google clientID: \(user.authentication.idToken!)")
+    
         let parameters: Parameters = [
             "email" : user.profile.email,
             "givenName" : user.profile.givenName,
@@ -206,21 +203,16 @@ class InitialViewController: UIViewController, UITextFieldDelegate, GIDSignInUID
             "googleImage" : user.profile.imageURL(withDimension: 400)
         ]
         
-        Alamofire.request("http://mingplusyang.com/fitcatDB/checkGoogleAccount.php", method: .post, parameters: parameters).response { response in
-            print("Request: \(response.request)")
-            print("Response: \(response.response)")
-            print("Error: \(response.error)")
-            
-            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
-                print("Data: \(utf8Text)")
-                let isInDatabase = Int(utf8Text)
-                if isInDatabase == 1 {
+        
+                //if isInDatabase == 1 {
 //                    self.footerLabel.isHidden = true
 //                    self.incorrectEmailFooterLabel.isHidden = true
 //                    let returningUserVC = ReturningUserViewController()
 //                    returningUserVC.userEmail = self.userEmail
 //                    self.navigationController?.pushViewController(returningUserVC, animated: true)
-                    
+        
+        if !userDefaults.bool(forKey: "tos") {
+        
                     let tosVC = TermsOfServiceViewController()
                     tosVC.userEmail = user.profile.email
                     tosVC.userGivenName = user.profile.givenName
@@ -228,23 +220,20 @@ class InitialViewController: UIViewController, UITextFieldDelegate, GIDSignInUID
                     tosVC.userGoogleID = user.userID
                     tosVC.userGoogleImageID = String(describing: user.profile.imageURL(withDimension: 400)!)
                     self.navigationController?.pushViewController(tosVC, animated: true)
-                    
-                } else {
-                    self.userDefaults.set(isInDatabase, forKey: "userID")
-                    self.userDefaults.set(user.profile.givenName, forKey: "userGivenName")
-                    self.userDefaults.set(user.profile.familyName, forKey: "userFamilyName")
+        }
+    else {
+                    //self.userDefaults.set(isInDatabase, forKey: "userID")
+                    //self.userDefaults.set(user.profile.givenName, forKey: "userGivenName")
+                    //self.userDefaults.set(user.profile.familyName, forKey: "userFamilyName")
                     self.userDefaults.set(user.userID, forKey: "userGoogleID")
-                    self.userDefaults.set(String(describing: user.profile.imageURL(withDimension: 400)!), forKey: "userGoogleImageID")
+                    //self.userDefaults.set(String(describing: user.profile.imageURL(withDimension: 400)!), forKey: "userGoogleImageID")
                     guard let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "allCats") as? newCatCardsCollectionViewController
                         else {
                             print("Could not instantiate view controller with identifier of type SecondViewController")
                             return
                     }
                     self.present(vc, animated: true, completion: nil)
-                }
-            }
-        }
-
+        } 
     }
     
     func googleLoginUser(email : String, givenName : String, familyName : String, userId : String, userImage : String) {
