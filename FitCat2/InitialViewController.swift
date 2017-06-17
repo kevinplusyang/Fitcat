@@ -8,11 +8,12 @@
 
 import UIKit
 import Alamofire
-import Google
+import Firebase
 import GoogleSignIn
-import RealmSwift
+import FirebaseAuth
+import FBSDKLoginKit
 
-class InitialViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDSignInDelegate {
+class InitialViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, FBSDKLoginButtonDelegate {
     
     let userDefaults = UserDefaults.standard
     var userEmail = ""
@@ -28,21 +29,25 @@ class InitialViewController: UIViewController, UITextFieldDelegate, GIDSignInUID
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if userDefaults.bool(forKey: "tos") == nil {
+        if userDefaults.value(forKey: "tos") as? Bool == nil {
             userDefaults.set(false, forKey: "tos")
         }
-    
-        var error: NSError?
-        GGLContext.sharedInstance().configureWithError(&error)
+        
         
         GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().delegate = self
         
-        let signInButton = GIDSignInButton(frame: CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: 100, height: 100)) )
+        let signInButton = GIDSignInButton()
+        signInButton.style = .standard
+        
+        let facebookSignIn = FBSDKLoginButton()
+        facebookSignIn.center.x = view.center.x
+        facebookSignIn.frame.origin.y = view.center.y + 150
+        facebookSignIn.readPermissions = ["public_profile", "email"]
+        facebookSignIn.delegate = self
+        
         signInButton.center = view.center
         view.addSubview(signInButton)
-
-        
+        view.addSubview(facebookSignIn)
         
         setUpGradient()
         self.navigationItem.title = ""
@@ -59,7 +64,7 @@ class InitialViewController: UIViewController, UITextFieldDelegate, GIDSignInUID
         loginButton.setTitleColor(.lightGray, for: .highlighted)
         loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         
-    
+        
         //emailTextField set up
         emailTextField.frame =  CGRect(x: CGFloat(0), y: loginButton.frame.minY - view.frame.midY, width: buttonWidth, height: CGFloat(buttonHeight) - 10.0)
         emailTextField.center.x = view.center.x
@@ -96,22 +101,17 @@ class InitialViewController: UIViewController, UITextFieldDelegate, GIDSignInUID
         footerLabel.textColor = .white
         footerLabel.adjustsFontSizeToFitWidth = true
         
-   
-//        view.addSubview(loginButton)
+        
+        //        view.addSubview(loginButton)
         view.addSubview(welcomeLabel)
-//        view.addSubview(emailTextField)
-//        view.addSubview(emailLabel)
-//        view.layer.addSublayer(lineBelowEmailTextField)
-//        view.addSubview(footerLabel)
-//        view.addSubview(incorrectEmailFooterLabel)
-
+        //        view.addSubview(emailTextField)
+        //        view.addSubview(emailLabel)
+        //        view.layer.addSublayer(lineBelowEmailTextField)
+        //        view.addSubview(footerLabel)
+        //        view.addSubview(incorrectEmailFooterLabel)
+        
         // Do any additional setup after loading the view.
         
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewDidLayoutSubviews() {
@@ -119,11 +119,11 @@ class InitialViewController: UIViewController, UITextFieldDelegate, GIDSignInUID
     }
     
     func setUpGradient() {
-    let topColor = UIColor(red: 240.0/255.0, green: 97.0/255.0, blue: 68.0/255.0, alpha: 1.0).cgColor
-    let bottomColor = UIColor(red: 211.0/255.0, green: 61.0/255.0, blue: 43.0/255.0, alpha: 1.0).cgColor
-    gradient.colors = [topColor,bottomColor]
-    self.view.layer.insertSublayer(gradient, at: 0)
-}
+        let topColor = UIColor(red: 240.0/255.0, green: 97.0/255.0, blue: 68.0/255.0, alpha: 1.0).cgColor
+        let bottomColor = UIColor(red: 211.0/255.0, green: 61.0/255.0, blue: 43.0/255.0, alpha: 1.0).cgColor
+        gradient.colors = [topColor,bottomColor]
+        self.view.layer.insertSublayer(gradient, at: 0)
+    }
     func updateGradient() {
         gradient.frame = view.bounds
         gradient.locations = [0.0,1.0]
@@ -147,97 +147,44 @@ class InitialViewController: UIViewController, UITextFieldDelegate, GIDSignInUID
         return emailTest.evaluate(with: testStr)
     }
     
+    
     func continueToNextScreen() {
         lineBelowEmailTextField.backgroundColor = emailTextField.text?.characters.count == 0 ? UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6).cgColor : UIColor.white.cgColor
         isEmailValid = emailTextField.text?.characters.count == 0 ? false : isValidEmail(testStr: emailTextField.text!)
         userEmail = emailTextField.text?.characters.count == 0 ? "" : emailTextField.text!
+    }
     
-        let parameters: Parameters = [
-            "email" : userEmail
-        ]
-        
-        Alamofire.request("http://mingplusyang.com/fitcatDB/checkEmail.php", method: .post, parameters: parameters).response { response in
-            print("Request: \(response.request)")
-            print("Response: \(response.response)")
-            print("Error: \(response.error)")
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+        print("Successfully logged in with facebook")
+        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        FIRAuth.auth()?.signIn(with: credential) { (fireUser, error) in
+            if let error = error {
+                print(error)
+                // ...
+                return
+            }
             
-            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
-                print("Data: \(utf8Text)")
-                let isInDatabase = Int(utf8Text)! == 1
-                if isInDatabase && self.isEmailValid {
-                    self.footerLabel.isHidden = true
-                     self.incorrectEmailFooterLabel.isHidden = true
-                     let returningUserVC = ReturningUserViewController()
-                    returningUserVC.userEmail = self.userEmail
-                     self.navigationController?.pushViewController(returningUserVC, animated: true)
-                } else if !isInDatabase && self.isEmailValid {
-                    let signUpVC = SignUpViewController()
-                    signUpVC.userEmail = self.userEmail
-                    self.navigationController?.pushViewController(signUpVC, animated: true)
-                    
-                } else {
-                    //display invalid email error
-                    self.footerLabel.isHidden = true
-                    self.incorrectEmailFooterLabel.frame = self.footerLabel.frame
-                    self.incorrectEmailFooterLabel.text = "Oops. Please enter a valid email address."
-                    self.incorrectEmailFooterLabel.textColor = UIColor(red: 217.0/255.0, green: 73.0/255.0, blue: 55.0/255.0, alpha: 1.0)
-                    self.incorrectEmailFooterLabel.backgroundColor = .white
-                    self.incorrectEmailFooterLabel.adjustsFontSizeToFitWidth = true
-                    self.emailTextField.shake()
-
-                }
+            //Signed in with facebook
+            if let fireUser = fireUser {
+                userDidSignIn(fireUser)
             }
         }
     }
     
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        let serverURL = URL(string: "http://104.236.122.187:9080")!
-        //let syncAddress = "realm://104.236.122.187:9080/~/fitcat"
-        print("Google clientID: \(user.authentication.idToken!)")
-    
-        let parameters: Parameters = [
-            "email" : user.profile.email,
-            "givenName" : user.profile.givenName,
-            "familyName" : user.profile.familyName,
-            "googleId" : user.userID,
-            "googleImage" : user.profile.imageURL(withDimension: 400)
-        ]
-        
-        
-                //if isInDatabase == 1 {
-//                    self.footerLabel.isHidden = true
-//                    self.incorrectEmailFooterLabel.isHidden = true
-//                    let returningUserVC = ReturningUserViewController()
-//                    returningUserVC.userEmail = self.userEmail
-//                    self.navigationController?.pushViewController(returningUserVC, animated: true)
-        
-        if !userDefaults.bool(forKey: "tos") {
-        
-                    let tosVC = TermsOfServiceViewController()
-                    tosVC.userEmail = user.profile.email
-                    tosVC.userGivenName = user.profile.givenName
-                    tosVC.userFamilyName = user.profile.familyName
-                    tosVC.userGoogleID = user.userID
-                    tosVC.userGoogleImageID = String(describing: user.profile.imageURL(withDimension: 400)!)
-                    self.navigationController?.pushViewController(tosVC, animated: true)
-        }
-    else {
-                    //self.userDefaults.set(isInDatabase, forKey: "userID")
-                    //self.userDefaults.set(user.profile.givenName, forKey: "userGivenName")
-                    //self.userDefaults.set(user.profile.familyName, forKey: "userFamilyName")
-                    self.userDefaults.set(user.userID, forKey: "userGoogleID")
-                    //self.userDefaults.set(String(describing: user.profile.imageURL(withDimension: 400)!), forKey: "userGoogleImageID")
-                    guard let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "allCats") as? newCatCardsCollectionViewController
-                        else {
-                            print("Could not instantiate view controller with identifier of type SecondViewController")
-                            return
-                    }
-                    self.present(vc, animated: true, completion: nil)
-        } 
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        print("Logged out of Facebook...")
     }
-    
-    func googleLoginUser(email : String, givenName : String, familyName : String, userId : String, userImage : String) {
-        
-    }
-
 }
+
+
+
+
+
+
+
+
+

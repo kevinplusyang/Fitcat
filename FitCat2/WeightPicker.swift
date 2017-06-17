@@ -19,7 +19,7 @@ class WeightPicker: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
     var ouncesString = " 0 Ounces"
     var kilogramsString = "2"
     var gramsString = ".0 Kilograms"
-    var catViewController : catDetailsController? = nil
+    var catViewController : CreateCatViewController? = nil
 
     /*
     // Only override draw() if you perform custom drawing.

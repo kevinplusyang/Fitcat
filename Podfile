@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '9.0'
 
 target 'FitCat2' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
@@ -10,8 +10,16 @@ pod 'Alamofire', '~> 4.0'
  pod 'SwiftyJSON'
 platform :ios, '10.1'
 pod 'JBChartView'
-pod 'Google/SignIn'
-pod 'RealmSwift', '~> 2.1.2'
+pod 'IQKeyboardManagerSwift'
+pod 'RSKImageCropper'
+pod 'Firebase/Core'
+pod 'Firebase/Auth'
+pod 'Firebase/Database'
+pod 'GoogleSignIn'
+pod 'Bolts'
+pod 'FBSDKCoreKit'
+pod 'FBSDKLoginKit'
+
 
 post_install do |installer|
     installer.pods_project.targets.each do |target|
@@ -20,17 +28,5 @@ post_install do |installer|
       end
     end
   end
-
-
-  target 'FitCat2Tests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'FitCat2UITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
 
 end

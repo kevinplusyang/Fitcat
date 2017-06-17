@@ -153,7 +153,7 @@ class ReturningUserViewController: UIViewController, UITextFieldDelegate {
                     //self.present(mainVC, animated: true, completion: nil)
                     //let dest = self.storyboard?.instantiateViewController(withIdentifier: "createCatView")
                     //self.present(dest!, animated: true, completion: nil)
-                    guard let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "createCatView") as? catDetailsController
+                    guard let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "createCatView") as? CreateCatViewController
                         else {
                             print("Could not instantiate view controller with identifier of type SecondViewController")
                             return

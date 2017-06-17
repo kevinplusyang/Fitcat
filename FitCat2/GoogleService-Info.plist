@@ -2,27 +2,39 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>144970726038-gumr27bp1j7mftl8qh4oh7pb24m2m62j.apps.googleusercontent.com</string>
+	<string>550349966840-m4u0arucfsnmkq9q07o4qp8po8bg24ur.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.144970726038-gumr27bp1j7mftl8qh4oh7pb24m2m62j</string>
+	<string>com.googleusercontent.apps.550349966840-m4u0arucfsnmkq9q07o4qp8po8bg24ur</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDN4fgdOOZ3VcN9-jS6U5gEC5VbtHS7RKQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>550349966840</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>Cornell-Information-Science.FitCat2</string>
+	<string>com.cornell.fitcat</string>
 	<key>PROJECT_ID</key>
-	<string>fitcatwinter</string>
+	<string>fitcat-1e9a6</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fitcat-1e9a6.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false/>
+	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
 	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
 	<false/>
 	<key>IS_GCM_ENABLED</key>
-	<false/>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:144970726038:ios:201eee2ef4723b80</string>
+	<string>1:550349966840:ios:c898b10eda7dd546</string>
+	<key>DATABASE_URL</key>
+	<string>https://fitcat-1e9a6.firebaseio.com</string>
 </dict>
 </plist>

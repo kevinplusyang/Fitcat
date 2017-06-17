@@ -213,19 +213,19 @@ class PreferencesViewController: UIViewController {
         //Fix this so it goes to catCardVC
         //let mainVC = catCardsViewController()
         //present(mainVC, animated: true, completion: nil)
-        //let createACatVC = catDetailsController()
+        //let createACatVC = CreateCatViewController()
         //present(createACatVC, animated: true, completion: nil)
         
         let userID = userDefaults.integer(forKey: "userID")
         
         
-        //MARK: Daily Feeding Toggle is True ? Time Set Up Page : Start FitCat
-        guard let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "allCats") as? newCatCardsCollectionViewController
-            else {
-                print("Could not instantiate view controller with identifier of type SecondViewController")
-                return
-        }
-        present(vc, animated: true, completion: nil)
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .vertical
+        flowLayout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+        flowLayout.minimumLineSpacing = 25.0
+        flowLayout.itemSize = CGSize(width: view.bounds.size.width-30 ,height: 230)
+        let catCardVC = CatCardCollectionViewController(collectionViewLayout: flowLayout)
+        navigationController?.pushViewController(catCardVC, animated: true)
     }
     
     func unitsOfMeasurementPressed(sender: UIButton) {
@@ -243,8 +243,6 @@ class PreferencesViewController: UIViewController {
     func dailyFeedingTogglePressed(sender: UISwitch) {
         data.set(sender.isOn, forKey: "remindDailyFeedings")
         remindMeOfDailyFeedingToggleLabel.text = sender.isOn ? "Yes" : "No"
-        let titleForButton = sender.isOn ? "Continue" : "Start FitCat"
-        startFitCatButton.setTitle(titleForButton, for: .normal)
         
         //if true, set daily notifications etc
     }

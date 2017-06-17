@@ -41,31 +41,6 @@ class cupboardCollectionViewController: UICollectionViewController {
         self.view.layer.insertSublayer(gradientLayer,at: 0)
         
         layoutCells()
-        Alamofire.request("http://www.mingplusyang.com/fitcatDB/getFavoriteStatus.php?a1=\(floginobj.f_id)").responseJSON { response in
-            print("alo")
-            print("Request: \(response.request)")
-            print("Response: \(response.response)")
-            
-            if let jsonData = response.result.value {
-                let json = JSON(jsonData)
-                
-                let count = json["count"].intValue
-                print("JJSON:\(count)")
-                var i = 0
-                while i < count {
-                    self.data.append(self.foodLibrary[json["foods"][i]["id"].intValue])
-                    self.imageUsed.append(self.images[json["foods"][i]["id"].intValue]!)
-                    
-                    self.foodID.append(json["foods"][i]["id"].intValue)
-
-                    i = i + 1
-                }
-                
-                print("ssss:\(self.data)")
-                self.collectionView?.reloadData()
-                
-            }
-        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -135,24 +110,9 @@ class cupboardCollectionViewController: UICollectionViewController {
         print("Selected:ID\(selectedCatId)")
         
         let requestFoodID = selectedCatId + 1
-        let foodSelection = FoodSelectionModel()
+        //FIREBASE: Food Selection
         
-        Alamofire.request("http://mingplusyang.com/fitcatDB/getFoodById.php?a1=\(requestFoodID)").responseJSON { response in
-            
-            if let jsonData = response.result.value {
-                let json = JSON(jsonData)
-                
-                foodSelection.foodID = requestFoodID
-                foodSelection.foodName = json["foodName"].stringValue
-                foodSelection.cal = json["cal"].floatValue
-                foodSelection.ifWet = json["ifWet"].intValue
-                foodSelection.standardCan = json["standardCan"].floatValue
-                
-                let dest = self.storyboard?.instantiateViewController(withIdentifier: "cupBoardView")
-                self.present(dest!, animated: true, completion: nil)
-                
-            }
-        }
+
     }
     
     

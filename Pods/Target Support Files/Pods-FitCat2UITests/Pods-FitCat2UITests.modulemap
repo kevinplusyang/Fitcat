@@ -1,6 +1,0 @@
-framework module Pods_FitCat2UITests {
-  umbrella header "Pods-FitCat2UITests-umbrella.h"
-
-  export *
-  module * { export * }
-}
