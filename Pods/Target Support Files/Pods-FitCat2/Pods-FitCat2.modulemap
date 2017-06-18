@@ -1,6 +1,0 @@
-framework module Pods_FitCat2 {
-  umbrella header "Pods-FitCat2-umbrella.h"
-
-  export *
-  module * { export * }
-}
