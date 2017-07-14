@@ -15,8 +15,6 @@ import FirebaseDatabase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
-    
-
     var window: UIWindow?
     var userDefaults = UserDefaults.standard
     var navigationController = UINavigationController()
@@ -33,15 +31,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         navigationController.navigationBar.tintColor = .white
         self.window!.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
-  
         FIRApp.configure()
         //Enables local copy of db just in case user is offline
         FIRDatabase.database().persistenceEnabled = true
-        do {
-            //try FIRAuth.auth()?.signOut()
-        } catch {
-            
-        }
+//        do {
+//            //try FIRAuth.auth()?.signOut()
+//        } catch {
+//
+//        }
         GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -49,19 +46,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             let userRef = FIRDatabase.database().reference(withPath: "users").child(activeUser.uid)
             userRef.keepSynced(true)
         }
-        
+
         startSignIn()
         return true
     }
-    
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         let handled = FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
-        
         return url.absoluteString.contains("google") ? GIDSignIn.sharedInstance().handle(url,
                                                  sourceApplication: sourceApplication,
         annotation: annotation) : handled
     }
-    
     
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
@@ -69,7 +63,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             print("Error in didSignInFor", error)
             return
         }
-        
         guard let authentication = user.authentication else { return }
         let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                           accessToken: authentication.accessToken)
@@ -84,12 +77,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             }
         }
     }
-    
+
+
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        
     }
-    
-    
+
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -114,7 +106,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         print("App Terminated")
     }
-
-
 }
-

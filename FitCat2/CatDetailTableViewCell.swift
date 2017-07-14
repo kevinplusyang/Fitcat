@@ -9,11 +9,12 @@
 import UIKit
 
 class CatDetailTableViewCell: UITableViewCell {
+    var amount = UILabel()
 
     let labelWidthConstant = CGFloat(45.0)
     let imageHeight = CGFloat(45.0)
     let imageWidth = CGFloat(45.0)
-    let labelHeight = CGFloat(20.0)
+    let labelHeight = CGFloat(50.0)
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,14 +45,14 @@ class CatDetailTableViewCell: UITableViewCell {
         //imageView?.image = #imageLiteral(resourceName: "EVO 95 Chicken and Turkey Recipe in Gravy Canned Cat Food")
         
         
-    
         textLabel?.frame = CGRect(x: (imageView?.frame.maxX)! + 13.5, y: (imageView?.frame.minY)!, width: frame.width * 0.49, height: labelHeight)
         textLabel?.lineBreakMode = .byWordWrapping
-        textLabel?.numberOfLines = 0
-        textLabel?.text = "Merrick Purrfect Bistro Grain Free Healthy Kitten Recipe Dry"
-        textLabel?.sizeToFit()
-        textLabel?.center.y = bounds.height / 2.0
         textLabel?.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightMedium)
+        
+        amount.frame = CGRect(x: bounds.width - 55.0, y: 0.0, width: 45.0, height: 30.0)
+        amount.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightMedium)
+        amount.center.y = bounds.height / 2.0
+        contentView.addSubview(amount)
 
     
     }

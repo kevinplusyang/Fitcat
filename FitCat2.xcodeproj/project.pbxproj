@@ -21,7 +21,6 @@
 		506587C71ED7B780007B47C5 /* FoodSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506587C61ED7B780007B47C5 /* FoodSearchTableViewCell.swift */; };
 		506587C91ED7C52C007B47C5 /* FoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506587C81ED7C52C007B47C5 /* FoodModel.swift */; };
 		506587CB1ED8E5AC007B47C5 /* FoodPantryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506587CA1ED8E5AC007B47C5 /* FoodPantryCollectionViewCell.swift */; };
-		5078DC791E1C523E00FD9B01 /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5078DC781E1C523E00FD9B01 /* UIScrollView+EmptyDataSet.m */; };
 		5078DC7B1E1C66D700FD9B01 /* CreateCatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5078DC7A1E1C66D700FD9B01 /* CreateCatModel.swift */; };
 		507CDAE91E9307F10057598F /* CatCardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507CDAE81E9307F10057598F /* CatCardCollectionViewController.swift */; };
 		507CDAEB1E9320270057598F /* CatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507CDAEA1E9320270057598F /* CatCollectionViewCell.swift */; };
@@ -38,29 +37,16 @@
 		50ECD7AE1E955040002A7183 /* SMSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ECD7AA1E955040002A7183 /* SMSegmentView.swift */; };
 		50ECD7AF1E955040002A7183 /* SMSegmentViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ECD7AB1E955040002A7183 /* SMSegmentViewConstants.swift */; };
 		50F38FC21E282FFB007ABD07 /* CatFeedingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F38FC11E282FFB007ABD07 /* CatFeedingModel.swift */; };
-		C80F66E31DEF24AF0008F4AD /* JBChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80F66E21DEF24AF0008F4AD /* JBChartViewController.swift */; };
-		C8155B881DEE7C8E000535FC /* TodayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8155B871DEE7C8E000535FC /* TodayTableViewController.swift */; };
-		C82B78AD1DF0638500B1890F /* JBLineChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82B78AC1DF0638500B1890F /* JBLineChartViewController.swift */; };
 		C8343F781DEB5C5C00AE0DF6 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8343F771DEB5C5C00AE0DF6 /* TableViewCell.swift */; };
-		C8343F821DEB5DAC00AE0DF6 /* AllFoodUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8343F811DEB5DAC00AE0DF6 /* AllFoodUIViewController.swift */; };
 		C860BC131DE360AE005E00CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C860BC121DE360AE005E00CC /* AppDelegate.swift */; };
 		C860BC181DE360AE005E00CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C860BC161DE360AE005E00CC /* Main.storyboard */; };
 		C860BC1A1DE360AE005E00CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C860BC191DE360AE005E00CC /* Assets.xcassets */; };
 		C860BC1D1DE360AE005E00CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C860BC1B1DE360AE005E00CC /* LaunchScreen.storyboard */; };
-		C8927BE41DE61FAF000711DD /* BreedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8927BE31DE61FAF000711DD /* BreedTableViewController.swift */; };
 		C8927BE61DE61FF1000711DD /* CreateCatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8927BE51DE61FF1000711DD /* CreateCatViewController.swift */; };
-		C8927BE81DE6204E000711DD /* CreateCat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8927BE71DE6204E000711DD /* CreateCat.swift */; };
-		C8927BEE1DE6222B000711DD /* PlanGeneration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8927BED1DE6222B000711DD /* PlanGeneration.swift */; };
 		C8927BF01DE6224F000711DD /* PlanOverviewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8927BEF1DE6224F000711DD /* PlanOverviewControllerViewController.swift */; };
 		C8927BF41DE622E8000711DD /* SelectBCSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8927BF31DE622E8000711DD /* SelectBCSViewController.swift */; };
-		C8927BF61DE6230B000711DD /* TestingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8927BF51DE6230B000711DD /* TestingTableViewController.swift */; };
-		C8A278E71DF35F5F0064E11C /* MainPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A278E61DF35F5F0064E11C /* MainPageController.swift */; };
 		C8A278E91DF3601B0064E11C /* KDCircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A278E81DF3601B0064E11C /* KDCircularProgress.swift */; };
-		C8A278ED1DF360E50064E11C /* CupboardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A278EC1DF360E50064E11C /* CupboardCollectionViewController.swift */; };
-		C8B460DC1DE38E32003DB92E /* DataObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B460DB1DE38E32003DB92E /* DataObjects.swift */; };
-		C8D432531DECA10500474E29 /* AmountSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D432521DECA10500474E29 /* AmountSelectionViewController.swift */; };
-		C8DE82441DEA875F0054721B /* FoodMarketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8DE82431DEA875F0054721B /* FoodMarketTableViewController.swift */; };
-		C8E102041DEFA450007E4027 /* YearJBChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E102031DEFA450007E4027 /* YearJBChartViewController.swift */; };
+		DC7213681F15961000B9A910 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = DC7213671F15960F00B9A910 /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,8 +65,6 @@
 		506587C81ED7C52C007B47C5 /* FoodModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodModel.swift; sourceTree = "<group>"; };
 		506587CA1ED8E5AC007B47C5 /* FoodPantryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodPantryCollectionViewCell.swift; sourceTree = "<group>"; };
 		5078DC761E1C523D00FD9B01 /* FitCat2-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FitCat2-Bridging-Header.h"; sourceTree = "<group>"; };
-		5078DC771E1C523E00FD9B01 /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+EmptyDataSet.h"; path = "../../Downloads/DZNEmptyDataSet-master/Source/UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
-		5078DC781E1C523E00FD9B01 /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+EmptyDataSet.m"; path = "../../Downloads/DZNEmptyDataSet-master/Source/UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
 		5078DC7A1E1C66D700FD9B01 /* CreateCatModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCatModel.swift; sourceTree = "<group>"; };
 		507CDAE81E9307F10057598F /* CatCardCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CatCardCollectionViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		507CDAEA1E9320270057598F /* CatCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -103,33 +87,20 @@
 		A41889A4EAA11BE6953CE999 /* Pods_FitCat2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitCat2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7DC5F54A5833CBD644BE2D6 /* Pods-FitCat2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitCat2Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitCat2Tests/Pods-FitCat2Tests.release.xcconfig"; sourceTree = "<group>"; };
 		C80F66D91DEF248B0008F4AD /* JBChartView-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JBChartView-Bridging-Header.h"; sourceTree = "<group>"; };
-		C80F66E21DEF24AF0008F4AD /* JBChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JBChartViewController.swift; sourceTree = "<group>"; };
-		C8155B871DEE7C8E000535FC /* TodayTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTableViewController.swift; sourceTree = "<group>"; };
-		C82B78AC1DF0638500B1890F /* JBLineChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JBLineChartViewController.swift; sourceTree = "<group>"; };
 		C8343F771DEB5C5C00AE0DF6 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
-		C8343F811DEB5DAC00AE0DF6 /* AllFoodUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllFoodUIViewController.swift; sourceTree = "<group>"; };
 		C860BC0F1DE360AE005E00CC /* FitCat2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitCat2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C860BC121DE360AE005E00CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C860BC171DE360AE005E00CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C860BC191DE360AE005E00CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C860BC1C1DE360AE005E00CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C860BC1E1DE360AE005E00CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C8927BE31DE61FAF000711DD /* BreedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreedTableViewController.swift; sourceTree = "<group>"; };
 		C8927BE51DE61FF1000711DD /* CreateCatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CreateCatViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		C8927BE71DE6204E000711DD /* CreateCat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCat.swift; sourceTree = "<group>"; };
-		C8927BED1DE6222B000711DD /* PlanGeneration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanGeneration.swift; sourceTree = "<group>"; };
 		C8927BEF1DE6224F000711DD /* PlanOverviewControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanOverviewControllerViewController.swift; sourceTree = "<group>"; };
 		C8927BF31DE622E8000711DD /* SelectBCSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectBCSViewController.swift; sourceTree = "<group>"; };
-		C8927BF51DE6230B000711DD /* TestingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingTableViewController.swift; sourceTree = "<group>"; };
-		C8A278E61DF35F5F0064E11C /* MainPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageController.swift; sourceTree = "<group>"; };
 		C8A278E81DF3601B0064E11C /* KDCircularProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KDCircularProgress.swift; sourceTree = "<group>"; };
-		C8A278EC1DF360E50064E11C /* CupboardCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CupboardCollectionViewController.swift; sourceTree = "<group>"; };
-		C8B460DB1DE38E32003DB92E /* DataObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataObjects.swift; sourceTree = "<group>"; };
-		C8D432521DECA10500474E29 /* AmountSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmountSelectionViewController.swift; sourceTree = "<group>"; };
-		C8DE82431DEA875F0054721B /* FoodMarketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodMarketTableViewController.swift; sourceTree = "<group>"; };
-		C8E102031DEFA450007E4027 /* YearJBChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearJBChartViewController.swift; sourceTree = "<group>"; };
 		D3504D3B2294E124901D9BCC /* Pods-FitCat2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitCat2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FitCat2/Pods-FitCat2.debug.xcconfig"; sourceTree = "<group>"; };
 		D9868AC8BB66EC9287342934 /* Pods-FitCat2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitCat2Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FitCat2Tests/Pods-FitCat2Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		DC7213671F15960F00B9A910 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		FB5BF5A827F67128467B61AB /* Pods-FitCat2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitCat2UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FitCat2UITests/Pods-FitCat2UITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -167,7 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				50ECD7A31E953806002A7183 /* Correct VCS */,
-				50ECD7A61E953DF6002A7183 /* Old VCS */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -188,12 +158,9 @@
 			isa = PBXGroup;
 			children = (
 				5030E28A1E0B8358000EFC28 /* WeightPicker.swift */,
-				C8927BED1DE6222B000711DD /* PlanGeneration.swift */,
-				C8927BE71DE6204E000711DD /* CreateCat.swift */,
 				5078DC7A1E1C66D700FD9B01 /* CreateCatModel.swift */,
 				50D94C231E20AF2100B54C27 /* PlanModel.swift */,
 				50D94C251E20AF9A00B54C27 /* FoodSelectionModel.swift */,
-				C8B460DB1DE38E32003DB92E /* DataObjects.swift */,
 				50F38FC11E282FFB007ABD07 /* CatFeedingModel.swift */,
 				506587C81ED7C52C007B47C5 /* FoodModel.swift */,
 			);
@@ -227,24 +194,6 @@
 				504436541ED66852002C2A58 /* FoodMarketViewController.swift */,
 			);
 			name = "Correct VCS";
-			sourceTree = "<group>";
-		};
-		50ECD7A61E953DF6002A7183 /* Old VCS */ = {
-			isa = PBXGroup;
-			children = (
-				C8927BE31DE61FAF000711DD /* BreedTableViewController.swift */,
-				C8927BF51DE6230B000711DD /* TestingTableViewController.swift */,
-				C8DE82431DEA875F0054721B /* FoodMarketTableViewController.swift */,
-				C8343F811DEB5DAC00AE0DF6 /* AllFoodUIViewController.swift */,
-				C8D432521DECA10500474E29 /* AmountSelectionViewController.swift */,
-				C8155B871DEE7C8E000535FC /* TodayTableViewController.swift */,
-				C80F66E21DEF24AF0008F4AD /* JBChartViewController.swift */,
-				C8E102031DEFA450007E4027 /* YearJBChartViewController.swift */,
-				C82B78AC1DF0638500B1890F /* JBLineChartViewController.swift */,
-				C8A278E61DF35F5F0064E11C /* MainPageController.swift */,
-				C8A278EC1DF360E50064E11C /* CupboardCollectionViewController.swift */,
-			);
-			name = "Old VCS";
 			sourceTree = "<group>";
 		};
 		50ECD7A71E955030002A7183 /* SMSegmentView */ = {
@@ -284,9 +233,8 @@
 		C860BC061DE360AE005E00CC = {
 			isa = PBXGroup;
 			children = (
+				DC7213671F15960F00B9A910 /* .swiftlint.yml */,
 				C80F66D91DEF248B0008F4AD /* JBChartView-Bridging-Header.h */,
-				5078DC771E1C523E00FD9B01 /* UIScrollView+EmptyDataSet.h */,
-				5078DC781E1C523E00FD9B01 /* UIScrollView+EmptyDataSet.m */,
 				C860BC111DE360AE005E00CC /* FitCat2 */,
 				C860BC101DE360AE005E00CC /* Products */,
 				9237B95F10A1B1F78381B15A /* Pods */,
@@ -335,6 +283,7 @@
 				C860BC0D1DE360AE005E00CC /* Resources */,
 				788A0165D65B9C3C0AF29F12 /* [CP] Embed Pods Frameworks */,
 				734D0F5FA6ECF7FBDB15D524 /* [CP] Copy Pods Resources */,
+				DC1D56111F130BD100F3C91B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -386,6 +335,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC7213681F15961000B9A910 /* .swiftlint.yml in Resources */,
 				C860BC1D1DE360AE005E00CC /* LaunchScreen.storyboard in Resources */,
 				C860BC1A1DE360AE005E00CC /* Assets.xcassets in Resources */,
 				50CC55A41ECCE5A600D9B6D0 /* GoogleService-Info.plist in Resources */,
@@ -408,7 +358,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		734D0F5FA6ECF7FBDB15D524 /* [CP] Copy Pods Resources */ = {
@@ -441,6 +391,20 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FitCat2/Pods-FitCat2-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		DC1D56111F130BD100F3C91B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/myfile",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXME:\"\nERRORTAG=\"ERROR:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" -type f\\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\" | perl -p -e \"s/($ERRORTAG)/ error: \\$1/\"\n\nif which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -453,13 +417,7 @@
 				50B272101E78B55F005969C0 /* TipsViewController.swift in Sources */,
 				5030E2941E0FAF74000EFC28 /* TermsOfServiceViewController.swift in Sources */,
 				50D94C261E20AF9A00B54C27 /* FoodSelectionModel.swift in Sources */,
-				C8155B881DEE7C8E000535FC /* TodayTableViewController.swift in Sources */,
-				C8B460DC1DE38E32003DB92E /* DataObjects.swift in Sources */,
-				C8A278ED1DF360E50064E11C /* CupboardCollectionViewController.swift in Sources */,
 				50ECD7A51E953D94002A7183 /* CatDetailsViewController.swift in Sources */,
-				C82B78AD1DF0638500B1890F /* JBLineChartViewController.swift in Sources */,
-				C8D432531DECA10500474E29 /* AmountSelectionViewController.swift in Sources */,
-				C8927BE81DE6204E000711DD /* CreateCat.swift in Sources */,
 				C8343F781DEB5C5C00AE0DF6 /* TableViewCell.swift in Sources */,
 				C8927BF41DE622E8000711DD /* SelectBCSViewController.swift in Sources */,
 				507CDAE91E9307F10057598F /* CatCardCollectionViewController.swift in Sources */,
@@ -469,33 +427,24 @@
 				5030E28B1E0B8358000EFC28 /* WeightPicker.swift in Sources */,
 				C8A278E91DF3601B0064E11C /* KDCircularProgress.swift in Sources */,
 				5030E2981E12285F000EFC28 /* ReturningUserViewController.swift in Sources */,
-				C8927BEE1DE6222B000711DD /* PlanGeneration.swift in Sources */,
 				50ECD7AE1E955040002A7183 /* SMSegmentView.swift in Sources */,
 				5030E2921E0F81C6000EFC28 /* SignUpViewController.swift in Sources */,
 				C8927BE61DE61FF1000711DD /* CreateCatViewController.swift in Sources */,
 				50ECD7AC1E955040002A7183 /* SMSegment.swift in Sources */,
 				50ECD7AD1E955040002A7183 /* SMSegmentAppearance.swift in Sources */,
-				C8E102041DEFA450007E4027 /* YearJBChartViewController.swift in Sources */,
 				5030E28D1E0E0676000EFC28 /* InitialViewController.swift in Sources */,
 				504436551ED66852002C2A58 /* FoodMarketViewController.swift in Sources */,
 				50AD3AF31E981015003C3F87 /* CatDetailTableViewCell.swift in Sources */,
-				C8927BF61DE6230B000711DD /* TestingTableViewController.swift in Sources */,
-				C8343F821DEB5DAC00AE0DF6 /* AllFoodUIViewController.swift in Sources */,
-				C8DE82441DEA875F0054721B /* FoodMarketTableViewController.swift in Sources */,
 				50ECD7AF1E955040002A7183 /* SMSegmentViewConstants.swift in Sources */,
 				506587CB1ED8E5AC007B47C5 /* FoodPantryCollectionViewCell.swift in Sources */,
 				5050301E1ED336B7004105BA /* Firebase.swift in Sources */,
 				C8927BF01DE6224F000711DD /* PlanOverviewControllerViewController.swift in Sources */,
 				5030E28F1E0E709C000EFC28 /* Extensions.swift in Sources */,
-				C80F66E31DEF24AF0008F4AD /* JBChartViewController.swift in Sources */,
 				5088AF781E662D2A00B2CBA3 /* MeasurementViewController.swift in Sources */,
-				C8A278E71DF35F5F0064E11C /* MainPageController.swift in Sources */,
 				5078DC7B1E1C66D700FD9B01 /* CreateCatModel.swift in Sources */,
 				50D94C241E20AF2100B54C27 /* PlanModel.swift in Sources */,
 				504436531ED64532002C2A58 /* PantryCollectionViewController.swift in Sources */,
-				C8927BE41DE61FAF000711DD /* BreedTableViewController.swift in Sources */,
 				5030E2961E110E95000EFC28 /* PreferencesViewController.swift in Sources */,
-				5078DC791E1C523E00FD9B01 /* UIScrollView+EmptyDataSet.m in Sources */,
 				506587C71ED7B780007B47C5 /* FoodSearchTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -631,7 +580,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "FitCat2-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -650,7 +599,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "FitCat2-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

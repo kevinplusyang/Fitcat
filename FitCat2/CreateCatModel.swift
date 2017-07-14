@@ -19,6 +19,7 @@ class CreateCatModel: NSObject {
      var catPictureData: Data
      var catPlan: PlanModel
      var catFeeding: CatFeedingModel
+    var firebaseID: String?
 
     /// Init to create a new cat
     ///
@@ -34,7 +35,7 @@ class CreateCatModel: NSObject {
     ///   - image_id: image id of cat picture
     ///   - cat_id: id of the cat
     
-    init(catName: String, catBirthday: Date, catBreed: String, catInitialWeight: Double, catNeutered: Int, catGender: Int, catInitialBCS: Int, catPictureData: Data, catPlan: PlanModel, catFeeding: CatFeedingModel) {
+    init(catName: String, catBirthday: Date, catBreed: String, catInitialWeight: Double, catNeutered: Int, catGender: Int, catInitialBCS: Int, catPictureData: Data, catPlan: PlanModel, catFeeding: CatFeedingModel, firebaseID: String?) {
         self.catName = catName
         self.catBirthday = catBirthday
         self.catBreed = catBreed
@@ -45,5 +46,6 @@ class CreateCatModel: NSObject {
         self.catPictureData = catPictureData
         self.catPlan = catPlan
         self.catFeeding = catFeeding
+        self.firebaseID = firebaseID
     }    
 }

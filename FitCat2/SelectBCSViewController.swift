@@ -9,8 +9,8 @@
 import UIKit
 import Alamofire
 
-class selectBcsController: UIViewController, UITextViewDelegate {
-    
+class SelectBcsController: UIViewController, UITextViewDelegate {
+
     let bcs5 = UIButton()
     let bcs7 = UIButton()
     let bcs9 = UIButton()
@@ -33,7 +33,7 @@ class selectBcsController: UIViewController, UITextViewDelegate {
     var superImposedImageView = UIImageView(image: UIImage(named: "superimposed"))
     let backgroundLineUnderTopButtons = CALayer()
     let selectedBackgroundLineUnderTopButtons = CALayer()
-    
+
     //New Cat Parameters
     var catImageData: Data?
     var catName: String?
@@ -43,11 +43,11 @@ class selectBcsController: UIViewController, UITextViewDelegate {
     var catNeutered: Int? //0 is False, 1 is True
     var catGender: Int = 1 //1 is male, 2 is female
     var catBCS: Int?
-    
-    
+
+
     override func viewDidLoad() {
         if let catName = catName {
-           title = "Select a BCS for \(catName)"
+            title = "Select a BCS for \(catName)"
         } else { title = "Select a BCS" }
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -61,15 +61,15 @@ class selectBcsController: UIViewController, UITextViewDelegate {
         backgroundGradient()
         setUpView()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     func setUpView() {
         let navBarHeight = navigationController!.navigationBar.bounds.maxY
-        
+
         //Continue Button
         let buttonWidth = view.frame.width * 0.828
         let buttonHeight = 55.0
@@ -88,7 +88,7 @@ class selectBcsController: UIViewController, UITextViewDelegate {
         let combinedWidthWithSpacing = (widthOfButtons * 2.0) + 30.0
         let indentationOfButtons = (view.bounds.width - combinedWidthWithSpacing) / 2.0
         let centerForButtons = (view.bounds.height * 0.08) + navBarHeight
-        
+
         individualButton.backgroundColor = UIColor.clear
         individualButton.setTitle("Individual", for: .normal)
         individualButton.setTitleColor(.white, for: .normal)
@@ -99,11 +99,11 @@ class selectBcsController: UIViewController, UITextViewDelegate {
         individualButton.addTarget(self, action: #selector(clickedTopButtons), for: .touchUpInside)
         individualButton.tag = 2
         view.addSubview(individualButton)
-        
-        
-        
-        
-        
+
+
+
+
+
         superimposedButton.backgroundColor = UIColor.clear
         superimposedButton.setTitle("Superimposed", for: .normal)
         superimposedButton.setTitleColor(.white, for: .normal)
@@ -114,18 +114,18 @@ class selectBcsController: UIViewController, UITextViewDelegate {
         superimposedButton.addTarget(self, action: #selector(clickedTopButtons), for: .touchUpInside)
         superimposedButton.tag = 3
         view.addSubview(superimposedButton)
-        
+
         backgroundLineUnderTopButtons.frame = CGRect(x: continueButton.frame.minX, y: superimposedButton.frame.maxY + 3.0, width: continueButton.bounds.width, height: 1.0)
         backgroundLineUnderTopButtons.backgroundColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.4).cgColor
         view.layer.addSublayer(backgroundLineUnderTopButtons)
-        
+
         selectedBackgroundLineUnderTopButtons.frame = CGRect(x: continueButton.frame.minX, y: superimposedButton.frame.maxY + 3.0, width: continueButton.bounds.width / 2.0, height: 1.0)
         selectedBackgroundLineUnderTopButtons.backgroundColor = UIColor.white.cgColor
         view.layer.addSublayer(selectedBackgroundLineUnderTopButtons)
-        
+
         //bcs 5 7 9
         let contentHeight = (bcsDescription.frame.minY - individualButton.frame.maxY) - 30.0 //15 on each end
-        
+
         bcs5.addTarget(self, action: #selector(pressedBCSButton(sender:)), for: .touchUpInside)
         bcs5.tag = 0
         bcs5.layer.cornerRadius = 5
@@ -137,13 +137,13 @@ class selectBcsController: UIViewController, UITextViewDelegate {
         bcs5TopView.frame = CGRect(x: bcs5.frame.minX + bcs5.bounds.width / 2.0, y: bcs5.frame.minY + 3.0, width: bcs5.bounds.width / 2.0, height: bcs5.bounds.height - 3.0)
         bcs5TopView.contentMode = .scaleAspectFit
         bcs5SideView.contentMode = .scaleAspectFit
-        
-        
+
+
         view.addSubview(bcs5)
         view.addSubview(bcs5SideView)
         view.addSubview(bcs5TopView)
-        
-        
+
+
         bcs7.addTarget(self, action: #selector(pressedBCSButton(sender:)), for: .touchUpInside)
         bcs7.tag = 1
         bcs7.layer.cornerRadius = 5
@@ -159,7 +159,7 @@ class selectBcsController: UIViewController, UITextViewDelegate {
         view.addSubview(bcs7)
         view.addSubview(bcs7SideView)
         view.addSubview(bcs7TopView)
-        
+
         bcs9.addTarget(self, action: #selector(pressedBCSButton(sender:)), for: .touchUpInside)
         bcs9.tag = 2
         bcs9.layer.cornerRadius = 5
@@ -171,13 +171,13 @@ class selectBcsController: UIViewController, UITextViewDelegate {
         bcs9TopView.frame = CGRect(x: bcs9.frame.minX + bcs9.bounds.width / 2.0, y: bcs9.frame.minY + 3.0, width: bcs9.bounds.width / 2.0, height: bcs9.bounds.height - 3.0)
         bcs9TopView.contentMode = .scaleAspectFit
         bcs9SideView.contentMode = .scaleAspectFit
-        
+
         view.addSubview(bcs9)
         view.addSubview(bcs9SideView)
         view.addSubview(bcs9TopView)
-       
-        
-        
+
+
+
         superimposedView.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
         superimposedView.isHidden = true
         superimposedView.layer.cornerRadius = 5
@@ -186,7 +186,7 @@ class selectBcsController: UIViewController, UITextViewDelegate {
         superImposedImageView.contentMode = .center
         superimposedView.addSubview(superImposedImageView)
         view.addSubview(superimposedView)
-        
+
         stackView.frame = CGRect(x: continueButton.frame.minX, y: bcs9.frame.maxY + 20.0, width: continueButton.bounds.width, height: 40)
         stackView.axis = .horizontal
         stackView.distribution = .equalSpacing
@@ -199,8 +199,8 @@ class selectBcsController: UIViewController, UITextViewDelegate {
         bcs5Bottom.tag = 5
         bcs7Bottom.tag = 7
         bcs9Bottom.tag = 9
-    
-        
+
+
         for button in bottomButtonArray {
             button.setTitleColor(.white, for: .normal)
             button.setTitleColor(.gray, for: .highlighted)
@@ -215,8 +215,8 @@ class selectBcsController: UIViewController, UITextViewDelegate {
             button.addTarget(self, action: #selector(didSelectBottomButtons), for: .touchUpInside)
             stackView.addArrangedSubview(button)
         }
-        
-        
+
+
         //bcs textField
         bcsDescription.delegate = self
         bcsDescription.isEditable = false
@@ -231,18 +231,18 @@ class selectBcsController: UIViewController, UITextViewDelegate {
         bcsDescription.text = ""
         bcsDescription.backgroundColor = UIColor.clear
         view.addSubview(bcsDescription)
-        
+
 
         view.addSubview(stackView)
-     
+
     }
-    
+
     func didSelectBottomButtons(sender: UIButton) {
         let bcs = sender.tag
         clickedBCS(bcs: bcs)
-        
+
     }
-    
+
     func resetBottomButtons() {
         bcs5Bottom.layer.borderColor = UIColor.clear.cgColor
         bcs5Bottom.alpha = 0.4
@@ -251,7 +251,7 @@ class selectBcsController: UIViewController, UITextViewDelegate {
         bcs9Bottom.layer.borderColor = UIColor.clear.cgColor
         bcs9Bottom.alpha = 0.4
     }
-    
+
 
     //background gradient color
     func backgroundGradient(){
@@ -265,19 +265,19 @@ class selectBcsController: UIViewController, UITextViewDelegate {
         gradientLayer.frame = self.view.bounds
         self.view.layer.insertSublayer(gradientLayer,at: 0)
     }
-    
+
 
     func clickedTopButtons(sender: UIButton) {
         let tag = sender.tag
         superimposedButton.alpha = tag == 3 ? 1.0 : 0.4
         individualButton.alpha = tag == 2 ? 1.0 : 0.4
-        
+
         UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseInOut, animations: {
             self.selectedBackgroundLineUnderTopButtons.frame =
                 tag == 2 ? CGRect(x: self.continueButton.frame.minX, y: self.superimposedButton.frame.maxY + 3.0, width: self.continueButton.bounds.width / 2.0, height: 1.0) : CGRect(x: self.backgroundLineUnderTopButtons.frame.midX, y: self.superimposedButton.frame.maxY + 3.0, width: self.continueButton.bounds.width / 2.0, height: 1.0)
-            
+
         }, completion: nil)
-    
+
         //MARK FIX THIS AUSTIN WHY YOU GOTTA DO SLOPPY CODE
         bcs5.isHidden = tag == 2 ? false : true
         bcs5TopView.isHidden = tag == 2 ? false : true
@@ -289,13 +289,13 @@ class selectBcsController: UIViewController, UITextViewDelegate {
         bcs9TopView.isHidden = tag == 2 ? false : true
         bcs9SideView.isHidden = tag == 2 ? false : true
         superimposedView.isHidden = tag == 2 ? true : false
-     
+
         //Check to see which button was clicked and change the views.
-        
+
     }
-    
+
     func pressedBCSButton(sender: UIButton) {
-    
+
         if sender.tag == 0 {
             clickedBCS(bcs: 5)
         } else if sender.tag == 1 {
@@ -303,16 +303,16 @@ class selectBcsController: UIViewController, UITextViewDelegate {
         } else {
             clickedBCS(bcs: 9)
         }
-        
+
     }
     func clickedBCS(bcs: Int) {
         bcs5.layer.borderColor = UIColor.clear.cgColor
         bcs7.layer.borderColor = UIColor.clear.cgColor
         bcs9.layer.borderColor = UIColor.clear.cgColor
         resetBottomButtons()
-        
+
         let bcsDescriptions = [("BCS 5", "Spine, ribs, and pelvic bones not visible but easily felt, evenly distributed muscle mass, minimal abdominal fat with abdominal tuck."), ("BCS 7", "Spine, ribs, and pelvic bones not easily felt with moderate fat layer covering them, waist diminished, abdomen rounded with moderate abdominal fat pad."),("BCS 9", "Spine, ribs, and pelvic bones cannot be felt, excessive abdominal fat, waist absent.")]
-        
+
         if bcs == 5 {
             catBCS = 5
             bcs5.layer.borderColor = UIColor.white.cgColor
@@ -343,7 +343,7 @@ class selectBcsController: UIViewController, UITextViewDelegate {
         continueButton.setTitleColor(.lightGray, for: .highlighted)
         continueButton.alpha = 1.0
     }
-    
+
     //continue button
     func continueButtonClicked(_ sender: UIButton) {
         if continueButton.alpha == 1.0 {
@@ -359,12 +359,13 @@ class selectBcsController: UIViewController, UITextViewDelegate {
             navigationController?.pushViewController(tipsVC, animated: true)
             //self.present(vc, animated: true, completion: nil)
 
-            
-            
-            
+
+
+
         }
-        
-        
-        
+
+
+
     }
 }
+

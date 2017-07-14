@@ -19,6 +19,8 @@ pod 'GoogleSignIn'
 pod 'Bolts'
 pod 'FBSDKCoreKit'
 pod 'FBSDKLoginKit'
+pod 'PinLayout'
+pod 'DZNEmptyDataSet'
 
 
 post_install do |installer|

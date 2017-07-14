@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import PinLayout
 
 private let reuseIdentifier = "foodCell"
 
@@ -22,10 +23,11 @@ class PantryCollectionViewController: UICollectionViewController {
         UIApplication.shared.statusBarView?.backgroundColor = .fitcatGray
         navigationController?.navigationBar.backgroundColor = .fitcatGray
         
-        //FIREBASE: Get all cats from firebase database
+        //FIREBASE: Get user food from firebase database
         if let user = FIRAuth.auth()?.currentUser {
             FIRDatabase.database().reference().child("users").child(user.uid).child("foodCollection").observe(.value, with: { (snapshot) in
                 if let valueDictionary = snapshot.value as? NSDictionary {
+                    print(valueDictionary)
                     self.foodArray = createFoodArray(foodDictionary: valueDictionary)
                     self.collectionView?.reloadData()
                 }
@@ -48,8 +50,11 @@ class PantryCollectionViewController: UICollectionViewController {
         self.collectionView!.register(FoodPantryCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+        collectionView?.reloadData()
     }
 
+
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -70,25 +75,31 @@ class PantryCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
+        print(foodArray.count, "COUNT")
         return foodArray.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FoodPantryCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? FoodPantryCollectionViewCell else { return UICollectionViewCell() }
         cell.backgroundColor = .white
         cell.layer.cornerRadius = 6.0
-        cell.foodLabel.text = foodArray[indexPath.row].foodName
-        cell.foodLabel.sizeToFit()
         
+
+//        if foodArray[indexPath.row].style == "wet" {
+//            foodImageView.frame = CGRect(x: cell.bounds.width * 0.20, y: 5.0, width: cell.bounds.width * 0.60, height: cell.bounds.height * 0.50)
+//            foodImageView.center.x = cell.center.x
+//            foodImageView.setNeedsDisplay()
+//        }
+        cell.addLabel(text: foodArray[indexPath.row].foodName)
+        let photoData = UIImagePNGRepresentation(foodArray[indexPath.row].image)
+        cell.addImage(image: UIImage(data: photoData!, scale: 1.0)!, isWet: foodArray[indexPath.row].style == "wet")
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndex = indexPath
         let amountSelectionViewFrame = CGRect(x: 0.0, y: view.bounds.height, width: view.bounds.width, height: view.bounds.height - (navigationController?.navigationBar.frame.maxY)! + 5.0)
-        amountSelectionView = AmountSelectionView(frame: amountSelectionViewFrame)
-        layoutAmountSelectionView(amountSelectionView: amountSelectionView)
-        
+        amountSelectionView = AmountSelectionView(frame: amountSelectionViewFrame, foodArray: foodArray, selectedIndex: selectedIndex, currentCat: cat)
         
         view.addSubview(amountSelectionView)
         
@@ -100,72 +111,44 @@ class PantryCollectionViewController: UICollectionViewController {
     
     func layoutAmountSelectionView(amountSelectionView: AmountSelectionView) {
         
-        //Continue Button
-        let logFeedingButton = UIButton()
-        let buttonWidth = view.frame.width * 0.828
-        let buttonHeight = 55.0
-        logFeedingButton.frame = CGRect(x: CGFloat(0), y: view.frame.height - 85.0 - (navigationController?.navigationBar.frame.maxY)!, width: buttonWidth, height: CGFloat(buttonHeight))
-        logFeedingButton.center.x = view.center.x
-        logFeedingButton.backgroundColor = .fitcatOrange
-        //logFeedingButton.layer.borderWidth = 2.0
-        //logFeedingButton.layer.borderColor = UIColor.white.cgColor
-        logFeedingButton.layer.cornerRadius = 7
-        logFeedingButton.setTitle("Feed \(cat.catName)", for: .normal)
-        logFeedingButton.addTarget(self, action: #selector(logFeedingButtonClicked), for: .touchUpInside)
-        amountSelectionView.addSubview(logFeedingButton)
         
-        //Cancel button
-        let cancelButton = UIButton(type: .system)
-        cancelButton.setTitle("Cancel", for: .normal)
-        cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
-        cancelButton.sizeToFit()
-        cancelButton.frame.origin = CGPoint(x: 20, y: 20)
-        amountSelectionView.addSubview(cancelButton)
+        
+        
         
         //Main StackView
         //28% height
         //79% width
-        let mainStackViewFrame = CGRect(x: 0.0, y: cancelButton.frame.maxY + 50.0, width: amountSelectionView.bounds.width * 0.79, height: amountSelectionView.bounds.height * 0.23)
+       /* let mainStackViewFrame = CGRect(x: 0.0, y: cancelButton.frame.maxY + 50.0, width: amountSelectionView.bounds.width * 0.79, height: amountSelectionView.bounds.height * 0.23)
         let mainStackView = UIStackView(frame: mainStackViewFrame)
         mainStackView.center.x = amountSelectionView.center.x
         mainStackView.axis = .vertical
         mainStackView.distribution = .equalSpacing
         mainStackView.alignment = .center
         mainStackView.spacing = 5.0
+ */
         
-        //catfoodImage
-        let catFoodImageView = UIImageView(image: #imageLiteral(resourceName: "catfood1"))
-        
-        //catFoodLabel
-        let catFoodLabel = UILabel()
-        catFoodLabel.numberOfLines = 3
-        catFoodLabel.textAlignment = .center
-        catFoodLabel.text = foodArray[selectedIndex.row].foodName
-        catFoodLabel.font = UIFont.systemFont(ofSize: 19)
-        catFoodLabel.textColor = .black
-        catFoodLabel.sizeToFit()
         
         //innerStackView
-        let innerStackViewFrame = CGRect(x: 0.0, y: 0.0, width: amountSelectionView.bounds.width * 0.79, height: 30.0)
+      /*  let innerStackViewFrame = CGRect(x: 0.0, y: 0.0, width: amountSelectionView.bounds.width * 0.79, height: 30.0)
         let innerStackView = UIStackView(frame: innerStackViewFrame)
         innerStackView.center.x = amountSelectionView.center.x
         innerStackView.axis = .horizontal
         innerStackView.distribution = .equalSpacing
         innerStackView.alignment = .center
         innerStackView.spacing = 5.0
+ */
         
         //wetLabel
-        let wetLabel = UIImageView(image: #imageLiteral(resourceName: "wetLabel"))
         
-        innerStackView.addArrangedSubview(wetLabel)
+        //innerStackView.addArrangedSubview(wetLabel)
         
         
-        mainStackView.addArrangedSubview(catFoodImageView)
-        mainStackView.addArrangedSubview(catFoodLabel)
-        mainStackView.addArrangedSubview(innerStackView)
-        mainStackView.setNeedsLayout()
+        //mainStackView.addArrangedSubview(catFoodImageView)
+        //mainStackView.addArrangedSubview(catFoodLabel)
+        //mainStackView.addArrangedSubview(innerStackView)
+        //mainStackView.setNeedsLayout()
         
-        amountSelectionView.addSubview(mainStackView)
+        //amountSelectionView.addSubview(mainStackView)
         
     }
     

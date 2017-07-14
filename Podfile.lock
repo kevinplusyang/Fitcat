@@ -6,6 +6,7 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
+  - DZNEmptyDataSet (1.8.1)
   - FBSDKCoreKit (4.22.0):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.22.0):
@@ -56,12 +57,14 @@ PODS:
     - GTMSessionFetcher/Core (= 1.1.9)
   - IQKeyboardManagerSwift (4.0.9)
   - JBChartView (3.0.13)
+  - PinLayout (1.0.15)
   - RSKImageCropper (1.6.1)
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
   - Bolts
+  - DZNEmptyDataSet
   - FBSDKCoreKit
   - FBSDKLoginKit
   - Firebase/Auth
@@ -70,12 +73,14 @@ DEPENDENCIES:
   - GoogleSignIn
   - IQKeyboardManagerSwift
   - JBChartView
+  - PinLayout
   - RSKImageCropper
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FBSDKCoreKit: c693bad19feb225469eeff14452ba364522ee48b
   FBSDKLoginKit: 1fa529fc622d7b32ebeaffbecd377180833c6d30
   Firebase: 2b1cdfba1cda8589f32904a697cc753322bff9d8
@@ -90,9 +95,10 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   IQKeyboardManagerSwift: 2eefe6c429b86aa08bfbc1b5c891164d754adf91
   JBChartView: ea240dca7b83a92f47d4ae766beb3714753988a1
+  PinLayout: b5e14a90854ace5f259e051ad924a74fd07754c5
   RSKImageCropper: 0df8c99e77a8ea7ca7a8b83ef468556f31584254
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 86ff25cb7ec0831962e8189a72e73fbd41d76db4
+PODFILE CHECKSUM: e42da9e717a73cb009db5cccb0a7a39fed982f34
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.2.1

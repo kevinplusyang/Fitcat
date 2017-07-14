@@ -47,6 +47,11 @@ class InsetLabel: UILabel
 }
 
 extension String {
+    
+        func smartContains(_ other: String) -> Bool {
+            let array : [String] = other.lowercased().components(separatedBy: " ").filter { !$0.isEmpty }
+            return array.reduce(true) { !$0 ? false : (self.lowercased().range(of: $1) != nil ) }
+        }
 
     public func firstIndex(of string: String) -> Int? {
         return Array(self.characters).map({String($0)}).index(of: string)

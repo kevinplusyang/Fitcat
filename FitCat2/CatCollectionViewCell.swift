@@ -22,6 +22,8 @@ class CatCollectionViewCell: UICollectionViewCell {
     var logAFeeding: UIButton!
     var logAWeight: UIButton!
     var buttonStackView: UIStackView!
+    var delegate: LogAFeeding!
+    var section: Int!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -70,6 +72,8 @@ class CatCollectionViewCell: UICollectionViewCell {
         
         logAFeeding.setTitle("Log a feeding", for: .normal)
         logAWeight.setTitle("Log a weight", for: .normal)
+        
+        logAFeeding.addTarget(self, action: #selector(clickedLogAFeeding), for: .touchUpInside)
         
         logAFeeding.setTitleColor(.fitcatLightGrayText, for: .normal)
         logAWeight.setTitleColor(.fitcatLightGrayText, for: .normal)
@@ -175,7 +179,8 @@ class CatCollectionViewCell: UICollectionViewCell {
 
     }
     
-    
-    
-    
+    func clickedLogAFeeding() {
+        print("calling delegate")
+        delegate.clickedLogAFeeding(section: section)
+    }
 }

@@ -17,8 +17,9 @@ class CatFeedingModel: NSObject {
      var goalBcs: Int
      var weightLost: Double
      var currentDate: Date
+    var foodHistory: [String: Any]?
     
-     init(caloriesTotal: Double, caloriesToday: Double, goalWeight: Double, currentWeight: Double, goalBcs: Int, weightLost: Double, currentDate: Date) {
+    init(caloriesTotal: Double, caloriesToday: Double, goalWeight: Double, currentWeight: Double, goalBcs: Int, weightLost: Double, currentDate: Date, foodHistory: [String:Any]?) {
          self.caloriesTotal = caloriesTotal
          self.caloriesToday = caloriesToday
          self.goalWeight = goalWeight
@@ -26,6 +27,7 @@ class CatFeedingModel: NSObject {
          self.goalBcs = goalBcs
          self.weightLost = weightLost
          self.currentDate = currentDate
+        self.foodHistory = foodHistory
      }
     
     

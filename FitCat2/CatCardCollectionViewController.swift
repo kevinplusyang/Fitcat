@@ -12,10 +12,19 @@ import SwiftyJSON
 import Photos
 import FirebaseDatabase
 import Firebase
+import DZNEmptyDataSet
 
 private let reuseIdentifier = "catCell"
 
-class CatCardCollectionViewController: UICollectionViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+enum CatCardError: Error {
+    case failedCreatingCell
+}
+
+protocol LogAFeeding {
+    func clickedLogAFeeding(section: Int)
+}
+
+class CatCardCollectionViewController: UICollectionViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, LogAFeeding {
     
     let userDefaults = UserDefaults.standard
     var userCats: [CreateCatModel] = []
@@ -50,6 +59,20 @@ class CatCardCollectionViewController: UICollectionViewController, DZNEmptyDataS
             FIRDatabase.database().reference().child("users").child(user.uid).child("catCollection").observe(.value, with: { (snapshot) in
                 if let valueDictionary = snapshot.value as? NSDictionary {
                     self.userCats = createCatArray(catDictionary: valueDictionary)
+                    self.userCats = self.userCats.map({cat in
+                        let dateCompare = Calendar.current.compare(cat.catFeeding.currentDate, to: Date(), toGranularity: .day)
+                        switch dateCompare {
+                        case .orderedSame:
+                            return cat
+                        case .orderedAscending:
+                            print("SETTING NEW DATE")
+                            cat.catFeeding.currentDate = Date()
+                            cat.catFeeding.caloriesToday = 0.0
+                            return cat
+                        case .orderedDescending:
+                            return cat
+                        }
+                    })
                     self.collectionView?.reloadData()
                 }
             })
@@ -82,6 +105,13 @@ class CatCardCollectionViewController: UICollectionViewController, DZNEmptyDataS
     func editCells() {
         
     }
+    
+    func clickedLogAFeeding(section: Int) {
+        let selectedCat = userCats[section]
+        let catDetailsVC = CatDetailsViewController(goToFeeding: true)
+        catDetailsVC.currentCat = selectedCat
+        navigationController?.pushViewController(catDetailsVC, animated: true)
+    }
 
     // MARK: UICollectionViewDataSource
 
@@ -94,22 +124,34 @@ class CatCardCollectionViewController: UICollectionViewController, DZNEmptyDataS
         return 1
     }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CatCollectionViewCell
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)  -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CatCollectionViewCell else {
+            return UICollectionViewCell()
+        }
         let currentCat = userCats[indexPath.section]
-        
+        cell.delegate = self
+        cell.section = indexPath.section
         cell.backgroundColor = .white
         cell.layer.cornerRadius = 6.0
         cell.catName.text = currentCat.catName
         cell.catName.sizeToFit()
-        cell.intakeCaloriesNumberLabel.text = "80"
-        cell.caloriesRemainingNumberLabel.text = String(describing: Int(currentCat.catPlan.catCalories!))
+        cell.intakeCaloriesNumberLabel.text = "\(Int(currentCat.catFeeding.caloriesToday))"
+        cell.caloriesRemainingNumberLabel.text = String(describing: abs(Int(currentCat.catFeeding.caloriesTotal - currentCat.catFeeding.caloriesToday)))
         
-        let percentCompleted = (Double(cell.intakeCaloriesNumberLabel.text!)! / Double(cell.caloriesRemainingNumberLabel.text!)!)
+        cell.calorieProgressBar.progress = Float((currentCat.catFeeding.caloriesToday) / currentCat.catFeeding.caloriesTotal)
+        cell.calorieCircleProgressPercent.text = "\(Int((abs(Float((currentCat.catFeeding.caloriesToday) / currentCat.catFeeding.caloriesTotal))) * 100.0))%"
+        cell.calorieCircleProgress.progress = ((currentCat.catFeeding.caloriesToday) / currentCat.catFeeding.caloriesTotal)
+        cell.calorieCircleProgress.progressColors = [.fitcatProgressGreen]
+        cell.caloriesRemainingLabel.text = "Calories Remaining"
+        cell.caloriesRemainingLabel.sizeToFit()
+        cell.calorieProgressBar.progressTintColor = .fitcatProgressGreen
         
-        cell.calorieProgressBar.progress = Float(percentCompleted)
-        cell.calorieCircleProgressPercent.text = "\(Int(percentCompleted * 100.0))%"
-        cell.calorieCircleProgress.progress = percentCompleted
+        if currentCat.catFeeding.caloriesToday > currentCat.catFeeding.caloriesTotal {
+            cell.calorieProgressBar.progressTintColor = .fitcatOrange
+            cell.caloriesRemainingLabel.text = "Calories Over"
+            cell.caloriesRemainingLabel.sizeToFit()
+            cell.calorieCircleProgress.progressColors = [.fitcatOrange]
+        }
         
         cell.centerLabels()
 
@@ -123,7 +165,7 @@ class CatCardCollectionViewController: UICollectionViewController, DZNEmptyDataS
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedCat = userCats[indexPath.section]
-        let catDetailsVC = CatDetailsViewController()
+        let catDetailsVC = CatDetailsViewController(goToFeeding: false)
         catDetailsVC.currentCat = selectedCat
         navigationController?.pushViewController(catDetailsVC, animated: true)
     }

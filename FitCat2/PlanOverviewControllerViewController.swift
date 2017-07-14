@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 import Photos
 
-class planOverviewControllerViewController: UIViewController {
+class PlanOverviewControllerViewController: UIViewController {
     
 
     let catImageView = UIImageView()
@@ -36,13 +36,6 @@ class planOverviewControllerViewController: UIViewController {
 
     
     var cat: CreateCatModel!
-    
-    @IBAction func gotItButton(_ sender: UIButton) {
-        let dest = self.storyboard?.instantiateViewController(withIdentifier: "mainPage") as! mainPageController
-        dest.currentCat = cat
-        self.present(dest, animated: true, completion: nil)
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

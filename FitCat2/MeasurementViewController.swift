@@ -139,16 +139,16 @@ class MeasurementViewController: UIViewController {
        
         let catPlan = PlanModel(planStartDate: planStartDate, planEndDate: planEndDate!, catTotalWeightLoss: catTotalWeightLoss, catWeightLossPerMonth: catWeightLossPerMonth, catCalories: catCalories)
         
-        let catFoodModel = CatFeedingModel(caloriesTotal: catCalories, caloriesToday: 0.000000001, goalWeight: end_weight, currentWeight: catWeight, goalBcs: 5, weightLost: 0.000000001, currentDate: Date())
+        let catFoodModel = CatFeedingModel(caloriesTotal: catCalories, caloriesToday: 0.000000001, goalWeight: end_weight, currentWeight: catWeight, goalBcs: 5, weightLost: 0.000000001, currentDate: Date(), foodHistory: nil)
         
         guard let catName = catName, let catBirthdayField = catBirthday, let catBreedField = catBreed, let catNeuteredField = catNeutered, let catPictureData = catImageData
             else { return }
         
-        let newCatObject = CreateCatModel(catName: catName, catBirthday: catBirthdayField, catBreed: catBreedField, catInitialWeight: catWeight, catNeutered: catNeuteredField, catGender: catGender, catInitialBCS: catBCS, catPictureData: catPictureData, catPlan: catPlan, catFeeding: catFoodModel)
+        let newCatObject = CreateCatModel(catName: catName, catBirthday: catBirthdayField, catBreed: catBreedField, catInitialWeight: catWeight, catNeutered: catNeuteredField, catGender: catGender, catInitialBCS: catBCS, catPictureData: catPictureData, catPlan: catPlan, catFeeding: catFoodModel, firebaseID: nil)
         
         updateUser(parameters: prepareNewCatParameters(cat: newCatObject))
         
-        let dest = planOverviewControllerViewController()
+        let dest = PlanOverviewControllerViewController()
         dest.cat = newCatObject
         navigationController?.pushViewController(dest, animated: true)
     }
