@@ -103,20 +103,18 @@ class MeasurementViewController: UIViewController {
     func generatePlan() {
         //MARK: vvvvv target weight. final weight
         guard let catBCS = catBCS, let catWeight = catWeight else {
-            //MARK: Error handling. What happens if these are nil???
+        //MARK: Error handling. What happens if these are nil???
             return
         }
-        
+
         let weightNeedToLoss = Double(catBCS  - 5) * 0.075 * catWeight
         let monthNeeded = Double(catBCS - 5) * 7.5
         let weightLossPerMonth = weightNeedToLoss / monthNeeded
         let end_weight = catWeight - weightNeedToLoss
-        
-        
+
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
-        
-        
+
         let monthNeededInt = Int(monthNeeded)
         let monthRestDouble = monthNeeded - Double(Int(monthNeeded))
         
@@ -132,27 +130,20 @@ class MeasurementViewController: UIViewController {
         let catTotalWeightLoss = weightNeedToLoss
         let catWeightLossPerMonth = weightLossPerMonth
         let catCalories = 0.8 * (30 * catWeight + 70)
-        
-        
-        
-        
-       
+
         let catPlan = PlanModel(planStartDate: planStartDate, planEndDate: planEndDate!, catTotalWeightLoss: catTotalWeightLoss, catWeightLossPerMonth: catWeightLossPerMonth, catCalories: catCalories)
-        
+
         let catFoodModel = CatFeedingModel(caloriesTotal: catCalories, caloriesToday: 0.000000001, goalWeight: end_weight, currentWeight: catWeight, goalBcs: 5, weightLost: 0.000000001, currentDate: Date(), foodHistory: nil)
         
-        guard let catName = catName, let catBirthdayField = catBirthday, let catBreedField = catBreed, let catNeuteredField = catNeutered, let catPictureData = catImageData
+        guard let catName = catName, let catBirthdayField = catBirthday, let catBreedField = catBreed, let catNeuteredField = catNeutered
             else { return }
         
-        let newCatObject = CreateCatModel(catName: catName, catBirthday: catBirthdayField, catBreed: catBreedField, catInitialWeight: catWeight, catNeutered: catNeuteredField, catGender: catGender, catInitialBCS: catBCS, catPictureData: catPictureData, catPlan: catPlan, catFeeding: catFoodModel, firebaseID: nil)
-        
+        let newCatObject = CreateCatModel(catName: catName, catBirthday: catBirthdayField, catBreed: catBreedField, catInitialWeight: catWeight, catNeutered: catNeuteredField, catGender: catGender, catInitialBCS: catBCS, catPictureData: catImageData, catPlan: catPlan, catFeeding: catFoodModel, firebaseID: nil)
+
         updateUser(parameters: prepareNewCatParameters(cat: newCatObject))
-        
+
         let dest = PlanOverviewControllerViewController()
         dest.cat = newCatObject
         navigationController?.pushViewController(dest, animated: true)
     }
-    
-
-
 }

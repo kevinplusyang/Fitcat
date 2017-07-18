@@ -32,6 +32,8 @@ class InitialViewController: UIViewController, UITextFieldDelegate, GIDSignInUID
         if userDefaults.value(forKey: "tos") as? Bool == nil {
             userDefaults.set(false, forKey: "tos")
         }
+        navigationController?.navigationBar.backgroundColor = .fitcatOrange
+        UIApplication.shared.statusBarView?.backgroundColor = .fitcatOrange
         
         
         GIDSignIn.sharedInstance().uiDelegate = self

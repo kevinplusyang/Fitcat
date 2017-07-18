@@ -114,7 +114,9 @@ class CatDetailsViewController: UIViewController, UIScrollViewDelegate, UITableV
         catImageView.layer.cornerRadius = catImageView.bounds.height / 2.0
         catImageView.layer.masksToBounds = true
         catImageView.center.x = view.center.x
-        catImageView.image = UIImage(data: currentCat.catPictureData)
+        if let catPictureData = currentCat.catPictureData {
+            catImageView.image = UIImage(data: catPictureData)
+        } else { catImageView.backgroundColor = .blue }
         scrollView.addSubview(catImageView)
 
         catCirclePercent = KDCircularProgress(frame: CGRect(x: 0.0, y: 0.0, width: 170.0, height: 170.0))
@@ -413,7 +415,7 @@ class CatDetailsViewController: UIViewController, UIScrollViewDelegate, UITableV
     }
 
     func logAFeeding(sender: UIButton?) {
-        let widthAndHeight = view.bounds.width * 0.42
+        let widthAndHeight = view.bounds.width * 0.44
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
         flowLayout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)

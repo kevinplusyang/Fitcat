@@ -91,8 +91,10 @@ func prepareNewCatParameters(cat: CreateCatModel) -> [String: Any] {
     catDictionary["catNeutered"] = cat.catNeutered
     catDictionary["catGender"] = cat.catGender
     catDictionary["catInitialBCS"] = cat.catInitialBCS
-    catDictionary["catPictureData"] = cat.catPictureData.base64EncodedString()
-    
+    if let catPictureData = cat.catPictureData {
+        catDictionary["catPictureData"] = catPictureData.base64EncodedString()
+    }
+
     var catPlanDictionary: [String: Any] = [:]
     catPlanDictionary["planStartDate"] = String(describing: cat.catPlan.planStartDate!)
     catPlanDictionary["planEndDate"] = String(describing: cat.catPlan.planEndDate!)
@@ -124,11 +126,9 @@ func createFoodArray(foodDictionary: NSDictionary) -> [FoodModel] {
             if let foodName = foodObject["name"] as? String, let style = foodObject["style"] as? String, let moisturePercent = foodObject["moisturePercent"] as? Double, let carbPercent = foodObject["carbPercent"] as? Int, let fatPercent = foodObject["fatPercent"] as? Double,
                 let fiberPercent = foodObject["fiberPercent"] as? Double, let protienPercent = foodObject["proteinPercent"] as? Int, let kcalPerKg = foodObject["kcalPerKg"] as? Int {
                 if style == "wet" {
-                    var foodImage = #imageLiteral(resourceName: "catfood1")
+                    var foodImage = "unknown"
                     if let imageBase64 = foodDictionary["image"] as? String {
-                        let dataDecoded = Data(base64Encoded: imageBase64, options: .ignoreUnknownCharacters)!
-                        let decodedImage = UIImage(data: dataDecoded)
-                        foodImage = decodedImage!
+                        foodImage = imageBase64
                     }
                     var wetFoodArray: [[String: String]] = []
                     if let wetCalArray = foodObject["kcalPerCup"] as? NSArray {
@@ -146,13 +146,11 @@ func createFoodArray(foodDictionary: NSDictionary) -> [FoodModel] {
                 } else {
                     if let dryKCalPerCup = foodObject["kcalPerCup"] as? Int {
                         print("In DRY FOOD")
-                        var dryFoodImage: UIImage = UIImage(named: "dryFoodTest")!
+                        var dryFoodImage = "unknown"
                             print("kcalPerCup")
                             if let imageBase64 = foodObject["image"] as? String {
-                                let dataDecoded = Data(base64Encoded: imageBase64)!
-                                let decodedImage = UIImage(data: dataDecoded)
-                                print("found image")
-                                dryFoodImage = decodedImage!
+                                print("GETTING IMAGE", imageBase64)
+                                dryFoodImage = imageBase64
                             }
                             let foodItem = FoodModel(foodName: foodName, style: style, moisturePercent: moisturePercent, carbPercent: carbPercent, fatPercent: fatPercent, fiberPercent: fiberPercent, proteinPercent: protienPercent, dryKCalPerCup: dryKCalPerCup, wetKCalPerCup: nil, kcalPerKg: kcalPerKg, image: dryFoodImage)
                             finalFoodArray.append(foodItem)
@@ -196,9 +194,12 @@ func createCatArray(catDictionary: NSDictionary) -> [CreateCatModel] {
             let catInitialWeight = catObject["catInitialWeight"] as? Double,
             let catNeutered = catObject["catNeutered"] as? Int,
             let catGender = catObject["catGender"] as? Int,
-            let catInitialBCS = catObject["catInitialBCS"] as? Int,
-            let catPictureDataString = catObject["catPictureData"] as? String,
-            let catPictureData = Data(base64Encoded: catPictureDataString) {
+            let catInitialBCS = catObject["catInitialBCS"] as? Int {
+            var pictureData: Data? = nil
+            if let catPictureDataString = catObject["catPictureData"] as? String,
+                let catPictureData = Data(base64Encoded: catPictureDataString) {
+                pictureData = catPictureData
+            }
             let catPlan = PlanModel(planStartDate: planStartDate, planEndDate: planEndDate, catTotalWeightLoss: catTotalWeightLoss, catWeightLossPerMonth: catWeightLossPerMonth, catCalories: catCalories)
             var foodHistory: [String: Any]? = nil
             if let foodHistoryDictionary = catFeedingDictionary["foodHistory"] as? [String: Any] {
@@ -207,7 +208,7 @@ func createCatArray(catDictionary: NSDictionary) -> [CreateCatModel] {
 
             let catFeeding = CatFeedingModel(caloriesTotal: caloriesTotal, caloriesToday: caloriesToday, goalWeight: goalWeight, currentWeight: currentWeight, goalBcs: goalBcs, weightLost: weightLost, currentDate: currentDate, foodHistory: foodHistory)
 
-            let cat = CreateCatModel(catName: catName, catBirthday: catBirthday, catBreed: catBreed, catInitialWeight: catInitialWeight, catNeutered: catNeutered, catGender: catGender, catInitialBCS: catInitialBCS, catPictureData: catPictureData, catPlan: catPlan, catFeeding: catFeeding, firebaseID: currentKey)
+            let cat = CreateCatModel(catName: catName, catBirthday: catBirthday, catBreed: catBreed, catInitialWeight: catInitialWeight, catNeutered: catNeutered, catGender: catGender, catInitialBCS: catInitialBCS, catPictureData: pictureData, catPlan: catPlan, catFeeding: catFeeding, firebaseID: currentKey)
             finalCatArray.append(cat)
         }
     }

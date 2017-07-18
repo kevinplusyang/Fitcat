@@ -84,7 +84,7 @@ class WeightPicker: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
                gramsString = "\(grams[row]) Kilograms"
             }
         }
-        catViewController?.updateWeightDisplay()
+        // catViewController?.updateWeightDisplay()
 
        
     }

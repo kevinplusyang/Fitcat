@@ -62,7 +62,7 @@ class CreateCatViewController: UIViewController,UITextFieldDelegate,UIImagePicke
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        UIApplication.shared.statusBarView?.tintColor = .fitcatOrange
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationController?.navigationBar.backgroundColor = UIColor(red: 240/255, green: 97/255, blue: 68/255, alpha: 1.0)
         scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
@@ -106,7 +106,7 @@ class CreateCatViewController: UIViewController,UITextFieldDelegate,UIImagePicke
         let weightToolbar = UIToolbar.init()
         weightToolbar.sizeToFit()
         weightPicker.catViewController = self
-        let doneButtonWeight = UIBarButtonItem.init(barButtonSystemItem: .done, target: self, action: #selector(dismissKeyboard))
+        let doneButtonWeight = UIBarButtonItem.init(barButtonSystemItem: .done, target: self, action: #selector(updateWeightDisplay))
 
         weightToolbar.items = [flexSpace,doneButtonWeight]
         catWeightField.inputAccessoryView = weightToolbar
@@ -137,12 +137,12 @@ class CreateCatViewController: UIViewController,UITextFieldDelegate,UIImagePicke
     func setUpGradient() {
         let topColor = UIColor(red: 240.0/255.0, green: 97.0/255.0, blue: 68.0/255.0, alpha: 1.0).cgColor
         let bottomColor = UIColor(red: 211.0/255.0, green: 61.0/255.0, blue: 43.0/255.0, alpha: 1.0).cgColor
-        gradient.colors = [topColor,bottomColor]
+        gradient.colors = [topColor, bottomColor]
         self.view.layer.insertSublayer(gradient, at: 0)
     }
     func updateGradient() {
         gradient.frame = view.bounds
-        gradient.locations = [0.0,1.0]
+        gradient.locations = [0.0, 1.0]
     }
 
     func setUpView() {
@@ -354,6 +354,7 @@ class CreateCatViewController: UIViewController,UITextFieldDelegate,UIImagePicke
 
     func updateWeightDisplay() {
         catWeightField.text = pounds ? (weightPicker.poundsString + weightPicker.ouncesString) : (weightPicker.kilogramsString + weightPicker.gramsString)
+        dismissKeyboard()
     }
 
 
@@ -487,7 +488,6 @@ class CreateCatViewController: UIViewController,UITextFieldDelegate,UIImagePicke
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
-        updateWeightDisplay()
     }
 
 

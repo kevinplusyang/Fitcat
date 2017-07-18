@@ -21,6 +21,8 @@ pod 'FBSDKCoreKit'
 pod 'FBSDKLoginKit'
 pod 'PinLayout'
 pod 'DZNEmptyDataSet'
+pod 'Fabric'
+pod 'Crashlytics'
 
 
 post_install do |installer|

@@ -73,43 +73,43 @@ class FoodMarketViewController: UIViewController, UISearchBarDelegate, UITableVi
         // Dispose of any resources that can be recreated.
     }
 
-
     func getFoodResults() {
-        FIRDatabase.database().reference().child("foods").observeSingleEvent(of: .value, with: { (snapshot) in
+        FIRDatabase.database().reference().child("foods").observe(.value, with: { (snapshot) in
+            self.foodOptions = []
             if let foodArray = snapshot.value as? NSArray {
+                print("FOOD ARRAY COUNT", foodArray.count)
                 for foodItem in foodArray {
                     print("In array")
+
                     if let foodDictionary = foodItem as? NSDictionary {
-                        print("In dictionary")
                         if
                             let foodName = foodDictionary["name"] as? String,
                             let style = foodDictionary["style"] as? String,
                             let moisturePercent = foodDictionary["moisturePercent"] as? Double,
-                            let carbPercent = foodDictionary["carbPercent"] as? Int,
+                            let carbPercent = foodDictionary["carbPercent"] as? Double,
                             let fatPercent = foodDictionary["fatPercent"] as? Double,
                             let fiberPercent = foodDictionary["fiberPercent"] as? Double,
-                            let protienPercent = foodDictionary["proteinPercent"] as? Int,
+                            let protienPercent = foodDictionary["proteinPercent"] as? Double,
                             let kcalPerKg = foodDictionary["kcalPerKg"] as? Int {
-                            print("made it through first if let")
                             if style == "wet" {
                                 var finished = false
-                                var foodImage = #imageLiteral(resourceName: "catfood1")
+                                var foodImage = "unknown"
                                 if let imageBase64 = foodDictionary["image"] as? String {
-                                    let dataDecoded = Data(base64Encoded: imageBase64, options: .ignoreUnknownCharacters)!
-                                    let decodedImage = UIImage(data: dataDecoded)
-                                    foodImage = decodedImage!
-
+                                    foodImage = imageBase64
                                 }
                                 if let wetCalPerCup2 = foodDictionary["kcalPerCup"] as? [[String:String]] {
 
-                                    let foodItem = FoodModel(foodName: foodName, style: style, moisturePercent: moisturePercent, carbPercent: carbPercent, fatPercent: fatPercent, fiberPercent: fiberPercent, proteinPercent: protienPercent, dryKCalPerCup: nil, wetKCalPerCup: wetCalPerCup2, kcalPerKg: kcalPerKg, image: foodImage)
+                                    let foodItem = FoodModel(foodName: foodName, style: style, moisturePercent: moisturePercent, carbPercent: Int(carbPercent), fatPercent: fatPercent, fiberPercent: fiberPercent, proteinPercent: Int(protienPercent), dryKCalPerCup: nil, wetKCalPerCup: wetCalPerCup2, kcalPerKg: kcalPerKg, image: foodImage)
+                                    print("added wet food item2!")
                                     self.foodOptions.append(foodItem)
                                     finished = true
                                     print(wetCalPerCup2)
 
                                 }
-                                if !finished, let wetCalPerCup = foodDictionary["kcalPerCup"] as? [String:String]  {
-                                    let foodItem = FoodModel(foodName: foodName, style: style, moisturePercent: moisturePercent, carbPercent: carbPercent, fatPercent: fatPercent, fiberPercent: fiberPercent, proteinPercent: protienPercent, dryKCalPerCup: nil, wetKCalPerCup: [wetCalPerCup], kcalPerKg: kcalPerKg, image: foodImage)
+                                if
+                                    !finished,
+                                    let wetCalPerCup = foodDictionary["kcalPerCup"] as? [String:String] {
+                                    let foodItem = FoodModel(foodName: foodName, style: style, moisturePercent: moisturePercent, carbPercent: Int(carbPercent), fatPercent: fatPercent, fiberPercent: fiberPercent, proteinPercent: Int(protienPercent), dryKCalPerCup: nil, wetKCalPerCup: [wetCalPerCup], kcalPerKg: kcalPerKg, image: foodImage)
                                     self.foodOptions.append(foodItem)
                                     print("added wet food item!")
                                     print(wetCalPerCup)
@@ -117,21 +117,21 @@ class FoodMarketViewController: UIViewController, UISearchBarDelegate, UITableVi
                                 }
 
                             } else {
-                                var dryFoodImage = #imageLiteral(resourceName: "dryFoodTest")
+                                var dryFoodImage = "unknown"
                                 if let dryKCalPerCup = foodDictionary["kcalPerCup"] as? Int {
                                     if
-                                        let imageBase64 = foodDictionary["image"] as? String,
-                                        let dataDecoded = Data(base64Encoded: imageBase64),
-                                        let decodedImage = UIImage(data: dataDecoded) {
-                                        dryFoodImage = decodedImage
+                                        let imageBase64 = foodDictionary["image"] as? String {
+                                        print("GETTING FOOD RESULT IMAGE", imageBase64)
+                                        dryFoodImage = imageBase64
                                     }
-                                    let foodItem = FoodModel(foodName: foodName, style: style, moisturePercent: moisturePercent, carbPercent: carbPercent, fatPercent: fatPercent, fiberPercent: fiberPercent, proteinPercent: protienPercent, dryKCalPerCup: dryKCalPerCup, wetKCalPerCup: nil, kcalPerKg: kcalPerKg, image: dryFoodImage)
+                                    let foodItem = FoodModel(foodName: foodName, style: style, moisturePercent: moisturePercent, carbPercent: Int(carbPercent), fatPercent: fatPercent, fiberPercent: fiberPercent, proteinPercent: Int(protienPercent), dryKCalPerCup: dryKCalPerCup, wetKCalPerCup: nil, kcalPerKg: kcalPerKg, image: dryFoodImage)
                                     print("added foodItem")
                                     self.foodOptions.append(foodItem)
                                 }
                             }
                         } else {
                             print("Failed if let")
+                            print("FOOD DICTIONARY", foodDictionary)
                         }
 
                     } else {
@@ -140,8 +140,8 @@ class FoodMarketViewController: UIViewController, UISearchBarDelegate, UITableVi
 
                 }
             }
+            print("FOOD COUNT", self.foodOptions.count)
             self.tableView.reloadData()
-            print(self.foodOptions)
         })
     }
 
@@ -149,9 +149,19 @@ class FoodMarketViewController: UIViewController, UISearchBarDelegate, UITableVi
         if let user = FIRAuth.auth()?.currentUser {
             let foodRef = FIRDatabase.database().reference().child("users").child(user.uid).child("foodCollection")
             for foodItem in selectedFood {
-                let imageData = UIImagePNGRepresentation(foodItem.image)!
-                let strBase64 = imageData.base64EncodedString()
-
+                let strBase64 = foodItem.image
+                print("SAVING IMAGE TO MY FOOD COLLECTION", strBase64)
+                let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+                let url = NSURL(fileURLWithPath: path)
+                let foodPath = url.appendingPathComponent(foodItem.foodName.camelcaseStringLowerCase + ".png")!
+                if !FileManager.default.fileExists(atPath: foodPath.path) {
+                    print("File does not exist at path: ", foodPath.path)
+                    downloadImage(urlString: foodItem.image) { (imageData) -> Void in
+                        if let data = imageData {
+                            try? data.write(to: foodPath)
+                        }
+                    }
+                }
 
                 if foodItem.style == "wet" {
                     let foodParams: [String: Any] = ["name": foodItem.foodName, "carbPercent": foodItem.carbPercent, "fatPercent": foodItem.fatPercent, "fiberPercent": foodItem.fiberPercent, "kcalPerCup": foodItem.wetKCalPerCup, "kcalPerKg": foodItem.kcalPerKg, "moisturePercent": foodItem.moisturePercent, "proteinPercent": foodItem.protienPercent, "style": foodItem.style, "image": strBase64]
@@ -178,6 +188,13 @@ class FoodMarketViewController: UIViewController, UISearchBarDelegate, UITableVi
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return parseFoodOptions.count
+    }
+
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        // Create the headers for the tableView
+        let sectionTitlesWithDuplicates = foodOptions.map({ $0.foodName.capitalized.substring(to: $0.foodName.index($0.foodName.startIndex, offsetBy: 1))})
+        let sectionTitlesWithoutDuplicates = Array(Set(sectionTitlesWithDuplicates))
+        return sectionTitlesWithoutDuplicates
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -207,4 +224,3 @@ class FoodMarketViewController: UIViewController, UISearchBarDelegate, UITableVi
     }
 
 }
-

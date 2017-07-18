@@ -12,6 +12,8 @@ import Firebase
 import FirebaseAuth
 import FBSDKCoreKit
 import FirebaseDatabase
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -46,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             let userRef = FIRDatabase.database().reference(withPath: "users").child(activeUser.uid)
             userRef.keepSynced(true)
         }
-
+        Fabric.with([Crashlytics.self])
         startSignIn()
         return true
     }

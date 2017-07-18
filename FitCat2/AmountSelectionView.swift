@@ -10,7 +10,6 @@ import UIKit
 import IQKeyboardManagerSwift
 import Firebase
 
-
 class AmountSelectionView: UIView, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     var amountOfCaloriesToFeed = 0.0
     var foodArray: [FoodModel] = []
@@ -44,11 +43,9 @@ class AmountSelectionView: UIView, UIPickerViewDelegate, UIPickerViewDataSource,
     var wetFood = false
     var foodItem: FoodModel!
     var currentIndexOfCanSizeSelected = 0
-    init(frame: CGRect, foodArray: [FoodModel], selectedIndex: IndexPath, currentCat: CreateCatModel) {
+
+    init(frame: CGRect, foodArray: [FoodModel], selectedIndex: IndexPath, currentCat: CreateCatModel, image: UIImage) {
         super.init(frame: frame)
-        self.foodArray = foodArray
-        self.selectedIndex = selectedIndex
-        self.currentCat = currentCat
         layer.cornerRadius = 10.0
         backgroundColor = .white
         clipsToBounds = true
@@ -60,56 +57,59 @@ class AmountSelectionView: UIView, UIPickerViewDelegate, UIPickerViewDataSource,
         cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
         cancelButton.sizeToFit()
         addSubview(cancelButton)
+        let x = NSLayoutConstraint.constraints(withVisualFormat: "H:|-50-[v0]-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": cancelButton])
+
+        self.addConstraints(x)
         //changeWetFoodSizeButton
         changeWetFoodSizeButton.setTitle("Change Can Size", for: .normal)
         changeWetFoodSizeButton.addTarget(self, action: #selector(changedWetFoodSizePressed), for: .touchUpInside)
         changeWetFoodSizeButton.sizeToFit()
         if let wetKcalPerCupArray = foodItem.wetKCalPerCup {
             if wetKcalPerCupArray.count > 1 {
-                addSubview(changeWetFoodSizeButton)
+                //addSubView(changeWetFoodSizeButton)
             }
         }
         //catfoodImage
         let photoWidthAndHeight: CGFloat = isPhoneSmall ? 0.20 : 0.35
         catFoodImageView = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: bounds.height * photoWidthAndHeight, height: bounds.height * photoWidthAndHeight))
-        catFoodImageView.image = foodItem.image
+        catFoodImageView.image = image
         catFoodImageView.contentMode = .scaleAspectFit
-        addSubview(catFoodImageView)
+        //addSubView(catFoodImageView)
         //catFoodLabel
         catFoodLabel.text = foodArray[selectedIndex.row].foodName
         catFoodLabel.font = UIFont.systemFont(ofSize: 19)
         catFoodLabel.numberOfLines = 0
         catFoodLabel.textAlignment = .center
         catFoodLabel.lineBreakMode = .byWordWrapping
-        addSubview(catFoodLabel)
+        //addSubView(catFoodLabel)
         wetFood = foodItem.style == "wet"
         //wetLabel
         wetLabel = wetFood ? UIImageView(image: #imageLiteral(resourceName: "wetLabel")) : UIImageView(image: #imageLiteral(resourceName: "dryLabel"))
-        addSubview(wetLabel)
+        //addSubView(wetLabel)
         //calPerCanLabel
         calPerCanLabel.text = wetFood ? "\((foodItem.wetKCalPerCup?[0]["kcalPerCup"])!) Cal/Can" : "\(foodItem.dryKCalPerCup!) Cal/Cup"
         calPerCanLabel.font = .systemFont(ofSize: 16, weight: UIFontWeightLight)
         calPerCanLabel.textAlignment = .center
-        addSubview(calPerCanLabel)
+        //addSubView(calPerCanLabel)
         //canSizeLabel
         canSizeLabel.text = wetFood ? "\((foodItem.wetKCalPerCup?[0]["canSize"])!) Cans" : ""
         canSizeLabel.font = .systemFont(ofSize: 16, weight: UIFontWeightLight)
         canSizeLabel.textAlignment = .center
-        addSubview(canSizeLabel)
+        //addSubView(canSizeLabel)
         separatorView.pin.height(1)
         separatorView.backgroundColor = UIColor(white: 218.0 / 255.0, alpha: 1.0)
-        addSubview(separatorView)
+        //addSubView(separatorView)
         calLabel.text = "\(Int(currentCat.catFeeding.caloriesTotal - currentCat.catFeeding.caloriesToday)) Cals Remaining"
         calLabel.font = .systemFont(ofSize: 20, weight: UIFontWeightBold)
         calLabel.textAlignment = .center
         ozLabel.text = "2.5 oz"
         ozLabel.font = .systemFont(ofSize: 20, weight: UIFontWeightBold)
         ozLabel.textAlignment = .center
-        //addSubview(ozLabel)
+        ////addSubView(ozLabel)
         verticalSeperator.pin.height(32)
         verticalSeperator.pin.width(1)
         verticalSeperator.backgroundColor = UIColor(white: 218.0 / 255.0, alpha: 1.0)
-        //addSubview(verticalSeperator)
+        ////addSubView(verticalSeperator)
         //calProgressBar.transform = CGAffineTransform(scaleX: 1.0, y: 3.0)
         calProgressBar = UIProgressView(frame: CGRect(x: 0.0, y: 0.0, width: self.bounds.width * 0.2685333333, height: 10.0))
         calProgressBar.transform = CGAffineTransform(scaleX: 1.0, y: 2.5)
@@ -127,8 +127,8 @@ class AmountSelectionView: UIView, UIPickerViewDelegate, UIPickerViewDataSource,
             calLabel.text = "\(numberOfCalsRemaining) Cals Remaining"
             calProgressBar.progressTintColor = .fitcatProgressGreen
         }
-        addSubview(calLabel)
-        addSubview(calProgressBar)
+        //addSubView(calLabel)
+        //addSubView(calProgressBar)
 
         ozProgressBar = UIProgressView(frame: CGRect(x: 0.0, y: 0.0, width: self.bounds.width * 0.2685333333, height: 10.0))
         ozProgressBar.transform = CGAffineTransform(scaleX: 1.0, y: 20.0)
@@ -137,7 +137,7 @@ class AmountSelectionView: UIView, UIPickerViewDelegate, UIPickerViewDataSource,
         ozProgressBar.progressTintColor = .fitcatProgressGreen
         ozProgressBar.trackTintColor = .fitcatProgressGray
         ozProgressBar.progress = 0.0
-        //addSubview(ozProgressBar)
+        ////addSubView(ozProgressBar)
 
         amountTextField.frame = CGRect(x: 0.0, y: 0.0, width: self.bounds.width * 0.50, height: 30.0)
         amountTextField.delegate = self
@@ -151,7 +151,7 @@ class AmountSelectionView: UIView, UIPickerViewDelegate, UIPickerViewDataSource,
         amountTextField.layer.masksToBounds = true
         amountTextField.textAlignment = .center
         amountTextField.placeholder = "Select Amount"
-        addSubview(amountTextField)
+        //addSubView(amountTextField)
 
         amountTextField.inputView = amountPicker
 
@@ -162,7 +162,7 @@ class AmountSelectionView: UIView, UIPickerViewDelegate, UIPickerViewDataSource,
         cupLabel.text = "2/3 Cups"
         cupLabel.font = .systemFont(ofSize: 20, weight: UIFontWeightLight)
         cupLabel.textAlignment = .center
-        //addSubview(cupLabel)
+        ////addSubView(cupLabel)
 
         logFeedingButton.backgroundColor = .fitcatOrange
         //logFeedingButton.layer.borderWidth = 2.0
@@ -171,7 +171,7 @@ class AmountSelectionView: UIView, UIPickerViewDelegate, UIPickerViewDataSource,
         //logFeedingButton.setTitle("Feed \(cat.catName)", for: .normal)
         logFeedingButton.setTitle("Feed " + currentCat.catName, for: .normal)
         logFeedingButton.addTarget(self, action: #selector(logFeedingButtonClicked), for: .touchUpInside)
-        addSubview(logFeedingButton)
+        //addSubView(logFeedingButton)
 
         if isPhoneSmall {
             cupLabel.font = .systemFont(ofSize: 16, weight: UIFontWeightLight)
@@ -189,36 +189,36 @@ class AmountSelectionView: UIView, UIPickerViewDelegate, UIPickerViewDataSource,
     override func layoutSubviews() {
         super.layoutSubviews()
         //603
-        let height = bounds.height
-        let width = bounds.width
-        cancelButton.pin.topLeft().margin(14.5, 22.5, 0.0, 0.0)
-        changeWetFoodSizeButton.pin.topRight().margin(14.5, 0.0, 0.0, 22.5)
-        catFoodImageView.pin.below(of: cancelButton).marginTop(height * 0.01913930348).hCenter()
-
-        catFoodLabel.pin.below(of: catFoodImageView, aligned: .center).width(self.bounds.width * 0.79).marginTop(height * 0.04676616915).sizeToFit().hCenter()
-
-        wetLabel.pin.below(of: catFoodLabel).marginLeft(width * 0.108).left().marginTop(height * 0.0447761194)
-
-        canSizeLabel.pin.below(of: catFoodLabel, aligned: .center).width(
-            self.bounds.width * 0.20).marginTop(height * 0.0447761194).sizeToFit()
-
-        calPerCanLabel.pin.below(of: catFoodLabel).width( self.bounds.width * 0.236).right().marginRight(width * 0.108).marginTop(height * 0.0447761194).sizeToFit()
-
-        separatorView.pin.below(of: canSizeLabel, aligned: .center).width(self.bounds.width).marginTop(height * 0.04975124378)
-
-        //verticalSeperator.pin.below(of: separatorView, aligned: .center).marginTop(height * 0.05721393035)
-        calLabel.pin.below(of: separatorView, aligned: .center).width(self.bounds.width * 0.8).marginTop(height * 0.04228855721).sizeToFit()
-
-        //ozLabel.pin.below(of: separatorView).width(self.bounds.width * 0.228).marginTop(height 0.04228855721).right(of: verticalSeperator).marginLeft(47.0).sizeToFit()
-
-        calProgressBar.pin.below(of: calLabel, aligned: .center).marginTop(height * 0.02072968491)
-            //ozProgressBar.pin.below(of: ozLabel, aligned: .center).marginTop(height * 0.02072968491 )
-
-            amountTextField.pin.below(of: calProgressBar).marginTop(30).hCenter()
-
-            //cupLabel.pin.below(of: ozProgressBar, aligned: .center).width(self.bounds.width  .2386666667).marginTop(5.0).sizeToFit()
-
-            logFeedingButton.pin.bottom().width(bounds.width * 0.828).height(height * 0.0912106136).marginBottom(21.5).hCenter()
+//        let height = bounds.height
+//        let width = bounds.width
+//        cancelButton.pin.topLeft().margin(14.5, 22.5, 0.0, 0.0)
+//        changeWetFoodSizeButton.pin.topRight().margin(14.5, 0.0, 0.0, 22.5)
+//        catFoodImageView.pin.below(of: cancelButton).marginTop(height * 0.01913930348).hCenter()
+//
+//        catFoodLabel.pin.below(of: catFoodImageView, aligned: .center).width(self.bounds.width * 0.79).marginTop(height * 0.04676616915).sizeToFit().hCenter()
+//
+//        wetLabel.pin.below(of: catFoodLabel).marginLeft(width * 0.108).left().marginTop(height * 0.0447761194)
+//
+//        canSizeLabel.pin.below(of: catFoodLabel, aligned: .center).width(
+//            self.bounds.width * 0.20).marginTop(height * 0.0447761194).sizeToFit()
+//
+//        calPerCanLabel.pin.below(of: catFoodLabel).width( self.bounds.width * 0.236).right().marginRight(width * 0.108).marginTop(height * 0.0447761194).sizeToFit()
+//
+//        separatorView.pin.below(of: canSizeLabel, aligned: .center).width(self.bounds.width).marginTop(height * 0.04975124378)
+//
+//        //verticalSeperator.pin.below(of: separatorView, aligned: .center).marginTop(height * 0.05721393035)
+//        calLabel.pin.below(of: separatorView, aligned: .center).width(self.bounds.width * 0.8).marginTop(height * 0.04228855721).sizeToFit()
+//
+//        //ozLabel.pin.below(of: separatorView).width(self.bounds.width * 0.228).marginTop(height 0.04228855721).right(of: verticalSeperator).marginLeft(47.0).sizeToFit()
+//
+//        calProgressBar.pin.below(of: calLabel, aligned: .center).marginTop(height * 0.02072968491)
+//            //ozProgressBar.pin.below(of: ozLabel, aligned: .center).marginTop(height * 0.02072968491 )
+//
+//            amountTextField.pin.below(of: calProgressBar).marginTop(30).hCenter()
+//
+//            //cupLabel.pin.below(of: ozProgressBar, aligned: .center).width(self.bounds.width  .2386666667).marginTop(5.0).sizeToFit()
+//
+//            logFeedingButton.pin.bottom().width(bounds.width * 0.828).height(height * 0.0912106136).marginBottom(21.5).hCenter()
     }
 
     func logFeedingButtonClicked() {

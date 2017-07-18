@@ -19,10 +19,10 @@ class FoodModel: NSObject {
     var dryKCalPerCup: Int?
     var wetKCalPerCup: [[String:String]]?
     var kcalPerKg: Int
-    var image: UIImage
+    var image: String
     
     
-    init(foodName: String, style: String, moisturePercent: Double, carbPercent:Int, fatPercent: Double, fiberPercent: Double, proteinPercent: Int, dryKCalPerCup: Int?, wetKCalPerCup: [[String:String]]?, kcalPerKg: Int, image: UIImage) {
+    init(foodName: String, style: String, moisturePercent: Double, carbPercent:Int, fatPercent: Double, fiberPercent: Double, proteinPercent: Int, dryKCalPerCup: Int?, wetKCalPerCup: [[String:String]]?, kcalPerKg: Int, image: String) {
         self.foodName = foodName
         self.style = style
         self.moisturePercent = moisturePercent
