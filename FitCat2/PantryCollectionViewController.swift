@@ -47,6 +47,9 @@ class PantryCollectionViewController: UICollectionViewController, DZNEmptyDataSe
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchForCatFood))
         collectionView?.alwaysBounceVertical = true
         collectionView?.backgroundColor = .fitcatGray
+        collectionView?.translatesAutoresizingMaskIntoConstraints = false
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[collectionView]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["collectionView": collectionView]))
+         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[collectionView]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["collectionView": collectionView]))
         collectionView?.emptyDataSetSource = self
         // Register cell classes
         self.collectionView!.register(FoodPantryCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
@@ -54,8 +57,6 @@ class PantryCollectionViewController: UICollectionViewController, DZNEmptyDataSe
         // Do any additional setup after loading the view.
         collectionView?.reloadData()
     }
-
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -73,7 +74,6 @@ class PantryCollectionViewController: UICollectionViewController, DZNEmptyDataSe
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
@@ -103,26 +103,34 @@ class PantryCollectionViewController: UICollectionViewController, DZNEmptyDataSe
         if
             let currentCell = collectionView.cellForItem(at: indexPath) as? FoodPantryCollectionViewCell,
             let foodImage = currentCell.foodImageView.image {
+            amountSelectionView = AmountSelectionView(foodArray: foodArray, selectedIndex: selectedIndex, currentCat: cat)
+            amountSelectionView.translatesAutoresizingMaskIntoConstraints = false
+            //amountSelectionView.foodArray = foodArray
+            amountSelectionView.image = foodImage
 
-            amountSelectionView = AmountSelectionView(frame: amountSelectionViewFrame, foodArray: foodArray, selectedIndex: selectedIndex, currentCat: cat, image: currentCell.foodImageView.image!)
-
+            //amountSelectionView = AmountSelectionView(frame: amountSelectionViewFrame, foodArray: foodArray, selectedIndex: selectedIndex, currentCat: cat, image: currentCell.foodImageView.image!)
             view.addSubview(amountSelectionView)
 
+            let views: [String: UIView] = ["newView": amountSelectionView]
+            let widthConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[newView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: ["width": view.bounds.width], views: views)
+            let heightConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-100-[newView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
+            NSLayoutConstraint.activate(widthConstraints)
+            NSLayoutConstraint.activate(heightConstraints)
+             self.amountSelectionView.frame.origin.y = UIScreen.main.bounds.maxY + 5.0
+
             UIView.animate(withDuration: 0.3, animations: {
-                self.amountSelectionView.frame.origin.y = (self.navigationController?.navigationBar.frame.maxY)! + 5.0
+                 self.amountSelectionView.frame.origin.y = 50.0
+//                verticalConstraint.constant = 50
+//                self.view.layoutIfNeeded()
+                //self.amountSelectionView.frame.origin.y = (self.navigationController?.navigationBar.frame.maxY)! + 5.0
+                //self.amountSelectionView.setup()
             })
         } else {
             return
         }
-
-
     }
 
     func layoutAmountSelectionView(amountSelectionView: AmountSelectionView) {
-
-
-
-
 
         //Main StackView
         //28% height

@@ -11,6 +11,7 @@ import IQKeyboardManagerSwift
 import Firebase
 
 class AmountSelectionView: UIView, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+    var shoudLayout = false
     var amountOfCaloriesToFeed = 0.0
     var foodArray: [FoodModel] = []
     var longmarkerArray: [UIView] = []
@@ -25,9 +26,9 @@ class AmountSelectionView: UIView, UIPickerViewDelegate, UIPickerViewDataSource,
 
     let cancelButton = UIButton(type: .system)
     let changeWetFoodSizeButton = UIButton(type: .system)
-    var catFoodImageView: UIImageView!
+    var catFoodImageView = UIImageView()
     let catFoodLabel = UILabel()
-    var wetLabel: UIImageView!
+    var wetLabel = UIImageView()
     let calPerCanLabel = UILabel()
     let canSizeLabel = UILabel()
     let separatorView = UIView()
@@ -40,9 +41,125 @@ class AmountSelectionView: UIView, UIPickerViewDelegate, UIPickerViewDataSource,
     let logFeedingButton = UIButton()
     let amountTextField = UITextField()
     let amountPicker = UIPickerView()
+    let amountSelectionBorder = UIView()
     var wetFood = false
     var foodItem: FoodModel!
     var currentIndexOfCanSizeSelected = 0
+    var image: UIImage!
+    var shouldSetupConstraints = true
+    let screenSize = UIScreen.main.bounds
+
+    init(foodArray: [FoodModel], selectedIndex: IndexPath, currentCat: CreateCatModel) {
+        super.init(frame: CGRect.zero)
+         self.translatesAutoresizingMaskIntoConstraints = false
+        self.foodArray = foodArray
+        self.selectedIndex = selectedIndex
+        self.currentCat = currentCat
+        foodItem = foodArray[selectedIndex.row]
+        layer.cornerRadius = 10.0
+        backgroundColor = .white
+        clipsToBounds = true
+        layer.masksToBounds = true
+
+        cancelButton.setTitle("Cancel", for: .normal)
+        cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
+        cancelButton.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(cancelButton)
+
+        catFoodImageView.contentMode = .scaleAspectFit
+        catFoodImageView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(catFoodImageView)
+
+        catFoodLabel.translatesAutoresizingMaskIntoConstraints = false
+        catFoodLabel.text = foodArray[selectedIndex.row].foodName
+        catFoodLabel.font = UIFont.systemFont(ofSize: 19)
+        catFoodLabel.numberOfLines = 0
+        catFoodLabel.textAlignment = .center
+        catFoodLabel.lineBreakMode = .byWordWrapping
+        addSubview(catFoodLabel)
+
+        wetLabel.translatesAutoresizingMaskIntoConstraints = false
+        wetFood = foodItem.style == "wet"
+        addSubview(wetLabel)
+
+        calPerCanLabel.translatesAutoresizingMaskIntoConstraints = false
+        calPerCanLabel.text = wetFood ? "\((foodItem.wetKCalPerCup?[0]["kcalPerCup"])!) Cal/Can" : "\(foodItem.dryKCalPerCup!) Cal/Cup"
+        calPerCanLabel.font = .systemFont(ofSize: 16, weight: UIFontWeightLight)
+        calPerCanLabel.textAlignment = .center
+        addSubview(calPerCanLabel)
+
+        calLabel.translatesAutoresizingMaskIntoConstraints = false
+        calLabel.text = "\(Int(currentCat.catFeeding.caloriesTotal - currentCat.catFeeding.caloriesToday)) Cals Remaining"
+        calLabel.font = .systemFont(ofSize: 20, weight: UIFontWeightBold)
+        calLabel.textAlignment = .center
+
+        calProgressBar = UIProgressView()
+        calProgressBar.translatesAutoresizingMaskIntoConstraints = false
+        calProgressBar.transform = CGAffineTransform(scaleX: 1.0, y: 2.5)
+        calProgressBar.layer.cornerRadius = 3.0
+        calProgressBar.layer.masksToBounds = true
+        calProgressBar.trackTintColor = .fitcatProgressGray
+        calProgressBar.progress = currentCat.catFeeding.caloriesToday == 0.000000001 ? Float(0.0) : Float(currentCat.catFeeding.caloriesToday / currentCat.catFeeding.caloriesTotal)
+        calProgressBar.progressTintColor = .fitcatProgressGreen
+        calProgressBar.progress = Float(currentCat.catFeeding.caloriesToday / currentCat.catFeeding.caloriesTotal)
+
+        let numberOfCalsRemaining = Int(currentCat.catFeeding.caloriesTotal - currentCat.catFeeding.caloriesToday)
+        if numberOfCalsRemaining < 0 {
+            calLabel.text = "\(abs(numberOfCalsRemaining)) Cals Over"
+            calProgressBar.progressTintColor = .fitcatOrange
+        } else {
+            calLabel.text = "\(numberOfCalsRemaining) Cals Remaining"
+            calProgressBar.progressTintColor = .fitcatProgressGreen
+        }
+        addSubview(calLabel)
+        addSubview(calProgressBar)
+
+        amountTextField.translatesAutoresizingMaskIntoConstraints =  false
+        amountTextField.delegate = self
+
+        amountSelectionBorder.translatesAutoresizingMaskIntoConstraints = false
+        amountSelectionBorder.backgroundColor = UIColor.darkGray
+        amountTextField.layer.masksToBounds = true
+        amountTextField.textAlignment = .center
+        amountTextField.placeholder = "Select Amount"
+        addSubview(amountTextField)
+        addSubview(amountSelectionBorder)
+
+        amountTextField.inputView = amountPicker
+
+        //picker
+        amountPicker.delegate = self
+        amountPicker.dataSource = self
+
+        logFeedingButton.translatesAutoresizingMaskIntoConstraints = false
+        logFeedingButton.backgroundColor = .fitcatOrange
+        logFeedingButton.layer.cornerRadius = 7
+        logFeedingButton.setTitle("Feed " + currentCat.catName, for: .normal)
+        logFeedingButton.addTarget(self, action: #selector(logFeedingButtonClicked), for: .touchUpInside)
+        addSubview(logFeedingButton)
+
+    }
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+
+    func setup() {
+       // self.translatesAutoresizingMaskIntoConstraints = false
+        cancelButton.setTitle("Cancel", for: .normal)
+        cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
+        cancelButton.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(cancelButton)
+
+        catFoodImageView.image = image
+        catFoodImageView.contentMode = .scaleAspectFit
+        catFoodImageView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(catFoodImageView)
+
+
+
+        setNeedsLayout()
+    }
 
     init(frame: CGRect, foodArray: [FoodModel], selectedIndex: IndexPath, currentCat: CreateCatModel, image: UIImage) {
         super.init(frame: frame)
@@ -53,13 +170,8 @@ class AmountSelectionView: UIView, UIPickerViewDelegate, UIPickerViewDataSource,
         foodItem = foodArray[selectedIndex.row]
         let isPhoneSmall = UIScreen.main.bounds.width <= 320
         //Cancel button
-        cancelButton.setTitle("Cancel", for: .normal)
-        cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
-        cancelButton.sizeToFit()
-        addSubview(cancelButton)
-        let x = NSLayoutConstraint.constraints(withVisualFormat: "H:|-50-[v0]-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": cancelButton])
-
-        self.addConstraints(x)
+//
+//        self.addConstraints(x)
         //changeWetFoodSizeButton
         changeWetFoodSizeButton.setTitle("Change Can Size", for: .normal)
         changeWetFoodSizeButton.addTarget(self, action: #selector(changedWetFoodSizePressed), for: .touchUpInside)
@@ -69,11 +181,6 @@ class AmountSelectionView: UIView, UIPickerViewDelegate, UIPickerViewDataSource,
                 //addSubView(changeWetFoodSizeButton)
             }
         }
-        //catfoodImage
-        let photoWidthAndHeight: CGFloat = isPhoneSmall ? 0.20 : 0.35
-        catFoodImageView = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: bounds.height * photoWidthAndHeight, height: bounds.height * photoWidthAndHeight))
-        catFoodImageView.image = image
-        catFoodImageView.contentMode = .scaleAspectFit
         //addSubView(catFoodImageView)
         //catFoodLabel
         catFoodLabel.text = foodArray[selectedIndex.row].foodName
@@ -188,6 +295,35 @@ class AmountSelectionView: UIView, UIPickerViewDelegate, UIPickerViewDataSource,
 
     override func layoutSubviews() {
         super.layoutSubviews()
+        catFoodImageView.image = image
+        wetLabel.image = wetFood ? #imageLiteral(resourceName: "wetLabel") : #imageLiteral(resourceName: "dryLabel")
+
+     var constraints = [NSLayoutConstraint]()
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-[v0(48)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": cancelButton])
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-[v0]-|", options: [.alignAllCenterX], metrics: nil, views: ["v0": catFoodImageView])
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-20-|", options: [.alignAllCenterX], metrics: nil, views: ["v0": catFoodLabel])
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-30-[v0(20)]-[v1]-30-|", options: [.alignAllCenterY], metrics: nil, views: ["v0": wetLabel, "v1": calPerCanLabel])
+        //constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:[v0]-30-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": calPerCanLabel])
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-[v0]-|", options: [.alignAllCenterX], metrics: nil, views: ["v0": calLabel])
+
+        let calProgressBarWidth = calLabel.bounds.width * 0.80
+        print(calProgressBarWidth)
+        print(calLabel.bounds)
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-50-[v0]-50-|", options: [.alignAllCenterX], metrics: nil, views: ["v0": calProgressBar])
+
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-100-[v0]-100-|", options: [.alignAllCenterX], metrics: nil, views: ["v0": amountTextField])
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-100-[v0(==v1)]-100-|", options: [.alignAllCenterX], metrics: nil, views: ["v0": amountSelectionBorder, "v1": amountTextField])
+        let logAFeedingWidth = bounds.width * 0.828
+        let margin = (bounds.width - logAFeedingWidth) / 2.0
+        let logAFeedingHeight = bounds.height * 0.0912106136
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-(margin)-[v0(width)]-(margin)-|", options: [.alignAllCenterX], metrics: ["width": logAFeedingWidth, "margin": margin], views: ["v0": logFeedingButton])
+
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0(30)]-[v1]-[v2]-20-[v3]-35-[v4]-[v5(2)]-25-[v6]-1-[v7(1)]-40-[v8(height)]-20-|", options: NSLayoutFormatOptions(), metrics: ["height": logAFeedingHeight], views: ["v0": cancelButton, "v1": catFoodImageView, "v2": catFoodLabel, "v3": wetLabel, "v4": calLabel, "v5": calProgressBar, "v6": amountTextField, "v7": amountSelectionBorder, "v8": logFeedingButton])
+
+         constraints += NSLayoutConstraint.constraints(withVisualFormat: "V:[v0]-[v1]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": catFoodLabel, "v1": calPerCanLabel])
+
+        NSLayoutConstraint.activate(constraints)
+
         //603
 //        let height = bounds.height
 //        let width = bounds.width
